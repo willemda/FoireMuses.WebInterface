@@ -1,0 +1,48 @@
+﻿@model FoireMuses.WebInterface.Models.SearchResult<FoireMuses.WebInterface.Models.JScore>
+
+@{
+    ViewBag.Title = "Scores";
+}
+
+<div id="pageNumerate">
+@{
+    int pages = Model.TotalCount / Model.Max;
+    for(int i = 1; i < 10; i++){
+        @Html.ActionLink(i.ToString(), "Index", "Scores?page="+i);
+    }
+}
+</div>
+<table>
+    <tr>
+        <th>
+            Title
+        </th>
+        <th>
+            Author
+        </th>
+        <th>
+            Type
+        </th>
+        <th>
+            Editor
+        </th>
+    </tr>
+
+@foreach (var item in Model.Rows) {
+    <tr>
+        <td>
+            @item.Title
+        </td>
+        <td>
+            @item.Composer
+        </td>
+        <td>
+            @item.ScoreType
+        </td>
+        <td>
+            @item.Editor
+        </td>
+    </tr>
+}
+</table>
+

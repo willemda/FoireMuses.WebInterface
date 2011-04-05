@@ -1,0 +1,17 @@
+﻿@model FoireMuses.WebInterface.Models.ListViewModel<FoireMuses.WebInterface.Models.JPlay>
+@using FoireMuses.WebInterface.HtmlHelpers
+@{
+    ViewBag.Title = "All plays";
+}
+
+<h2>Liste de tout les pièces</h2>
+
+@foreach (var play in Model.SearchResult.Rows)
+{
+        Html.RenderPartial("PlaySummary", play);
+}
+
+<div class="pager">
+       @Html.PageLinks(Model.TotalPages, Model.CurrentPage,
+            x => Url.Action("List", new {page=x}))
+</div>

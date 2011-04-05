@@ -1,0 +1,146 @@
+﻿body
+{
+    width:930px;
+    margin: auto;
+    font-family:Trebuchet MS;
+}
+
+#header
+{
+    background-color: #0880B5;
+    height: 70px;
+}
+
+#banner
+{
+    padding-top: 1px;
+    padding-left: 10px;
+    font-family:Trebuchet MS;
+}
+
+#banner a, a:visited
+{
+    color: White;
+    text-decoration: none;
+}
+#links
+{
+    padding-top:0px;
+}
+
+#list li
+{
+    font-size:85%;
+    list-style-type:none;
+    display:inline;
+    float:right;
+    border-left: 1px solid #77BCFF;
+    padding: 0 .7em 0 .3em;
+}
+
+#list li.first
+{
+    border: none;
+}
+
+#list a, a:visited
+{
+    color: White;
+}
+
+#list a:hover
+{
+    text-decoration:none;
+}
+
+#menu
+{
+    background-color: #D9E4E8;
+    height: 30px;
+}
+
+#menu .search
+{
+    text-align:center;
+    padding-top: 2px;
+    font-family:"Trebuchet MS";
+    font-size:14px;
+    font-weight:bold;
+    color:#0880B5;
+    text-transform:uppercase;
+    text-indent:20px;
+    line-height:22px;
+}
+
+#menu .upload a, a:visited
+{
+    padding-top: 2px;
+    font-family:"Trebuchet MS";
+    font-size:14px;
+    font-weight:bold;
+    color:#0880B5;
+    text-transform:uppercase;
+    text-indent:20px;
+    line-height:22px;
+    float: right;
+    text-decoration: none;
+}
+
+#menu .upload a:hover
+{
+    color: #77BCFF;
+}
+
+#menu form
+{
+    display: inline;
+}
+
+#menu input.text
+{
+    color: Grey;
+}
+
+#menumenu
+{
+    margin-top: -22px;
+}
+
+#primary 
+{
+  display:inline-block;
+  font-size: 85%;
+  line-height:normal;
+  padding:0px 20px 0px 255px;
+}
+
+#primary ul 
+{
+  padding:0;
+  margin:0;
+  list-style:none;
+}
+
+#primary li 
+{
+  display:inline;
+}
+#primary a {
+  background-image:url(images/tabs.gif);
+  width:90px;
+  height:22px;
+  line-height:22px;
+  font-weight:bold;
+  font-size:11px;
+  font-family:"Trebuchet MS";
+  color:#188BC1;
+  text-align:center;
+  display:block;
+  float:left;
+  margin: 0px 10px 0px 0px;
+  text-decoration:none;
+}
+
+#primary a:hover {
+  color:#05AFFF;
+}#content{    padding:10px 10px 10px 10px;}#footer{    background-color:#E5EDF0;    text-align: center;    font-size:85%;}

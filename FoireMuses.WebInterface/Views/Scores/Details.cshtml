@@ -1,0 +1,67 @@
+﻿@model FoireMuses.WebInterface.Models.JScore
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>JScore</legend>
+
+    <div class="display-label">Title</div>
+    <div class="display-field">@Model.Title</div>
+
+    <div class="display-label">Code1</div>
+    <div class="display-field">@Model.Code1</div>
+
+    <div class="display-label">Code2</div>
+    <div class="display-field">@Model.Code2</div>
+
+    <div class="display-label">Coirault</div>
+    <div class="display-field">@Model.Coirault</div>
+
+    <div class="display-label">Composer</div>
+    <div class="display-field">@Model.Composer</div>
+
+    <div class="display-label">CoupeMetrique</div>
+    <div class="display-field">@Model.CoupeMetrique</div>
+
+    <div class="display-label">Verses</div>
+    <div class="display-field">@Model.Verses</div>
+
+    <div class="display-label">Delarue</div>
+    <div class="display-field">@Model.Delarue</div>
+
+    <div class="display-label">Comments</div>
+    <div class="display-field">@Model.Comments</div>
+
+    <div class="display-label">Editor</div>
+    <div class="display-field">@Model.Editor</div>
+
+    <div class="display-label">RythmSignature</div>
+    <div class="display-field">@Model.RythmSignature</div>
+
+    <div class="display-label">OtherTitles</div>
+    <div class="display-field">@Model.OtherTitles</div>
+
+    <div class="display-label">Stanza</div>
+    <div class="display-field">@Model.Stanza</div>
+
+    <div class="display-label">ScoreType</div>
+    <div class="display-field">@Model.ScoreType</div>
+
+    <div class="display-label">CreatorId</div>
+    <div class="display-field">@Model.CreatorId</div>
+
+    <div class="display-label">LastModifierId</div>
+    <div class="display-field">@Model.LastModifierId</div>
+
+    <div class="display-label">Count</div>
+    <div class="display-field">@Model.Count</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+

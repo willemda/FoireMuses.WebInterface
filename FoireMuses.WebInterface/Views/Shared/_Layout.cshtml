@@ -1,0 +1,58 @@
+﻿<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery-1.4.4.min.js")" type="text/javascript"></script>
+</head>
+<body>
+    <div class="page">
+        <div id="header">
+            <div id="links">
+                <ul id="list">
+                    <li><a href="/login">log in</a> </li>
+                    <li><a href="/faq">help</a> </li>
+                    <li class="first"><a href="/signup">sign up</a> </li>
+                </ul>
+            </div>
+            <div id="banner">
+                <h2>
+                    <a href="/">Foire Muses</a></h2>
+            </div>
+        </div>
+        <!-- fin header -->
+        <div id="menumenu">
+            <div id="primary">
+                <ul>
+                    <li><a href="/scores/list" title="Browse the Foire muses scores repository">scores</a></li>
+                    <li><a href="/plays" title="Browse the Foire muses scores repository">plays</a></li>
+                    <li><a href="/changes" title="Track the recent changes on foire muses">changes</a></li>
+                    <li><a href="/browse" title="Find any scores, plays and sources">search</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="menu">
+            <div class="upload">
+                <a href="/publish">PUBLISH</a>
+            </div>
+            <div class="search">
+                SEARCH
+                <form action="/search" method="post">
+                <select>
+                    <option>Play</option>
+                    <option>Source</option>
+                    <option>Score</option>
+                </select>
+                <input class="text" type="text" name="title" value="Title" />
+                <input type="submit" name="Go" value="Go" />
+                </form>
+            </div>
+        </div>
+        <div id="content">
+            @RenderBody()
+        </div>
+        <div id="footer">
+            2011, Foire Muses <a href="/contact">Contact us</a>
+        </div>
+    </div>
+</body>
+</html>

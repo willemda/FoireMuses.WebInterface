@@ -1,0 +1,17 @@
+﻿@model FoireMuses.WebInterface.Models.ListViewModel<FoireMuses.WebInterface.Models.JScore>
+@using FoireMuses.WebInterface.HtmlHelpers
+@{
+    ViewBag.Title = "All Scores";
+}
+
+<h2>Liste de tout les airs</h2>
+
+@foreach (var score in Model.SearchResult.Rows)
+{
+        Html.RenderPartial("ScoreSummary", score);
+}
+
+<div class="pager">
+       @Html.PageLinks(Model.TotalPages, Model.CurrentPage,
+            x => Url.Action("List", new {page=x}))
+</div>

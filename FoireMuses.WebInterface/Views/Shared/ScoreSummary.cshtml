@@ -1,0 +1,6 @@
+﻿@model FoireMuses.WebInterface.Models.JScore
+
+<div class="scoreSummary">
+    <h3>@Html.ActionLink(Model.Title, "Details", new { scoreId = Model.Id })</h3>
+    composer: @Model.Composer, editor: @Model.Composer
+</div>
