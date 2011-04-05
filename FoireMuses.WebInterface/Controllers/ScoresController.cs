@@ -43,5 +43,16 @@ namespace MvcMovie.Controllers
             return View(sr);
         }
 
+        public ActionResult Edit(string scoreId)
+        {
+            DreamMessage msg = BasePlug.At("foiremuses", "scores", scoreId).WithCredentials("danny", "azerty").Get(DreamMessage.Ok());
+            if (msg.Status != DreamStatus.Ok)
+            {
+                //redirige
+            }
+            JScore sr = new JScore(JObject.Parse(msg.ToText()));
+            return View(sr);
+        }
+
 	}
 }

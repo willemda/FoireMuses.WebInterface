@@ -1,5 +1,0 @@
-G:\Projects\MvcMovie\MvcMovie\bin\MvcMovie.dll
-G:\Projects\MvcMovie\MvcMovie\bin\MvcMovie.pdb
-G:\Projects\MvcMovie\MvcMovie\obj\Debug\ResolveAssemblyReference.cache
-G:\Projects\MvcMovie\MvcMovie\obj\Debug\MvcMovie.dll
-G:\Projects\MvcMovie\MvcMovie\obj\Debug\MvcMovie.pdb

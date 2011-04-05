@@ -20,3 +20,14 @@ C:\Projects\MvcMovie\MvcMovie\bin\EntityFramework.xml
 C:\Projects\MvcMovie\MvcMovie\obj\Debug\ResolveAssemblyReference.cache
 C:\Projects\MvcMovie\MvcMovie\obj\Debug\MvcMovie.dll
 C:\Projects\MvcMovie\MvcMovie\obj\Debug\MvcMovie.pdb
+C:\Projects\FoireMuses.WebInterface\FoireMuses.WebInterface\bin\FoireMuses.Webinterface.dll
+C:\Projects\FoireMuses.WebInterface\FoireMuses.WebInterface\bin\FoireMuses.Webinterface.pdb
+C:\Projects\FoireMuses.WebInterface\FoireMuses.WebInterface\bin\Autofac.dll
+C:\Projects\FoireMuses.WebInterface\FoireMuses.WebInterface\bin\EntityFramework.dll
+C:\Projects\FoireMuses.WebInterface\FoireMuses.WebInterface\bin\log4net.dll
+C:\Projects\FoireMuses.WebInterface\FoireMuses.WebInterface\bin\mindtouch.dream.dll
+C:\Projects\FoireMuses.WebInterface\FoireMuses.WebInterface\bin\Newtonsoft.Json.dll
+C:\Projects\FoireMuses.WebInterface\FoireMuses.WebInterface\bin\EntityFramework.xml
+C:\Projects\FoireMuses.WebInterface\FoireMuses.WebInterface\obj\Debug\ResolveAssemblyReference.cache
+C:\Projects\FoireMuses.WebInterface\FoireMuses.WebInterface\obj\Debug\FoireMuses.Webinterface.dll
+C:\Projects\FoireMuses.WebInterface\FoireMuses.WebInterface\obj\Debug\FoireMuses.Webinterface.pdb
