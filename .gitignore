@@ -1,0 +1,11 @@
+
+_ReSharper*
+*/obj/*
+*/bin/*
+*.trx
+*.suo
+*.user
+*/TestResults/*
+FoireMuses.5.1.ReSharper.user
+WebHost/services/*
+*.dat

@@ -2,6 +2,7 @@
 using FoireMuses.WebInterface.Models;
 using System;
 using Newtonsoft.Json.Linq;
+using FoireMuses.Client;
 
 namespace FoireMuses.WebInterface.Models
 {

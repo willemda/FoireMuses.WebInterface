@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using MindTouch.Dream;
 using FoireMuses.WebInterface.Models;
 using Newtonsoft.Json.Linq;
+using FoireMuses.Client;
 
 namespace MvcMovie.Controllers
 {

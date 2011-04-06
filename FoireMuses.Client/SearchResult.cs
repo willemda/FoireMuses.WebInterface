@@ -5,9 +5,8 @@ using System.Text;
 using Newtonsoft.Json.Linq;
 using System.Reflection;
 
-namespace FoireMuses.WebInterface.Models
+namespace FoireMuses.Client
 {
-	#region Models
 
 	public class SearchResult<T> : JObject where T : JObject
 	{
@@ -35,6 +34,4 @@ namespace FoireMuses.WebInterface.Models
 			}
 		}
 	}
-
-	#endregion
 }

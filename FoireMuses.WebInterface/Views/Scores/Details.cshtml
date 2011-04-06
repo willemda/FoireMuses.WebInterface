@@ -1,67 +1,92 @@
-﻿@model FoireMuses.WebInterface.Models.JScore
-
+﻿@model FoireMuses.WebInterface.Models.ScoreDetailModel
 @{
     ViewBag.Title = "Details";
 }
-
-<h2>Details</h2>
-
+<h2>
+    Details</h2>
 <fieldset>
-    <legend>JScore</legend>
+    <legend>Score</legend>
+    <div class="display-label">
+        Title</div>
+    <div class="display-field">@Model.Score.Title</div>
+    <div class="display-label">
+        Code1</div>
+    <div class="display-field">@Model.Score.Code1</div>
+    <div class="display-label">
+        Code2</div>
+    <div class="display-field">@Model.Score.Code2</div>
+    <div class="display-label">
+        Coirault</div>
+    <div class="display-field">@Model.Score.Coirault</div>
+    <div class="display-label">
+        Composer</div>
+    <div class="display-field">@Model.Score.Composer</div>
+    <div class="display-label">
+        CoupeMetrique</div>
+    <div class="display-field">@Model.Score.CoupeMetrique</div>
+    <div class="display-label">
+        Verses</div>
+    <div class="display-field">@Model.Score.Verses</div>
+    <div class="display-label">
+        Delarue</div>
+    <div class="display-field">@Model.Score.Delarue</div>
+    <div class="display-label">
+        Comments</div>
+    <div class="display-field">@Model.Score.Comments</div>
+    <div class="display-label">
+        Editor</div>
+    <div class="display-field">@Model.Score.Editor</div>
+    <div class="display-label">
+        RythmSignature</div>
+    <div class="display-field">@Model.Score.RythmSignature</div>
+    <div class="display-label">
+        OtherTitles</div>
+    <div class="display-field">@Model.Score.OtherTitles</div>
+    <div class="display-label">
+        Stanza</div>
+    <div class="display-field">@Model.Score.Stanza</div>
+    <div class="display-label">
+        ScoreType</div>
+    <div class="display-field">@Model.Score.ScoreType</div>
+    <div class="display-label">
+        CreatorId</div>
+    <div class="display-field">@Model.Score.CreatorId</div>
+    <div class="display-label">
+        LastModifierId</div>
+    <div class="display-field">@Model.Score.LastModifierId</div>
+    @if (Model.TextualSource != null)
+    {
+        <div>
+            Lyrics source:</div>
+        <div class="display-summary">
+            @{Html.RenderPartial("SourceSummary", Model.TextualSource);}
+        </div>
+        <div class="display-summary">
+            @{Html.RenderPartial("TextualSourceSummary", Model.Score.TextualSource);}
+        </div>
 
-    <div class="display-label">Title</div>
-    <div class="display-field">@Model.Title</div>
-
-    <div class="display-label">Code1</div>
-    <div class="display-field">@Model.Code1</div>
-
-    <div class="display-label">Code2</div>
-    <div class="display-field">@Model.Code2</div>
-
-    <div class="display-label">Coirault</div>
-    <div class="display-field">@Model.Coirault</div>
-
-    <div class="display-label">Composer</div>
-    <div class="display-field">@Model.Composer</div>
-
-    <div class="display-label">CoupeMetrique</div>
-    <div class="display-field">@Model.CoupeMetrique</div>
-
-    <div class="display-label">Verses</div>
-    <div class="display-field">@Model.Verses</div>
-
-    <div class="display-label">Delarue</div>
-    <div class="display-field">@Model.Delarue</div>
-
-    <div class="display-label">Comments</div>
-    <div class="display-field">@Model.Comments</div>
-
-    <div class="display-label">Editor</div>
-    <div class="display-field">@Model.Editor</div>
-
-    <div class="display-label">RythmSignature</div>
-    <div class="display-field">@Model.RythmSignature</div>
-
-    <div class="display-label">OtherTitles</div>
-    <div class="display-field">@Model.OtherTitles</div>
-
-    <div class="display-label">Stanza</div>
-    <div class="display-field">@Model.Stanza</div>
-
-    <div class="display-label">ScoreType</div>
-    <div class="display-field">@Model.ScoreType</div>
-
-    <div class="display-label">CreatorId</div>
-    <div class="display-field">@Model.CreatorId</div>
-
-    <div class="display-label">LastModifierId</div>
-    <div class="display-field">@Model.LastModifierId</div>
-
-    <div class="display-label">Count</div>
-    <div class="display-field">@Model.Count</div>
+              if (Model.AssociatedPlay != null)
+              {
+        <div>
+            Associated play from this source:</div>
+        <div>
+            <a href="/plays/details?id=@Model.AssociatedPlay.Id">@Model.AssociatedPlay.Title, Act @Model.Score.TextualSource.ActNumber, Scene @Model.Score.TextualSource.SceneNumber</a>
+        </div>
+              }
+    }
+    @if (Model.MusicalSource != null)
+    {
+        <div class="infoSource">
+            Lead sheets are from this musical source</div>
+        <div class="display-field">
+            @{Html.RenderPartial("SourceSummary", Model.MusicalSource);}
+        </div>
+        <div class="display-summary">
+            @{Html.RenderPartial("MusicalSourceSummary", Model.Score.MusicalSource);}
+        </div>
+    }
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Score.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
-
