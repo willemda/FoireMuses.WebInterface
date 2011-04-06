@@ -2,12 +2,9 @@
 @{
     ViewBag.Title = "Details";
 }
-<h2>
-    Details</h2>
-<fieldset>
-    <legend>Score</legend>
-    <div class="display-label">
-        Title</div>
+<h2>Détails de l'air</h2>
+<div class="scoreDetail">
+    <div class="display-label">Title</div>
     <div class="display-field">@Model.Score.Title</div>
     <div class="display-label">
         Code1</div>
@@ -85,7 +82,7 @@
             @{Html.RenderPartial("MusicalSourceSummary", Model.Score.MusicalSource);}
         </div>
     }
-</fieldset>
+    </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Score.Id }) |
     @Html.ActionLink("Back to List", "Index")
