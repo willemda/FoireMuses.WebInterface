@@ -112,19 +112,24 @@
   font-size: 85%;
   line-height:normal;
   padding:0px 20px 0px 255px;
-}
-
+}
+
+
+
 #primary ul 
 {
   padding:0;
   margin:0;
   list-style:none;
-}
-
+}
+
+
+
 #primary li 
 {
   display:inline;
-}
+}
+
 #primary a {
   background-image:url(images/tabs.gif);
   width:90px;
@@ -139,8 +144,58 @@
   float:left;
   margin: 0px 10px 0px 0px;
   text-decoration:none;
-}
-
+}
+
+
+
 #primary a:hover {
   color:#05AFFF;
-}#content{    padding:10px 10px 10px 10px;}#footer{    background-color:#E5EDF0;    text-align: center;    font-size:85%;}#content h2{    font-weight:normal;    font-size:100%;    text-decoration:underline;}#content .display-label{    float:left;    width:80px;    }#content .display-field{    color: grey;}
+}
+
+#content
+{
+    padding:10px 10px 10px 10px;
+}
+
+#footer
+{
+    background-color:#E5EDF0;
+    text-align: center;
+    font-size:85%;
+}
+
+#content h2
+{
+    font-weight:normal;
+    font-size:100%;
+    text-decoration:underline;
+}
+
+#content .fieldName
+{
+    float:left;
+    width:120px;
+    
+}
+
+#content .fieldValue
+{
+    text-align:right;
+    color: grey;
+}
+
+#content .sourceValues
+{
+    padding-left:20px;
+}
+
+#content .sources h3
+{
+    font-size:100%;
+    font-weight:normal;
+}
+
+#content.sources a
+{
+    float:left;
+}

@@ -51,4 +51,41 @@ namespace FoireMuses.WebInterface.HtmlHelpers
             return MvcHtmlString.Create(result.ToString());
         }
     }
+
+    public static class AddFieldHelpers
+    {
+        public static MvcHtmlString AddField(this HtmlHelper html, string fieldName, string fieldValue)
+        {
+            if (fieldValue == null)
+                return MvcHtmlString.Create("");
+            StringBuilder result = new StringBuilder();
+            TagBuilder div = new TagBuilder("div");
+            div.MergeAttribute("class", "fieldName");
+            div.InnerHtml = fieldName;
+            result.AppendLine(div.ToString());
+            div = new TagBuilder("div");
+            div.MergeAttribute("class", "fieldValue");
+            div.InnerHtml = fieldValue;
+            result.AppendLine(div.ToString());
+            return MvcHtmlString.Create(result.ToString());
+            
+        }
+
+        public static MvcHtmlString AddField(this HtmlHelper html, string fieldName, int? fieldValue)
+        {
+            if (fieldValue == null)
+                return MvcHtmlString.Create("");
+            StringBuilder result = new StringBuilder();
+            TagBuilder div = new TagBuilder("div");
+            div.MergeAttribute("class", "fieldName");
+            div.InnerHtml = fieldName;
+            result.AppendLine(div.ToString());
+            div = new TagBuilder("div");
+            div.MergeAttribute("class", "fieldValue");
+            div.InnerHtml = fieldValue.ToString();
+            result.AppendLine(div.ToString());
+            return MvcHtmlString.Create(result.ToString());
+
+        }
+    }
 }

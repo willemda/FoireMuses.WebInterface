@@ -42,6 +42,7 @@ namespace FoireMuses.Client
 			}
 		}
 
+        
 		public string Title
 		{
 			get

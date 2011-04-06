@@ -1,22 +1,10 @@
 ﻿@model FoireMuses.Client.TextualSource
+@using FoireMuses.WebInterface.HtmlHelpers
 
-<fieldset>
-    <legend>More info</legend>
-
-    <div class="display-label">AirNumber</div>
-    <div class="display-field">@Model.AirNumber</div>
-
-    <div class="display-label">Page</div>
-    <div class="display-field">@Model.Page</div>
-
-    <div class="display-label">Comment</div>
-    <div class="display-field">@Model.Comment</div>
-
-    <div class="display-label">Tome</div>
-    <div class="display-field">@Model.Tome</div>
-
-    <div class="display-label">Volume</div>
-    <div class="display-field">@Model.Volume</div>
-</fieldset>
+@Html.AddField("Numéro de l'air", Model.AirNumber)
+@Html.AddField("Page", Model.Page)
+@Html.AddField("Tome", Model.Tome)
+@Html.AddField("Volume", @Model.Volume)
+@Html.AddField("Commentaire", @Model.Comment)
 
 
