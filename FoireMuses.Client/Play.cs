@@ -3,51 +3,55 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Newtonsoft.Json.Linq;
+using FoireMuses.Core.Interfaces;
 
 namespace FoireMuses.Client
 {
 	/// <summary>
 	/// represent a Play(une pièce) object in json
 	/// </summary>
-	public class Play : JObject
+	public class Play : IPlay
 	{
+
+		public JObject json { get; private set; }
 
 		public Play()
 		{
-			this.Add("type", "play");
+			json = new JObject();
+			json.Add("otype", "play");
 		}
 
 		public Play(JObject jobject)
-			: base(jobject)
 		{
+			json = jobject;
 			JToken type;
-			if (this.TryGetValue("otype", out type))
+			if (json.TryGetValue("otype", out type))
 			{
 				if (type.Value<string>() != "play")
 					throw new Exception("Bad object type");
 			}
 			else
 			{
-				this.Add("otype", "play");
+				json.Add("otype", "play");
 			}
 		}
 
 		public string Id
 		{
-			get { return this["_id"].Value<string>(); }
+			get { return json["_id"].Value<string>(); }
 		}
 
 		public string Abstract
 		{
 			get
 			{
-				if (this["abstract"] == null)
+				if (json["abstract"] == null)
 					return null;
-				return this["abstract"].Value<string>();
+				return json["abstract"].Value<string>();
 			}
 			set
 			{
-				this["abstract"] = value;
+				json["abstract"] = value;
 			}
 		}
 
@@ -55,13 +59,13 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (this["actionLocation"] == null)
+				if (json["actionLocation"] == null)
 					return null;
-				return this["actionLocation"].Value<string>();
+				return json["actionLocation"].Value<string>();
 			}
 			set
 			{
-				this["actionLocation"] = value;
+				json["actionLocation"] = value;
 			}
 		}
 
@@ -69,13 +73,13 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (this["author"] == null)
+				if (json["author"] == null)
 					return null;
-				return this["author"].Value<string>();
+				return json["author"].Value<string>();
 			}
 			set
 			{
-				this["author"] = value;
+				json["author"] = value;
 			}
 		}
 
@@ -83,13 +87,13 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (this["comments"] == null)
+				if (json["comments"] == null)
 					return null;
-				return this["comments"].Value<string>();
+				return json["comments"].Value<string>();
 			}
 			set
 			{
-				this["comments"] = value;
+				json["comments"] = value;
 			}
 		}
 
@@ -97,13 +101,13 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (this["creationPlace"] == null)
+				if (json["creationPlace"] == null)
 					return null;
-				return this["creationPlace"].Value<string>();
+				return json["creationPlace"].Value<string>();
 			}
 			set
 			{
-				this["creationPlace"] = value;
+				json["creationPlace"] = value;
 			}
 		}
 
@@ -111,13 +115,13 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (this["creationYear"] == null)
+				if (json["creationYear"] == null)
 					return null;
-				return this["creationYear"].Value<string>();
+				return json["creationYear"].Value<string>();
 			}
 			set
 			{
-				this["creationYear"] = value;
+				json["creationYear"] = value;
 			}
 		}
 
@@ -125,13 +129,13 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (this["critics"] == null)
+				if (json["critics"] == null)
 					return null;
-				return this["critics"].Value<string>();
+				return json["critics"].Value<string>();
 			}
 			set
 			{
-				this["critics"] = value;
+				json["critics"] = value;
 			}
 		}
 
@@ -139,13 +143,13 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (this["decors"] == null)
+				if (json["decors"] == null)
 					return null;
-				return this["decors"].Value<string>();
+				return json["decors"].Value<string>();
 			}
 			set
 			{
-				this["decors"] = value;
+				json["decors"] = value;
 			}
 		}
 
@@ -153,13 +157,13 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (this["entrepreneurName"] == null)
+				if (json["entrepreneurName"] == null)
 					return null;
-				return this["entrepreneurName"].Value<string>();
+				return json["entrepreneurName"].Value<string>();
 			}
 			set
 			{
-				this["entrepreneurName"] = value;
+				json["entrepreneurName"] = value;
 			}
 		}
 
@@ -167,13 +171,13 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (this["type"] == null)
+				if (json["type"] == null)
 					return null;
-				return this["type"].Value<string>();
+				return json["type"].Value<string>();
 			}
 			set
 			{
-				this["type"] = value;
+				json["type"] = value;
 			}
 		}
 
@@ -181,13 +185,13 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (this["iconography"] == null)
+				if (json["iconography"] == null)
 					return null;
-				return this["iconography"].Value<string>();
+				return json["iconography"].Value<string>();
 			}
 			set
 			{
-				this["iconography"] = value;
+				json["iconography"] = value;
 			}
 		}
 
@@ -195,13 +199,13 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (this["musicianName"] == null)
+				if (json["musicianName"] == null)
 					return null;
-				return this["musicianName"].Value<string>();
+				return json["musicianName"].Value<string>();
 			}
 			set
 			{
-				this["musicianName"] = value;
+				json["musicianName"] = value;
 			}
 		}
 
@@ -209,13 +213,13 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (this["resonances"] == null)
+				if (json["resonances"] == null)
 					return null;
-				return this["resonances"].Value<string>();
+				return json["resonances"].Value<string>();
 			}
 			set
 			{
-				this["resonances"] = value;
+				json["resonances"] = value;
 			}
 		}
 
@@ -223,13 +227,13 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (this["sourceFolio"] == null)
+				if (json["sourceFolio"] == null)
 					return null;
-				return this["sourceFolio"].Value<string>();
+				return json["sourceFolio"].Value<string>();
 			}
 			set
 			{
-				this["sourceFolio"] = value;
+				json["sourceFolio"] = value;
 			}
 		}
 
@@ -237,13 +241,13 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (this["title"] == null)
+				if (json["title"] == null)
 					return null;
-				return this["title"].Value<string>();
+				return json["title"].Value<string>();
 			}
 			set
 			{
-				this["title"] = value;
+				json["title"] = value;
 			}
 		}
 
@@ -251,13 +255,13 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (this["sourceId"] == null)
+				if (json["sourceId"] == null)
 					return null;
-				return this["sourceId"].Value<string>();
+				return json["sourceId"].Value<string>();
 			}
 			set
 			{
-				this["sourceId"] = value;
+				json["sourceId"] = value;
 			}
 		}
 
@@ -265,13 +269,13 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (this["sourceTome"] == null)
+				if (json["sourceTome"] == null)
 					return null;
-				return this["sourceTome"].Value<int?>();
+				return json["sourceTome"].Value<int?>();
 			}
 			set
 			{
-				this["sourceTome"] = value;
+				json["sourceTome"] = value;
 			}
 		}
 
@@ -279,72 +283,72 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (this["sourceVolume"] == null)
+				if (json["sourceVolume"] == null)
 					return null;
-				return this["sourceVolume"].Value<int?>();
+				return json["sourceVolume"].Value<int?>();
 			}
 			set
 			{
-				this["sourceVolume"] = value;
+				json["sourceVolume"] = value;
 			}
 		}
 
 		public IEnumerable<string> Tags
 		{
-			get { return this["tags"].Values<string>(); }
+			get { return json["tags"].Values<string>(); }
 		}
 
 		public void AddTag(string tag)
 		{
 			if (!Tags.Contains(tag))
 			{
-				JArray temp = this["tags"].Value<JArray>();
+				JArray temp = json["tags"].Value<JArray>();
 				temp.Add(tag);
-				this["tags"] = temp;
+				json["tags"] = temp;
 			}
 		}
 
 		public void RemoveTag(string tag)
 		{
-			this["tags"] = this["tags"].Value<JArray>().Remove(tag);
+			json["tags"] = json["tags"].Value<JArray>().Remove(tag);
 		}
 
 		public string CreatorId
 		{
 			get {
-				if (this["creatorId"] == null)
+				if (json["creatorId"] == null)
 					return null;
-				return this["creatorId"].Value<string>(); }
-			private set { this["creatorId"] = value; }
+				return json["creatorId"].Value<string>(); }
+			private set { json["creatorId"] = value; }
 		}
 
 		public string LastModifierId
 		{
 			get {
-				if (this["lastModifierId"] == null)
+				if (json["lastModifierId"] == null)
 					return null;
-				return this["lastModifierId"].Value<string>(); }
-			private set { this["lastModifierId"] = value; }
+				return json["lastModifierId"].Value<string>(); }
+			private set { json["lastModifierId"] = value; }
 		}
 
 		public IEnumerable<string> CollaboratorsId
 		{
-			get { return this["collaboratorsId"].Values<string>(); }
+			get { return json["collaboratorsId"].Values<string>(); }
 		}
 
 		public void AddCollaborator(string collab)
 		{
 			if (!Tags.Contains(collab))
 			{
-				JArray temp = this["collaboratorsId"].Value<JArray>();
+				JArray temp = json["collaboratorsId"].Value<JArray>();
 				temp.Add(collab);
-				this["collaboratorsId"] = temp;
+				json["collaboratorsId"] = temp;
 			}
 		}
 
 		public void RemoveCollaborator(string collab)
 		{
-			this["collaboratorsId"] = this["collaboratorsId"].Value<JArray>().Remove(collab);
+			json["collaboratorsId"] = json["collaboratorsId"].Value<JArray>().Remove(collab);
 		}
 	}
 }

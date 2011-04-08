@@ -12,6 +12,7 @@ namespace FoireMuses.Client
 
 		public User()
 		{
+
 			this.Add("otype", "user");
 		}
 

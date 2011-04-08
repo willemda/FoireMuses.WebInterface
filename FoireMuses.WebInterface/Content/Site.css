@@ -199,3 +199,15 @@
 {
     float:left;
 }
+
+#content .editor-label
+{
+    float: left;
+    width: 170px;
+}
+
+.editor-field input, .editor-field select
+{
+    width: 700px;
+    float:right;
+}

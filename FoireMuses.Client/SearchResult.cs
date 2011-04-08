@@ -8,26 +8,29 @@ using System.Reflection;
 namespace FoireMuses.Client
 {
 
-	public class SearchResult<T> : JObject where T : JObject
+	public class SearchResult<T>
 	{
-		public int Offset { get { return this["offset"].Value<int>(); } }
-		public int Max { get { return this["max"].Value<int>(); } }
-		public int TotalCount { get { return this["total_rows"].Value<int>(); } }
+		public JObject json { get; private set; }
+		private Func<JObject, T> cFunc;
+		public int Offset { get { return json["offset"].Value<int>(); } }
+		public int Max { get { return json["max"].Value<int>(); } }
+		public int TotalCount { get { return json["total_rows"].Value<int>(); } }
 
 
-		public SearchResult(JObject jo):base(jo)
+		public SearchResult(Func<JObject,T> func, JObject jo)
 		{
+			json = jo;
+			cFunc = func;
 		}
 
 		public IList<T> Rows
 		{
 			get{
-				JArray test = this["rows"].Value<JArray>();
+				JArray test = json["rows"].Value<JArray>();
 				IList<T> tlist = new List<T>();
-				ConstructorInfo ctor = typeof(T).GetConstructor(new Type[] { typeof(JObject) });
 				foreach (JObject jsonT in test.Values<JObject>())
 				{
-					T obj = ctor.Invoke(new object[] { jsonT}) as T;
+					var obj = cFunc(jsonT);
 					tlist.Add(obj);
 				}
 				return tlist;

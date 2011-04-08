@@ -3,32 +3,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Newtonsoft.Json.Linq;
+using FoireMuses.Core.Interfaces;
 
 namespace FoireMuses.Client
 {
 	/// <summary>
 	/// represent a Score(un air) object in json
 	/// </summary>
-	public class Score : JObject
+	
+	public class Score : IScore
 	{
+
+		public JObject json { get; private set; }
 
 		public Score()
 		{
-			this.Add("otype", "score");
+			json = new JObject();
+			json.Add("otype", "score");
 		}
 
 		public Score(JObject jobject)
-			: base(jobject)
 		{
+			json = jobject;
 			JToken type;
-			if (this.TryGetValue("otype", out type))
+			if (json.TryGetValue("otype", out type))
 			{
 				if (type.Value<string>() != "score")
 					throw new Exception("Bad object type");
 			}
 			else
 			{
-				this.Add("otype", "score");
+				json.Add("otype", "score");
 			}
 		}
 
@@ -36,259 +41,238 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (this["_id"] == null)
+				if (json["_id"] == null)
 					return null;
-				return this["_id"].Value<string>();
+				return json["_id"].Value<string>();
 			}
 		}
 
-        
+
 		public string Title
 		{
 			get
 			{
-				if (this["title"] == null)
+				if (json["title"] == null)
 					return null;
-				return this["title"].Value<string>();
+				return json["title"].Value<string>();
 			}
-			set { this["title"] = value; }
+			set { json["title"] = value; }
 		}
 
 		public string Code1
 		{
 			get
 			{
-				if (this["code1"] == null)
+				if (json["code1"] == null)
 					return null;
-				return this["code1"].Value<string>();
+				return json["code1"].Value<string>();
 			}
-			set { this["code1"] = value; }
+			set { json["code1"] = value; }
 		}
 
 		public string Code2
 		{
 			get
 			{
-				if (this["code2"] == null)
+				if (json["code2"] == null)
 					return null;
-				return this["code2"].Value<string>();
+				return json["code2"].Value<string>();
 			}
-			set { this["code2"] = value; }
+			set { json["code2"] = value; }
 		}
 
 		public string Coirault
 		{
 			get
 			{
-				if (this["coirault"] == null)
+				if (json["coirault"] == null)
 					return null;
-				return this["coirault"].Value<string>();
+				return json["coirault"].Value<string>();
 			}
-			set { this["coirault"] = value; }
+			set { json["coirault"] = value; }
 		}
 
 		public string Composer
 		{
 			get
 			{
-				if (this["composer"] == null)
+				if (json["composer"] == null)
 					return null;
-				return this["composer"].Value<string>();
+				return json["composer"].Value<string>();
 			}
-			set { this["composer"] = value; }
+			set { json["composer"] = value; }
 		}
 
 		public string CoupeMetrique
 		{
 			get
 			{
-				if (this["coupeMetrique"] == null)
+				if (json["coupeMetrique"] == null)
 					return null;
-				return this["coupeMetrique"].Value<string>();
+				return json["coupeMetrique"].Value<string>();
 			}
-			set { this["coupeMetrique"] = value; }
+			set { json["coupeMetrique"] = value; }
 		}
 
 		public string Verses
 		{
 			get
 			{
-				if (this["verses"] == null)
+				if (json["verses"] == null)
 					return null;
-				return this["verses"].Value<string>();
+				return json["verses"].Value<string>();
 			}
-			set { this["verses"] = value; }
+			set { json["verses"] = value; }
 		}
 
 		public string Delarue
 		{
 			get
 			{
-				if (this["delarue"] == null)
+				if (json["delarue"] == null)
 					return null;
-				return this["delarue"].Value<string>();
+				return json["delarue"].Value<string>();
 			}
-			set { this["delarue"] = value; }
+			set { json["delarue"] = value; }
 		}
 
 		public string Comments
 		{
 			get
 			{
-				if (this["comments"] == null)
+				if (json["comments"] == null)
 					return null;
-				return this["comments"].Value<string>();
+				return json["comments"].Value<string>();
 			}
-			set { this["comments"] = value; }
+			set { json["comments"] = value; }
 		}
 
 		public string Editor
 		{
 			get
 			{
-				if (this["editor"] == null)
+				if (json["editor"] == null)
 					return null;
-				return this["editor"].Value<string>();
+				return json["editor"].Value<string>();
 			}
-			set { this["editor"] = value; }
+			set { json["editor"] = value; }
 		}
 
 		public string RythmSignature
 		{
 			get
 			{
-				if (this["rythmSignature"] == null)
+				if (json["rythmSignature"] == null)
 					return null;
-				return this["rythmSignature"].Value<string>();
+				return json["rythmSignature"].Value<string>();
 			}
-			set { this["rythmSignature"] = value; }
+			set { json["rythmSignature"] = value; }
 		}
 
 		public string OtherTitles
 		{
 			get
 			{
-				if (this["otherTitles"] == null)
+				if (json["otherTitles"] == null)
 					return null;
-				return this["otherTitles"].Value<string>();
+				return json["otherTitles"].Value<string>();
 			}
-			set { this["otherTitles"] = value; }
+			set { json["otherTitles"] = value; }
 		}
 
 		public string Stanza
 		{
 			get
 			{
-				if (this["stanza"] == null)
+				if (json["stanza"] == null)
 					return null;
-				return this["stanza"].Value<string>();
+				return json["stanza"].Value<string>();
 			}
-			set { this["stanza"] = value; }
+			set { json["stanza"] = value; }
 		}
 
 		public string ScoreType
 		{
 			get
 			{
-				if (this["type"] == null)
+				if (json["type"] == null)
 					return null;
-				return this["type"].Value<string>();
+				return json["type"].Value<string>();
 			}
-			set { this["type"] = value; }
+			set { json["type"] = value; }
 		}
 
-		public TextualSource TextualSource
+		public ITextualSource TextualSource
 		{
 			get
 			{
-				if (this["textualSource"] == null)
+				if (json["textualSource"] == null)
 					return null;
-				return new TextualSource(this["textualSource"].Value<JObject>());
+				return new TextualSource(json["textualSource"].Value<JObject>());
 			}
-			set { this["textualSource"] = value; }
+			set { json["textualSource"] = (value as TextualSource).json; }
 		}
 
-		public MusicalSource MusicalSource
+		public IMusicalSource MusicalSource
 		{
 			get
 			{
-				if (this["musicalSource"] == null)
+				if (json["musicalSource"] == null)
 					return null;
-				return new MusicalSource(this["musicalSource"].Value<JObject>());
+				return new MusicalSource(json["musicalSource"].Value<JObject>());
 			}
-			set { this["musicalSource"] = value; }
+			set { json["musicalSource"] = (value as MusicalSource).json; }
 		}
 
-		public IEnumerable<string> Tags
+		public IList<string> Tags
 		{
 			get
 			{
-				if (this["tags"] == null)
+				if (json["tags"] == null)
 					return null;
-				return this["tags"].Values<string>();
+				return json["tags"].Values<string>().ToList<string>();
 			}
-		}
 
-		public void AddTag(string tag)
-		{
-			if (!Tags.Contains(tag))
+			set
 			{
-				JArray temp = this["tags"].Value<JArray>();
-				temp.Add(tag);
-				this["tags"] = temp;
+				json["tags"] = new JArray(value);
 			}
-		}
-
-		public void RemoveTag(string tag)
-		{
-			this["tags"] = this["tags"].Value<JArray>().Remove(tag);
 		}
 
 		public string CreatorId
 		{
 			get
 			{
-				if (this["creatorId"] == null)
+				if (json["creatorId"] == null)
 					return null;
-				return this["creatorId"].Value<string>();
+				return json["creatorId"].Value<string>();
 			}
-			private set { this["creatorId"] = value; }
+			private set { json["creatorId"] = value; }
 		}
 
 		public string LastModifierId
 		{
 			get
 			{
-				if (this["lastModifierId"] == null)
+				if (json["lastModifierId"] == null)
 					return null;
-				return this["lastModifierId"].Value<string>();
+				return json["lastModifierId"].Value<string>();
 			}
-			private set { this["lastModifierId"] = value; }
+			private set { json["lastModifierId"] = value; }
 		}
 
-		public IEnumerable<string> CollaboratorsId
+		public IList<string> CollaboratorsId
 		{
 			get
 			{
-				if (this["collaboratorsId"] == null)
+				if (json["collaboratorsId"] == null)
 					return null;
-				return this["collaboratorsId"].Values<string>();
+				return json["collaboratorsId"].Values<string>().ToList<string>();
 			}
-		}
-
-		public void AddCollaborator(string collab)
-		{
-			if (!Tags.Contains(collab))
+			set
 			{
-				JArray temp = this["collaboratorsId"].Value<JArray>();
-				temp.Add(collab);
-				this["collaboratorsId"] = temp;
+				json["collaboratorsId"] = new JArray(value);
 			}
-		}
-
-		public void RemoveCollaborator(string collab)
-		{
-			this["collaboratorsId"] = this["collaboratorsId"].Value<JArray>().Remove(collab);
 		}
 	}
 }

@@ -3,27 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Newtonsoft.Json.Linq;
+using FoireMuses.Core.Interfaces;
 
 namespace FoireMuses.Client
 {
-	public class TextualSource : JObject
+	public class TextualSource : ITextualSource
 	{
+		public JObject json { get; private set; }
+
 		public TextualSource()
 		{
+			json = new JObject();
 		}
 
 		public TextualSource(JObject jobject)
-			: base(jobject)
 		{
+			json = jobject;
 		}
 
 		public string SourceId
 		{
 			get {
-				if (this["id"] == null)
+				if (json["id"] == null)
 					return null;
-				return this["id"].Value<string>(); }
-			set { this["id"] = value; }
+				return json["id"].Value<string>(); }
+			set { json["id"] = value; }
 		}
 
 
@@ -31,23 +35,23 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (this["air"] == null)
+				if (json["air"] == null)
 					return null;
-				return this["air"].Value<int>();
+				return json["air"].Value<int>();
 			}
 			set
 			{
-				this["air"] = value;
+				json["air"] = value;
 			}
 		}
 
 		public string Page
 		{
 			get {
-				if (this["page"] == null)
+				if (json["page"] == null)
 					return null;
-				return this["page"].Value<string>(); }
-			set { this["page"] = value; }
+				return json["page"].Value<string>(); }
+			set { json["page"] = value; }
 		}
 
 
@@ -55,13 +59,13 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (this["comment"] == null)
+				if (json["comment"] == null)
 					return null;
-				return this["comment"].Value<string>();
+				return json["comment"].Value<string>();
 			}
 			set
 			{
-				this["comment"] = value;
+				json["comment"] = value;
 			}
 		}
 
@@ -69,13 +73,13 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (this["isSuggested"] == null)
+				if (json["isSuggested"] == null)
 					return null;
-				return this["isSuggested"].Value<bool>();
+				return json["isSuggested"].Value<bool>();
 			}
 			set
 			{
-				this["isSuggested"] = value;
+				json["isSuggested"] = value;
 			}
 		}
 
@@ -83,13 +87,13 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (this["actNumber"] == null)
+				if (json["actNumber"] == null)
 					return null;
-				return this["actNumber"].Value<int?>();
+				return json["actNumber"].Value<int?>();
 			}
 			set
 			{
-				this["actNumber"] = value;
+				json["actNumber"] = value;
 			}
 		}
 
@@ -97,13 +101,13 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (this["sceneNumber"] == null)
+				if (json["sceneNumber"] == null)
 					return null;
-				return this["sceneNumber"].Value<int?>();
+				return json["sceneNumber"].Value<int?>();
 			}
 			set
 			{
-				this["sceneNumber"] = value;
+				json["sceneNumber"] = value;
 			}
 		}
 
@@ -112,13 +116,13 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (this["pieceId"] == null)
+				if (json["pieceId"] == null)
 					return null;
-				return this["pieceId"].Value<string>();
+				return json["pieceId"].Value<string>();
 			}
 			set
 			{
-				this["pieceId"] = value;
+				json["pieceId"] = value;
 			}
 		}
 
@@ -127,13 +131,13 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (this["tome"] == null)
+				if (json["tome"] == null)
 					return null;
-				return this["tome"].Value<int?>();
+				return json["tome"].Value<int?>();
 			}
 			set
 			{
-				this["tome"] = value;
+				json["tome"] = value;
 			}
 		}
 
@@ -141,13 +145,13 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (this["volume"] == null)
+				if (json["volume"] == null)
 					return null;
-				return this["volume"].Value<int?>();
+				return json["volume"].Value<int?>();
 			}
 			set
 			{
-				this["volume"] = value;
+				json["volume"] = value;
 			}
 		}
 	}

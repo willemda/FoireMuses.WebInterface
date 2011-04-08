@@ -48,10 +48,18 @@
   <ItemGroup>
     <Compile Include="FoireMusesConnection.cs" />
     <Compile Include="Group.cs" />
+    <Compile Include="Interfaces\IGroup.cs" />
+    <Compile Include="Interfaces\IMusicalSource.cs" />
+    <Compile Include="Interfaces\IPlay.cs" />
+    <Compile Include="Interfaces\IScore.cs" />
+    <Compile Include="Interfaces\ISource.cs" />
+    <Compile Include="Interfaces\ITextualSource.cs" />
+    <Compile Include="Interfaces\IUser.cs" />
     <Compile Include="MusicalSource.cs" />
     <Compile Include="Play.cs" />
     <Compile Include="Score.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScoreFix.cs" />
     <Compile Include="SearchResult.cs" />
     <Compile Include="Source.cs" />
     <Compile Include="TextualSource.cs" />

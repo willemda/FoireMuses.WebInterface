@@ -3,167 +3,148 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Newtonsoft.Json.Linq;
+using FoireMuses.Core.Interfaces;
 
 namespace FoireMuses.Client
 {
 	/// <summary>
 	/// represent a Source(une source) object in json
 	/// </summary>
-	public class Source : JObject
+	public class Source : ISource
 	{
+
+		public JObject json { get; private set; }
+
 		public Source()
 		{
-			this.Add("type", "source");
+			json = new JObject();
+			json.Add("otype", "source");
 		}
 
 		public Source(JObject jobject)
-			: base(jobject)
 		{
+			json = jobject;
 			JToken type;
-			if (this.TryGetValue("otype", out type))
+			if (json.TryGetValue("otype", out type))
 			{
 				if (type.Value<string>() != "source")
 					throw new Exception("Bad object type");
 			}
 			else
 			{
-				this.Add("otype", "source");
+				json.Add("otype", "source");
 			}
 		}
 
 		public string Id
 		{
-			get { return this["_id"].Value<string>(); }
+			get { return json["_id"].Value<string>(); }
 		}
 
 		public string Name
 		{
 			get {
-				if (this["name"] == null)
+				if (json["name"] == null)
 					return null;
-				return this["name"].Value<string>(); }
-			set { this["name"] = value; }
+				return json["name"].Value<string>(); }
+			set { json["name"] = value; }
 		}
 
 		public string Publisher
 		{
 			get {
-				if (this["publisher"] == null)
+				if (json["publisher"] == null)
 					return null;
-				return this["publisher"].Value<string>(); }
-			set { this["publisher"] = value; }
+				return json["publisher"].Value<string>(); }
+			set { json["publisher"] = value; }
 		}
 
 		public string FreeZone
 		{
 			get {
-				if (this["free"] == null)
+				if (json["free"] == null)
 					return null;
-				return this["free"].Value<string>(); }
-			set { this["free"] = value; }
+				return json["free"].Value<string>(); }
+			set { json["free"] = value; }
 		}
 
 		public string Cote
 		{
 			get {
-				if (this["cote"] == null)
+				if (json["cote"] == null)
 					return null;
-				return this["cote"].Value<string>(); }
-			set { this["cote"] = value; }
+				return json["cote"].Value<string>(); }
+			set { json["cote"] = value; }
 		}
 
 		public string Abbreviation
 		{
-			get { return this["abbr"].Value<string>(); }
-			set { this["abbr"] = value; }
+			get { return json["abbr"].Value<string>(); }
+			set { json["abbr"] = value; }
 		}
 
 		public bool? ApproxDate
 		{
 			get {
-				if (this["approx"] == null)
+				if (json["approx"] == null)
 					return null;
-				return this["approx"].Value<bool>(); }
-			set { this["approx"] = value; }
+				return json["approx"].Value<bool>(); }
+			set { json["approx"] = value; }
 		}
 
 		public bool? IsMusicalSource
 		{
 			get {
-				if (this["nmusicalSource"] == null)
+				if (json["nmusicalSource"] == null)
 					return null;
-				return this["musicalSource"].Value<bool>(); }
-			set { this["musicalSource"] = value; }
+				return json["musicalSource"].Value<bool>(); }
+			set { json["musicalSource"] = value; }
 		}
 
 		public int? DateFrom
 		{
 			get {
-				if (this["dateFrom"] == null)
+				if (json["dateFrom"] == null)
 					return null;
-				return this["dateFrom"].Value<int>(); }
-			set { this["dateFrom"] = value; }
+				return json["dateFrom"].Value<int>(); }
+			set { json["dateFrom"] = value; }
 		}
 
 		public int? DateTo
 		{
 			get {
-				if (this["dateTo"] == null)
+				if (json["dateTo"] == null)
 					return null;
-				return this["dateTo"].Value<int>(); }
-			set { this["dateTo"] = value; }
+				return json["dateTo"].Value<int>(); }
+			set { json["dateTo"] = value; }
 		}
 
-        public IEnumerable<string> Tags
+        public IList<string> Tags
         {
-            get { return this["tags"].Values<string>(); }
+            get { return json["tags"].Values<string>().ToList<string>(); }
+			set { json["tags"] = new JArray(value); }
         }
 
-        public void AddTag(string tag)
-        {
-            if (!Tags.Contains(tag))
-            {
-                JArray temp = this["tags"].Value<JArray>();
-                temp.Add(tag);
-                this["tags"] = temp;
-            }
-        }
-
-        public void RemoveTag(string tag)
-        {
-            this["tags"] = this["tags"].Value<JArray>().Remove(tag);
-        }
+       
 
         public string CreatorId
         {
-            get { return this["creatorId"].Value<string>(); }
-            private set { this["creatorId"] = value; }
+            get { return json["creatorId"].Value<string>(); }
+            private set { json["creatorId"] = value; }
         }
 
         public string LastModifierId
         {
-            get { return this["lastModifierId"].Value<string>(); }
-            private set { this["lastModifierId"] = value; }
+            get { return json["lastModifierId"].Value<string>(); }
+            private set { json["lastModifierId"] = value; }
         }
 
-        public IEnumerable<string> CollaboratorsId
+        public IList<string> CollaboratorsId
         {
-            get { return this["collaboratorsId"].Values<string>(); }
+            get { return json["collaboratorsId"].Values<string>().ToList<string>(); }
+			set { json["collaboratorsId"] = new JArray(value); }
         }
 
-        public void AddCollaborator(string collab)
-        {
-            if (!Tags.Contains(collab))
-            {
-                JArray temp = this["collaboratorsId"].Value<JArray>();
-                temp.Add(collab);
-                this["collaboratorsId"] = temp;
-            }
-        }
-
-        public void RemoveCollaborator(string collab)
-        {
-            this["collaboratorsId"] = this["collaboratorsId"].Value<JArray>().Remove(collab);
-        }
+        
 	}
 }
