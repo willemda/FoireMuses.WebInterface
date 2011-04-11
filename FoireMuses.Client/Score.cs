@@ -273,5 +273,16 @@ namespace FoireMuses.Client
 				json["collaboratorsId"] = new JArray(value);
 			}
 		}
+
+		public bool HasAttachement
+		{
+			get { return json["_attachments"] != null; }
+		}
+
+		public IEnumerable<string> GetAttachmentNames()
+		{
+			var attachment = json["_attachments"];
+			return attachment == null ? null : attachment.Select(x => x.Value<JProperty>().Name);
+		}
 	}
 }

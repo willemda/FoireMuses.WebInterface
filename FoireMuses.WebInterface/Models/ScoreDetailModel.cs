@@ -13,5 +13,7 @@ namespace FoireMuses.WebInterface.Models
 		public Source TextualSource { get; set; }
 		public Play AssociatedPlay { get; set; }
 		public Source MusicalSource { get; set; }
+		public IEnumerable<string> AttachedFiles { get; set; }
+		public IEnumerable<string> Documents { get; set; }
 	}
 }

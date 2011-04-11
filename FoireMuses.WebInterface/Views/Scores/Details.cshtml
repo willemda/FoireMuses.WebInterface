@@ -1,57 +1,151 @@
 ﻿@model FoireMuses.WebInterface.Models.ScoreDetailModel
-@using FoireMuses.WebInterface.HtmlHelpers
-
 @{
     ViewBag.Title = "Details";
 }
+<div id="floatRight">
+@if (Model.Documents != null && Model.Documents.Contains("$musicxml.xml"))
+{
+<div id="downloads">
+<h3>Télécharger cet air</h3>
+<ul>
+<li>
+		<a href="http://localhost/foiremuses/scores/pdf" title="telecharger au format pdf"><img src="../../Content/images/pdfIcon.jpg" width=50 height=50 alt="telecharger au format pdf" /></a>
+		</li>
+		<li>
+		<a href="http://localhost/foiremuses/scores/musicxml" title="telecharger au format music xml"><img src="../../Content/images/xmlIcon.png" width=50 height=50 alt="telecharger au format musicxml" /></a>
+		</li>
+		<li>
+		<a href="http://localhost/foiremuses/scores/midi" title="telecharger au format midi"><img src="../../Content/images/midiIcon.png" width=50 height=50 alt="telecharger au format midi" /></a>
+		</li>
+</ul>
+</div>
+}
+<div id="editMenu">
+	<ul>
+		<li>
+		<a href="#">Changer partition</a>
+		</li>
+		<li>
+		<a href="#">Modifier informations</a>
+		</li>
+		<li>
+		<a href="#">Modifier sources</a>
+		</li>
+        <li>
+		<a href="#">Attacher un fichier</a>
+		</li>
+	</ul>
+	</div>
+</div>
+<div id="infos">
+<h2>@Model.Score.Title</h2>
+@if(Model.Documents!=null && Model.Documents.Contains("$partition.png")){
+<div id="partition"><img src="http://localhost/foiremuses/scores/@Model.Score.Id/partition" alt="partition" /></div>
+}
+<table>
+@if (Model.Score.Composer != null)
+{
+	<tr>
+	<td>
+		<div class="label">Compositeur</div>
+		</td>
+		<td>
+		<div class="value">@Model.Score.Composer</div></td>
+		</tr>
+}
+@if (Model.Score.Editor != null)
+{
+	<tr>
+	<td>
+		<div class="label">Editeur</div>
+		</td>
+		<td>
+		<div class="value">@Model.Score.Editor</div></td>
+		</tr>
+}
+@if (Model.Score.ScoreType != null)
+{
+	<tr>
+	<td>
+		<div class="label">Type</div>
+		</td>
+		<td>
+		<div class="value">@Model.Score.ScoreType</div></td>
+		</tr>
+}
+@if (Model.Score.Verses != null)
+{
+	<tr>
+	<td>
+		<div class="label">Versets</div>
+		</td>
+		<td>
+		<div class="value">@Model.Score.Verses</div></td>
+		</tr>
+}
 
-<h2>Détails de l'air</h2>
-<div class="scoreDetail">
-    @Html.AddField("Title",Model.Score.Title)
-    @Html.AddField("Code1",Model.Score.Code1)
-    @Html.AddField("Code2",Model.Score.Code2)
-    @Html.AddField("Coirault",Model.Score.Coirault)
-    @Html.AddField("Composer",Model.Score.Composer)
-    @Html.AddField("CoupeMetrique",Model.Score.CoupeMetrique)
-    @Html.AddField("Verses",Model.Score.Verses)
-    @Html.AddField(" Delarue",Model.Score.Delarue)
-    @Html.AddField("Comment",Model.Score.Comments)
-    @Html.AddField("Editor",Model.Score.Editor)
-    @Html.AddField("RythmSignature",Model.Score.RythmSignature)
-    @Html.AddField("OtherTitles",Model.Score.OtherTitles)
-    @Html.AddField(" Stanzaz",Model.Score.Stanza)
-    @Html.AddField("ScoreType",Model.Score.ScoreType)
-    @Html.AddField("CreatorId",Model.Score.CreatorId)
-    @Html.AddField("LastModifierId",Model.Score.LastModifierId)
-    <div class="sources">
-    @if (Model.TextualSource != null)
+@if (Model.Score.Comments != null)
+{
+	<tr>
+	<td>
+		<div class="label">Commentaires</div>
+		</td>
+		<td>
+		<div class="value">@Model.Score.Comments</div></td>
+		</tr>
+}
+@if (Model.TextualSource != null)
+{
+		<tr>
+	<td>
+		<div class="label">Source Textuelle</div>
+		</td>
+		<td>
+		<div class="value">
+		<table id="inner">
+		<tr><td><div class="label">Livre</div></td><td><div class="value">
+		<a href="sources?id=@Model.TextualSource.Id" title="cliquer pour aller voir la source">@Model.TextualSource.Name, @Model.TextualSource.DateFrom - @Model.TextualSource.DateTo, Page @Model.Score.TextualSource.Page, Volume @Model.Score.TextualSource.Volume, Tome @Model.Score.TextualSource.Tome, de @Model.TextualSource.Publisher</a></div></td>
+		</tr>
+        @if (@Model.AssociatedPlay != null)
+        {
+		<tr>
+		<td>
+		<div class="label">Pièce associée</div>
+		</td>
+		<td >
+		<div class="value"><a href="plays?id=@Model.AssociatedPlay.Id" title="cliquer pour aller voir la pièce">@Model.AssociatedPlay.Title, Act @Model.Score.TextualSource.ActNumber, Scene @Model.Score.TextualSource.SceneNumber</a></div></td>
+		</tr>
+        }
+		</table>
+		</div>
+		</td>
+		</tr>
+}
+@if (Model.MusicalSource != null)
+{
+		<tr>
+	<td>
+		<div class="label">Source Musicale</div>
+		</td>
+		<td>
+		<div class="value"><a href="sources?id=@Model.MusicalSource.Id" title="cliquer pour aller voir la source">@Model.TextualSource.Name, @Model.TextualSource.DateFrom - @Model.TextualSource.DateTo, Page @Model.Score.TextualSource.Page, Volume @Model.Score.TextualSource.Volume, Tome @Model.Score.TextualSource.Tome, de @Model.TextualSource.Publisher</a></div></td>
+		</tr>
+}
+	</table>
+    @if (Model.AttachedFiles!=null && Model.AttachedFiles.Count() > 0)
     {
-        <div class="textualSource"><h3>Lyrics source</h3>
-            <div class="sourceValues">
-            @{Html.RenderPartial("SourceSummary", Model.TextualSource);}
-            @{Html.RenderPartial("TextualSourceSummary", Model.Score.TextualSource);}
-            
-              @if (Model.AssociatedPlay != null)
-              {
-        <div class="associatedPlay">
-           <h3>Associated play</h3>
-        <div>
-            <a href="/plays/details?id=@Model.AssociatedPlay.Id">@Model.AssociatedPlay.Title, Act @Model.Score.TextualSource.ActNumber, Scene @Model.Score.TextualSource.SceneNumber</a>
-        </div>
-        </div>
-              }
-              </div>
-              </div>
-    }
-    @if (Model.MusicalSource != null)
+        <div id="attachedFiles">
+	<h3>Fichiers attachés:</h3>
+    <ul>
+    @foreach (var file in @Model.AttachedFiles)
     {
-        
-        <div class="musicalSource"><h3>Lead sheet source</h3>
-        <div class="sourceValues">
-            @{Html.RenderPartial("SourceSummary", Model.MusicalSource);}
-            @{Html.RenderPartial("MusicalSourceSummary", Model.Score.MusicalSource);}
-            </div>
-        </div>
+        <li class="file"><a href="http://localhost/foiremuses/scores/@file" title="telecharger le fichier">
+			@file</a>
+		</li>
     }
-    </div>
-    </div>
+    </ul>
+	</div>
+    }
+    
+</div>
+

@@ -52,6 +52,8 @@ namespace FoireMuses.WebInterface.Controllers
 			Source sTextuelle = null;
 			Source sMusicale = null;
 			Play assPlay = null;
+			IEnumerable<string> attachedFiles = null;
+			IEnumerable<string> documents = null;
 			try
 			{
 				score = connection.GetScore(scoreId,new Result<Score>()).Wait();
@@ -63,6 +65,10 @@ namespace FoireMuses.WebInterface.Controllers
 				}
 				if(score.MusicalSource!=null)
 					sMusicale = connection.GetSource(score.MusicalSource.SourceId, new Result<Source>()).Wait();
+				if(score.HasAttachement){
+					attachedFiles = score.GetAttachmentNames().Where(x => !x.StartsWith("$"));
+					documents = score.GetAttachmentNames().Where(x => x.StartsWith("$"));
+				}
 			}
 			catch (Exception e)
 			{
@@ -73,7 +79,9 @@ namespace FoireMuses.WebInterface.Controllers
 				Score = score,
 				TextualSource = sTextuelle,
 				AssociatedPlay = assPlay,
-				MusicalSource = sMusicale
+				MusicalSource = sMusicale,
+				AttachedFiles = attachedFiles,
+				Documents = documents
 			};
 			return View(viewModel);
 		}

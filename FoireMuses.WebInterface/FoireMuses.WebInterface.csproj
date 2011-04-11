@@ -96,6 +96,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\images\midiIcon.png" />
+    <Content Include="Content\images\partition.png" />
+    <Content Include="Content\images\partition2.png" />
+    <Content Include="Content\images\pdfIcon.jpg" />
+    <Content Include="Content\stylesheet.css" />
+    <Content Include="Content\images\tabs.gif" />
+    <Content Include="Content\images\xmlIcon.png" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -174,9 +181,6 @@
     <Content Include="Views\Plays\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Scores\Details.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\FoireMuses.Client\FoireMuses.Client.csproj">
       <Project>{F0327195-D97E-4AE2-AF3C-3D29B2E6AA93}</Project>
       <Name>FoireMuses.Client</Name>
@@ -205,6 +209,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\EditorTemplates\Object.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Scores\Details.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
