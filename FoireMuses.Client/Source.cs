@@ -3,17 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Newtonsoft.Json.Linq;
-using FoireMuses.Core.Interfaces;
 
 namespace FoireMuses.Client
 {
 	/// <summary>
 	/// represent a Source(une source) object in json
 	/// </summary>
-	public class Source : ISource
+	public class Source
 	{
 
-		public JObject json { get; private set; }
+		private JObject json { get;  set; }
 
 		public Source()
 		{
@@ -43,37 +42,45 @@ namespace FoireMuses.Client
 
 		public string Name
 		{
-			get {
+			get
+			{
 				if (json["name"] == null)
 					return null;
-				return json["name"].Value<string>(); }
+				return json["name"].Value<string>();
+			}
 			set { json["name"] = value; }
 		}
 
 		public string Publisher
 		{
-			get {
+			get
+			{
 				if (json["publisher"] == null)
 					return null;
-				return json["publisher"].Value<string>(); }
+				return json["publisher"].Value<string>();
+			}
 			set { json["publisher"] = value; }
 		}
 
 		public string FreeZone
 		{
-			get {
+			get
+			{
 				if (json["free"] == null)
 					return null;
-				return json["free"].Value<string>(); }
+				return json["free"].Value<string>();
+			}
 			set { json["free"] = value; }
 		}
 
 		public string Cote
 		{
-			get {
+			get
+			{
 				if (json["cote"] == null)
 					return null;
-				return json["cote"].Value<string>(); }
+				return json["cote"].Value<string>();
+			}
 			set { json["cote"] = value; }
 		}
 
@@ -85,66 +92,74 @@ namespace FoireMuses.Client
 
 		public bool? ApproxDate
 		{
-			get {
+			get
+			{
 				if (json["approx"] == null)
 					return null;
-				return json["approx"].Value<bool>(); }
+				return json["approx"].Value<bool>();
+			}
 			set { json["approx"] = value; }
 		}
 
 		public bool? IsMusicalSource
 		{
-			get {
+			get
+			{
 				if (json["nmusicalSource"] == null)
 					return null;
-				return json["musicalSource"].Value<bool>(); }
+				return json["musicalSource"].Value<bool>();
+			}
 			set { json["musicalSource"] = value; }
 		}
 
 		public int? DateFrom
 		{
-			get {
+			get
+			{
 				if (json["dateFrom"] == null)
 					return null;
-				return json["dateFrom"].Value<int>(); }
+				return json["dateFrom"].Value<int>();
+			}
 			set { json["dateFrom"] = value; }
 		}
 
 		public int? DateTo
 		{
-			get {
+			get
+			{
 				if (json["dateTo"] == null)
 					return null;
-				return json["dateTo"].Value<int>(); }
+				return json["dateTo"].Value<int>();
+			}
 			set { json["dateTo"] = value; }
 		}
 
-        public IList<string> Tags
-        {
-            get { return json["tags"].Values<string>().ToList<string>(); }
+		public IList<string> Tags
+		{
+			get { return json["tags"].Values<string>().ToList<string>(); }
 			set { json["tags"] = new JArray(value); }
-        }
+		}
 
-       
 
-        public string CreatorId
-        {
-            get { return json["creatorId"].Value<string>(); }
-            private set { json["creatorId"] = value; }
-        }
 
-        public string LastModifierId
-        {
-            get { return json["lastModifierId"].Value<string>(); }
-            private set { json["lastModifierId"] = value; }
-        }
+		public string CreatorId
+		{
+			get { return json["creatorId"].Value<string>(); }
+			private set { json["creatorId"] = value; }
+		}
 
-        public IList<string> CollaboratorsId
-        {
-            get { return json["collaboratorsId"].Values<string>().ToList<string>(); }
+		public string LastModifierId
+		{
+			get { return json["lastModifierId"].Value<string>(); }
+			private set { json["lastModifierId"] = value; }
+		}
+
+		public IList<string> CollaboratorsId
+		{
+			get { return json["collaboratorsId"].Values<string>().ToList<string>(); }
 			set { json["collaboratorsId"] = new JArray(value); }
-        }
+		}
 
-        
+
 	}
 }

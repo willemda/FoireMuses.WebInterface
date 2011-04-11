@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using FoireMuses.Core.Interfaces;
 using System.ComponentModel.DataAnnotations;
 
-namespace FoireMuses.Webinterface.Models
+namespace FoireMuses.WebInterface.Models
 {
-	public class ScoreModel : IScore
+	public class ScoreModel 
 	{
 		public string Id { get; internal set; }
 
@@ -32,9 +31,9 @@ namespace FoireMuses.Webinterface.Models
 		public string ScoreType { get; set; }
 
 		[DisplayFormat(NullDisplayText = "Pas de source musicale")]
-		public IMusicalSource MusicalSource { get; set; }
+		public MusicalSourceModel MusicalSource { get; set; }
 		[DisplayFormat(NullDisplayText = "Pas de source Textuelle")]
-		public ITextualSource TextualSource { get; set; }
+		public TextualSourceModel TextualSource { get; set; }
 
 		//TODO: replace by list
 		public IList<string> Tags { get; set; }

@@ -198,7 +198,7 @@
     <Content Include="Views\Scores\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\Score.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Score.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\DisplayTemplates\Object.cshtml" />

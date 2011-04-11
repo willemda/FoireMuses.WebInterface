@@ -10,7 +10,6 @@ using FoireMuses.WebInterface.Models;
 using SportsStore.WebUI.Models;
 using FoireMuses.Client;
 using FoireMuses.WebInterface.Models;
-using FoireMuses.Core.Interfaces;
 
 namespace FoireMuses.WebInterface.Controllers
 {
@@ -23,17 +22,17 @@ namespace FoireMuses.WebInterface.Controllers
 			//use mindtouch dream to access the web service.
 			// treat the result and return it to the view
 			FoireMusesConnection connection = GetConnection();
-			SearchResult<IScore> listScores = null;
+			SearchResult<Score> listScores = null;
 			try
 			{
-				listScores = connection.GetScores((page - 1) * PageSize, PageSize, new Result<SearchResult<IScore>>()).Wait();
+				listScores = connection.GetScores((page - 1) * PageSize, PageSize, new Result<SearchResult<Score>>()).Wait();
 			}
 			catch (Exception e)
 			{
 				// do stuff to return error message to the screen
 			}
 
-			var viewModel = new ListViewModel<IScore>
+			var viewModel = new ListViewModel<Score>
 			{
 				SearchResult = listScores,
 				CurrentPage = page,
@@ -49,21 +48,21 @@ namespace FoireMuses.WebInterface.Controllers
 			//use mindtouch dream to access the web service.
 			// treat the result and return it to the view
 			FoireMusesConnection connection = GetConnection();
-			IScore score = null;
-			ISource sTextuelle = null;
-			ISource sMusicale = null;
-			IPlay assPlay = null;
+			Score score = null;
+			Source sTextuelle = null;
+			Source sMusicale = null;
+			Play assPlay = null;
 			try
 			{
-				score = connection.GetScore(scoreId,new Result<IScore>()).Wait();
+				score = connection.GetScore(scoreId,new Result<Score>()).Wait();
 				if (score.TextualSource != null)
 				{
-					sTextuelle = connection.GetSource(score.TextualSource.SourceId, new Result<ISource>()).Wait();
+					sTextuelle = connection.GetSource(score.TextualSource.SourceId, new Result<Source>()).Wait();
 					if (score.TextualSource.PieceId != null)
-						assPlay = connection.GetPlay(score.TextualSource.PieceId, new Result<IPlay>()).Wait();
+						assPlay = connection.GetPlay(score.TextualSource.PieceId, new Result<Play>()).Wait();
 				}
 				if(score.MusicalSource!=null)
-					sMusicale = connection.GetSource(score.MusicalSource.SourceId, new Result<ISource>()).Wait();
+					sMusicale = connection.GetSource(score.MusicalSource.SourceId, new Result<Source>()).Wait();
 			}
 			catch (Exception e)
 			{
@@ -80,15 +79,19 @@ namespace FoireMuses.WebInterface.Controllers
 		}
 
 		
+
+		
+
+		
 		public ViewResult Edit(string scoreId)
 		{
 			FoireMusesConnection connection = GetConnection();
-			IScore score = null;
-			SearchResult<ISource> sourceList = null;
+			Score score = null;
+			SearchResult<Source> sourceList = null;
 			try
 			{
-				score = connection.GetScore(scoreId, new Result<IScore>()).Wait();
-				sourceList = connection.GetSources(0,0, new Result<SearchResult<ISource>>()).Wait();
+				score = connection.GetScore(scoreId, new Result<Score>()).Wait();
+				sourceList = connection.GetSources(0,0, new Result<SearchResult<Source>>()).Wait();
 			}
 			catch (Exception e)
 			{
@@ -103,10 +106,10 @@ namespace FoireMuses.WebInterface.Controllers
 		}
 
 		[HttpPost]
-		public ViewResult Edit(EditScoreModel model, FormCollection collection)
+		public ViewResult Edit(Score model, FormCollection collection)
 		{
 			FoireMusesConnection connection = GetConnection();
-			IScore score = null;
+			Score score = null;
 			/*if (collection["tSourceId"] != null)
 			{
 				model.TextualSource.SourceId = collection["tSourceId"];
@@ -117,9 +120,9 @@ namespace FoireMuses.WebInterface.Controllers
 			}*/
 			try
 			{
-				score = connection.GetScore(model.Score.Id, new Result<IScore>()).Wait();
+				score = connection.GetScore(model.Id, new Result<Score>()).Wait();
 				TryUpdateModel(score);
-				score = connection.EditScore(score, new Result<IScore>()).Wait();
+				score = connection.EditScore(score, new Result<Score>()).Wait();
 			}
 			catch (Exception e)
 			{

@@ -1,0 +1,410 @@
+﻿@model FoireMuses.Client.Score
+@using FoireMuses.Client
+@Html.HiddenFor(model => model.Id)
+<table cellpadding="0" cellspacing="0" border="0">
+    <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Title)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Title)
+                @Html.ValidationMessageFor(model => model.Title)
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Code1)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Code1)
+                @Html.ValidationMessageFor(model => model.Code1)
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Code2)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Code2)
+                @Html.ValidationMessageFor(model => model.Code2)
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Coirault)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Coirault)
+                @Html.ValidationMessageFor(model => model.Coirault)
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Composer)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Composer)
+                @Html.ValidationMessageFor(model => model.Composer)
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.CoupeMetrique)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.CoupeMetrique)
+                @Html.ValidationMessageFor(model => model.CoupeMetrique)
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Verses)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Verses)
+                @Html.ValidationMessageFor(model => model.Verses)
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Delarue)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Delarue)
+                @Html.ValidationMessageFor(model => model.Delarue)
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Comments)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Comments)
+                @Html.ValidationMessageFor(model => model.Comments)
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Editor)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Editor)
+                @Html.ValidationMessageFor(model => model.Editor)
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.RythmSignature)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.RythmSignature)
+                @Html.ValidationMessageFor(model => model.RythmSignature)
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.OtherTitles)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.OtherTitles)
+                @Html.ValidationMessageFor(model => model.OtherTitles)
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Stanza)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Stanza)
+                @Html.ValidationMessageFor(model => model.Stanza)
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ScoreType)
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ScoreType)
+                @Html.ValidationMessageFor(model => model.ScoreType)
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="editor-label">
+                @Html.Label("TextualSource","TextualSource")
+            </div>
+        </td>
+        <td>
+            <div class="editor-field">
+                <table cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                @Html.Label("TextualSource_SourceId", "SourceId")
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                @Html.DropDownList("TextualSource.SourceId",
+    new SelectList(ViewBag.Sources as System.Collections.IEnumerable,
+    "Id", "Name", Model.TextualSource.SourceId))
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                @Html.LabelFor(model => model.TextualSource.AirNumber)
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                @Html.EditorFor(model => model.TextualSource.AirNumber)
+                                @Html.ValidationMessageFor(model => model.TextualSource.AirNumber)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                @Html.LabelFor(model => model.TextualSource.Page)
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                @Html.EditorFor(model => model.TextualSource.Page)
+                                @Html.ValidationMessageFor(model => model.TextualSource.Page)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                @Html.LabelFor(model => model.TextualSource.Comment)
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                @Html.EditorFor(model => model.TextualSource.Comment)
+                                @Html.ValidationMessageFor(model => model.TextualSource.Comment)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                @Html.LabelFor(model => model.TextualSource.IsSuggested)
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                @Html.EditorFor(model => model.TextualSource.IsSuggested)
+                                @Html.ValidationMessageFor(model => model.TextualSource.IsSuggested)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                @Html.LabelFor(model => model.TextualSource.ActNumber)
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                @Html.EditorFor(model => model.TextualSource.ActNumber)
+                                @Html.ValidationMessageFor(model => model.TextualSource.ActNumber)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                @Html.LabelFor(model => model.TextualSource.SceneNumber)
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                @Html.EditorFor(model => model.TextualSource.SceneNumber)
+                                @Html.ValidationMessageFor(model => model.TextualSource.SceneNumber)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                @Html.LabelFor(model => model.TextualSource.PieceId)
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                @Html.EditorFor(model => model.TextualSource.PieceId)
+                                @Html.ValidationMessageFor(model => model.TextualSource.PieceId)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                @Html.LabelFor(model => model.TextualSource.Tome)
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                @Html.EditorFor(model => model.TextualSource.Tome)
+                                @Html.ValidationMessageFor(model => model.TextualSource.Tome)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                @Html.LabelFor(model => model.TextualSource.Volume)
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                @Html.EditorFor(model => model.TextualSource.Volume)
+                                @Html.ValidationMessageFor(model => model.TextualSource.Volume)
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="editor-label">
+                @Html.Label("MusicalSource","MusicalSource")
+            </div>
+        </td>
+        <td>
+            <div class="editor-label">
+                <table cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                @Html.Label("MusicalSource_SourceId", "SourceId")
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                @Html.DropDownList("MusicalSource.SourceId",
+    new SelectList(ViewBag.Sources as System.Collections.IEnumerable,
+    "Id", "Name", Model.MusicalSource.SourceId))
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                @Html.LabelFor(model => model.MusicalSource.AirNumber)
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                @Html.EditorFor(model => model.MusicalSource.AirNumber)
+                                @Html.ValidationMessageFor(model => model.MusicalSource.AirNumber)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                @Html.LabelFor(model => model.MusicalSource.Page)
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                @Html.EditorFor(model => model.MusicalSource.Page)
+                                @Html.ValidationMessageFor(model => model.MusicalSource.Page)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                @Html.LabelFor(model => model.MusicalSource.Tome)
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                @Html.EditorFor(model => model.MusicalSource.Tome)
+                                @Html.ValidationMessageFor(model => model.MusicalSource.Tome)
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="editor-label">
+                                @Html.LabelFor(model => model.MusicalSource.Volume)
+                            </div>
+                        </td>
+                        <td>
+                            <div class="editor-field">
+                                @Html.EditorFor(model => model.MusicalSource.Volume)
+                                @Html.ValidationMessageFor(model => model.MusicalSource.Volume)
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+    </tr>
+</table>

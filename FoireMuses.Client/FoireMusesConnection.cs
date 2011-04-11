@@ -6,7 +6,6 @@ using MindTouch.Dream;
 using System.Net;
 using MindTouch.Tasking;
 using Newtonsoft.Json.Linq;
-using FoireMuses.Core.Interfaces;
 
 namespace FoireMuses.Client
 {
@@ -33,17 +32,17 @@ namespace FoireMuses.Client
 		}
 
 
-		public Result<IPlay> GetPlay(string IPlayId, Result<IPlay> aResult)
+		public Result<Play> GetPlay(string PlayId, Result<Play> aResult)
 		{
 			theServiceUri
-				.At("plays", IPlayId)
+				.At("plays", PlayId)
 				.Get(new Result<DreamMessage>())
 				.WhenDone(delegate(Result<DreamMessage> answer)
 				{
 					if (!answer.Value.IsSuccessful)
 					{
 						if (answer.Value.Status == DreamStatus.NotFound)
-							aResult.Return((IPlay)null);
+							aResult.Return((Play)null);
 						else
 							aResult.Throw(answer.Exception);
 					}
@@ -57,17 +56,17 @@ namespace FoireMuses.Client
 		}
 
 
-		public Result<ISource> GetSource(string ISourceId, Result<ISource> aResult)
+		public Result<Source> GetSource(string SourceId, Result<Source> aResult)
 		{
 			theServiceUri
-				.At("sources", ISourceId)
+				.At("sources", SourceId)
 				.Get(new Result<DreamMessage>())
 				.WhenDone(delegate(Result<DreamMessage> answer)
 				{
 					if (!answer.Value.IsSuccessful)
 					{
 						if (answer.Value.Status == DreamStatus.NotFound)
-							aResult.Return((ISource)null);
+							aResult.Return((Source)null);
 						else
 							aResult.Throw(answer.Exception);
 					}
@@ -81,17 +80,17 @@ namespace FoireMuses.Client
 		}
 
 
-		public Result<ISource> CreateSource(ISource ISource, Result<ISource> aResult)
+		public Result<Source> CreateSource(Source Source, Result<Source> aResult)
 		{
 			theServiceUri
 				.At("sources")
-				.Post(DreamMessage.Ok(MimeType.JSON, ISource.ToString()), new Result<DreamMessage>())
+				.Post(DreamMessage.Ok(MimeType.JSON, Source.ToString()), new Result<DreamMessage>())
 				.WhenDone(delegate(Result<DreamMessage> answer)
 				{
 					if (!answer.Value.IsSuccessful)
 					{
 						if (answer.Value.Status == DreamStatus.NotFound)
-							aResult.Return((ISource)null);
+							aResult.Return((Source)null);
 						else
 							aResult.Throw(answer.Exception);
 					}
@@ -104,17 +103,17 @@ namespace FoireMuses.Client
 			return aResult;
 		}
 
-		public Result<ISource> EditSource(ISource ISource, Result<ISource> aResult)
+		public Result<Source> EditSource(Source Source, Result<Source> aResult)
 		{
 			theServiceUri
 				.At("sources")
-				.Put(DreamMessage.Ok(MimeType.JSON, ISource.ToString()), new Result<DreamMessage>())
+				.Put(DreamMessage.Ok(MimeType.JSON, Source.ToString()), new Result<DreamMessage>())
 				.WhenDone(delegate(Result<DreamMessage> answer)
 				{
 					if (!answer.Value.IsSuccessful)
 					{
 						if (answer.Value.Status == DreamStatus.NotFound)
-							aResult.Return((ISource)null);
+							aResult.Return((Source)null);
 						else
 							aResult.Throw(answer.Exception);
 					}
@@ -127,7 +126,7 @@ namespace FoireMuses.Client
 			return aResult;
 		}
 
-		public Result<SearchResult<ISource>> GetSources(int offset, int max, Result<SearchResult<ISource>> aResult)
+		public Result<SearchResult<Source>> GetSources(int offset, int max, Result<SearchResult<Source>> aResult)
 		{
 			theServiceUri
 				.At("sources")
@@ -139,20 +138,20 @@ namespace FoireMuses.Client
 					if (!answer.Value.IsSuccessful)
 					{
 						if (answer.Value.Status == DreamStatus.NotFound)
-							aResult.Return((SearchResult<ISource>)null);
+							aResult.Return((SearchResult<Source>)null);
 						else
 							aResult.Throw(answer.Exception);
 					}
 					else
 					{
-						aResult.Return(new SearchResult<ISource>(x=>new Source(x),JObject.Parse(answer.Value.ToText())));
+						aResult.Return(new SearchResult<Source>(JObject.Parse(answer.Value.ToText())));
 					}
 				}
 				);
 			return aResult;
 		}
 
-		public Result<IScore> GetScore(string scoreId, Result<IScore> aResult)
+		public Result<Score> GetScore(string scoreId, Result<Score> aResult)
 		{
 			theServiceUri
 				.At("scores", scoreId)
@@ -162,7 +161,7 @@ namespace FoireMuses.Client
 						if (!answer.Value.IsSuccessful)
 						{
 							if (answer.Value.Status == DreamStatus.NotFound)
-								aResult.Return((IScore)null);
+								aResult.Return((Score)null);
 							else
 								aResult.Throw(answer.Exception);
 						}
@@ -176,7 +175,7 @@ namespace FoireMuses.Client
 		}
 
 
-		public Result<IScore> CreateScore(IScore score, Result<IScore> aResult)
+		public Result<Score> CreateScore(Score score, Result<Score> aResult)
 		{
 			theServiceUri
 				.At("scores")
@@ -186,7 +185,7 @@ namespace FoireMuses.Client
 						if (!answer.Value.IsSuccessful)
 						{
 							if (answer.Value.Status == DreamStatus.NotFound)
-								aResult.Return((IScore)null);
+								aResult.Return((Score)null);
 							else
 								aResult.Throw(answer.Exception);
 						}
@@ -199,7 +198,7 @@ namespace FoireMuses.Client
 			return aResult;
 		}
 
-		public Result<IScore> EditScore(IScore score, Result<IScore> aResult)
+		public Result<Score> EditScore(Score score, Result<Score> aResult)
 		{
 			theServiceUri
 				.At("scores")
@@ -209,7 +208,7 @@ namespace FoireMuses.Client
 					if (!answer.Value.IsSuccessful)
 					{
 						if (answer.Value.Status == DreamStatus.NotFound)
-							aResult.Return((IScore)null);
+							aResult.Return((Score)null);
 						else
 							aResult.Throw(answer.Exception);
 					}
@@ -222,7 +221,7 @@ namespace FoireMuses.Client
 			return aResult;
 		}
 
-		public Result<SearchResult<IScore>> GetScores(int offset, int max, Result<SearchResult<IScore>> aResult)
+		public Result<SearchResult<Score>> GetScores(int offset, int max, Result<SearchResult<Score>> aResult)
 		{
 			theServiceUri
 				.At("scores")
@@ -234,13 +233,13 @@ namespace FoireMuses.Client
 						if (!answer.Value.IsSuccessful)
 						{
 							if (answer.Value.Status == DreamStatus.NotFound)
-								aResult.Return((SearchResult<IScore>)null);
+								aResult.Return((SearchResult<Score>)null);
 							else
 								aResult.Throw(answer.Exception);
 						}
 						else
 						{
-							aResult.Return(new SearchResult<IScore>(x=>new Score(x),JObject.Parse(answer.Value.ToText())));
+							aResult.Return(new SearchResult<Score>(JObject.Parse(answer.Value.ToText())));
 						}
 					}
 				);

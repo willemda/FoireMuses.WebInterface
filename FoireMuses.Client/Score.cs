@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Newtonsoft.Json.Linq;
-using FoireMuses.Core.Interfaces;
 
 namespace FoireMuses.Client
 {
@@ -11,10 +10,10 @@ namespace FoireMuses.Client
 	/// represent a Score(un air) object in json
 	/// </summary>
 	
-	public class Score : IScore
+	public class Score
 	{
 
-		public JObject json { get; private set; }
+		private JObject json { get; set; }
 
 		public Score()
 		{
@@ -202,7 +201,7 @@ namespace FoireMuses.Client
 			set { json["type"] = value; }
 		}
 
-		public ITextualSource TextualSource
+		public TextualSource TextualSource
 		{
 			get
 			{
@@ -210,10 +209,10 @@ namespace FoireMuses.Client
 					return null;
 				return new TextualSource(json["textualSource"].Value<JObject>());
 			}
-			set { json["textualSource"] = (value as TextualSource).json; }
+			set { json["textualSource"] = value.json; }
 		}
 
-		public IMusicalSource MusicalSource
+		public MusicalSource MusicalSource
 		{
 			get
 			{
@@ -221,7 +220,7 @@ namespace FoireMuses.Client
 					return null;
 				return new MusicalSource(json["musicalSource"].Value<JObject>());
 			}
-			set { json["musicalSource"] = (value as MusicalSource).json; }
+			set { json["musicalSource"] = value.json; }
 		}
 
 		public IList<string> Tags

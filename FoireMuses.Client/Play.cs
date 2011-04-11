@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Newtonsoft.Json.Linq;
-using FoireMuses.Core.Interfaces;
 
 namespace FoireMuses.Client
 {
 	/// <summary>
 	/// represent a Play(une pièce) object in json
 	/// </summary>
-	public class Play : IPlay
+	public class Play 
 	{
 
 		public JObject json { get; private set; }

@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using FoireMuses.Core.Interfaces;
 
-namespace FoireMuses.Webinterface.Models
+namespace FoireMuses.WebInterface.Models
 {
-	public class TextualSourceModel : ITextualSource
+	public class TextualSourceModel 
 	{
 		public string SourceId { get; set; }
 		public int? AirNumber { get; set; }

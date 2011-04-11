@@ -22,7 +22,7 @@ namespace MvcMovie.Controllers
             //use mindtouch dream to access the web service.
             // treat the result and return it to the view
             DreamMessage msg = BasePlug.At("foiremuses", "plays").With("offset", (page - 1) * PageSize).With("max", PageSize).WithCredentials("danny", "azerty").Get(DreamMessage.Ok());
-            SearchResult<Play> sr = new SearchResult<Play>(x=>new Play(x),JObject.Parse(msg.ToText()));
+            SearchResult<Play> sr = new SearchResult<Play>(JObject.Parse(msg.ToText()));
             var viewModel = new ListViewModel<Play>
             {
                 SearchResult = sr,

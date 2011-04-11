@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Newtonsoft.Json.Linq;
-using FoireMuses.Core.Interfaces;
 
 namespace FoireMuses.Client
 {
-	public class TextualSource : ITextualSource
+	public class TextualSource
 	{
-		public JObject json { get; private set; }
+		internal JObject json { get; private set; }
 
 		public TextualSource()
 		{
