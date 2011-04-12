@@ -81,11 +81,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="HtmlHelpers\PagingHelpers.cs" />
+    <Compile Include="Models\CreateScoreModel.cs" />
     <Compile Include="Models\ListViewModel.cs" />
     <Compile Include="Models\ScoreDetailModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\images\helpIcon.png" />
     <Content Include="Content\images\midiIcon.png" />
     <Content Include="Content\images\partition.png" />
     <Content Include="Content\images\partition2.png" />
@@ -93,6 +95,7 @@
     <Content Include="Content\stylesheet.css" />
     <Content Include="Content\images\tabs.gif" />
     <Content Include="Content\images\xmlIcon.png" />
+    <Content Include="Content\stylesheet2.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -180,6 +183,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Scores\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Scores\CreateXml.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Scores\CreateScratch.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\playList.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

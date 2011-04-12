@@ -92,6 +92,22 @@ namespace FoireMuses.WebInterface.Controllers
             return View();
         }
 
+        public ViewResult CreateXml()
+        {
+            return View();
+        }
+
+        public ViewResult CreateScratch()
+        {
+            return View();
+        }
+
+        public ActionResult GetPlaysForSource(string id)
+        {
+            //some code
+            return PartialView("playList");
+        }
+
         [HttpPost]
         public ViewResult CreateWithXml(HttpPostedFileBase file)
         {

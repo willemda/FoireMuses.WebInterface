@@ -185,10 +185,8 @@ namespace FoireMuses.Client
 					{
 						if (!answer.Value.IsSuccessful)
 						{
-							if (answer.Value.Status == DreamStatus.NotFound)
-								aResult.Return((Score)null);
-							else
-								aResult.Throw(answer.Exception);
+                            if (answer.Value.Status != DreamStatus.Ok)
+                                aResult.Throw(new Exception());
 						}
 						else						{
 							aResult.Return(new Score(JObject.Parse(answer.Value.ToText())));
@@ -207,10 +205,8 @@ namespace FoireMuses.Client
                 {
                     if (!answer.Value.IsSuccessful)
                     {
-                        if (answer.Value.Status == DreamStatus.NotFound)
-                            aResult.Return((Score)null);
-                        else
-                            aResult.Throw(answer.Exception);
+                        if (answer.Value.Status != DreamStatus.Ok)
+                            aResult.Throw(new Exception());
                     }
                     else
                     {
