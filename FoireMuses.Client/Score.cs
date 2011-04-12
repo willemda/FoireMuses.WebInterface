@@ -58,27 +58,38 @@ namespace FoireMuses.Client
 			set { json["title"] = value; }
 		}
 
-		public string Code1
-		{
-			get
-			{
-				if (json["code1"] == null)
-					return null;
-				return json["code1"].Value<string>();
-			}
-			set { json["code1"] = value; }
-		}
+        public string CodeMelodiqueRISM
+        {
+            get
+            {
+                if (json["codageMelodiqueRISM"] == null)
+                    return null;
+                return json["codageMelodiqueRISM"].Value<string>();
+            }
+            set { json["codageMelodiqueRISM"] = value; }
+        }
 
-		public string Code2
-		{
-			get
-			{
-				if (json["code2"] == null)
-					return null;
-				return json["code2"].Value<string>();
-			}
-			set { json["code2"] = value; }
-		}
+        public string CodageParIntervalle
+        {
+            get
+            {
+                if (json["codageParIntervalle"] == null)
+                    return null;
+                return json["codageParIntervalle"].Value<string>();
+            }
+            set { json["codageParIntervalle"] = value; }
+        }
+
+        public string CodageRythmique
+        {
+            get
+            {
+                if (json["codageRythmique"] == null)
+                    return null;
+                return json["codageRythmique"].Value<string>();
+            }
+            set { json["codageRythmique"] = value; }
+        }
 
 		public string Coirault
 		{

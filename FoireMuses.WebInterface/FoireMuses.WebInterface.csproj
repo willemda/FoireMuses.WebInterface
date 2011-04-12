@@ -73,9 +73,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\FoireMusesController.cs" />
-    <Compile Include="Controllers\HelloWorldController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PlaysController.cs" />
     <Compile Include="Controllers\ScoresController.cs" />
@@ -83,16 +81,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="HtmlHelpers\PagingHelpers.cs" />
-    <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\EditScoreModel.cs" />
-    <Compile Include="Models\MusicalSourceModel.cs" />
-    <Compile Include="Models\NavLink.cs" />
-    <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="Models\ListViewModel.cs" />
     <Compile Include="Models\ScoreDetailModel.cs" />
-    <Compile Include="Models\ScoreModel.cs" />
-    <Compile Include="Models\SourceModel.cs" />
-    <Compile Include="Models\TextualSourceModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -145,10 +135,6 @@
     <Content Include="Scripts\MicrosoftMvcValidation.js" />
     <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Account\ChangePassword.cshtml" />
-    <Content Include="Views\Account\ChangePasswordSuccess.cshtml" />
-    <Content Include="Views\Account\LogOn.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
@@ -160,9 +146,6 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\HelloWorld\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -170,12 +153,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Scores\List.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Shared\ScoreSummary.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Shared\PlaySummary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Plays\List.cshtml" />
@@ -187,22 +164,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\SourceSummary.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Shared\TextualSourceSummary.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Shared\PlayLink.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Shared\MusicalSourceSummary.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Scores\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\EditorTemplates\Score.cshtml" />
+    <Content Include="Views\Shared\Score.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\DisplayTemplates\Object.cshtml" />
@@ -212,6 +177,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Scores\Details.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Scores\Create.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

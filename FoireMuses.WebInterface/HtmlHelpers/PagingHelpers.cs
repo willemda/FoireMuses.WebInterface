@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Text;
 using System.Web.Mvc;
-using SportsStore.WebUI.Models;
 
 namespace FoireMuses.WebInterface.HtmlHelpers
 {

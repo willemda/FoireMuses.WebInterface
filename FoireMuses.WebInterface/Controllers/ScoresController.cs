@@ -7,9 +7,8 @@ using MindTouch.Dream;
 using MindTouch.Tasking;
 using Newtonsoft.Json.Linq;
 using FoireMuses.WebInterface.Models;
-using SportsStore.WebUI.Models;
 using FoireMuses.Client;
-using FoireMuses.WebInterface.Models;
+using MindTouch.Xml;
 
 namespace FoireMuses.WebInterface.Controllers
 {
@@ -86,9 +85,20 @@ namespace FoireMuses.WebInterface.Controllers
 			return View(viewModel);
 		}
 
-		
 
-		
+
+        public ViewResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ViewResult CreateWithXml(HttpPostedFileBase file)
+        {
+            FoireMusesConnection connection = GetConnection();
+            Score score = connection.CreateScoreWithXml(XDocFactory.From(file.InputStream, MimeType.XML), new Result<Score>()).Wait();
+            return View("Edit", score);
+        }
 
 		
 		public ViewResult Edit(string scoreId)

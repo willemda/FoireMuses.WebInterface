@@ -6,6 +6,7 @@ using MindTouch.Dream;
 using System.Net;
 using MindTouch.Tasking;
 using Newtonsoft.Json.Linq;
+using MindTouch.Xml;
 
 namespace FoireMuses.Client
 {
@@ -189,14 +190,36 @@ namespace FoireMuses.Client
 							else
 								aResult.Throw(answer.Exception);
 						}
-						else
-						{
+						else						{
 							aResult.Return(new Score(JObject.Parse(answer.Value.ToText())));
 						}
 					}
 				);
 			return aResult;
 		}
+
+        public Result<Score> CreateScoreWithXml(XDoc xdoc, Result<Score> aResult)
+        {
+            theServiceUri
+                .At("scores","xml")
+                .Post(DreamMessage.Ok(MimeType.XML,xdoc), new Result<DreamMessage>())
+                .WhenDone(delegate(Result<DreamMessage> answer)
+                {
+                    if (!answer.Value.IsSuccessful)
+                    {
+                        if (answer.Value.Status == DreamStatus.NotFound)
+                            aResult.Return((Score)null);
+                        else
+                            aResult.Throw(answer.Exception);
+                    }
+                    else
+                    {
+                        aResult.Return(new Score(JObject.Parse(answer.Value.ToText())));
+                    }
+                }
+                );
+            return aResult;
+        }
 
 		public Result<Score> EditScore(Score score, Result<Score> aResult)
 		{
