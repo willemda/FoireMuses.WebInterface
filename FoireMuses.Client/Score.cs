@@ -295,5 +295,10 @@ namespace FoireMuses.Client
 			var attachment = json["_attachments"];
 			return attachment == null ? null : attachment.Select(x => x.Value<JProperty>().Name);
 		}
+
+        public override string ToString()
+        {
+            return json.ToString();
+        }
 	}
 }

@@ -1,1 +1,10 @@
-﻿<p>SALUUUUUT</p>
+﻿@model IEnumerable<FoireMuses.Client.Play>
+ @if (Model.Count() > 0)
+ {
+ <select name="TextualSource.PieceId">       
+@foreach (var play in Model)
+{
+        <option value="@play.Id">@play.Title</option>
+}
+</select>
+ }

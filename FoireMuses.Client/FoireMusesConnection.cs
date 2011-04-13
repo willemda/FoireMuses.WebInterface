@@ -265,6 +265,31 @@ namespace FoireMuses.Client
 			return aResult;
 		}
 
+        public Result<SearchResult<Play>> GetPlaysFromSource(string sourceId, int offset, int max, Result<SearchResult<Play>> aResult)
+        {
+            theServiceUri
+                .At("plays","source",sourceId)
+                .With("offset", offset)
+                .With("max", max)
+                .Get(new Result<DreamMessage>())
+                .WhenDone(delegate(Result<DreamMessage> answer)
+                {
+                    if (!answer.Value.IsSuccessful)
+                    {
+                        if (answer.Value.Status == DreamStatus.NotFound)
+                            aResult.Return((SearchResult<Play>)null);
+                        else
+                            aResult.Throw(answer.Exception);
+                    }
+                    else
+                    {
+                        aResult.Return(new SearchResult<Play>(JObject.Parse(answer.Value.ToText())));
+                    }
+                }
+                );
+            return aResult;
+        }
+
 		
 	}
 }

@@ -4,11 +4,11 @@ using System.Linq;
 using System.Web;
 using FoireMuses.Client;
 
-namespace FoireMuses.Webinterface.Models
+namespace FoireMuses.WebInterface.Models
 {
     public class CreateScoreModel
     {
-        public Score score { get; set; }
+        public Score Score { get; set; }
         public IEnumerable<Source> Sources { get; set; }
     }
 }

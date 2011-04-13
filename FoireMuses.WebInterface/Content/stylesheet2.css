@@ -1,9 +1,16 @@
+
+html,body,table,td,tr,p,ul,li
+{
+    margin:0px;
+    padding:0px;
+    font-size:100%;
+    font-family:Verdana,"Trebuchet MS";
+}
+
 body
 {
     width:930px;
     margin: auto;
-    font-family: Verdana,"Trebuchet MS";
-	font-size:75%;
 }
 
 a:hover{
@@ -12,6 +19,7 @@ text-decoration:none;
 
 #header
 {
+
     background-color: #0880B5;
     height: 70px;
 }
@@ -34,7 +42,7 @@ text-decoration:none;
 
 #list li
 {
-    font-size:85%;
+    font-size:65%;
     list-style-type:none;
     display:inline;
     float:right;
@@ -127,19 +135,24 @@ width:260px;
   display:inline-block;
   font-size: 85%;
   line-height:normal;
-}
-
+}
+
+
+
 #primary ul 
 {
   padding:0;
   margin:0;
   list-style:none;
-}
-
+}
+
+
+
 #primary li 
 {
   display:inline;
-}
+}
+
 #primary a {
   background-image:url(images/tabs.gif);
   width:90px;
@@ -154,19 +167,28 @@ width:260px;
   float:left;
   margin: 0px 10px 0px 0px;
   text-decoration:none;
-}
-
+}
+
+
+
 #primary a:hover {
   color:#05AFFF;
-}#content{    padding:10px 10px 10px 10px;
-	font-size:75%;
-	margin-bottom:10px;}
+}
 
-table
+#content
 {
-	font-family:Verdana;
-	font-size: 100%;
-}#footer{    background-color:#E5EDF0;    text-align: center;    font-size:85%;}
+    font-size:75%;
+    padding:10px 10px 10px 10px;
+	margin-bottom:10px;
+}
+
+
+#footer
+{
+    background-color:#E5EDF0;
+    text-align: center;
+    font-size:85%;
+}
 
 .right{
 float:right;
@@ -184,6 +206,23 @@ padding-left:5px;
 
 #create{
 width:100%;
+border-collapse:collapse
+}
+
+#create tr{
+border-bottom:1px solid lightgrey;
+}
+
+#create td{
+padding:5px;
+}
+
+table.innerTable{
+width:100%;
+}
+
+table.innerTable select,table.innerTable input,table.innerTable textarea{
+width:100%;
 }
 
 #create td.label{
@@ -192,6 +231,11 @@ width:35%;
 
 #create td.value{
 width:65%;
+}
+
+.pieceAss
+{
+display:none;
 }
 
 
@@ -236,6 +280,11 @@ float: right;
   display:inline;
 }
 
+#editMenu li
+{
+    font-size:75%;
+}
+
 #tags{
 text-align:center;
 }
@@ -263,7 +312,6 @@ border : none;
 border:none;}
 
 #infos td .label{
-font-size:75%;
 font-weight:bold;
 width:100%;
 text-align:right;
@@ -274,7 +322,6 @@ text-align:left;
 }
 
 #infos td .value{
-font-size:75%;
 }
 
 #content h2{

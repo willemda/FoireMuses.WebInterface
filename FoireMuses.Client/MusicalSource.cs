@@ -38,7 +38,7 @@ namespace FoireMuses.Client
 			{
 				if (json["air"] == null)
 					return null;
-				return json["air"].Value<int>();
+				return json["air"].Value<int?>();
 			}
 			set
 			{

@@ -99,21 +99,35 @@ namespace FoireMuses.WebInterface.Controllers
 
         public ViewResult CreateScratch()
         {
-            return View();
-        }
-
-        public ActionResult GetPlaysForSource(string id)
-        {
-            //some code
-            return PartialView("playList");
+            FoireMusesConnection connection = GetConnection();
+            SearchResult<Source> searchResultSource = null;
+            searchResultSource = connection.GetSources(0, 0, new Result<SearchResult<Source>>()).Wait();
+            ViewBag.Sources = searchResultSource.Rows;
+            return View(new Score());
         }
 
         [HttpPost]
-        public ViewResult CreateWithXml(HttpPostedFileBase file)
+        public ActionResult CreateScratch(Score score)
+        {
+            FoireMusesConnection connection = GetConnection();
+            score = connection.CreateScore(score, new Result<Score>()).Wait();
+            return Redirect("Details?scoreId="+score.Id);
+        }
+        
+        public ActionResult GetPlaysForSource(string id)
+        {
+            FoireMusesConnection connection = GetConnection();
+            SearchResult<Play> searchResultPlay = null;
+            searchResultPlay = connection.GetPlaysFromSource(id, 0, 0, new Result<SearchResult<Play>>()).Wait();
+            return PartialView("playList", searchResultPlay.Rows);
+        }
+
+        [HttpPost]
+        public ActionResult CreateXml(HttpPostedFileBase file)
         {
             FoireMusesConnection connection = GetConnection();
             Score score = connection.CreateScoreWithXml(XDocFactory.From(file.InputStream, MimeType.XML), new Result<Score>()).Wait();
-            return View("Edit", score);
+            return Redirect("Edit?scoreId=" + score.Id);
         }
 
 		
@@ -136,7 +150,7 @@ namespace FoireMuses.WebInterface.Controllers
 				//on redirige
 			}
 			ViewBag.Sources = sourceList.Rows;
-			return View(score);
+			return View("CreateScratch",score);
 		}
 
 		[HttpPost]
