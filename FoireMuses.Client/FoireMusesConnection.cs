@@ -180,15 +180,16 @@ namespace FoireMuses.Client
 		{
 			theServiceUri
 				.At("scores")
-				.Post(DreamMessage.Ok(MimeType.JSON,score.ToString()),new Result<DreamMessage>())
+				.Post(DreamMessage.Ok(MimeType.JSON, score.ToString()), new Result<DreamMessage>())
 				.WhenDone(delegate(Result<DreamMessage> answer)
 					{
 						if (!answer.Value.IsSuccessful)
 						{
-                            if (answer.Value.Status != DreamStatus.Ok)
-                                aResult.Throw(new Exception());
+							if (answer.Value.Status != DreamStatus.Ok)
+								aResult.Throw(new Exception());
 						}
-						else						{
+						else
+						{
 							aResult.Return(new Score(JObject.Parse(answer.Value.ToText())));
 						}
 					}
@@ -196,34 +197,34 @@ namespace FoireMuses.Client
 			return aResult;
 		}
 
-        public Result<Score> CreateScoreWithXml(XDoc xdoc, Result<Score> aResult)
-        {
-            theServiceUri
-                .At("scores","xml")
-                .Post(DreamMessage.Ok(MimeType.XML,xdoc), new Result<DreamMessage>())
-                .WhenDone(delegate(Result<DreamMessage> answer)
-                {
-                    if (!answer.Value.IsSuccessful)
-                    {
-                        if (answer.Value.Status != DreamStatus.Ok)
-                            aResult.Throw(new Exception());
-                    }
-                    else
-                    {
-                        aResult.Return(new Score(JObject.Parse(answer.Value.ToText())));
-                    }
-                }
-                );
-            return aResult;
-        }
+		public Result<Score> CreateScoreWithXml(XDoc xdoc, Result<Score> aResult)
+		{
+			theServiceUri
+				.At("scores", "xml")
+				.Post(DreamMessage.Ok(MimeType.XML, xdoc), new Result<DreamMessage>())
+				.WhenDone(delegate(Result<DreamMessage> answer)
+				{
+					if (!answer.Value.IsSuccessful)
+					{
+						if (answer.Value.Status != DreamStatus.Ok)
+							aResult.Throw(new Exception());
+					}
+					else
+					{
+						aResult.Return(new Score(JObject.Parse(answer.Value.ToText())));
+					}
+				}
+				);
+			return aResult;
+		}
 
 		public Result<Score> UpdateScoreWithXml(string id, string rev, XDoc xdoc, bool overwrite, Result<Score> aResult)
 		{
 			theServiceUri
 				.At("scores", "xml")
-				.With("overwrite",overwrite)
-				.With("id",id)
-				.With("rev",rev)
+				.With("overwrite", overwrite)
+				.With("id", id)
+				.With("rev", rev)
 				.Put(DreamMessage.Ok(MimeType.XML, xdoc), new Result<DreamMessage>())
 				.WhenDone(delegate(Result<DreamMessage> answer)
 				{
@@ -268,8 +269,8 @@ namespace FoireMuses.Client
 		{
 			theServiceUri
 				.At("scores")
-				.With("offset",offset)
-				.With("max",max)
+				.With("offset", offset)
+				.With("max", max)
 				.Get(new Result<DreamMessage>())
 				.WhenDone(delegate(Result<DreamMessage> answer)
 					{
@@ -289,32 +290,32 @@ namespace FoireMuses.Client
 			return aResult;
 		}
 
-        public Result<SearchResult<Play>> GetPlaysFromSource(string sourceId, int offset, int max, Result<SearchResult<Play>> aResult)
-        {
-            theServiceUri
-                .At("plays","source",sourceId)
-                .With("offset", offset)
-                .With("max", max)
-                .Get(new Result<DreamMessage>())
-                .WhenDone(delegate(Result<DreamMessage> answer)
-                {
-                    if (!answer.Value.IsSuccessful)
-                    {
-                        if (answer.Value.Status == DreamStatus.NotFound)
-                            aResult.Return((SearchResult<Play>)null);
-                        else
-                            aResult.Throw(answer.Exception);
-                    }
-                    else
-                    {
-                        aResult.Return(new SearchResult<Play>(JObject.Parse(answer.Value.ToText())));
-                    }
-                }
-                );
-            return aResult;
-        }
+		public Result<SearchResult<Play>> GetPlaysFromSource(string sourceId, int offset, int max, Result<SearchResult<Play>> aResult)
+		{
+			theServiceUri
+				.At("plays", "source", sourceId)
+				.With("offset", offset)
+				.With("max", max)
+				.Get(new Result<DreamMessage>())
+				.WhenDone(delegate(Result<DreamMessage> answer)
+				{
+					if (!answer.Value.IsSuccessful)
+					{
+						if (answer.Value.Status == DreamStatus.NotFound)
+							aResult.Return((SearchResult<Play>)null);
+						else
+							aResult.Throw(answer.Exception);
+					}
+					else
+					{
+						aResult.Return(new SearchResult<Play>(JObject.Parse(answer.Value.ToText())));
+					}
+				}
+				);
+			return aResult;
+		}
 
-		
+
 	}
 }
 
