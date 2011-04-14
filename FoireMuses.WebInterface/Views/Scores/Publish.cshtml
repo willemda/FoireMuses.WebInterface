@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.HeadTitle = "Publish";
+}
+<div id="encadreInfo">
+<p>
+	<img class="helpIcon" src="../../Content/images/helpIcon.png" alt="help icon" />Insertion d'un air sur base d'un fichier music xml</p>
+	<hr />
+	<p>
+	Cliquez sur le bouton afin de choisir un fichier music xml présent sur votre ordinateur. Lorsque vous avez choisis, cliquez sur le bouton créer.
+</p>
+	</div>
+	<div>
+<form method="post" action="" enctype="multipart/form-data">
+<input type="file" id="file" name="file"/><br/>
+@if (ViewBag.ScoreId != null && ViewBag.ScoreRev != null)
+{
+    <input type="checkbox" name="overwrite" value="overwrite" />
+    <input type="hidden" name="scoreId" value="@ViewBag.ScoreId" />
+<input type="hidden" name="scoreRev" value="@ViewBag.ScoreRev" />
+}
+<input class="right" type="submit" value="Creer"/>
+</form>
+</div>

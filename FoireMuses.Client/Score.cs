@@ -46,6 +46,16 @@ namespace FoireMuses.Client
 			}
 		}
 
+		public string Rev
+		{
+			get
+			{
+				if (json["_rev"] == null)
+					return null;
+				return json["_rev"].Value<string>();
+			}
+		}
+
 
 		public string Title
 		{

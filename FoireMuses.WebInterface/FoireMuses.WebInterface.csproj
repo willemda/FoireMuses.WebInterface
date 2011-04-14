@@ -167,9 +167,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Scores\Edit.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Shared\Score.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -185,10 +182,10 @@
     <Content Include="Views\Scores\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Scores\CreateXml.cshtml" />
+    <Content Include="Views\Scores\Publish.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Scores\CreateScratch.cshtml" />
+    <Content Include="Views\Scores\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\playList.cshtml" />

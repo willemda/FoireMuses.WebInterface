@@ -217,6 +217,30 @@ namespace FoireMuses.Client
             return aResult;
         }
 
+		public Result<Score> UpdateScoreWithXml(string id, string rev, XDoc xdoc, bool overwrite, Result<Score> aResult)
+		{
+			theServiceUri
+				.At("scores", "xml")
+				.With("overwrite",overwrite)
+				.With("id",id)
+				.With("rev",rev)
+				.Put(DreamMessage.Ok(MimeType.XML, xdoc), new Result<DreamMessage>())
+				.WhenDone(delegate(Result<DreamMessage> answer)
+				{
+					if (!answer.Value.IsSuccessful)
+					{
+						if (answer.Value.Status != DreamStatus.Ok)
+							aResult.Throw(new Exception());
+					}
+					else
+					{
+						aResult.Return(new Score(JObject.Parse(answer.Value.ToText())));
+					}
+				}
+				);
+			return aResult;
+		}
+
 		public Result<Score> EditScore(Score score, Result<Score> aResult)
 		{
 			theServiceUri
