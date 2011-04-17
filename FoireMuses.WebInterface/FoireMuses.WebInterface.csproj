@@ -87,11 +87,21 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\images\%24partition1.png" />
+    <Content Include="Content\images\%24partition2.png" />
+    <Content Include="Content\images\bg.png" />
+    <Content Include="Content\images\bullet.png" />
+    <Content Include="Content\images\bullet_active.png" />
+    <Content Include="Content\images\clear.gif" />
     <Content Include="Content\images\helpIcon.png" />
+    <Content Include="Content\images\left.png" />
+    <Content Include="Content\images\loading.gif" />
     <Content Include="Content\images\midiIcon.png" />
     <Content Include="Content\images\partition.png" />
     <Content Include="Content\images\partition2.png" />
     <Content Include="Content\images\pdfIcon.jpg" />
+    <Content Include="Content\images\right.png" />
+    <Content Include="Content\js\sliderman.1.2.1.js" />
     <Content Include="Content\stylesheet.css" />
     <Content Include="Content\images\tabs.gif" />
     <Content Include="Content\images\xmlIcon.png" />
@@ -189,6 +199,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\playList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\images\Thumbs.db" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

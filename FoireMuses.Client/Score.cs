@@ -44,6 +44,10 @@ namespace FoireMuses.Client
 					return null;
 				return json["_id"].Value<string>();
 			}
+            set
+            {
+                json["_id"] = value;
+            }
 		}
 
 		public string Rev
@@ -54,6 +58,10 @@ namespace FoireMuses.Client
 					return null;
 				return json["_rev"].Value<string>();
 			}
+            set
+            {
+                json["_rev"] = value;
+            }
 		}
 
 

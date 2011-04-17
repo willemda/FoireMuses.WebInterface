@@ -41,7 +41,9 @@ recordToDelete
 	</div>
 <div>
 <form action="" method="post">
+
 <input type="hidden" name="Id" value="@Model.Id" />
+<input type="hidden" name="Rev" value="@Model.Rev" />
 <table id="create">
 <tr><td class="label"><label>Titre</label></td><td class="value"><input name="Title" type="text" value="@Model.Title"/></td></tr>
 <tr><td><label>Compositeur</label></td><td class="value"><input name="Composer" type="text" value="@Model.Composer"/></td></tr>

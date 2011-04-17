@@ -246,6 +246,8 @@ namespace FoireMuses.Client
 		{
 			theServiceUri
 				.At("scores")
+                .With("Id",score.Id)
+                .With("Rev",score.Rev)
 				.Put(DreamMessage.Ok(MimeType.JSON, score.ToString()), new Result<DreamMessage>())
 				.WhenDone(delegate(Result<DreamMessage> answer)
 				{

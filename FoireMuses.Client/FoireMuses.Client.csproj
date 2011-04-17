@@ -52,7 +52,6 @@
     <Compile Include="Play.cs" />
     <Compile Include="Score.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScoreFix.cs" />
     <Compile Include="SearchResult.cs" />
     <Compile Include="Source.cs" />
     <Compile Include="TextualSource.cs" />

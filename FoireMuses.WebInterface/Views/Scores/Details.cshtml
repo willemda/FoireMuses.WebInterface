@@ -1,6 +1,7 @@
 ﻿@model FoireMuses.WebInterface.Models.ScoreDetailModel
 @{
     ViewBag.HeadTitle = "Details";
+    ViewBag.AddJs = "<script type=\"text/javascript\" src=\"../../Content/js/sliderman.1.2.1.js\"></script>";
 }
 <div id="floatRight">
 @if (Model.Documents != null && Model.Documents.Contains("$musicxml.xml"))
@@ -38,11 +39,48 @@
 	</div>
 </div>
 <div id="infos">
-<h2>@Model.Score.Title</h2>
-@if(Model.Documents!=null && Model.Documents.Contains("$partition.png")){
-<div id="partition"><img src="http://localhost/foiremuses/scores/@Model.Score.Id/partition" alt="partition" /></div>
-}
+    <div id="slider_container_2">
+
+				<div id="SliderName_2" class="SliderName_2">
+					<img src="../../Content/images/$partition1.png" width="400" height="450" alt="Demo2 first" title="Demo2 first" usemap="#img1map" />
+					<map name="img1map">
+						<area href="#img1map-area1" shape="rect" coords="100,100,200,200" />
+						<area href="#img1map-area2" shape="rect" coords="300,100,400,200" />
+					</map>
+					<div class="SliderName_2Description">Parition 1</div>
+					<img src="../../Content/images/$partition2.png" width="400" height="450" alt="Demo2 second" title="Demo2 second" />
+					<div class="SliderName_2Description">Parition 2</div>
+				</div>
+				<div class="c"></div>
+				<div id="SliderNameNavigation_2"></div>
+				<div class="c"></div>
+
+				<script type="text/javascript">
+				    var demoSlider_2 = Sliderman.slider({ container: 'SliderName_2', width: 400, height: 450,
+				        display: {
+				            autoplay: 0,
+				            loading: { background: '#000000', opacity: 0.5, image: '../../Content/images/loading.gif' },
+				            buttons: { hide: true, opacity: 1, prev: { className: 'SliderNamePrev_2', label: '' }, next: { className: 'SliderNameNext_2', label: ''} },
+				            description: { hide: true, background: '#000000', opacity: 0.4, height: 50, position: 'bottom' },
+				            navigation: { container: 'SliderNameNavigation_2', label: '<img src="../../Content/images/clear.gif" />' }
+				        }
+				    });
+				</script>
+
+				<div class="c"></div>
+			</div>
 <table>
+@if (Model.Score.Title != null)
+{
+	<tr>
+	<td>
+		<div class="label">Titre</div>
+		</td>
+		<td>
+		<div class="value">@Model.Score.Title</div></td>
+		</tr>
+}
+
 @if (Model.Score.Composer != null)
 {
 	<tr>
@@ -132,7 +170,7 @@
 		</tr>
 }
 	</table>
-    @if (Model.AttachedFiles!=null && Model.AttachedFiles.Count() > 0)
+    @if (Model.AttachedFiles != null && Model.AttachedFiles.Count() > 0)
     {
         <div id="attachedFiles">
 	<h3>Fichiers attachés:</h3>

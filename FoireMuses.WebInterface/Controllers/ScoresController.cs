@@ -183,7 +183,9 @@ namespace FoireMuses.WebInterface.Controllers
 				}
 				else
 				{
-					model = connection.EditScore(model, new Result<Score>()).Wait();
+                    Score current = connection.GetScore(model.Id, new Result<Score>()).Wait();
+                    TryUpdateModel(current);
+					model = connection.EditScore(current, new Result<Score>()).Wait();
 				}
 			}
 			catch (Exception e)
