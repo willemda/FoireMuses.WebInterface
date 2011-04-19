@@ -1,0 +1,49 @@
+﻿@model FoireMuses.WebInterface.Models.ListViewModel<FoireMuses.Client.Source>
+@using FoireMuses.WebInterface.HtmlHelpers
+@{
+    ViewBag.HeadTitle = "All Sources";
+}
+
+<div id="pre-list">
+Sources
+</div>
+<div id="list-item">
+<ul>
+@{bool fonce = true;
+  foreach (var source in Model.SearchResult.Rows)
+  {
+      if (fonce)
+      {
+            <li class="fonce">
+            <div class="source-item">
+            <div class="source-title"><a href="details?sourceId=@source.Id">@source.Name</a></div>
+            @if (source.Publisher != null)
+            {
+                <div class="source-publisher">published by @source.Publisher</div>
+            }
+            </div>
+        </li>
+      }
+      else
+      {
+          <li>
+            <div class="source-item">
+            <div class="source-title"><a href="details?sourceId=@source.Id">@source.Name</a></div>
+            @if (source.Publisher != null)
+            {
+                <div class="source-publisher">published by @source.Publisher</div>
+            }
+            </div>
+        </li>
+            
+      }
+
+      fonce = !fonce;
+  }
+}
+</ul>
+</div>
+<div id="pager">
+       @Html.PageLinks(Model.TotalPages, Model.CurrentPage,
+            x => Url.Action("List", new { page = x }))
+</div>

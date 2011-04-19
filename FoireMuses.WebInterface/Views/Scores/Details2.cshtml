@@ -1,0 +1,244 @@
+﻿@model FoireMuses.WebInterface.Models.ScoreDetailModel
+@{
+    ViewBag.HeadTitle = "Details - "+@Model.Score.Title;
+    ViewBag.AddJs = "<script type=\"text/javascript\" src=\"../../Content/js/sliderman.1.2.1.js\"></script>";
+}
+<div id="barreHaut">
+<div id="firstInfo">
+<div id="title">@Model.Score.Title</div>
+@if (Model.Score.Composer != null)
+{
+<div id="composed-by">Composé par <a href="#">@Model.Score.Composer</a></div>
+}
+@if (Model.Score.Editor != null)
+{
+<div id="edited-by">Edité par <a href="#">@Model.Score.Editor</a></div>
+}
+
+@if (Model.Documents != null && Model.Documents.Contains("$musicxml.xml"))
+{
+<div id="downloads">
+            <ul>
+                <li><a href="http://localhost/foiremuses/scores/@Model.Score.Id/$@Html.Encode(Model.Score.Title)@Html.Raw(".pdf")" target="_blank"><img src="../../Content/images/pdfIcon.jpg" /></a> 
+                </li>
+                <li>
+                <a href="http://localhost/foiremuses/scores/@Model.Score.Id/$@Model.Score.Title@Html.Raw(".xml")" target="_blank"><img src="../../Content/images/xmlIcon.png" /></a> 
+                </li>
+                <li>
+                <a href="http://localhost/foiremuses/scores/@Model.Score.Id/$@Model.Score.Title@Html.Raw(".mid")" target="_blank"><img src="../../Content/images/midiIcon.png" /></a> 
+                </li>
+            </ul>
+        </div>
+}
+</div>
+
+
+@if (Model.Documents != null && Model.Documents.Contains("$musicxml.xml"))
+{
+    <div id="gauche">
+        <div id="slider_container_2">
+            <div id="SliderName_2" class="SliderName_2">
+                @for (int i = 1; i <= Model.Documents.Where(x => x.StartsWith("$partition")).Count(); i++)
+                {
+                    string fileName = "$partition" + i + ".png";
+                    if (i == 1)
+                    {
+                <img src="http://localhost/foiremuses/scores/@Model.Score.Id/attachments/@fileName" width="500" height="600" alt="Demo2 first"
+                    title="Demo2 first" usemap="#img1map" />
+                <map name="img1map">
+                    <area href="#img1map-area1" shape="rect" coords="100,100,200,200" />
+                    <area href="#img1map-area2" shape="rect" coords="300,100,400,200" />
+                </map>
+                    }
+                    else
+                    {
+                        <img src="http://localhost/foiremuses/scores/@Model.Score.Id/attachments/@fileName" width="500" height="600" alt="Demo2 second"
+                    title="Demo2 second" />
+                    }
+                <div class="SliderName_2Description">
+                    Page @i</div>
+                    
+                }
+            </div>
+            <div class="c">
+            </div>
+            <div id="SliderNameNavigation_2">
+            </div>
+            <div class="c">
+            </div>
+            <script type="text/javascript">
+                effectsDemo2 = 'rain,stairs,fade';
+                var demoSlider_2 = Sliderman.slider({ container: 'SliderName_2', width: 500, height: 600, effects: effectsDemo2,
+                    display: {
+                        autoplay:0,
+                        loading: { background: '#000000', opacity: 0.5, image: '../../Content/images/loading.gif' },
+                        buttons: { hide: true, opacity: 1, prev: { className: 'SliderNamePrev_2', label: '' }, next: { className: 'SliderNameNext_2', label: ''} },
+                        description: { hide: true, background: '#000000', opacity: 0.4, height: 50, position: 'bottom' },
+                        navigation: { container: 'SliderNameNavigation_2', label: '<img src="../../Content/images/clear.gif" />' }
+                    }
+                });
+            </script>
+            <div class="c">
+            </div>
+        </div>
+        
+    </div>
+}
+<div id="pagePrincipale">
+    <table>
+        @if (Model.Score.Title != null)
+        {
+            <tr>
+                <td>
+                    <div class="label">
+                        Titre</div>
+                </td>
+                <td>
+                    <div class="value">@Model.Score.Title</div>
+                </td>
+            </tr>
+        }
+        @if (Model.Score.Composer != null)
+        {
+            <tr>
+                <td>
+                    <div class="label">
+                        Compositeur</div>
+                </td>
+                <td>
+                    <div class="value">@Model.Score.Composer</div>
+                </td>
+            </tr>
+        }
+        @if (Model.Score.Editor != null)
+        {
+            <tr>
+                <td>
+                    <div class="label">
+                        Editeur</div>
+                </td>
+                <td>
+                    <div class="value">@Model.Score.Editor</div>
+                </td>
+            </tr>
+        }
+        @if (Model.Score.ScoreType != null)
+        {
+            <tr>
+                <td>
+                    <div class="label">
+                        Type</div>
+                </td>
+                <td>
+                    <div class="value">@Model.Score.ScoreType</div>
+                </td>
+            </tr>
+        }
+        @if (Model.Score.Verses != null)
+        {
+            <tr>
+                <td>
+                    <div class="label">
+                        Versets</div>
+                </td>
+                <td>
+                    <div class="value">@Model.Score.Verses</div>
+                </td>
+            </tr>
+        }
+        @if (Model.Score.Comments != null)
+        {
+            <tr>
+                <td>
+                    <div class="label">
+                        Commentaires</div>
+                </td>
+                <td>
+                    <div class="value">@Model.Score.Comments</div>
+                </td>
+            </tr>
+        }
+        @if (Model.TextualSource != null)
+        {
+            <tr>
+                <td>
+                    <div class="label">
+                        Source Textuelle</div>
+                </td>
+                <td>
+                    <div class="value">
+                        <table id="inner">
+                            <tr>
+                                <td>
+                                    <div class="label">
+                                        Livre</div>
+                                </td>
+                                <td>
+                                    <div class="value">
+                                        <a href="sources?id=@Model.TextualSource.Id" title="cliquer pour aller voir la source">@Model.TextualSource.Name,
+                                            @Model.TextualSource.DateFrom - @Model.TextualSource.DateTo, Page @Model.Score.TextualSource.Page,
+                                            Volume @Model.Score.TextualSource.Volume, Tome @Model.Score.TextualSource.Tome,
+                                            de @Model.TextualSource.Publisher</a></div>
+                                </td>
+                            </tr>
+                            @if (@Model.AssociatedPlay != null)
+                            {
+                                <tr>
+                                    <td>
+                                        <div class="label">
+                                            Pièce associée</div>
+                                    </td>
+                                    <td>
+                                        <div class="value">
+                                            <a href="plays?id=@Model.AssociatedPlay.Id" title="cliquer pour aller voir la pièce">@Model.AssociatedPlay.Title,
+                                                Act @Model.Score.TextualSource.ActNumber, Scene @Model.Score.TextualSource.SceneNumber</a></div>
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                </td>
+            </tr>
+        }
+        @if (Model.MusicalSource != null)
+        {
+            <tr>
+                <td>
+                    <div class="label">
+                        Source Musicale</div>
+                </td>
+                <td>
+                    <div class="value">
+                        <a href="sources?id=@Model.MusicalSource.Id" title="cliquer pour aller voir la source">@Model.TextualSource.Name,
+                            @Model.TextualSource.DateFrom - @Model.TextualSource.DateTo, Page @Model.Score.TextualSource.Page,
+                            Volume @Model.Score.TextualSource.Volume, Tome @Model.Score.TextualSource.Tome,
+                            de @Model.TextualSource.Publisher</a></div>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+@if (Model.AttachedFiles != null && Model.AttachedFiles.Count() > 0)
+{
+    <div id="attachedFiles">
+        <!--<h3>
+            Fichiers attachés:</h3>
+        <ul>
+            @foreach (var file in @Model.AttachedFiles)
+            {
+                <li class="file"><a href="http://localhost/foiremuses/scores/@file" title="telecharger le fichier">
+                    @file</a> </li>
+            }
+        </ul>-->
+    </div>
+}
+
+<div id="menuScore">
+    <ul>
+        <li><a href="publish?scoreId=@Model.Score.Id&scoreRev=@Model.Score.Rev">
+         Changer partition</a>
+        </li>
+        <li><a href="edit?scoreId=@Model.Score.Id">Modifier informations</a> </li>
+        <li><a href="#">Attacher un fichier</a> </li>
+    </ul>
+</div>

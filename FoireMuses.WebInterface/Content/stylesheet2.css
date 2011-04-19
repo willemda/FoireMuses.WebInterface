@@ -23,10 +23,11 @@ body
 
 #global
 {
+    padding:10px;
     text-align:left;
     margin-left:auto;
     margin-right:auto;
-    width:1024px;
+    width:1004px;
     font-size:75%;
 	margin-bottom:10px;
 }
@@ -55,9 +56,10 @@ body
 
 #gauche
 {
+    padding-right:4px;
     float:left;
     position:relative;
-    width:50%;
+    width:500px;
 }
 
 
@@ -79,7 +81,7 @@ body
     float:left;
     position: relative;
     left:0px;
-    width:50%;
+    width:500px;
 }
 
 
@@ -315,18 +317,17 @@ img.helpIcon{
 #floatRight{
 float: right;
 }
+
 #downloads
 {
-    text-align:right;
+   float:right;
+    
 }
 
 #downloads img
 {
     width:50px;
     height:50px;
-}
-
-#downloads ul{
 }
 
 
@@ -419,7 +420,30 @@ li.file:hover{
 border:1px lightblue solid;
 }
 
+/*CSS DETAILS SCORE*/
 
+#barreHaut
+{
+width:1004px;
+position:relative;
+
+}
+
+#firstInfo
+{
+    width:50%;
+    position:relative;
+    float:left;
+    margin-bottom:20px;
+}
+
+#title
+{
+    font-family:"Trebuchet MS";
+    font-size:14px;
+    font-weight:bold;
+    text-transform:uppercase;
+}
 
 #slider_container_2 {float: left; padding: 0px; width: 500px; }
 
@@ -491,3 +515,68 @@ border:1px lightblue solid;
 {
 	background: url(../../Content/images/bullet_active.png) no-repeat center center;
 }
+
+/*CSS LIST SCORES*/
+
+#pre-list
+{
+    border-bottom: 1px solid lightgrey;
+    margin-bottom: 5px;
+    font-family:"Trebuchet MS";
+    font-size:14px;
+    font-weight:bold;
+    text-transform:uppercase;
+}
+
+
+#list a
+{
+    color: #1E90FF;
+    font-weight:bold;
+}
+
+
+#list ul
+{
+    width:1004px;
+    list-style:none;
+}
+
+#list li
+{
+    margin-bottom:2px;
+    padding:4px;
+    height:40px;
+    background-color:#E5EDF0;
+}
+
+#list li.fonce
+{
+    background-color:#D9E4E8;
+}
+
+.score-composer, .score-editor
+{
+    display:inline;
+}
+
+#pager
+{
+    width:1004px;
+    text-align:center;
+}
+
+#pager a
+{
+    color: #1E90FF;
+    font-weight:bold;
+    padding:3px;
+}
+
+#pager a.selected
+{
+    background-color: #0880B5;
+    color:White;
+    text-decoration:none;
+}
+

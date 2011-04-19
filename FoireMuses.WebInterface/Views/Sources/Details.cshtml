@@ -1,0 +1,14 @@
+﻿@model FoireMuses.Client.Source
+
+@{
+    ViewBag.Title = "Details - "+@Model.Name;
+}
+
+<div id="name">
+    @Model.Name
+</div>
+@if (Model.Publisher != null)
+{
+<div id="publisher">Published by <a href="#">@Model.Publisher</a></div>
+}
+

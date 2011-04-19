@@ -4,13 +4,19 @@
     ViewBag.HeadTitle = "All Scores";
 }
 
-<h2>Liste de tout les airs</h2>
+<div id="pre-list">
+Airs
+</div>
+<div id="list-item">
 <ul>
-@foreach (var score in Model.SearchResult.Rows)
-{
-        <li>
-        <div class="score-item">
-            <div class="score-title">@score.Title</div>
+@{bool fonce = true;
+  foreach (var score in Model.SearchResult.Rows)
+  {
+      if (fonce)
+      {
+            <li class="fonce">
+            <div class="score-item">
+            <div class="score-title"><a href="details?scoreId=@score.Id">@score.Title</a></div>
             @if (score.Editor != null)
             {
                 <div class="score-editor">edited by @score.Editor</div>
@@ -18,7 +24,7 @@
             
             @if (score.Composer != null)
             {
-                @if (score.Editor != null)
+                if (score.Editor != null)
                 {
                 <div class="score-composer">, composed by @score.Editor</div>
                 }
@@ -29,9 +35,39 @@
             }
         </div>
         </li>
+      }
+      else
+      {
+          <li>
+            <div class="score-item">
+            <div class="score-title"><a href="details?scoreId=@score.Id">@score.Title</a></div>
+            @if (score.Editor != null)
+            {
+                <div class="score-editor">edited by @score.Editor</div>
+            }
+            
+            @if (score.Composer != null)
+            {
+                if (score.Editor != null)
+                {
+                <div class="score-composer">, composed by @score.Editor</div>
+                }
+                else
+                {
+                    <div class="score-composer">composed by @score.Editor</div>
+                }
+            }
+        </div>
+        </li>
+            
+      }
+
+      fonce = !fonce;
+  }
 }
 </ul>
-<div class="pager">
+</div>
+<div id="pager">
        @Html.PageLinks(Model.TotalPages, Model.CurrentPage,
-            x => Url.Action("List", new {page=x}))
+            x => Url.Action("List", new { page = x }))
 </div>

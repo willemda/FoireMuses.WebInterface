@@ -40,20 +40,6 @@ namespace FoireMuses.WebInterface.Controllers
 			return View(viewModel);
 		}
 
-		public RedirectResult Download(string scoreId, string fileFormat)
-		{
-			switch (fileFormat)
-			{
-				case "pdf":
-					return new RedirectResult("http://localhost/foiremuses/scores/" + scoreId + "/$pdf");
-				case "xml":
-					return new RedirectResult("http://localhost/foiremuses/scores/" + scoreId + "/$musicxml.xml");
-				case "midi":
-					return new RedirectResult("http://localhost/foiremuses/scores/" + scoreId + "/$midi");
-			}
-			return new RedirectResult("");
-		}
-
 		//
 		// GET: /Scores/Details
 		public ViewResult Details(string scoreId)
@@ -88,16 +74,12 @@ namespace FoireMuses.WebInterface.Controllers
 			{
 				// do stuff to return error message to the screen
 			}
-			var viewModel = new ScoreDetailModel
-			{
-				Score = score,
-				TextualSource = sTextuelle,
-				AssociatedPlay = assPlay,
-				MusicalSource = sMusicale,
-				AttachedFiles = attachedFiles,
-				Documents = documents
-			};
-			return View(viewModel);
+			ViewBag.TextualSource = sTextuelle;
+			ViewBag.AssociatedPlay = assPlay;
+			ViewBag.MusicalSource = sMusicale;
+			ViewBag.AttachedFiles = attachedFiles;
+			ViewBag.Documents = documents;
+			return View(score);
 		}
 
 

@@ -27,6 +27,8 @@ namespace FoireMuses.WebInterface.HtmlHelpers
 			int pageToGoFrom = currentPage;
 			if (currentPage >= (totalPage - 10))
 				pageToGoFrom = (totalPage - 9);
+			if (pageToGoFrom < 1)
+				pageToGoFrom = 1;
 			for (int i = pageToGoFrom; i < pageToGoFrom + 10 && i <= totalPage; i++)
 			{
 				tag = new TagBuilder("a"); // Construct an <a> tag
