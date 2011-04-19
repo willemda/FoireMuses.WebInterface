@@ -31,13 +31,27 @@ namespace FoireMuses.WebInterface.Controllers
 				// do stuff to return error message to the screen
 			}
 
-			var viewModel = new ListViewModel<Score>
+			var viewModel = new ListViewModel<Score>()
 			{
 				SearchResult = listScores,
 				CurrentPage = page,
 
 			};
 			return View(viewModel);
+		}
+
+		public RedirectResult Download(string scoreId, string fileFormat)
+		{
+			switch (fileFormat)
+			{
+				case "pdf":
+					return new RedirectResult("http://localhost/foiremuses/scores/" + scoreId + "/$pdf");
+				case "xml":
+					return new RedirectResult("http://localhost/foiremuses/scores/" + scoreId + "/$musicxml.xml");
+				case "midi":
+					return new RedirectResult("http://localhost/foiremuses/scores/" + scoreId + "/$midi");
+			}
+			return new RedirectResult("");
 		}
 
 		//
@@ -112,11 +126,11 @@ namespace FoireMuses.WebInterface.Controllers
 		}
 
 		[HttpPost]
-		public ActionResult Publish(string scoreId, string scoreRev, string overwrite, HttpPostedFileBase file)
+		public ActionResult Publish(string scoreId, string overwrite, HttpPostedFileBase file)
 		{
 			FoireMusesConnection connection = GetConnection();
 			Score score = null;
-			if (scoreId == null || scoreRev == null)
+			if (scoreId == null)
 			{
 				score = connection.CreateScoreWithXml(XDocFactory.From(file.InputStream, MimeType.XML), new Result<Score>()).Wait();
 			}
@@ -127,7 +141,9 @@ namespace FoireMuses.WebInterface.Controllers
 					ovwrite = true;
 				else
 					ovwrite = false;
-				score = connection.UpdateScoreWithXml(scoreId, scoreRev, XDocFactory.From(file.InputStream,MimeType.XML), ovwrite, new Result<Score>()).Wait();
+				Score current = connection.GetScore(scoreId, new Result<Score>()).Wait();
+				score = connection.UpdateScoreWithXml(current.Id, current.Rev, XDocFactory.From(file.InputStream, MimeType.XML), ovwrite, new Result<Score>()).Wait();
+				return Redirect("Details?scoreId=" + current.Id);
 			}
 			return Redirect("Edit?scoreId=" + score.Id);
 		}
@@ -173,25 +189,42 @@ namespace FoireMuses.WebInterface.Controllers
 		[HttpPost]
 		public ActionResult Edit(Score model, FormCollection collection)
 		{
+			//little trick here because it automatically creates a TextualSource and MusicalSource even if they are empty
+			if (model.TextualSource.SourceId == null)
+				model.TextualSource = null;
+			if (model.MusicalSource.SourceId == null)
+				model.MusicalSource = null;
 
 			FoireMusesConnection connection = GetConnection();
 			try
 			{
+				//we use the same view to edit and create, so let's differentiate both
 				if (model.Id == null)
 				{
 					model = connection.CreateScore(model, new Result<Score>()).Wait();
 				}
 				else
 				{
-                    Score current = connection.GetScore(model.Id, new Result<Score>()).Wait();
-                    TryUpdateModel(current);
+					//when updating, first get the current score out of the db then update with values
+					Score current = connection.GetScore(model.Id, new Result<Score>()).Wait();
+					TryUpdateModel(current);
 					model = connection.EditScore(current, new Result<Score>()).Wait();
 				}
 			}
 			catch (Exception e)
 			{
-				//redirect
+				//if during creation
+				if (model.Id == null)
+					{
+					return Redirect("erreur");
+				}else
+				{//during update, redirect to details/edit + error message?
+					return Redirect("Details?scoreId=" + model.Id);
+				}
+				
 			}
+
+			//redirect to details
 			return Redirect("Details?scoreId=" + model.Id);
 		}
 	}

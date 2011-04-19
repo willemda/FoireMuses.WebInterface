@@ -99,6 +99,7 @@
     <Content Include="Content\images\midiIcon.png" />
     <Content Include="Content\images\partition.png" />
     <Content Include="Content\images\partition2.png" />
+    <Content Include="Content\images\partitionIcon.jpeg" />
     <Content Include="Content\images\pdfIcon.jpg" />
     <Content Include="Content\images\right.png" />
     <Content Include="Content\js\sliderman.1.2.1.js" />

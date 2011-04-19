@@ -12,11 +12,10 @@
 	<div>
 <form method="post" action="" enctype="multipart/form-data">
 <input type="file" id="file" name="file"/><br/>
-@if (ViewBag.ScoreId != null && ViewBag.ScoreRev != null)
+@if (ViewBag.ScoreId != null)
 {
     <input type="checkbox" name="overwrite" value="overwrite" />
     <input type="hidden" name="scoreId" value="@ViewBag.ScoreId" />
-<input type="hidden" name="scoreRev" value="@ViewBag.ScoreRev" />
 }
 <input class="right" type="submit" value="Creer"/>
 </form>

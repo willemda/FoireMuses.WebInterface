@@ -5,12 +5,32 @@
 }
 
 <h2>Liste de tout les airs</h2>
-
+<ul>
 @foreach (var score in Model.SearchResult.Rows)
 {
-        Html.RenderPartial("ScoreSummary", score);
+        <li>
+        <div class="score-item">
+            <div class="score-title">@score.Title</div>
+            @if (score.Editor != null)
+            {
+                <div class="score-editor">edited by @score.Editor</div>
+            }
+            
+            @if (score.Composer != null)
+            {
+                @if (score.Editor != null)
+                {
+                <div class="score-composer">, composed by @score.Editor</div>
+                }
+                else
+                {
+                    <div class="score-composer">composed by @score.Editor</div>
+                }
+            }
+        </div>
+        </li>
 }
-
+</ul>
 <div class="pager">
        @Html.PageLinks(Model.TotalPages, Model.CurrentPage,
             x => Url.Action("List", new {page=x}))
