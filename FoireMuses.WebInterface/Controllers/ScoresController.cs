@@ -30,14 +30,32 @@ namespace FoireMuses.WebInterface.Controllers
 			{
 				// do stuff to return error message to the screen
 			}
-
 			var viewModel = new ListViewModel<Score>()
 			{
-				SearchResult = listScores,
 				CurrentPage = page,
-
+				SearchResult = listScores
 			};
 			return View(viewModel);
+		}
+
+
+		public ViewResult Search()
+		{
+			return View();
+		}
+
+		[HttpGet]
+		public ViewResult Searching(string title, string editor, string composer, string verses, string music, int page = 1)
+		{
+			FoireMusesConnection connection = GetConnection();
+			Result<SearchResult<ScoreSearchItem>> result = new Result<SearchResult<ScoreSearchItem>>();
+			SearchResult<ScoreSearchItem>  searchResult = connection.SearchScore((page - 1) * PageSize, PageSize, title, editor, composer, verses, music, result).Wait();
+			var viewModel = new ListViewModel<ScoreSearchItem>()
+			{
+				CurrentPage = page,
+				SearchResult = searchResult
+			};
+			return View(searchResult);
 		}
 
 		//
@@ -172,10 +190,6 @@ namespace FoireMuses.WebInterface.Controllers
 		public ActionResult Edit(Score model, FormCollection collection)
 		{
 			//little trick here because it automatically creates a TextualSource and MusicalSource even if they are empty
-			if (model.TextualSource.SourceId == null)
-				model.TextualSource = null;
-			if (model.MusicalSource.SourceId == null)
-				model.MusicalSource = null;
 
 			FoireMusesConnection connection = GetConnection();
 			try
@@ -190,6 +204,10 @@ namespace FoireMuses.WebInterface.Controllers
 					//when updating, first get the current score out of the db then update with values
 					Score current = connection.GetScore(model.Id, new Result<Score>()).Wait();
 					TryUpdateModel(current);
+					if (current.TextualSource.SourceId == null)
+						current.TextualSource = null;
+					if (current.MusicalSource.SourceId == null)
+						current.MusicalSource = null;
 					model = connection.EditScore(current, new Result<Score>()).Wait();
 				}
 			}

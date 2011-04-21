@@ -9,7 +9,7 @@ namespace FoireMuses.Client
 	/// <summary>
 	/// represent a Score(un air) object in json
 	/// </summary>
-	
+
 	public class Score
 	{
 
@@ -40,28 +40,24 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (json["_id"] == null)
-					return null;
-				return json["_id"].Value<string>();
+				return json.RetrieveStringCheck("_id");
 			}
-            set
-            {
-                json["_id"] = value;
-            }
+			set
+			{
+				json.AddCheck("_id", value);
+			}
 		}
 
 		public string Rev
 		{
 			get
 			{
-				if (json["_rev"] == null)
-					return null;
-				return json["_rev"].Value<string>();
+				return json.RetrieveStringCheck("_rev");
 			}
-            set
-            {
-                json["_rev"] = value;
-            }
+			set
+			{
+				json.AddCheck("_rev", value);
+			}
 		}
 
 
@@ -69,165 +65,180 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (json["title"] == null)
-					return null;
-				return json["title"].Value<string>();
+				return json.RetrieveStringCheck("title");
 			}
-			set { json["title"] = value; }
+			set
+			{
+				json.AddCheck("title", value);
+			}
 		}
 
-        public string CodeMelodiqueRISM
-        {
-            get
-            {
-                if (json["codageMelodiqueRISM"] == null)
-                    return null;
-                return json["codageMelodiqueRISM"].Value<string>();
-            }
-            set { json["codageMelodiqueRISM"] = value; }
-        }
+		public string CodeMelodiqueRISM
+		{
+			get
+			{
+				return json.RetrieveStringCheck("codageMelodiqueRISM");
+			}
+			set
+			{
+				json.AddCheck("codageMelodiqueRISM", value);
+			}
+		}
 
-        public string CodageParIntervalle
-        {
-            get
-            {
-                if (json["codageParIntervalle"] == null)
-                    return null;
-                return json["codageParIntervalle"].Value<string>();
-            }
-            set { json["codageParIntervalle"] = value; }
-        }
+		public string CodageParIntervalles
+		{
+			get
+			{
+				return json.RetrieveStringCheck("codageParIntervalles");
+			}
+			set
+			{
+				json.AddCheck("codageParIntervalles", value);
+			}
+		}
 
-        public string CodageRythmique
-        {
-            get
-            {
-                if (json["codageRythmique"] == null)
-                    return null;
-                return json["codageRythmique"].Value<string>();
-            }
-            set { json["codageRythmique"] = value; }
-        }
+		public string CodageRythmique
+		{
+			get
+			{
+				return json.RetrieveStringCheck("codageRythmique");
+			}
+			set
+			{
+				json.AddCheck("codageRythmique", value);
+			}
+		}
 
 		public string Coirault
 		{
 			get
 			{
-				if (json["coirault"] == null)
-					return null;
-				return json["coirault"].Value<string>();
+				return json.RetrieveStringCheck("coirault");
 			}
-			set { json["coirault"] = value; }
+			set
+			{
+				json.AddCheck("coirault", value);
+			}
 		}
 
 		public string Composer
 		{
 			get
 			{
-				if (json["composer"] == null)
-					return null;
-				return json["composer"].Value<string>();
+				return json.RetrieveStringCheck("composer");
 			}
-			set { json["composer"] = value; }
+			set
+			{
+				json.AddCheck("composer", value);
+			}
 		}
 
 		public string CoupeMetrique
 		{
 			get
 			{
-				if (json["coupeMetrique"] == null)
-					return null;
-				return json["coupeMetrique"].Value<string>();
+				return json.RetrieveStringCheck("coupeMetrique");
 			}
-			set { json["coupeMetrique"] = value; }
+			set
+			{
+				json.AddCheck("coupeMetrique", value);
+			}
 		}
 
 		public string Verses
 		{
 			get
 			{
-				if (json["verses"] == null)
-					return null;
-				return json["verses"].Value<string>();
+				return json.RetrieveStringCheck("verses");
 			}
-			set { json["verses"] = value; }
+			set
+			{
+				json.AddCheck("verses", value);
+			}
 		}
 
 		public string Delarue
 		{
 			get
 			{
-				if (json["delarue"] == null)
-					return null;
-				return json["delarue"].Value<string>();
+				return json.RetrieveStringCheck("delarue");
 			}
-			set { json["delarue"] = value; }
+			set
+			{
+				json.AddCheck("delarue", value);
+			}
 		}
 
 		public string Comments
 		{
 			get
 			{
-				if (json["comments"] == null)
-					return null;
-				return json["comments"].Value<string>();
+				return json.RetrieveStringCheck("comments");
 			}
-			set { json["comments"] = value; }
+			set
+			{
+				json.AddCheck("comments", value);
+			}
 		}
 
 		public string Editor
 		{
 			get
 			{
-				if (json["editor"] == null)
-					return null;
-				return json["editor"].Value<string>();
+				return json.RetrieveStringCheck("editor");
 			}
-			set { json["editor"] = value; }
+			set
+			{
+				json.AddCheck("editor", value);
+			}
 		}
 
 		public string RythmSignature
 		{
 			get
 			{
-				if (json["rythmSignature"] == null)
-					return null;
-				return json["rythmSignature"].Value<string>();
+				return json.RetrieveStringCheck("rythmSignature");
 			}
-			set { json["rythmSignature"] = value; }
+			set
+			{
+				json.AddCheck("rythmSignature", value);
+			}
 		}
 
 		public string OtherTitles
 		{
 			get
 			{
-				if (json["otherTitles"] == null)
-					return null;
-				return json["otherTitles"].Value<string>();
+				return json.RetrieveStringCheck("otherTitles");
 			}
-			set { json["otherTitles"] = value; }
+			set
+			{
+				json.AddCheck("otherTitles", value);
+			}
 		}
 
 		public string Stanza
 		{
 			get
 			{
-				if (json["stanza"] == null)
-					return null;
-				return json["stanza"].Value<string>();
+				return json.RetrieveStringCheck("stanza");
 			}
-			set { json["stanza"] = value; }
+			set
+			{
+				json.AddCheck("stanza", value);
+			}
 		}
 
 		public string ScoreType
 		{
 			get
 			{
-				if (json["type"] == null)
-					return null;
-				return json["type"].Value<string>();
+				return json.RetrieveStringCheck("type");
 			}
-			set { json["type"] = value; }
+			set
+			{
+				json.AddCheck("type", value);
+			}
 		}
 
 		public TextualSource TextualSource
@@ -238,7 +249,16 @@ namespace FoireMuses.Client
 					return null;
 				return new TextualSource(json["textualSource"].Value<JObject>());
 			}
-			set { json["textualSource"] = value.json; }
+			set
+			{
+
+				if (value != null)
+				{
+					json["textualSource"] = value.json;
+				}
+				else
+					json.Remove("textualSource");
+			}
 		}
 
 		public MusicalSource MusicalSource
@@ -249,7 +269,15 @@ namespace FoireMuses.Client
 					return null;
 				return new MusicalSource(json["musicalSource"].Value<JObject>());
 			}
-			set { json["musicalSource"] = value.json; }
+			set
+			{
+				if (value != null)
+				{
+					json["musicalSource"] = value.json;
+				}
+				else
+					json.Remove("musicalSource");
+			}
 		}
 
 		public IList<string> Tags
@@ -271,22 +299,24 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (json["creatorId"] == null)
-					return null;
-				return json["creatorId"].Value<string>();
+				return json.RetrieveStringCheck("creatorId");
 			}
-			private set { json["creatorId"] = value; }
+			set
+			{
+				json.AddCheck("creatorId", value);
+			}
 		}
 
 		public string LastModifierId
 		{
 			get
 			{
-				if (json["lastModifierId"] == null)
-					return null;
-				return json["lastModifierId"].Value<string>();
+				return json.RetrieveStringCheck("lastModifierId");
 			}
-			private set { json["lastModifierId"] = value; }
+			set
+			{
+				json.AddCheck("lastModifierId", value);
+			}
 		}
 
 		public IList<string> CollaboratorsId
@@ -314,9 +344,29 @@ namespace FoireMuses.Client
 			return attachment == null ? null : attachment.Select(x => x.Value<JProperty>().Name);
 		}
 
-        public override string ToString()
-        {
-            return json.ToString();
-        }
+		public override string ToString()
+		{
+			string jsonS = json.ToString();
+			return jsonS;
+		}
+	}
+
+	public static class JObjectHelper
+	{
+
+		public static void AddCheck(this JObject jo, string fieldName, JToken fieldValue)
+		{
+			if (fieldValue != null)
+				jo[fieldName] = fieldValue;
+			else
+				jo.Remove(fieldName);
+		}
+
+		public static string RetrieveStringCheck(this JObject jo, string fieldName)
+		{
+			if (jo[fieldName] != null)
+				return jo[fieldName].Value<string>();
+			return null;
+		}
 	}
 }

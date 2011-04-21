@@ -15,7 +15,6 @@ namespace FoireMuses.Client
 		public int Max { get { return json["max"].Value<int>(); } }
 		public int TotalCount { get { return json["total_rows"].Value<int>(); } }
 
-
 		public SearchResult(JObject jo)
 		{
 			json = jo;

@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ScoreSearchItem.cs" />
     <Compile Include="FoireMusesConnection.cs" />
     <Compile Include="Group.cs" />
     <Compile Include="MusicalSource.cs" />

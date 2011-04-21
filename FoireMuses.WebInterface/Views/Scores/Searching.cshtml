@@ -1,11 +1,11 @@
-﻿@model FoireMuses.WebInterface.Models.ListViewModel<FoireMuses.Client.Score>
+﻿@model FoireMuses.WebInterface.Models.ListViewModel<FoireMuses.Client.ScoreSearchItem>
 @using FoireMuses.WebInterface.HtmlHelpers
-@{
-    ViewBag.HeadTitle = "All Scores";
-}
 
+@{
+    ViewBag.Title = "Search results";
+}
 <div id="pre-list">
-Airs
+Results
 </div>
 <div id="list-item">
 <ul>
@@ -71,3 +71,4 @@ Airs
        @Html.PageLinks(Model.TotalPages, Model.CurrentPage,
             x => Url.Action("List", new { page = x }))
 </div>
+

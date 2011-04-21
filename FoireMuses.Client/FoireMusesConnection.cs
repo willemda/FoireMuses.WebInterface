@@ -7,6 +7,7 @@ using System.Net;
 using MindTouch.Tasking;
 using Newtonsoft.Json.Linq;
 using MindTouch.Xml;
+using FoireMuses.Client.Helpers;
 
 namespace FoireMuses.Client
 {
@@ -318,6 +319,36 @@ namespace FoireMuses.Client
 		}
 
 
+
+		public Result<SearchResult<ScoreSearchItem>> SearchScore(int offset, int max, string title, string editor, string composer, string verses, string music, Result<SearchResult<ScoreSearchItem>> aResult)
+		{
+			theServiceUri
+				.At("scores", "search")
+				.With("offset", offset)
+				.With("max", max)
+				.WithCheck("title", title)
+				.WithCheck("editor", editor)
+				.WithCheck("composer", composer)
+				.WithCheck("verses", verses)
+				.WithCheck("music", music)
+				.Get(new Result<DreamMessage>())
+				.WhenDone(delegate(Result<DreamMessage> answer)
+				{
+					if (!answer.Value.IsSuccessful)
+					{
+						if (answer.Value.Status == DreamStatus.NotFound)
+							aResult.Return((SearchResult<ScoreSearchItem>)null);
+						else
+							aResult.Throw(answer.Exception);
+					}
+					else
+					{
+						aResult.Return(new SearchResult<ScoreSearchItem>(JObject.Parse(answer.Value.ToText())));
+					}
+				}
+				);
+			return aResult;
+		}
 	}
 }
 

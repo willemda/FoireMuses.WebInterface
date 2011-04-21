@@ -6,7 +6,7 @@
         $("#TextualSourceSourceId").change(function () {
             // Get the id from the link
             var recordToDelete = $(this.options[this.selectedIndex]).attr("value");
-            if (recordToDelete != '') {
+            if (recordToDelete != '' && recordToDelete!=null) {
                 // Perform the ajax post
                 $.post("/Scores/GetPlaysForSource", { "id":
 recordToDelete
@@ -26,6 +26,10 @@ recordToDelete
                             $('.pieceAss').fadeIn('slow');
                         }
                     });
+            }else if(recordToDelete == null) {
+                    $('#selectPiece').html("");
+                    $('.pieceAss input').attr("value", "");
+                    $('.pieceAss').fadeOut('slow');
             }
         });
         $("#TextualSourceSourceId").change();
@@ -59,7 +63,7 @@ recordToDelete
 <table class="innerTable">
 <tr><td class="label"><label>Titre</label></td><td class="value">
 <select id="TextualSourceSourceId" name="TextualSource.SourceId">
-<option value="null"></option>
+<option ></option>
 @foreach (var source in ViewBag.Sources)
 {
     if (Model.TextualSource != null && Model.TextualSource.SourceId == source.Id)
@@ -114,7 +118,7 @@ else
 <table class="innerTable">
 <tr><td class="label"><label>Titre</label></td><td class="value">
 <select name="MusicalSource.SourceId">
-<option value="null"></option>
+<option></option>
 @foreach (var source in ViewBag.Sources)
 {
     if (Model.MusicalSource != null && Model.MusicalSource.SourceId == source.Id)

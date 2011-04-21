@@ -8,7 +8,7 @@ namespace FoireMuses.WebInterface.Models
 {
     public class ListViewModel<T>
     {
-        public SearchResult<T> SearchResult { get; set; }
+        public SearchResult<T> SearchResult{ get; set; }
         public int CurrentPage { get; set; }
         public int TotalPages
         {

@@ -1,9 +1,22 @@
 ﻿using System;
 using System.Text;
 using System.Web.Mvc;
+using FoireMuses.Client;
+using System.Web.Mvc.Html;
+using MindTouch.Dream;
 
 namespace FoireMuses.WebInterface.HtmlHelpers
 {
+	public static class PlugHelpers
+	{
+		public static Plug WithCheck(this Plug plug, string fieldName, string fieldValue)
+		{
+			if (fieldValue != null)
+				return plug.With(fieldName, fieldValue);
+			return plug;
+		}
+	}
+
 	public static class PagingHelpers
 	{
 		public static MvcHtmlString PageLinks(this HtmlHelper html,
@@ -55,6 +68,17 @@ namespace FoireMuses.WebInterface.HtmlHelpers
 
 	public static class AddFieldHelpers
 	{
+
+		public static void ForModelDisplay(this HtmlHelper html, object o)
+		{
+			if (o is Score)
+				html.RenderPartial("ScoreSummary",(Score)o);
+			if (o is Source)
+				html.RenderPartial("SourceSummary",(Source)o);
+			if (o is ScoreSearchItem)
+				html.RenderPartial("ScoreSearchItemSummary",(ScoreSearchItem)o);
+		}
+
 		public static MvcHtmlString AddField(this HtmlHelper html, string fieldName, string fieldValue)
 		{
 			if (fieldValue == null)
