@@ -451,7 +451,7 @@ position:relative;
 margin-bottom:2px;
 }
 
-#title
+#titleDisplay
 {
     font-family:"Trebuchet MS";
     font-size:14px;
@@ -602,7 +602,8 @@ font-style:italic;
 
 #pager
 {
-    width:1004px;
+    margin:10px;
+    width:984px;
     text-align:center;
 }
 
@@ -618,5 +619,42 @@ font-style:italic;
     background-color: #0880B5;
     color:White;
     text-decoration:none;
+}
+
+#scoreSearch div
+{
+    width:1004px;
+    margin-bottom:2px;
+}
+
+#scoreSearch label
+{
+    float:left;
+    font-weight:bold;
+    width:150px;
+    position:relative;
+}
+
+#editForm div.bigField
+{
+    width:1004px;
+    margin-bottom:2px;
+}
+
+#editForm div.bigField input, #editForm div.bigField select, #editForm div.bigField textarea
+{
+    width:804px;
+}
+
+#editForm div.bigField textarea
+{
+    height:100px;
+}
+
+#editForm div.bigField label
+{
+    font-weight:bold;
+    float:left;
+    width:200px;
 }
 

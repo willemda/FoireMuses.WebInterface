@@ -55,7 +55,7 @@ namespace FoireMuses.WebInterface.Controllers
 				CurrentPage = page,
 				SearchResult = searchResult
 			};
-			return View(searchResult);
+			return View(viewModel);
 		}
 
 		//
@@ -183,7 +183,7 @@ namespace FoireMuses.WebInterface.Controllers
 				//on redirige
 			}
 			ViewBag.Sources = sourceList.Rows;
-			return View("Edit", score);
+			return View("Edit2", score);
 		}
 
 		[HttpPost]

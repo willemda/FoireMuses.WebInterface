@@ -68,7 +68,14 @@ Results
 </ul>
 </div>
 <div id="pager">
-       @Html.PageLinks(Model.TotalPages, Model.CurrentPage,
-            x => Url.Action("List", new { page = x }))
+       @{
+           string titleValue = Context.Request.Params["title"];
+           string composerValue = Context.Request.Params["composer"];
+           string editorValue = Context.Request.Params["editor"];
+           string versesValue = Context.Request.Params["verses"];
+           string musicValue = Context.Request.Params["music"];
+           @Html.PageLinks(Model.TotalPages, Model.CurrentPage,
+                     x => Url.Action("searching", new { page = x, title = titleValue, composer = composerValue, editor = editorValue, verses = versesValue, music = musicValue }));
+                     }
 </div>
 

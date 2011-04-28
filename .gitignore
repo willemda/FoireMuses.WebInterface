@@ -9,3 +9,4 @@ _ReSharper*
 FoireMuses.5.1.ReSharper.user
 WebHost/services/*
 *.dat
+*.*.suo

@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using FoireMuses.Client;
 using System.Web.Mvc.Html;
 using MindTouch.Dream;
+using System.Security.Policy;
 
 namespace FoireMuses.WebInterface.HtmlHelpers
 {
@@ -11,7 +12,7 @@ namespace FoireMuses.WebInterface.HtmlHelpers
 	{
 		public static Plug WithCheck(this Plug plug, string fieldName, string fieldValue)
 		{
-			if (fieldValue != null)
+			if (!String.IsNullOrWhiteSpace(fieldValue))
 				return plug.With(fieldName, fieldValue);
 			return plug;
 		}
@@ -19,6 +20,12 @@ namespace FoireMuses.WebInterface.HtmlHelpers
 
 	public static class PagingHelpers
 	{
+		public static string AddPageToUrl(this Uri uri,
+			int page)
+		{
+			return uri.ToString() + "&page=" + page;
+		}
+
 		public static MvcHtmlString PageLinks(this HtmlHelper html,
 		int totalPage, int currentPage,
 		Func<int, string> pageUrl)
@@ -62,7 +69,8 @@ namespace FoireMuses.WebInterface.HtmlHelpers
 				tag.InnerHtml = "last";
 				result.AppendLine(tag.ToString());
 			}
-			return MvcHtmlString.Create(result.ToString());
+			MvcHtmlString mvc = MvcHtmlString.Create(result.ToString());
+			return mvc;
 		}
 	}
 
