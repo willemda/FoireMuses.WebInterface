@@ -14,6 +14,8 @@ namespace FoireMuses.WebInterface.Controllers
 {
 	public class ScoresController : FoireMusesController
 	{
+		private static readonly log4net.ILog theLogger = log4net.LogManager.GetLogger(typeof(ScoresController));
+
 		public int PageSize = 20;
 
 		public ViewResult List(int page = 1)
@@ -128,11 +130,15 @@ namespace FoireMuses.WebInterface.Controllers
 		[HttpPost]
 		public ActionResult Publish(string scoreId, string overwrite, HttpPostedFileBase file)
 		{
+			theLogger.Info("Start Publishing");
 			FoireMusesConnection connection = GetConnection();
 			Score score = null;
 			if (scoreId == null)
 			{
-				score = connection.CreateScoreWithXml(XDocFactory.From(file.InputStream, MimeType.XML), new Result<Score>()).Wait();
+				theLogger.Info("Starting To Create the xml doc");
+				XDoc theDoc = XDocFactory.From(file.InputStream, MimeType.XML);
+				theLogger.Info("Finished Creating the xml doc - making call to create the score");
+				score = connection.CreateScoreWithXml(theDoc, new Result<Score>()).Wait();
 			}
 			else
 			{
@@ -183,7 +189,7 @@ namespace FoireMuses.WebInterface.Controllers
 				//on redirige
 			}
 			ViewBag.Sources = sourceList.Rows;
-			return View("Edit2", score);
+			return View("Edit", score);
 		}
 
 		[HttpPost]

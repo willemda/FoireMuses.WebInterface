@@ -1,13 +1,74 @@
 ﻿@{
     ViewBag.HeadTitle = "Search";
     ViewBag.AddJs = "<script src=\"../../Content/js/meledscripts.js\" charset=\"iso-8859-1\" type=\"text/javascript\"></script><script src=\"../../Content/soundmanager/soundmanager2.js\" type=\"text/javascript\"></script><script src=\"../../Content/js/onload.js\" type=\"text/javascript\"></script><script src=\"../../Content/js/jquery-1.5.2.js\" type=\"text/javascript\"></script>";
+}
+<script type="text/javascript">
+<!--
+    
+
+
+    var searchTerms = ["Titre", "Compositeur", "Editeur", "Versets", "Music"];
+    var searchTermsList = [];
+    var searchTermsValues = [];
+
+    function remove(value) {
+        var temp = [];
+        var temp2 = [];
+        for (var term in searchTermsList) {
+            if (searchTermsList[term] != value) {
+                temp.push(searchTermsList[term]);
+                temp2.push(searchTermsValues[term]);
+            }
+        }
+        searchTermsList = temp;
+        searchTermsValues = temp2;
+        searchTerms.push(value);
+        refresh();
     }
 
+    function refresh() {
+        var html = "";
+        for (var term in searchTerms) {
+            html += "<option value=\"" + searchTerms[term] + "\">" + searchTerms[term] + "</option>";
+        }
+        $("#fieldChoice").html(html);
+        $("#fieldValue").html("");
+
+        html = "<table>";
+        for (var i = 0; i < searchTermsList.length; i++) {
+            var obj = 
+            html += "<tr><td>" + searchTermsList[i] + "</td><td>" + searchTermsValues[i] + "</td><td><input type=\"button\" value=\"-\" class=\"removeField\" onclick=\"remove('"+searchTermsList[i]+"');\"/></td></tr>";
+        }
+        html += "</table>";
+        $("#fieldAdded").html(html);
+    }
+
+    $(function () {
+        $("#addField").click(function () {
+            var sel = document.getElementById("fieldChoice");
+            var option = sel.options[sel.selectedIndex];
+            var fieldName = option.value;
+            var input = document.getElementById("fieldValue");
+            var fieldValue = input.value;
+            searchTermsList.push(fieldName);
+            searchTermsValues.push(fieldValue);
+            var temp = [];
+            for (var term in searchTerms) {
+                if (searchTerms[term] != fieldName)
+                    temp.push(searchTerms[term]);
+            }
+            searchTerms = temp;
+            refresh();
+        });
+        refresh();
+    });
+    
+-->
+</script>
 <form action="Searching" method="get" id="scoreSearch">
-<div><label for="title">Titre</label><input type="text" name="title" id="title"/></div>
-<div><label for="composer">Compositeur</label><input type="text" name="composer" id="composer"/></div>
-<div><label for="editor">Editeur</label><input type="text" name="editor" id="editor"/></div>
-<div><label for="verses">Versets</label><input type="text" name="verses" id="verses"/></div>
+<div id="fieldAdded"></div>
+<select name="fieldChoice" id="fieldChoice"></select><input type="text" id="fieldValue" name="fieldValue" /><input type="button" id="addField" name="addField" value="+"/>
+
 <div id="piano_javascript">
 <map name="keyboard" id="keyboard">
 		  <area shape="poly" href="#" onclick="addNote('c\'','8')"  coords="4,89,31,89,31,75,26,75,24,69,14,69,12,75,4,75" alt="">
