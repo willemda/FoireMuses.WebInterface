@@ -17,7 +17,11 @@
             </ul>
         </div>
     }
-    <div id="titleDisplay">@Model.Title</div>
+    <div id="titleDisplay">@Model.Title @if (Model.IsMaster)
+                                        {<span> (Maitre)</span>}@if (Model.MasterId != null)
+                                                               {
+        <div id="type"><a href="details?scoreId=@Model.MasterId"> (Aller à l'air maître)</a></div>
+                                                               }</div>
     @if (Model.Composer != null)
     {
         <div id="composer">
@@ -35,9 +39,11 @@
     }
     
      @if (Model.ScoreType != null)
-    {
+     {
         <div id="type"><strong>Type:</strong> @Model.ScoreType</div>
-    }
+     }
+    
+
     @if (Model.TextualSource != null || Model.MusicalSource != null)
     {
         <div><strong>Sources:</strong>
@@ -50,12 +56,12 @@
                             Volume @Model.TextualSource.Volume, Tome @Model.TextualSource.Tome,
                             de @ViewBag.TextualSource.Publisher</a></div>
                     
-                    if (Model.TextualSource.PieceId != null)
-                    {
+                          if (Model.TextualSource.PieceId != null)
+                          {
                         <div id="sourcepiece"><strong>Pièce associée:</strong> <a href="plays?id=@ViewBag.AssociatedPlay.Id" title="cliquer
                         pour aller voir la pièce">@ViewBag.AssociatedPlay.Title, Act @Model.TextualSource.ActNumber,
                         Scene @Model.TextualSource.SceneNumber</a></div>
-                    } 
+                          }
                 }
                 @if (Model.MusicalSource != null)
                 {

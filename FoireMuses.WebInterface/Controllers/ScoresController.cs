@@ -51,7 +51,7 @@ namespace FoireMuses.WebInterface.Controllers
 		{
 			FoireMusesConnection connection = GetConnection();
 			Result<SearchResult<ScoreSearchItem>> result = new Result<SearchResult<ScoreSearchItem>>();
-			SearchResult<ScoreSearchItem>  searchResult = connection.SearchScore((page - 1) * PageSize, PageSize, title, editor, composer, verses, music, result).Wait();
+			SearchResult<ScoreSearchItem>  searchResult = connection.SearchScore((page - 1) * PageSize, PageSize, title, editor, composer, verses, music, null, result).Wait();
 			var viewModel = new ListViewModel<ScoreSearchItem>()
 			{
 				CurrentPage = page,
@@ -127,6 +127,15 @@ namespace FoireMuses.WebInterface.Controllers
 			return PartialView("playList", searchResultPlay.Rows);
 		}
 
+
+        public ActionResult AjaxSearchMaster(string wordsToSearch)
+        {
+            FoireMusesConnection connection = GetConnection();
+            SearchResult<ScoreSearchItem> searchResultMaster = null;
+            searchResultMaster = connection.SearchScore(0, 20, wordsToSearch, null, null, null, null, true, new Result<SearchResult<ScoreSearchItem>>()).Wait();
+            return PartialView("AjaxSearchForMaster", searchResultMaster.Rows);
+        }
+
 		[HttpPost]
 		public ActionResult Publish(string scoreId, string overwrite, HttpPostedFileBase file)
 		{
@@ -189,7 +198,7 @@ namespace FoireMuses.WebInterface.Controllers
 				//on redirige
 			}
 			ViewBag.Sources = sourceList.Rows;
-			return View("Edit", score);
+			return View("Edit2", score);
 		}
 
 		[HttpPost]
@@ -203,6 +212,10 @@ namespace FoireMuses.WebInterface.Controllers
 				//we use the same view to edit and create, so let's differentiate both
 				if (model.Id == null)
 				{
+                    if (model.TextualSource.SourceId == null)
+                        model.TextualSource = null;
+                    if (model.MusicalSource.SourceId == null)
+                        model.MusicalSource = null;
 					model = connection.CreateScore(model, new Result<Score>()).Wait();
 				}
 				else

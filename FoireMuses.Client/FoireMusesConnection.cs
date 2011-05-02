@@ -109,6 +109,8 @@ namespace FoireMuses.Client
 		{
 			theServiceUri
 				.At("sources")
+                .With("id", Source.Id)
+                .With("rev", Source.Rev)
 				.Put(DreamMessage.Ok(MimeType.JSON, Source.ToString()), new Result<DreamMessage>())
 				.WhenDone(delegate(Result<DreamMessage> answer)
 				{
@@ -320,7 +322,7 @@ namespace FoireMuses.Client
 
 
 
-		public Result<SearchResult<ScoreSearchItem>> SearchScore(int offset, int max, string title, string editor, string composer, string verses, string music, Result<SearchResult<ScoreSearchItem>> aResult)
+		public Result<SearchResult<ScoreSearchItem>> SearchScore(int offset, int max, string title, string editor, string composer, string verses, string music, bool? isMaster, Result<SearchResult<ScoreSearchItem>> aResult)
 		{
 			theServiceUri
 				.At("scores", "search")
@@ -331,6 +333,7 @@ namespace FoireMuses.Client
 				.WithCheck("composer", composer)
 				.WithCheck("verses", verses)
 				.WithCheck("music", music)
+                .WithCheck("isMaster",isMaster)
 				.Get(new Result<DreamMessage>())
 				.WhenDone(delegate(Result<DreamMessage> answer)
 				{

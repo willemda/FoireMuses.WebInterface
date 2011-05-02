@@ -66,5 +66,78 @@ namespace FoireMuses.WebInterface.Controllers
 			return View(source);
 		}
 
+
+        public ViewResult Edit(string sourceId)
+        {
+            FoireMusesConnection connection = GetConnection();
+            Source source = null;
+            try
+            {
+                if (sourceId != null)//get the score matching the id
+                {
+                    source = connection.GetSource(sourceId, new Result<Source>()).Wait();
+                    ViewBag.HeadTitle = "Edit";
+                }
+                else
+                {
+                    source = new Source();
+                    ViewBag.HeadTitle = "Create";
+                }
+            }
+            catch (Exception e)
+            {
+                // on redirige
+            }
+            if (source == null)
+            {
+                //on redirige
+            }
+            return View("Edit", source);
+        }
+
+        public ActionResult Create()
+        {
+            return RedirectToAction("Edit");
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Source model, FormCollection collection)
+        {
+            //little trick here because it automatically creates a TextualSource and MusicalSource even if they are empty
+
+            FoireMusesConnection connection = GetConnection();
+            try
+            {
+                //we use the same view to edit and create, so let's differentiate both
+                if (model.Id == null)
+                {
+                    model = connection.CreateSource(model, new Result<Source>()).Wait();
+                }
+                else
+                {
+                    //when updating, first get the current score out of the db then update with values
+                    Source current = connection.GetSource(model.Id, new Result<Source>()).Wait();
+                    TryUpdateModel(current);
+                    model = connection.EditSource(current, new Result<Source>()).Wait();
+                }
+            }
+            catch (Exception e)
+            {
+                //if during creation
+                if (model.Id == null)
+                {
+                    return Redirect("erreur");
+                }
+                else
+                {//during update, redirect to details/edit + error message?
+                    return Redirect("Details?sourceId=" + model.Id);
+                }
+
+            }
+
+            //redirect to details
+            return Redirect("Details?sourceId=" + model.Id);
+        }
+
     }
 }

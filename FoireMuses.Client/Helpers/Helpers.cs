@@ -13,18 +13,41 @@ namespace FoireMuses.Client.Helpers
 				return plug.With(fieldName, fieldValue);
 			return plug;
 		}
+
+        public static Plug WithCheck(this Plug plug, string fieldName, bool? fieldValue)
+        {
+            if (fieldValue != null && fieldValue.HasValue)
+                return plug.With(fieldName, fieldValue.Value);
+            return plug;
+        }
 	}
 
 	public static class JObjectHelper
 	{
 
-		public static void AddCheck(this JObject jo, string fieldName, JToken fieldValue)
+        public static void AddCheck(this JObject jo, string fieldName, string fieldValue)
+        {
+            if (fieldValue != null)
+                jo[fieldName] = fieldValue;
+            else
+                jo.Remove(fieldName);
+        }
+
+		public static void AddCheck(this JObject jo, string fieldName, int? fieldValue)
 		{
 			if (fieldValue != null)
 				jo[fieldName] = fieldValue;
 			else
 				jo.Remove(fieldName);
 		}
+
+        public static void AddCheck(this JObject jo, string fieldName, bool? fieldValue)
+        {
+            if (fieldValue != null)
+                jo[fieldName] = fieldValue;
+            else
+                jo.Remove(fieldName);
+        }
 
 
 		public static string RetrieveStringCheck(this JObject jo, string fieldName)

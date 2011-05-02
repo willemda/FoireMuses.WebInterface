@@ -6,7 +6,7 @@
         $("#TextualSourceSourceId").change(function () {
             // Get the id from the link
             var recordToDelete = $(this.options[this.selectedIndex]).attr("value");
-            if (recordToDelete != '' && recordToDelete!=null) {
+            if (recordToDelete != '' && recordToDelete != null) {
                 // Perform the ajax post
                 $.post("/Scores/GetPlaysForSource", { "id":
 recordToDelete
@@ -26,10 +26,28 @@ recordToDelete
                             $('.pieceAss').fadeIn('slow');
                         }
                     });
-            }else if(recordToDelete == null) {
-                    $('#selectPiece').html("");
-                    $('.pieceAss input').attr("value", "");
-                    $('.pieceAss').fadeOut('slow');
+            } else if (recordToDelete == null) {
+                $('#selectPiece').html("");
+                $('.pieceAss input').attr("value", "");
+                $('.pieceAss').fadeOut('slow');
+            }
+        });
+        $("#MasterIdTitle").keyup(function () {
+            var wordsToSearch = $(this).attr("value");
+            if(wordsToSearch !== "" && wordsToSearch.length > 2){
+                $.post("/Scores/AjaxSearchMaster", { "wordsToSearch":
+wordsToSearch
+                },
+                    function (data) {
+                        // Successful requests get here
+                        // Update the page elements
+                        if (data == '') {
+                            $('#result').html("");
+                        } else {
+                            $('#selectPiece').html("");
+                            $('#result').html(data);
+                        }
+                    });
             }
         });
         $("#TextualSourceSourceId").change();
@@ -47,7 +65,11 @@ recordToDelete
 <form action="" method="post">
 
 <input type="hidden" name="Id" value="@Model.Id" />
+<input type="hidden" id="MasterId" name="MasterId" value="@Model.MasterId" />
+<div id="result"></div>
 <table id="create">
+<tr><td><label>Air Maitre</label></td><td class="value">@Html.EditorFor(model => model.IsMaster)</td></tr>
+<tr><td><label>Air dont je suis Maitre</label></td><td class="value"><input id="MasterIdTitle" name="MasterIdTitle" type="text" value="@ViewBag.MasterIdTitle"/></td></tr>
 <tr><td class="label"><label>Titre</label></td><td class="value"><input name="Title" type="text" value="@Model.Title"/></td></tr>
 <tr><td><label>Compositeur</label></td><td class="value"><input name="Composer" type="text" value="@Model.Composer"/></td></tr>
 <tr><td><label>Editeur</label></td><td class="value"><input  name="Editor" type="text" value="@Model.Editor"/></td></tr>

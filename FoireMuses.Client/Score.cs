@@ -61,6 +61,27 @@ namespace FoireMuses.Client
 			}
 		}
 
+        public bool IsMaster
+        {
+            get
+            {
+                if (json["isMaster"] == null)
+                    return false;
+                return json["isMaster"].Value<bool>();
+            }
+            set { json["isMaster"] = value; }
+        }
+
+        public string MasterId
+        {
+            get
+            {
+                if (json["masterId"] == null)
+                    return null;
+                return json["masterId"].Value<string>();
+            }
+            set { json["masterId"] = value; }
+        }
 
 		public string Title
 		{

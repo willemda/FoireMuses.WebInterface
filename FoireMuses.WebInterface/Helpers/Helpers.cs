@@ -16,6 +16,13 @@ namespace FoireMuses.WebInterface.HtmlHelpers
 				return plug.With(fieldName, fieldValue);
 			return plug;
 		}
+
+        public static Plug WithCheck(this Plug plug, string fieldName, bool? fieldValue)
+        {
+            if (fieldValue != null && fieldValue.HasValue)
+                return plug.With(fieldName, fieldValue.Value);
+            return plug;
+        }
 	}
 
 	public static class PagingHelpers

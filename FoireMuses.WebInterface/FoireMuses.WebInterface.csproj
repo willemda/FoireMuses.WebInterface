@@ -786,6 +786,8 @@
     <Content Include="Views\Scores\Searching.cshtml" />
     <Content Include="Views\Scores\Search.cshtml" />
     <Content Include="Views\Scores\Edit2.cshtml" />
+    <Content Include="Views\Sources\Edit.cshtml" />
+    <Content Include="Views\Shared\AjaxSearchForMaster.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

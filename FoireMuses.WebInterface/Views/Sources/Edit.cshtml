@@ -1,0 +1,20 @@
+﻿@model FoireMuses.Client.Source
+
+
+ <form action="" method="post">
+    <input type="hidden" name="Id" value="@Model.Id" />
+    <div class="bigField"><label for="Name">
+        Nom</label><input id="edit_Name" name="Name" type="text" value="@Model.Name"/></div>
+    <div class="bigField"><label for="Publisher">
+        Publisher</label><input id="edit_Publisher" name="Publisher" type="text" value="@Model.Publisher"/></div>
+    <div class="bigField"><label for="Cote">
+        Cote</label><input id="edit_Cote" name="Cote" type="text" value="@Model.Cote"/></div>
+    <div class="bigField"><label for="DateFrom">
+        DateFrom</label><input id="edit_DateFrom" name="DateFrom" type="text" value="@Model.DateFrom"/></div>
+    <div class="bigField"><label for="DateTo">
+        DateTo</label><input id="edit_DateTo" name="DateTo" type="text" value="@Model.DateTo"/></div>
+    <div class="bigField"><label for="Abbreviation">
+        Resumé</label><textarea id="edit_Abbreviation" name="Abbreviation">@Model.Abbreviation</textarea></div>
+        <input type="submit" value="Creer"/>
+</form>
+
