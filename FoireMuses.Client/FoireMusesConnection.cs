@@ -201,7 +201,7 @@ namespace FoireMuses.Client
 		public Result<Score> CreateScoreWithXml(XDoc xdoc, Result<Score> aResult)
 		{
 			theServiceUri
-				.At("scores", "xml")
+				.At("scores", "musicxml")
 				.Post(DreamMessage.Ok(MimeType.XML, xdoc), new Result<DreamMessage>())
 				.WhenDone(delegate(Result<DreamMessage> answer)
 				{
@@ -222,7 +222,7 @@ namespace FoireMuses.Client
 		public Result<Score> UpdateScoreWithXml(string id, string rev, XDoc xdoc, bool overwrite, Result<Score> aResult)
 		{
 			theServiceUri
-				.At("scores", "xml")
+				.At("scores", "musicxml")
 				.With("overwrite", overwrite)
 				.With("id", id)
 				.With("rev", rev)

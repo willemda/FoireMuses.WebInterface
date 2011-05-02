@@ -4,11 +4,23 @@
     ViewBag.Title = "Details - "+@Model.Name;
 }
 
-<div id="name">
-    @Model.Name
-</div>
+<div id="titleDisplay">@Model.Name</div>
 @if (Model.Publisher != null)
 {
 <div id="publisher">Published by <a href="#">@Model.Publisher</a></div>
 }
+@if (Model.DateFrom != null && Model.DateTo != null)
+{
+<div id="date">@Model.DateFrom - @Model.DateTo</div>
+}
+@if (Model.Abbreviation != null)
+{
+    <div id="abbr"><strong>Résumé:</strong> @Model.Abbreviation</div>
+}
+@if (Model.Cote != null)
+{
+    <div id="cote"><strong>Cote:</strong> @Model.Cote</div>
+}
+
+
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Newtonsoft.Json.Linq;
+using FoireMuses.Client.Helpers;
 
 namespace FoireMuses.Client
 {

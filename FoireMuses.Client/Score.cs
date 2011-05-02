@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Newtonsoft.Json.Linq;
+using FoireMuses.Client.Helpers;
 
 namespace FoireMuses.Client
 {
@@ -348,25 +349,6 @@ namespace FoireMuses.Client
 		{
 			string jsonS = json.ToString();
 			return jsonS;
-		}
-	}
-
-	public static class JObjectHelper
-	{
-
-		public static void AddCheck(this JObject jo, string fieldName, JToken fieldValue)
-		{
-			if (fieldValue != null)
-				jo[fieldName] = fieldValue;
-			else
-				jo.Remove(fieldName);
-		}
-
-		public static string RetrieveStringCheck(this JObject jo, string fieldName)
-		{
-			if (jo[fieldName] != null)
-				return jo[fieldName].Value<string>();
-			return null;
 		}
 	}
 }
