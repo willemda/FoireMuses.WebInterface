@@ -670,6 +670,51 @@ font-style:italic;
 {
     position:absolute;
     background-color:white;
+    width:640px;
     border: 1px solid black;
     text-align:left;
+}
+
+.suggest
+{
+    padding:2px;
+}
+
+.suggest_over
+{
+    padding:2px;
+    background-color:#E5EDF0;
+}
+
+ul#tabnav {
+    font: bold 11px verdana, arial, sans-serif;
+    list-style-type: none;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #E5EDF0;
+    margin: 0;
+}
+
+ul#tabnav li {
+    float: left;
+    height: 21px;
+    background-color: #E5EDF0;
+    margin: 2px 2px 0 2px;
+    border: 1px solid #E5EDF0;
+}
+
+ul#tabnav li.active {
+    border-bottom: 1px solid #fff;
+    background-color: #fff;
+}
+
+#tabnav a {
+    float: left;
+    display: block;
+    color: #666;
+    text-decoration: none;
+    padding: 4px;
+}
+
+#tabnav a:hover {
+    background: #fff;
 }

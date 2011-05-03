@@ -42,7 +42,7 @@ wordsToSearch
                         // Successful requests get here
                         // Update the page elements
                         if (data == '') {
-                            $('#result').html("");
+                            hideResult();
                         } else {
                             var elem = $(data + ' li')[0].getElementsByTagName('li');
                             var html = "";
@@ -52,12 +52,14 @@ wordsToSearch
 
                             }
                             $('#result').html(html);
+                            $('#result').fadeIn('fast');
                         }
                     });
-                } else {
-                    $('#result').html("");
+            } else {
+                hideResult();
             }
         });
+        hideResult();
         $("#TextualSourceSourceId").change();
     });
 
@@ -70,10 +72,15 @@ wordsToSearch
     }
 
     function setMatch(texte, id) {
+        hideResult();
         $('#MasterId').attr('value', id);
         $('#MasterIdTitle').attr('value', texte);
     }
 
+    function hideResult() {
+        $('#result').fadeOut('fast');
+        $('#result').html("");
+    }
 </script>
 <div id="encadreInfo">
 <p>

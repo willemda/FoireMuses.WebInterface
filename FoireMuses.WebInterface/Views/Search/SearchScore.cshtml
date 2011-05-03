@@ -1,0 +1,124 @@
+﻿@{
+    ViewBag.Title = "Search";
+}
+
+<script type="text/javascript">
+<!--
+
+function Fields(){
+	var elements = [];
+	
+	
+	this.AddAll = function(array){
+		for(var i = 0; i<array.length;i++){
+			elements[array[i]] = null;
+		}
+	}
+	
+	this.AddValue = function (fieldName, fieldValue){
+		elements[fieldName] = fieldValue;
+	}
+	
+	this.Remove = function (fieldName){
+		elements[fieldName] = null;
+	}
+	
+	this.GetChosenFields = function (){
+		var chosen = [];
+		for(var elem in elements){
+			if(elements[elem]!=null)
+				chosen[elem] = elements[elem];
+		}
+		return chosen;
+	}
+}
+
+    var searchTerms = ["Titre", "Compositeur", "Editeur", "Versets", "Music"];
+    var fields = new Fields();
+    fields.AddAll(searchTerms)
+
+    fields.AddValue("Titre", "hello");
+
+    var chos = fields.GetChosenFields();
+
+    var searchTermsList = [];
+    var searchTermsValues = [];
+
+    function remove(value) {
+        var temp = [];
+        var temp2 = [];
+        for (var term in searchTermsList) {
+            if (searchTermsList[term] != value) {
+                temp.push(searchTermsList[term]);
+                temp2.push(searchTermsValues[term]);
+            }
+        }
+        searchTermsList = temp;
+        searchTermsValues = temp2;
+        searchTerms.push(value);
+        refresh();
+    }
+
+    function refresh() {
+        var html = "";
+        for (var term in searchTerms) {
+            html += "<option value=\"" + searchTerms[term] + "\">" + searchTerms[term] + "</option>";
+        }
+        $("#fieldChoice").html(html);
+        $("#fieldValue").html("");
+
+        html = "<table>";
+        for (var i = 0; i < searchTermsList.length; i++) {
+            var obj =
+            html += "<tr><td>" + searchTermsList[i] + "</td><td>" + searchTermsValues[i] + "</td><td><input type=\"button\" value=\"-\" class=\"removeField\" onclick=\"remove('" + searchTermsList[i] + "');\"/></td></tr>";
+        }
+        html += "</table>";
+        $("#fieldAdded").html(html);
+    }
+
+    function add() {
+        var sel = document.getElementById("fieldChoice");
+        var option = sel.options[sel.selectedIndex];
+        var fieldName = option.value;
+        var input = document.getElementById("fieldValue");
+        var fieldValue = input.value;
+        searchTermsList.push(fieldName);
+        searchTermsValues.push(fieldValue);
+        var temp = [];
+        for (var term in searchTerms) {
+            if (searchTerms[term] != fieldName)
+                temp.push(searchTerms[term]);
+        }
+        searchTerms = temp;
+        refresh();
+    }
+
+    $(function () {
+        $("#addField").click(add);
+        refresh();
+    });
+    
+-->
+</script>
+
+<ul id="tabnav">
+    <li class="active"><a href="">Airs</a></li>
+    <li><a href="?type=music">Musique</a></li>
+    <li><a href="?type=source">Sources</a></li>
+    <li><a href="?type=play">Pièces</a></li>
+</ul>
+<div id="encadreInfo">
+<p>
+	<img class="helpIcon" src="../../Content/images/helpIcon.png" alt="help"/>Recherche d'un air</p>
+	<hr/>
+	<p>
+	Selectionnez un champ, indiquez une valeur, et cliquez sur le + afin d'ajouter un critère de recherche.
+    Les critères déjà validés sont affichés au dessus, il suffit de cliquez sur le - afin d'enlever un critère.
+</p>
+	</div>
+<form action="SearchScore" method="get" id="scoreSearch">
+<div id="fieldAdded"></div>
+<select name="fieldChoice" id="fieldChoice"></select><input type="text" id="fieldValue" name="fieldValue" /><input type="button" id="addField" name="addField" value="+"/>
+</form>
+
+
