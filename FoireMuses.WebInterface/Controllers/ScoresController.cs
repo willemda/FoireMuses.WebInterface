@@ -51,7 +51,7 @@ namespace FoireMuses.WebInterface.Controllers
 		{
 			FoireMusesConnection connection = GetConnection();
 			Result<SearchResult<ScoreSearchItem>> result = new Result<SearchResult<ScoreSearchItem>>();
-			SearchResult<ScoreSearchItem>  searchResult = connection.SearchScore((page - 1) * PageSize, PageSize, title, editor, composer, verses, music, null, result).Wait();
+			SearchResult<ScoreSearchItem>  searchResult = connection.SearchScore((page - 1) * PageSize, PageSize, title, null, editor, composer, verses, music, null, result).Wait();
 			var viewModel = new ListViewModel<ScoreSearchItem>()
 			{
 				CurrentPage = page,
@@ -132,7 +132,7 @@ namespace FoireMuses.WebInterface.Controllers
         {
             FoireMusesConnection connection = GetConnection();
             SearchResult<ScoreSearchItem> searchResultMaster = null;
-            searchResultMaster = connection.SearchScore(0, 20, wordsToSearch, null, null, null, null, true, new Result<SearchResult<ScoreSearchItem>>()).Wait();
+			searchResultMaster = connection.SearchScore(0, 20, null, wordsToSearch, null, null, null, null, true, new Result<SearchResult<ScoreSearchItem>>()).Wait();
             return PartialView("AjaxSearchForMaster", searchResultMaster.Rows);
         }
 

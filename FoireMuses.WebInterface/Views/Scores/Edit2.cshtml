@@ -34,7 +34,7 @@ recordToDelete
         });
         $("#MasterIdTitle").keyup(function () {
             var wordsToSearch = $(this).attr("value");
-            if(wordsToSearch !== "" && wordsToSearch.length > 2){
+            if (wordsToSearch !== "" && wordsToSearch.length > 2) {
                 $.post("/Scores/AjaxSearchMaster", { "wordsToSearch":
 wordsToSearch
                 },
@@ -44,14 +44,36 @@ wordsToSearch
                         if (data == '') {
                             $('#result').html("");
                         } else {
-                            $('#selectPiece').html("");
-                            $('#result').html(data);
+                            var elem = $(data + ' li')[0].getElementsByTagName('li');
+                            var html = "";
+                            for (var i = 0; i < elem.length; i++) {
+
+                                html += "<div onmouseover=\"suggestOver(this)\" onmouseout=\"suggestOut(this)\" onclick=\"setMatch('" + $(elem[i]).text() + "','" + $(elem[i]).attr('id') + "')\" class=\"suggest\">" + $(elem[i]).text() + "</div>";
+
+                            }
+                            $('#result').html(html);
                         }
                     });
+                } else {
+                    $('#result').html("");
             }
         });
         $("#TextualSourceSourceId").change();
     });
+
+
+    function suggestOver(elem) {
+        elem.className = "suggest_over";
+    }
+    function suggestOut(elem) {
+        elem.className = "suggest";
+    }
+
+    function setMatch(texte, id) {
+        $('#MasterId').attr('value', id);
+        $('#MasterIdTitle').attr('value', texte);
+    }
+
 </script>
 <div id="encadreInfo">
 <p>
@@ -66,10 +88,9 @@ wordsToSearch
 
 <input type="hidden" name="Id" value="@Model.Id" />
 <input type="hidden" id="MasterId" name="MasterId" value="@Model.MasterId" />
-<div id="result"></div>
 <table id="create">
 <tr><td><label>Air Maitre</label></td><td class="value">@Html.EditorFor(model => model.IsMaster)</td></tr>
-<tr><td><label>Air dont je suis Maitre</label></td><td class="value"><input id="MasterIdTitle" name="MasterIdTitle" type="text" value="@ViewBag.MasterIdTitle"/></td></tr>
+<tr><td><label>Air dont je suis Maitre</label></td><td class="value"><input id="MasterIdTitle" name="MasterIdTitle" type="text" value="@ViewBag.MasterIdTitle"/><div id="result"></div></td></tr>
 <tr><td class="label"><label>Titre</label></td><td class="value"><input name="Title" type="text" value="@Model.Title"/></td></tr>
 <tr><td><label>Compositeur</label></td><td class="value"><input name="Composer" type="text" value="@Model.Composer"/></td></tr>
 <tr><td><label>Editeur</label></td><td class="value"><input  name="Editor" type="text" value="@Model.Editor"/></td></tr>

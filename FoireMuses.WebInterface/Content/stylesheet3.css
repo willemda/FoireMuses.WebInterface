@@ -665,3 +665,11 @@ font-style:italic;
     width:200px;
 }
 
+
+#result
+{
+    position:absolute;
+    background-color:white;
+    border: 1px solid black;
+    text-align:left;
+}

@@ -322,13 +322,14 @@ namespace FoireMuses.Client
 
 
 
-		public Result<SearchResult<ScoreSearchItem>> SearchScore(int offset, int max, string title, string editor, string composer, string verses, string music, bool? isMaster, Result<SearchResult<ScoreSearchItem>> aResult)
+		public Result<SearchResult<ScoreSearchItem>> SearchScore(int offset, int max, string title, string titleWild, string editor, string composer, string verses, string music, bool? isMaster, Result<SearchResult<ScoreSearchItem>> aResult)
 		{
 			theServiceUri
 				.At("scores", "search")
 				.With("offset", offset)
 				.With("max", max)
 				.WithCheck("title", title)
+				.WithCheck("titleWild",titleWild)
 				.WithCheck("editor", editor)
 				.WithCheck("composer", composer)
 				.WithCheck("verses", verses)
