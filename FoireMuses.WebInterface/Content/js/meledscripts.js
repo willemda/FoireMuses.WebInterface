@@ -201,9 +201,9 @@ function handleKey(keychar) {
 }
 
 function setLength(len) {
-    var pointee = len.substring(length - 1) == ".";
+    var pointee = len.substring(len.length - 1) == ".";
     if (pointee) {
-        current[current.length - 1].l = len.substring(length - 1);
+        current[current.length - 1].l = len.substring(0,len.length - 1);
         current[current.length - 1].p = true;
     } else {
         current[current.length - 1].l = len
@@ -319,8 +319,8 @@ function shiftNote(diff) {
     }
 }
 
-function setFlats() {
-    flats = document.getElementById("flats").checked;
+function toggleFlats() {
+    flats = !flats
 	var reg;
 	var replace;
 	if(flats){
@@ -339,8 +339,12 @@ function setFlats() {
     updateView();
 }
 
-function setSound() {
-    playsound = document.getElementById("playsoundon").checked;
+function toggleSound(elem) {
+    playsound = !playsound;
+    var imageName = "soundoff.png";
+    if(playsound)
+      imageName = "soundon.png";
+    $(elem).html("<img src=\"../../Content/images/" + imageName + "\">");
 }
 
 function cssReplaceClass(oldClass, newClass) {
@@ -376,7 +380,7 @@ function keyboardmode() {
 		    kb+='<option'+ (kbd==keyboardLayouts[k] ? ' selected="selected"':'') +'>'+k+'</option>';
 		}
 		kb+='</select>';
-		document.getElementById("kbdlayout").innerHTML=kb;
+		//document.getElementById("kbdlayout").innerHTML=kb;
 
 		updateView();
 		//soundManagerInit();

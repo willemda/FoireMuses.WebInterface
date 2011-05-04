@@ -1,79 +1,83 @@
 ﻿@{
-    ViewBag.Title = "Search";
+    ViewBag.Title = "Rechercher - Air";
 }
-
 <script type="text/javascript">
 <!--
 
-function Fields(){
-	var elements = [];
-	
-	
-	this.AddAll = function(array){
-		for(var i = 0; i<array.length;i++){
-			elements[array[i]] = null;
-		}
-	}
-	
-	this.AddValue = function (fieldName, fieldValue){
-		elements[fieldName] = fieldValue;
-	}
-	
-	this.Remove = function (fieldName){
-		elements[fieldName] = null;
-	}
-	
-	this.GetChosenFields = function (){
-		var chosen = [];
-		for(var elem in elements){
-			if(elements[elem]!=null)
-				chosen[elem] = elements[elem];
-		}
-		return chosen;
-	}
-}
+    function Fields() {
+        var elements = [];
 
-    var searchTerms = ["Titre", "Compositeur", "Editeur", "Versets", "Music"];
+
+        this.AddAll = function (array) {
+            for (var i = 0; i < array.length; i++) {
+                elements[array[i]] = null;
+            }
+        }
+
+        this.AddValue = function (fieldName, fieldValue) {
+            elements[fieldName] = fieldValue;
+        }
+
+        this.Remove = function (fieldName) {
+            elements[fieldName] = null;
+        }
+
+        this.GetChosenFields = function () {
+            var chosen = [];
+            for (var elem in elements) {
+                if (elements[elem] != null)
+                    chosen[elem] = elements[elem];
+            }
+            return chosen;
+        }
+
+        this.GetUnChosenFields = function () {
+            var unchosen = [];
+            for (var elem in elements) {
+                if (elements[elem] == null)
+                    unchosen[elem] = elements[elem];
+            }
+            return unchosen;
+        }
+    }
+
+    var searchTerms = ["Titre", "Compositeur", "Editeur", "Versets"];
+    var traductions = [];
+    traductions["Titre"] = "title";
+    traductions["Compositeur"] = "composer";
+    traductions["Editeur"] = "editor";
+    traductions["Versets"] = "verses";
     var fields = new Fields();
     fields.AddAll(searchTerms)
 
-    fields.AddValue("Titre", "hello");
-
-    var chos = fields.GetChosenFields();
-
-    var searchTermsList = [];
-    var searchTermsValues = [];
-
     function remove(value) {
-        var temp = [];
-        var temp2 = [];
-        for (var term in searchTermsList) {
-            if (searchTermsList[term] != value) {
-                temp.push(searchTermsList[term]);
-                temp2.push(searchTermsValues[term]);
-            }
-        }
-        searchTermsList = temp;
-        searchTermsValues = temp2;
-        searchTerms.push(value);
+        fields.Remove(value);
         refresh();
     }
 
     function refresh() {
+        var unchosenFields = fields.GetUnChosenFields();
         var html = "";
-        for (var term in searchTerms) {
-            html += "<option value=\"" + searchTerms[term] + "\">" + searchTerms[term] + "</option>";
+        for (var item in unchosenFields) {
+            html += "<option value=\"" + item + "\">" + item + "</option>";
         }
-        $("#fieldChoice").html(html);
-        $("#fieldValue").html("");
 
-        html = "<table>";
-        for (var i = 0; i < searchTermsList.length; i++) {
-            var obj =
-            html += "<tr><td>" + searchTermsList[i] + "</td><td>" + searchTermsValues[i] + "</td><td><input type=\"button\" value=\"-\" class=\"removeField\" onclick=\"remove('" + searchTermsList[i] + "');\"/></td></tr>";
+        $("#fieldChoice").html(html);
+        $('#fieldValue').attr("value", "");
+
+        html = "<ul>";
+        var chosenFields = fields.GetChosenFields();
+        for (var item in chosenFields) {
+            html += "<li><div class=\"label\">" + item + "</div><input name=\"" + traductions[item] + "\" readyonly=readonly type=\"text\" class=\"input_value\" value=\"" + chosenFields[item] + "\"/><input type=\"button\" value=\"-\" class=\"removeField\" onclick=\"remove('" + item + "');\"/></li>";
         }
-        html += "</table>";
-        $("#fieldAdded").html(html);
+        html += "</ul>";
+        if (html != "<ul></ul>") {
+            $("#fieldAdded").html(html);
+            $("#fieldAdded").fadeIn('fast');
+        } else {
+            $("#fieldAdded").fadeOut('fast');
+            $("#fieldAdded").html(html);
+        }
     }
 
     function add() {
@@ -82,14 +86,7 @@ function Fields(){
         var fieldName = option.value;
         var input = document.getElementById("fieldValue");
         var fieldValue = input.value;
-        searchTermsList.push(fieldName);
-        searchTermsValues.push(fieldValue);
-        var temp = [];
-        for (var term in searchTerms) {
-            if (searchTerms[term] != fieldName)
-                temp.push(searchTerms[term]);
-        }
-        searchTerms = temp;
+        fields.AddValue(fieldName, fieldValue);
         refresh();
     }
 
@@ -100,7 +97,6 @@ function Fields(){
     
 -->
 </script>
-
 <ul id="tabnav">
     <li class="active"><a href="">Airs</a></li>
     <li><a href="?type=music">Musique</a></li>
@@ -108,17 +104,22 @@ function Fields(){
     <li><a href="?type=play">Pièces</a></li>
 </ul>
 <div id="encadreInfo">
-<p>
-	<img class="helpIcon" src="../../Content/images/helpIcon.png" alt="help"/>Recherche d'un air</p>
-	<hr/>
-	<p>
-	Selectionnez un champ, indiquez une valeur, et cliquez sur le + afin d'ajouter un critère de recherche.
-    Les critères déjà validés sont affichés au dessus, il suffit de cliquez sur le - afin d'enlever un critère.
-</p>
-	</div>
+    <p>
+        <img class="helpIcon" src="../../Content/images/helpIcon.png" alt="help" />Recherche
+        d'un air</p>
+    <hr />
+    <p>
+        Selectionnez un champ, indiquez une valeur, et cliquez sur le + afin d'ajouter un
+        critère de recherche. Les critères déjà validés sont affichés au dessus, il suffit
+        de cliquez sur le - afin d'enlever un critère.
+    </p>
+</div>
 <form action="SearchScore" method="get" id="scoreSearch">
-<div id="fieldAdded"></div>
-<select name="fieldChoice" id="fieldChoice"></select><input type="text" id="fieldValue" name="fieldValue" /><input type="button" id="addField" name="addField" value="+"/>
+<div id="fieldAdded">
+</div>
+<select name="fieldChoice" id="fieldChoice">
+</select><input type="text" id="fieldValue" name="fieldValue" /><input type="button"
+    id="addField" name="addField" value="+" />
+<br />
+<input type="submit" class="submit" value="Rechercher" />
 </form>
-
-

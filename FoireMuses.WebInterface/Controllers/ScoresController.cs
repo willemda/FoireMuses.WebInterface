@@ -51,7 +51,7 @@ namespace FoireMuses.WebInterface.Controllers
 		{
 			FoireMusesConnection connection = GetConnection();
 			Result<SearchResult<ScoreSearchItem>> result = new Result<SearchResult<ScoreSearchItem>>();
-			SearchResult<ScoreSearchItem>  searchResult = connection.SearchScore((page - 1) * PageSize, PageSize, title, null, editor, composer, verses, music, null, result).Wait();
+			SearchResult<ScoreSearchItem> searchResult = connection.SearchScore((page - 1) * PageSize, PageSize, title, null, editor, composer, verses, music, null, result).Wait();
 			var viewModel = new ListViewModel<ScoreSearchItem>()
 			{
 				CurrentPage = page,
@@ -128,13 +128,13 @@ namespace FoireMuses.WebInterface.Controllers
 		}
 
 
-        public ActionResult AjaxSearchMaster(string wordsToSearch)
-        {
-            FoireMusesConnection connection = GetConnection();
-            SearchResult<ScoreSearchItem> searchResultMaster = null;
+		public ActionResult AjaxSearchMaster(string wordsToSearch)
+		{
+			FoireMusesConnection connection = GetConnection();
+			SearchResult<ScoreSearchItem> searchResultMaster = null;
 			searchResultMaster = connection.SearchScore(0, 20, null, wordsToSearch, null, null, null, null, true, new Result<SearchResult<ScoreSearchItem>>()).Wait();
-            return PartialView("AjaxSearchForMaster", searchResultMaster.Rows);
-        }
+			return PartialView("AjaxSearchForMaster", searchResultMaster.Rows);
+		}
 
 		[HttpPost]
 		public ActionResult Publish(string scoreId, string overwrite, HttpPostedFileBase file)
@@ -212,10 +212,10 @@ namespace FoireMuses.WebInterface.Controllers
 				//we use the same view to edit and create, so let's differentiate both
 				if (model.Id == null)
 				{
-                    if (model.TextualSource.SourceId == null)
-                        model.TextualSource = null;
-                    if (model.MusicalSource.SourceId == null)
-                        model.MusicalSource = null;
+					if (model.TextualSource.SourceId == null)
+						model.TextualSource = null;
+					if (model.MusicalSource.SourceId == null)
+						model.MusicalSource = null;
 					model = connection.CreateScore(model, new Result<Score>()).Wait();
 				}
 				else
@@ -234,13 +234,14 @@ namespace FoireMuses.WebInterface.Controllers
 			{
 				//if during creation
 				if (model.Id == null)
-					{
+				{
 					return Redirect("erreur");
-				}else
+				}
+				else
 				{//during update, redirect to details/edit + error message?
 					return Redirect("Details?scoreId=" + model.Id);
 				}
-				
+
 			}
 
 			//redirect to details

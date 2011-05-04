@@ -97,7 +97,7 @@ wordsToSearch
 <input type="hidden" id="MasterId" name="MasterId" value="@Model.MasterId" />
 <table id="create">
 <tr><td><label>Air Maitre</label></td><td class="value">@Html.EditorFor(model => model.IsMaster)</td></tr>
-<tr><td><label>Air dont je suis Maitre</label></td><td class="value"><input id="MasterIdTitle" name="MasterIdTitle" type="text" value="@ViewBag.MasterIdTitle"/><div id="result"></div></td></tr>
+<tr><td><label>Air dont je suis Maitre</label></td><td class="value"><input autocomplete="off" id="MasterIdTitle" name="MasterIdTitle" type="text" value="@ViewBag.MasterIdTitle"/><div id="result"></div></td></tr>
 <tr><td class="label"><label>Titre</label></td><td class="value"><input name="Title" type="text" value="@Model.Title"/></td></tr>
 <tr><td><label>Compositeur</label></td><td class="value"><input name="Composer" type="text" value="@Model.Composer"/></td></tr>
 <tr><td><label>Editeur</label></td><td class="value"><input  name="Editor" type="text" value="@Model.Editor"/></td></tr>

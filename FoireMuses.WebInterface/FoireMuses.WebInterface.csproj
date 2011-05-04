@@ -620,7 +620,10 @@
     <Content Include="Content\images\piano_js\r4.gif" />
     <Content Include="Content\images\piano_js\r4p.gif" />
     <Content Include="Content\images\piano_js\r8.gif" />
+    <Content Include="Content\images\play.png" />
     <Content Include="Content\images\right.png" />
+    <Content Include="Content\images\soundoff.png" />
+    <Content Include="Content\images\soundon.png" />
     <Content Include="Content\js\meledscripts.js" />
     <Content Include="Content\js\onload.js" />
     <Content Include="Content\js\sliderman.1.2.1.js" />
@@ -793,6 +796,7 @@
     <Content Include="Views\Search\SearchMusic.cshtml" />
     <Content Include="Views\Search\SearchPlay.cshtml" />
     <Content Include="Views\Search\SearchSource.cshtml" />
+    <Content Include="Views\Search\ListScoreSearch.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

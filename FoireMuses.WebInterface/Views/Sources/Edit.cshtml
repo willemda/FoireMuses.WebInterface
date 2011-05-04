@@ -3,18 +3,26 @@
 
  <form action="" method="post">
     <input type="hidden" name="Id" value="@Model.Id" />
-    <div class="bigField"><label for="Name">
-        Nom</label><input id="edit_Name" name="Name" type="text" value="@Model.Name"/></div>
-    <div class="bigField"><label for="Publisher">
-        Publisher</label><input id="edit_Publisher" name="Publisher" type="text" value="@Model.Publisher"/></div>
-    <div class="bigField"><label for="Cote">
-        Cote</label><input id="edit_Cote" name="Cote" type="text" value="@Model.Cote"/></div>
-    <div class="bigField"><label for="DateFrom">
-        DateFrom</label><input id="edit_DateFrom" name="DateFrom" type="text" value="@Model.DateFrom"/></div>
-    <div class="bigField"><label for="DateTo">
-        DateTo</label><input id="edit_DateTo" name="DateTo" type="text" value="@Model.DateTo"/></div>
-    <div class="bigField"><label for="Abbreviation">
-        Resumé</label><textarea id="edit_Abbreviation" name="Abbreviation">@Model.Abbreviation</textarea></div>
-        <input type="submit" value="Creer"/>
+    <table>
+    <tr><td>Nom</td><td><input type="text" name="Name" value="@Model.Name" /></td></tr>
+    <tr><td>Editeur</td><td><input type="text" name="Publisher" value="@Model.Publisher" /></td></tr>
+    <tr><td>Cote</td><td><input type="text" name="Cote" value="@Model.Cote" /></td></tr>
+    <tr><td>Date</td><td>De <input type="text" name="DateFrom" value="@Model.DateFrom" /> à <input type="text" name="DateTo" value="@Model.DateTo" /></td></tr>
+    <tr><td>Abbreviation</td><td><input type="text" name="Abbreviation" value="@Model.Abbreviation" /></td></tr>
+    <tr><td>Date approximative</td><td>
+   
+        @if (Model.ApproxDate != null && Model.ApproxDate.Value)
+        { 
+        <input checked="checked" class="check-box" name="ApproxDate" type="checkbox" value="true" />
+        }
+        else
+        {
+            <input class="check-box" name="ApproxDate" type="checkbox" value="true" />
+        }
+        <input name="ApproxDate" type="hidden" value="false" />
+        
+    </td></tr>
+    </table>
+    <input type="submit" value="Creer" />
 </form>
 
