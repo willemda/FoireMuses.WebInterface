@@ -14,8 +14,12 @@
 <input type="file" id="file" name="file"/><br/>
 @if (ViewBag.ScoreId != null)
 {
-    <input type="checkbox" name="overwrite" value="overwrite" />
+    Html.Raw("Overwrite xml: "); <input type="checkbox" name="overwrite" value="true" /><input type="hidden" name="overwrite" value="false" />
     <input type="hidden" name="scoreId" value="@ViewBag.ScoreId" />
+}
+else
+{
+    <input type="hidden" name="overwrite" value="true" />
 }
 <input class="right" type="submit" value="Creer"/>
 </form>

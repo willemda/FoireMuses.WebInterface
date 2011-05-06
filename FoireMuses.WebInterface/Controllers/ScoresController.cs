@@ -30,7 +30,7 @@ namespace FoireMuses.WebInterface.Controllers
 			}
 			catch (Exception e)
 			{
-				// do stuff to return error message to the screen
+				return View("Error","Error while trying to retrieve the scores list");
 			}
 			var viewModel = new ListViewModel<Score>()
 			{
@@ -46,24 +46,14 @@ namespace FoireMuses.WebInterface.Controllers
 			return View();
 		}
 
-		[HttpGet]
-		public ViewResult Searching(string title, string editor, string composer, string verses, string music, int page = 1)
-		{
-			FoireMusesConnection connection = GetConnection();
-			Result<SearchResult<ScoreSearchItem>> result = new Result<SearchResult<ScoreSearchItem>>();
-			SearchResult<ScoreSearchItem> searchResult = connection.SearchScore((page - 1) * PageSize, PageSize, title, null, editor, composer, verses, music, null, result).Wait();
-			var viewModel = new ListViewModel<ScoreSearchItem>()
-			{
-				CurrentPage = page,
-				SearchResult = searchResult
-			};
-			return View(viewModel);
-		}
-
 		//
 		// GET: /Scores/Details
 		public ViewResult Details(string scoreId)
 		{
+			if (String.IsNullOrWhiteSpace(scoreId))
+			{
+				return View("List");
+			}
 			//use mindtouch dream to access the web service.
 			// treat the result and return it to the view
 			FoireMusesConnection connection = GetConnection();
@@ -76,6 +66,10 @@ namespace FoireMuses.WebInterface.Controllers
 			try
 			{
 				score = connection.GetScore(scoreId, new Result<Score>()).Wait();
+				if (score == null)
+				{
+					return View("Error", "No score exists for id " + scoreId);
+				}
 				if (score.TextualSource != null)
 				{
 					sTextuelle = connection.GetSource(score.TextualSource.SourceId, new Result<Source>()).Wait();
@@ -92,7 +86,7 @@ namespace FoireMuses.WebInterface.Controllers
 			}
 			catch (Exception e)
 			{
-				// do stuff to return error message to the screen
+				return View("Error", "Error while trying to retrieve informations of the score " + scoreId);
 			}
 			ViewBag.TextualSource = sTextuelle;
 			ViewBag.AssociatedPlay = assPlay;
@@ -109,36 +103,56 @@ namespace FoireMuses.WebInterface.Controllers
 			return View();
 		}
 
-		public ViewResult Publish(string scoreId, string scoreRev)
+		public ViewResult Publish(string scoreId)
 		{
-			if (scoreId == null || scoreRev == null)
+			if (scoreId == null)
 				return View();
 			ViewBag.ScoreId = scoreId;
-			ViewBag.ScoreRev = scoreRev;
 			return View();
 		}
 
 
 		public ActionResult GetPlaysForSource(string id)
 		{
+			if (String.IsNullOrWhiteSpace(id))
+			{
+				return PartialView("playList", new List<Play>());
+			}
 			FoireMusesConnection connection = GetConnection();
 			SearchResult<Play> searchResultPlay = null;
-			searchResultPlay = connection.GetPlaysFromSource(id, 0, 0, new Result<SearchResult<Play>>()).Wait();
+			try
+			{
+				searchResultPlay = connection.GetPlaysFromSource(id, 0, 0, new Result<SearchResult<Play>>()).Wait();
+			}
+			catch (Exception e)
+			{
+				theLogger.Error("Error while getting plays from source " + id);
+				theLogger.Error(e.StackTrace);
+			}
 			return PartialView("playList", searchResultPlay.Rows);
 		}
 
 
 		public ActionResult AjaxSearchMaster(string wordsToSearch)
 		{
+			if (String.IsNullOrWhiteSpace(wordsToSearch))
+			{
+				return PartialView("AjaxSearchForMaster", new List<ScoreSearchItem>());
+			}
 			FoireMusesConnection connection = GetConnection();
 			SearchResult<ScoreSearchItem> searchResultMaster = null;
-			searchResultMaster = connection.SearchScore(0, 20, null, wordsToSearch, null, null, null, null, true, new Result<SearchResult<ScoreSearchItem>>()).Wait();
+			searchResultMaster = connection.SearchScore(0, 20, new Dictionary<string, object>() { {"isMaster",true},{"titleWild",wordsToSearch}}, new Result<SearchResult<ScoreSearchItem>>()).Wait();
 			return PartialView("AjaxSearchForMaster", searchResultMaster.Rows);
 		}
 
 		[HttpPost]
-		public ActionResult Publish(string scoreId, string overwrite, HttpPostedFileBase file)
+		public ActionResult Publish(string scoreId, bool overwrite, HttpPostedFileBase file)
 		{
+			if (file == null || file.ContentType != "text/xml" || file.ContentLength == 0)
+			{
+				ViewBag.Error = "Error during the upload, please be sure to choose a valid xml file from your computer";
+				return View("Publish");
+			}
 			theLogger.Info("Start Publishing");
 			FoireMusesConnection connection = GetConnection();
 			Score score = null;
@@ -151,13 +165,13 @@ namespace FoireMuses.WebInterface.Controllers
 			}
 			else
 			{
-				bool ovwrite;
-				if (overwrite == "overwrite")
-					ovwrite = true;
-				else
-					ovwrite = false;
 				Score current = connection.GetScore(scoreId, new Result<Score>()).Wait();
-				score = connection.UpdateScoreWithXml(current.Id, current.Rev, XDocFactory.From(file.InputStream, MimeType.XML), ovwrite, new Result<Score>()).Wait();
+				if (current == null)
+				{
+					ViewBag.Error = "Error, there's no score with scoreId "+scoreId;
+					return View("Publish");
+				}
+				score = connection.UpdateScoreWithXml(current.Id, current.Rev, XDocFactory.From(file.InputStream, MimeType.XML), overwrite, new Result<Score>()).Wait();
 				return Redirect("Details?scoreId=" + current.Id);
 			}
 			return Redirect("Edit?scoreId=" + score.Id);

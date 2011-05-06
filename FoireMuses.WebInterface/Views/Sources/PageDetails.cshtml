@@ -1,0 +1,33 @@
+﻿@model FoireMuses.Client.SourcePage
+
+@{
+    ViewBag.Title = "PageDetails";
+}
+
+@if (Model.PageNumber != null)
+{
+    <div>Numéro de page</div><div>@Model.PageNumber</div>
+}
+
+@if (Model.DisplayPageNumber != null)
+{
+    <div>Numéro de page affiché</div><div>@Model.DisplayPageNumber</div>
+}
+
+@if (Model.PageNumberFormat != null)
+{
+    <div>Format du numéro de page</div><div>@Model.PageNumberFormat</div>
+}
+
+@if (Model.TextContent != null)
+{
+    <div>Contenu</div><div>@Model.TextContent</div>
+}
+
+
+<div id="menuSourcePage">
+<ul>
+<li><a href="pageedit?sourcePageId=@Model.Id">Modifier</a></li>
+<li><a href="details?sourceId=@Model.SourceId">Retour source</a></li>
+</ul>
+</div>

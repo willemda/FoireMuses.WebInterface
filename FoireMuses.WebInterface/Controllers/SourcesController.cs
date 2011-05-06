@@ -9,8 +9,8 @@ using MindTouch.Tasking;
 
 namespace FoireMuses.WebInterface.Controllers
 {
-    public class SourcesController : FoireMusesController
-    {
+	public class SourcesController : FoireMusesController
+	{
 		public int PageSize = 20;
 
 		public ViewResult List(int page = 1)
@@ -50,7 +50,7 @@ namespace FoireMuses.WebInterface.Controllers
 			try
 			{
 				source = connection.GetSource(sourceId, new Result<Source>()).Wait();
-				
+
 				if (source.HasAttachement)
 				{
 					attachedFiles = source.GetAttachmentNames().Where(x => !x.StartsWith("$"));
@@ -67,77 +67,132 @@ namespace FoireMuses.WebInterface.Controllers
 		}
 
 
-        public ViewResult Edit(string sourceId)
-        {
-            FoireMusesConnection connection = GetConnection();
-            Source source = null;
-            try
-            {
-                if (sourceId != null)//get the score matching the id
-                {
-                    source = connection.GetSource(sourceId, new Result<Source>()).Wait();
-                    ViewBag.HeadTitle = "Edit";
-                }
-                else
-                {
-                    source = new Source();
-                    ViewBag.HeadTitle = "Create";
-                }
-            }
-            catch (Exception e)
-            {
-                // on redirige
-            }
-            if (source == null)
-            {
-                //on redirige
-            }
-            return View("Edit", source);
-        }
+		public ViewResult Edit(string sourceId)
+		{
+			FoireMusesConnection connection = GetConnection();
+			Source source = null;
+			try
+			{
+				if (sourceId != null)//get the score matching the id
+				{
+					source = connection.GetSource(sourceId, new Result<Source>()).Wait();
+					ViewBag.HeadTitle = "Edit";
+				}
+				else
+				{
+					source = new Source();
+					ViewBag.HeadTitle = "Create";
+				}
+			}
+			catch (Exception e)
+			{
+				// on redirige
+			}
+			if (source == null)
+			{
+				//on redirige
+			}
+			return View("Edit", source);
+		}
 
-        public ActionResult Create()
-        {
-            return RedirectToAction("Edit");
-        }
+		public ActionResult Create()
+		{
+			return RedirectToAction("Edit");
+		}
 
-        [HttpPost]
-        public ActionResult Edit(Source model, FormCollection collection)
-        {
-            //little trick here because it automatically creates a TextualSource and MusicalSource even if they are empty
+		public ActionResult PageCreate(string sourceId)
+		{
+			//test si sourceId est !null et appartient bien à une source
+			return RedirectToAction("PageEdit", new {sourceId = sourceId});
+		}
 
-            FoireMusesConnection connection = GetConnection();
-            try
-            {
-                //we use the same view to edit and create, so let's differentiate both
-                if (model.Id == null)
-                {
-                    model = connection.CreateSource(model, new Result<Source>()).Wait();
-                }
-                else
-                {
-                    //when updating, first get the current score out of the db then update with values
-                    Source current = connection.GetSource(model.Id, new Result<Source>()).Wait();
-                    TryUpdateModel(current);
-                    model = connection.EditSource(current, new Result<Source>()).Wait();
-                }
-            }
-            catch (Exception e)
-            {
-                //if during creation
-                if (model.Id == null)
-                {
-                    return Redirect("erreur");
-                }
-                else
-                {//during update, redirect to details/edit + error message?
-                    return Redirect("Details?sourceId=" + model.Id);
-                }
+		public ViewResult PageEdit(string sourcePageId, string sourceId){
+			SourcePage page = null;
+			if(sourcePageId == null)
+			{
+				page = new SourcePage();
+				page.SourceId = sourceId;
+			}else{
+				FoireMusesConnection connection = GetConnection();
+				page = connection.GetSourcePage(sourcePageId, new Result<SourcePage>()).Wait();
+			}
+			return View(page);
+		}
 
-            }
+		[HttpPost]
+		public ActionResult PageEdit(SourcePage model)
+		{
+			FoireMusesConnection connection = GetConnection();
+			if (model.Id == null)
+			{
+				model = connection.CreateSourcePage(model, new Result<SourcePage>()).Wait();
+			}
+			else
+			{
+				SourcePage current = connection.GetSourcePage(model.Id, new Result<SourcePage>()).Wait();
+				TryUpdateModel(current);
+				model = connection.EditSourcePage(current, new Result<SourcePage>()).Wait();
+			}
+			return View("PageDetails", model);
+		}
 
-            //redirect to details
-            return Redirect("Details?sourceId=" + model.Id);
-        }
+		public ViewResult PageDetails(string sourcePageId)
+		{
+			if (String.IsNullOrWhiteSpace(sourcePageId))
+			{
+				return View("Error", "The page you are looking for doesn't exist.");
+			}
+			FoireMusesConnection connection = GetConnection();
+			SourcePage page = connection.GetSourcePage(sourcePageId, new Result<SourcePage>()).Wait();
+			if (page == null)
+			{
+				return View("Error", "The page you are looking for doesn't exist.");
+			}
+			return View(page);
+		}
 
-    }
+		[HttpPost]
+		public ActionResult Edit(Source model, FormCollection collection)
+		{
+			//little trick here because it automatically creates a TextualSource and MusicalSource even if they are empty
+
+			FoireMusesConnection connection = GetConnection();
+			try
+			{
+				//we use the same view to edit and create, so let's differentiate both
+				if (model.Id == null)
+				{
+					model = connection.CreateSource(model, new Result<Source>()).Wait();
+				}
+				else
+				{
+					//when updating, first get the current score out of the db then update with values
+					Source current = connection.GetSource(model.Id, new Result<Source>()).Wait();
+					TryUpdateModel(current);
+					model = connection.EditSource(current, new Result<Source>()).Wait();
+				}
+			}
+			catch (Exception e)
+			{
+				//if during creation
+				if (model.Id == null)
+				{
+					//log
+					return View("Error", "Error while creating the source");
+				}
+				else
+				{
+					//during update, redirect to details/edit + error message?
+					//log
+					ViewBag.Error = "Error while updating the score";
+					return Redirect("Details?sourceId=" + model.Id);
+				}
+
+			}
+
+			//redirect to details
+			return Redirect("Details?sourceId=" + model.Id);
+		}
+
+	}
 }

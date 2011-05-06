@@ -35,33 +35,33 @@ namespace FoireMuses.Client
 
 		public int? PageNumber
 		{
-			get { return json["pageNumber"].Value<int?>(); }
-			set { json["pageNumber"] = value; }
+			get { return json.RetrieveIntCheck("pageNumber"); }
+			set { json.AddCheck("pageNumber",value); }
 		}
 
 		public int? DisplayPageNumber
 		{
-			get { return json["displayPageNumber"].Value<int?>(); }
-			set { json["displayPageNumber"] = value; }
+			get { return json.RetrieveIntCheck("displayPageNumber"); }
+			set { json.AddCheck("displayPageNumber", value); }
 		}
 
 		public int? PageNumberFormat
 		{
-			get { return json["pageNumberFormat"].Value<int?>(); }
-			set { json["pageNumberFormat"] = value; }
+			get { return json.RetrieveIntCheck("pageNumberFormat"); }
+			set { json.AddCheck("pageNumberFormat", value); }
 		}
 
 		public string TextContent
 		{
-			get { return json["textContent"].Value<string>(); }
-			set { json["textContent"] = value; }
+			get { return json.RetrieveStringCheck("textContent"); }
+			set { json.AddCheck("textContent", value); }
 		}
 
 
 		public string SourceId
 		{
-			get { return json["sourceId"].Value<string>(); }
-			set { json["sourceId"] = value; }
+			get { return json.RetrieveStringCheck("sourceId"); }
+			set { json.AddCheck("sourceId", value); }
 		}
 
 		public string ToString()

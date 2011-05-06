@@ -792,11 +792,13 @@
     <Content Include="Views\Scores\Edit2.cshtml" />
     <Content Include="Views\Sources\Edit.cshtml" />
     <Content Include="Views\Shared\AjaxSearchForMaster.cshtml" />
-    <Content Include="Views\Search\SearchScore.cshtml" />
-    <Content Include="Views\Search\SearchMusic.cshtml" />
-    <Content Include="Views\Search\SearchPlay.cshtml" />
-    <Content Include="Views\Search\SearchSource.cshtml" />
+    <Content Include="Views\Search\Score.cshtml" />
+    <Content Include="Views\Search\Music.cshtml" />
+    <Content Include="Views\Search\Play.cshtml" />
+    <Content Include="Views\Search\Source.cshtml" />
     <Content Include="Views\Search\ListScoreSearch.cshtml" />
+    <Content Include="Views\Sources\PageEdit.cshtml" />
+    <Content Include="Views\Sources\PageDetails.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
