@@ -1,4 +1,5 @@
-﻿<html>
+﻿@using FoireMuses.WebInterface.HtmlHelpers
+<html>
 <head>
     <title>@ViewBag.HeadTitle</title>
     <link href="@Url.Content("~/Content/stylesheet3.css")" rel="stylesheet" type="text/css" />
@@ -10,9 +11,19 @@
         <div id="header">
             <div id="links">
                 <ul id="list">
-                    <li><a href="/login">log in</a> </li>
-                    <li><a href="/faq">help</a> </li>
-                    <li class="first"><a href="/signup">sign up</a> </li>
+                       @if (!User.Identity.IsAuthenticated)
+                       {
+                    <li class="first"><a href="/users/login/">log in</a> </li>
+                       }
+                       else
+                       {
+                           if (Roles.IsUserInRole("ADMIN"))
+                           {
+                               <li><a href="/Admin/">Administration</a></li>
+                           }
+                           <li><a href="#">@User.Identity.Name</a></li>
+                           <li class="first"><a href="/users/logout/">log out</a></li>
+                       }
                 </ul>
             </div>
             <div id="banner">

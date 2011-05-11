@@ -9,9 +9,11 @@ using Newtonsoft.Json.Linq;
 using FoireMuses.WebInterface.Models;
 using FoireMuses.Client;
 using MindTouch.Xml;
+using System.IO;
 
 namespace FoireMuses.WebInterface.Controllers
 {
+	[Authorize]
 	public class ScoresController : FoireMusesController
 	{
 		private static readonly log4net.ILog theLogger = log4net.LogManager.GetLogger(typeof(ScoresController));
@@ -61,6 +63,7 @@ namespace FoireMuses.WebInterface.Controllers
 			Source sTextuelle = null;
 			Source sMusicale = null;
 			Play assPlay = null;
+			IList<ScoreSearchItem> otherTitlesScore = null;
 			IEnumerable<string> attachedFiles = null;
 			IEnumerable<string> documents = null;
 			try
@@ -83,6 +86,14 @@ namespace FoireMuses.WebInterface.Controllers
 					attachedFiles = score.GetAttachmentNames().Where(x => !x.StartsWith("$"));
 					documents = score.GetAttachmentNames().Where(x => x.StartsWith("$"));
 				}
+				if (score.IsMaster)
+				{
+					otherTitlesScore = connection.SearchScore(0, 0, new Dictionary<string, object>() { { "masterId", score.Id } }, new Result<SearchResult<ScoreSearchItem>>()).Wait().Rows;
+				}
+				else if(score.MasterId!=null)
+				{
+					otherTitlesScore = connection.SearchScore(0, 0, new Dictionary<string, object>() { { "masterId", score.MasterId} }, new Result<SearchResult<ScoreSearchItem>>()).Wait().Rows;
+				}
 			}
 			catch (Exception e)
 			{
@@ -93,6 +104,7 @@ namespace FoireMuses.WebInterface.Controllers
 			ViewBag.MusicalSource = sMusicale;
 			ViewBag.AttachedFiles = attachedFiles;
 			ViewBag.Documents = documents;
+			ViewBag.OtherTitlesScore = otherTitlesScore;
 			return View(score);
 		}
 
@@ -145,6 +157,13 @@ namespace FoireMuses.WebInterface.Controllers
 			return PartialView("AjaxSearchForMaster", searchResultMaster.Rows);
 		}
 
+		public FileStreamResult GetAttachements(string scoreId, string attachementName)
+		{
+			FoireMusesConnection connection = GetConnection();
+			Stream file = connection.GetAttachements(scoreId, attachementName , new Result<Stream>()).Wait();
+			return new FileStreamResult(file, "image/png");
+		}
+
 		[HttpPost]
 		public ActionResult Publish(string scoreId, bool overwrite, HttpPostedFileBase file)
 		{
@@ -193,6 +212,11 @@ namespace FoireMuses.WebInterface.Controllers
 						SearchResult<Play> searchResultPlay = null;
 						searchResultPlay = connection.GetPlaysFromSource(score.TextualSource.SourceId, 0, 0, new Result<SearchResult<Play>>()).Wait();
 						ViewBag.Pieces = searchResultPlay.Rows;
+					}
+					if (score.MasterId != null)
+					{
+						Score maitre = connection.GetScore(score.MasterId, new Result<Score>()).Wait();
+						ViewBag.MasterIdTitle = maitre.Title;
 					}
 					ViewBag.HeadTitle = "Edit";
 				}

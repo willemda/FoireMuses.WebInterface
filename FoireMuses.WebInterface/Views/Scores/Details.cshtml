@@ -73,6 +73,23 @@
             </div>
         </div>
     }
+    
+    @if (ViewBag.OtherTitlesScore != null)
+    {
+        <div id="otherTitles"><strong>Autre(s) titre(s):</strong><ul>
+        @foreach (var item in ViewBag.OtherTitlesScore)
+        {
+            if (item.Id != Model.Id)
+            {
+                <li>
+                <a href="details?scoreId=@item.Id">@item.Title</a>
+                </li>
+            }
+            
+        }</ul>
+        </div>
+    }
+
     @if (Model.Tags != null)
     {
         <div id="tags">

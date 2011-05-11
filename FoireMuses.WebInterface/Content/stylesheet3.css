@@ -560,6 +560,12 @@ font-style:italic;
 	background: url(../../Content/images/bullet_active.png) no-repeat center center;
 }
 
+#otherTitles ul
+{
+    list-style-type:none;
+    padding-left:20px;
+}
+
 /*CSS LIST SCORES*/
 
 #pre-list

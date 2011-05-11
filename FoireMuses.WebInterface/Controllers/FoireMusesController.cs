@@ -5,23 +5,30 @@ using System.Web;
 using System.Web.Mvc;
 using FoireMuses.Client;
 using MindTouch.Dream;
+using System.Web.Security;
 
 namespace FoireMuses.WebInterface.Controllers
 {
-    public class FoireMusesController : Controller
-    {
+	public class FoireMusesController : Controller
+	{
 		protected FoireMusesConnection GetConnection()
 		{
-			string userName = "danny";//HttpContext.User.Identity.Name;
-			if (String.IsNullOrEmpty(userName))
+
+			FoireMusesConnection connection = new FoireMusesConnection(new XUri("http://localhost/foiremuses"), "secretusername", "secretpassword");
+
+			if (!User.Identity.IsAuthenticated)
 			{
-				throw new ApplicationException(String.Format("Unable to authenticate the user with IP address {0} and user agent {1}", HttpContext.Request.UserHostAddress, HttpContext.Request.UserAgent));
+				return connection;
+
 			}
-
-			// Enables the remote process to use the user's credentials instead of this process' credentials
-			//use settings to create default creditentials to be used by the server.
-			return new FoireMusesConnection(new XUri("http://localhost/foiremuses"), "danny", "azerty").Impersonate(userName);
+			else
+			{
+				// Enables the remote process to use the user's credentials instead of this process' credentials
+				//use settings to create default creditentials to be used by the server.
+				//use some secret key
+				connection.Impersonate(User.Identity.Name);
+				return connection;
+			}
 		}
-
-    }
+	}
 }

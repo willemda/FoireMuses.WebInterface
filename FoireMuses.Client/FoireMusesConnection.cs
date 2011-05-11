@@ -8,6 +8,7 @@ using MindTouch.Tasking;
 using Newtonsoft.Json.Linq;
 using MindTouch.Xml;
 using FoireMuses.Client.Helpers;
+using System.IO;
 
 namespace FoireMuses.Client
 {
@@ -27,12 +28,57 @@ namespace FoireMuses.Client
 			theServiceUri = Plug.New(aServiceUri).WithCredentials(aCredentials);//with timeout
 		}
 
-		public FoireMusesConnection Impersonate(string aFullUserName)
+		public FoireMusesConnection(XUri aServiceUri)
 		{
-			theServiceUri = theServiceUri.WithHeader("FOIREMUSES-IMPERSONATE", aFullUserName);
-			return this;
+			theServiceUri = Plug.New(aServiceUri);//with timeout
 		}
 
+		public void Impersonate(string username)
+		{
+			theServiceUri = theServiceUri.WithHeader("FoireMusesImpersonate", username);
+		}
+
+
+		public Result<User> GetUser(string username, Result<User> aResult)
+		{
+			theServiceUri.At("users", username)
+				.Get(new Result<DreamMessage>())
+				.WhenDone(delegate(Result<DreamMessage> answer)
+				{
+					if (!answer.Value.IsSuccessful)
+					{
+						aResult.Throw(answer.Exception);
+					}
+					else
+					{
+						aResult.Return(new User(JObject.Parse(answer.Value.ToText())));
+					}
+				}
+				);
+			return aResult;
+		}
+
+		public Result<User> Login(string username, string password, Result<User> aResult)
+		{
+			theServiceUri.At("users", "login")
+				.WithCheck("username", username)
+				.WithCheck("password", password)
+				.Post(new Result<DreamMessage>())
+				.WhenDone(delegate(Result<DreamMessage> answer)
+				{
+					if (!answer.Value.IsSuccessful)
+					{
+						aResult.Throw(answer.Exception);
+					}
+					else
+					{
+						aResult.Return(new User(JObject.Parse(answer.Value.ToText())));
+					}
+				}
+				);
+			return aResult;
+
+		}
 
 		public Result<Play> GetPlay(string PlayId, Result<Play> aResult)
 		{
@@ -291,6 +337,27 @@ namespace FoireMuses.Client
 							aResult.Return(new SearchResult<Score>(JObject.Parse(answer.Value.ToText())));
 						}
 					}
+				);
+			return aResult;
+		}
+
+		public Result<Stream> GetAttachements(string scoreId, string fileName, Result<Stream> aResult)
+		{
+			theServiceUri
+				.At("scores", scoreId, "attachements", fileName)
+				.Get(new Result<DreamMessage>())
+				.WhenDone(delegate(Result<DreamMessage> answer)
+				{
+					if (!answer.Value.IsSuccessful)
+					{
+						if (answer.Value.Status != DreamStatus.Ok)
+							aResult.Throw(new Exception());
+					}
+					else
+					{
+						aResult.Return(answer.Value.ToStream());
+					}
+				}
 				);
 			return aResult;
 		}

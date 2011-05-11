@@ -34,6 +34,7 @@ namespace FoireMuses.Client
 		public string Id
 		{
 			get { return this["_id"].Value<string>(); }
+			set { this["_id"] = value; }
 		}
 
 		public string Password
@@ -46,6 +47,12 @@ namespace FoireMuses.Client
 		{
 			get { return this["email"].Value<string>(); }
 			set { this["email"] = value; }
+		}
+
+		public bool IsAdmin
+		{
+			get { return this["isAdmin"].Value<bool>(); }
+			set { this["isAdmin"] = value; }
 		}
 
 		public IEnumerable<string> Groups

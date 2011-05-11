@@ -9,6 +9,7 @@ using MindTouch.Tasking;
 
 namespace FoireMuses.WebInterface.Controllers
 {
+	[Authorize]
 	public class SourcesController : FoireMusesController
 	{
 		public int PageSize = 20;

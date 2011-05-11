@@ -10,6 +10,7 @@ using FoireMuses.WebInterface.Models;
 
 namespace FoireMuses.WebInterface.Controllers
 {
+	[Authorize]
 	public class SearchController : FoireMusesController
 	{
 		//

@@ -73,19 +73,30 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\AccessDeniedAuthorizeAttribute.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\FoireMusesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\PlaysController.cs" />
     <Compile Include="Controllers\ScoresController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\SourcesController.cs" />
+    <Compile Include="CustomMemberShipProvider.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HDIMembershipProvide.cs" />
     <Compile Include="Helpers\Helpers.cs" />
+    <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\CreateScoreModel.cs" />
     <Compile Include="Models\ListViewModel.cs" />
+    <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\ScoreDetailModel.cs" />
+    <Compile Include="Models\SourceRightsModel.cs" />
+    <Compile Include="MyMembershipProvider.cs" />
+    <Compile Include="MyRoleProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -799,6 +810,11 @@
     <Content Include="Views\Search\ListScoreSearch.cshtml" />
     <Content Include="Views\Sources\PageEdit.cshtml" />
     <Content Include="Views\Sources\PageDetails.cshtml" />
+    <Content Include="Views\Users\Login.cshtml" />
+    <Content Include="Views\Admin\CreateUser.cshtml" />
+    <Content Include="Views\Admin\ChangeRights.cshtml" />
+    <Content Include="Views\Users\Denied.cshtml" />
+    <Content Include="Views\Error\Error.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
@@ -819,8 +835,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>4875</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>
-          </IISUrl>
+          <IISUrl>http://localhost/FoireMuses.WebInterface</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

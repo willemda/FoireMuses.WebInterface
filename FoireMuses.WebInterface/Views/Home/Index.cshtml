@@ -6,3 +6,9 @@
 <p>
     To learn more about Foire Muses visit <a href="/faq" title="Foire Muses FAQ">http://foiremuses.org/faq</a>.
 </p>
+@if (Session["username"] != null)
+{
+    <p>
+    Welcome @Session["username"]
+    </p>
+}
