@@ -6,6 +6,7 @@ using System.Web.Security;
 using FoireMuses.Client;
 using MindTouch.Tasking;
 using MindTouch.Dream;
+using FoireMuses.Webinterface.Configurations;
 
 namespace FoireMuses.Webinterface
 {
@@ -56,7 +57,7 @@ namespace FoireMuses.Webinterface
 
 		public override string[] GetRolesForUser(string username)
 		{
-			FoireMusesConnection connection = new FoireMusesConnection(new XUri("http://localhost/foiremuses"),"secretusername","secretpassword");
+			FoireMusesConnection connection = new FoireMusesConnection(new XUri("http://localhost/foiremuses"), Configuration.ApiUsername, Configuration.ApiPassword);
 			User user = connection.GetUser(username, new Result<User>()).Wait();
 			if (user.IsAdmin)
 				return new string[] { "ADMIN", "MEMBER" };

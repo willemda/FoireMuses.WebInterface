@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using FoireMuses.Client;
 using MindTouch.Dream;
 using System.Web.Security;
+using FoireMuses.Webinterface.Configurations;
 
 namespace FoireMuses.WebInterface.Controllers
 {
@@ -14,12 +15,11 @@ namespace FoireMuses.WebInterface.Controllers
 		protected FoireMusesConnection GetConnection()
 		{
 
-			FoireMusesConnection connection = new FoireMusesConnection(new XUri("http://localhost/foiremuses"), "secretusername", "secretpassword");
+			FoireMusesConnection connection = new FoireMusesConnection(new XUri("http://localhost/foiremuses"), Configuration.ApiUsername, Configuration.ApiPassword);
 
 			if (!User.Identity.IsAuthenticated)
 			{
 				return connection;
-
 			}
 			else
 			{

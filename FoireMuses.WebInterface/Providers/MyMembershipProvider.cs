@@ -6,6 +6,7 @@ using System.Web.Security;
 using FoireMuses.Client;
 using MindTouch.Dream;
 using MindTouch.Tasking;
+using FoireMuses.Webinterface.Configurations;
 
 namespace FoireMuses.Webinterface
 {
@@ -13,7 +14,7 @@ namespace FoireMuses.Webinterface
 	{
 		public override bool ValidateUser(string username, string password)
 		{
-			FoireMusesConnection connection = new FoireMusesConnection(new XUri("http://localhost/foiremuses"), "secretusername", "secretpassword");
+			FoireMusesConnection connection = new FoireMusesConnection(new XUri("http://localhost/foiremuses"), Configuration.ApiUsername, Configuration.ApiPassword);
 			if (connection.Login(username, password, new Result<User>()).Wait() == null)
 				return false;
 			return true;

@@ -235,7 +235,7 @@ namespace FoireMuses.WebInterface.Controllers
 			{
 				//on redirige
 			}
-			ViewBag.Sources = sourceList.Rows;
+			ViewBag.Sources = sourceList.Rows.OrderBy(x=>x.Name);
 			return View("Edit2", score);
 		}
 
