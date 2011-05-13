@@ -10,6 +10,7 @@ using FoireMuses.WebInterface.Models;
 
 namespace FoireMuses.WebInterface.Controllers
 {
+	[Authorize]
 	public class SearchController : FoireMusesController
 	{
 		//
@@ -17,32 +18,41 @@ namespace FoireMuses.WebInterface.Controllers
 		private int PageSize = 20;
 
 
-		public ActionResult Index(string type)
+		public ActionResult Index()
 		{
-			switch (type)
-			{
-				case "score":
-					ViewBag.Action = "SearchScore";
-					return View("SearchScore");
-				case "play":
-					return View("SearchPlay");
-				case "music":
-					ViewBag.Action = "SearchMusic";
-					return View("SearchMusic");
-				case "source":
-					return View("SearchSource");
-				default:
-					ViewBag.Action = "SearchScore";
-					return View("SearchScore");
-			}
+			return Redirect("Score");
 		}
 
+		public ViewResult Music()
+		{
+			return View();
+		}
 
-		public ViewResult SearchScore(string title = null, string editor = null, string composer = null, string verses = null,int page = 1)
+		public ViewResult Score()
+		{
+			return View();
+		}
+
+		public ViewResult Source()
+		{
+			return View();
+		}
+
+		public ViewResult Play()
+		{
+			return View();
+		}
+	
+
+		public ActionResult SearchScore(string title = null, string editor = null, string composer = null, string verses = null,int page = 1)
 		{
 			FoireMusesConnection connection = GetConnection();
 			Result<SearchResult<ScoreSearchItem>> result = new Result<SearchResult<ScoreSearchItem>>();
-			SearchResult<ScoreSearchItem> searchResult = connection.SearchScore((page - 1) * PageSize, PageSize, title, null, editor, composer, verses, null, null, result).Wait();
+			if(title==null && editor == null && composer == null && verses == null){
+				ViewBag.Error = "You must specify at least one criteria before making a search";
+				return View("SearchScore");
+			}
+			SearchResult<ScoreSearchItem> searchResult = connection.SearchScore((page - 1) * PageSize, PageSize, new Dictionary<string, object>() { {"title",title},{"editor",editor},{"composer",composer},{"verses",verses}}, result).Wait();
 			var viewModel = new ListViewModel<ScoreSearchItem>()
 			{
 				CurrentPage = page,
@@ -53,9 +63,14 @@ namespace FoireMuses.WebInterface.Controllers
 
 		public ViewResult SearchMusic(string music = null, int page = 1)
 		{
+			if (String.IsNullOrWhiteSpace(music))
+			{
+				ViewBag.Error = "You must at least search for one note";
+				return View("SearchMusic");
+			}
 			FoireMusesConnection connection = GetConnection();
 			Result<SearchResult<ScoreSearchItem>> result = new Result<SearchResult<ScoreSearchItem>>();
-			SearchResult<ScoreSearchItem> searchResult = connection.SearchScore((page - 1) * PageSize, PageSize, null, null, null, null, null, music, null, result).Wait();
+			SearchResult<ScoreSearchItem> searchResult = connection.SearchScore((page - 1) * PageSize, PageSize, new Dictionary<string, object>() { {"music",music}}, result).Wait();
 			var viewModel = new ListViewModel<ScoreSearchItem>()
 			{
 				CurrentPage = page,

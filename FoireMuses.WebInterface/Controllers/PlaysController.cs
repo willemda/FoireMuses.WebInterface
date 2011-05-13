@@ -10,6 +10,7 @@ using FoireMuses.Client;
 
 namespace MvcMovie.Controllers
 {
+	[Authorize]
     public class PlaysController : Controller
     {
         protected Plug BasePlug = Plug.New(new XUri("http://localhost"));

@@ -73,6 +73,23 @@
             </div>
         </div>
     }
+    
+    @if (ViewBag.OtherTitlesScore != null)
+    {
+        <div id="otherTitles"><strong>Autre(s) titre(s):</strong><ul>
+        @foreach (var item in ViewBag.OtherTitlesScore)
+        {
+            if (item.Id != Model.Id)
+            {
+                <li>
+                <a href="details?scoreId=@item.Id">@item.Title</a>
+                </li>
+            }
+            
+        }</ul>
+        </div>
+    }
+
     @if (Model.Tags != null)
     {
         <div id="tags">
@@ -149,7 +166,7 @@
 }
 <div id="menuScore">
     <ul>
-        <li><a href="publish?scoreId=@Model.Id&scoreRev=@Model.Rev">Changer partition</a>
+        <li><a href="publish?scoreId=@Model.Id">Changer partition</a>
         </li>
         <li><a href="edit?scoreId=@Model.Id">Modifier informations</a> </li>
         <li><a href="#">Attacher un fichier</a> </li>

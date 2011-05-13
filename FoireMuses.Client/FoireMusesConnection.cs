@@ -8,6 +8,7 @@ using MindTouch.Tasking;
 using Newtonsoft.Json.Linq;
 using MindTouch.Xml;
 using FoireMuses.Client.Helpers;
+using System.IO;
 
 namespace FoireMuses.Client
 {
@@ -27,12 +28,57 @@ namespace FoireMuses.Client
 			theServiceUri = Plug.New(aServiceUri).WithCredentials(aCredentials);//with timeout
 		}
 
-		public FoireMusesConnection Impersonate(string aFullUserName)
+		public FoireMusesConnection(XUri aServiceUri)
 		{
-			theServiceUri = theServiceUri.WithHeader("FOIREMUSES-IMPERSONATE", aFullUserName);
-			return this;
+			theServiceUri = Plug.New(aServiceUri);//with timeout
 		}
 
+		public void Impersonate(string username)
+		{
+			theServiceUri = theServiceUri.WithHeader("FoireMusesImpersonate", username);
+		}
+
+
+		public Result<User> GetUser(string username, Result<User> aResult)
+		{
+			theServiceUri.At("users", username)
+				.Get(new Result<DreamMessage>())
+				.WhenDone(delegate(Result<DreamMessage> answer)
+				{
+					if (!answer.Value.IsSuccessful)
+					{
+						aResult.Throw(answer.Exception);
+					}
+					else
+					{
+						aResult.Return(new User(JObject.Parse(answer.Value.ToText())));
+					}
+				}
+				);
+			return aResult;
+		}
+
+		public Result<User> Login(string username, string password, Result<User> aResult)
+		{
+			theServiceUri.At("users", "login")
+				.WithCheck("username", username)
+				.WithCheck("password", password)
+				.Post(new Result<DreamMessage>())
+				.WhenDone(delegate(Result<DreamMessage> answer)
+				{
+					if (!answer.Value.IsSuccessful)
+					{
+						aResult.Throw(answer.Exception);
+					}
+					else
+					{
+						aResult.Return(new User(JObject.Parse(answer.Value.ToText())));
+					}
+				}
+				);
+			return aResult;
+
+		}
 
 		public Result<Play> GetPlay(string PlayId, Result<Play> aResult)
 		{
@@ -295,6 +341,71 @@ namespace FoireMuses.Client
 			return aResult;
 		}
 
+		public Result<Stream> GetAttachements(string scoreId, string fileName, Result<Stream> aResult)
+		{
+			theServiceUri
+				.At("scores", scoreId, "attachements", fileName)
+				.Get(new Result<DreamMessage>())
+				.WhenDone(delegate(Result<DreamMessage> answer)
+				{
+					if (!answer.Value.IsSuccessful)
+					{
+						if (answer.Value.Status != DreamStatus.Ok)
+							aResult.Throw(new Exception());
+					}
+					else
+					{
+						aResult.Return(answer.Value.ToStream());
+					}
+				}
+				);
+			return aResult;
+		}
+
+		public Result<SourcePage> CreateSourcePage(SourcePage aSourcePage, Result<SourcePage> aResult)
+		{
+			theServiceUri
+				.At("sources","pages")
+				.Post(DreamMessage.Ok(MimeType.JSON, aSourcePage.ToString()), new Result<DreamMessage>())
+				.WhenDone(delegate(Result<DreamMessage> answer)
+				{
+					if (!answer.Value.IsSuccessful)
+					{
+						if (answer.Value.Status != DreamStatus.Ok)
+							aResult.Throw(new Exception());
+					}
+					else
+					{
+						aResult.Return(new SourcePage(JObject.Parse(answer.Value.ToText())));
+					}
+				}
+				);
+			return aResult;
+		}
+
+		public Result<SourcePage> EditSourcePage(SourcePage aSourcePage, Result<SourcePage> aResult)
+		{
+			theServiceUri
+				.At("sources", "pages")
+				.With("id", aSourcePage.Id)
+				.With("rev", aSourcePage.Rev)
+				.Put(DreamMessage.Ok(MimeType.JSON, aSourcePage.ToString()), new Result<DreamMessage>())
+				.WhenDone(delegate(Result<DreamMessage> answer)
+				{
+					if (!answer.Value.IsSuccessful)
+					{
+						if (answer.Value.Status != DreamStatus.Ok)
+							aResult.Throw(new Exception());
+					}
+					else
+					{
+						aResult.Return(new SourcePage(JObject.Parse(answer.Value.ToText())));
+					}
+				}
+				);
+			return aResult;
+		}
+
 		public Result<SearchResult<Play>> GetPlaysFromSource(string sourceId, int offset, int max, Result<SearchResult<Play>> aResult)
 		{
 			theServiceUri
@@ -321,20 +432,39 @@ namespace FoireMuses.Client
 		}
 
 
-
-		public Result<SearchResult<ScoreSearchItem>> SearchScore(int offset, int max, string title, string titleWild, string editor, string composer, string verses, string music, bool? isMaster, Result<SearchResult<ScoreSearchItem>> aResult)
+		public Result<SourcePage> GetSourcePage(string sourcePageId, Result<SourcePage> aResult)
 		{
 			theServiceUri
-				.At("scores", "search")
-				.With("offset", offset)
-				.With("max", max)
-				.WithCheck("title", title)
-				.WithCheck("titleWild",titleWild)
-				.WithCheck("editor", editor)
-				.WithCheck("composer", composer)
-				.WithCheck("verses", verses)
-				.WithCheck("music", music)
-                .WithCheck("isMaster",isMaster)
+				.At("sources","pages",sourcePageId)
+				.Get(new Result<DreamMessage>())
+				.WhenDone(delegate(Result<DreamMessage> answer)
+				{
+					if (!answer.Value.IsSuccessful)
+					{
+						if (answer.Value.Status == DreamStatus.NotFound)
+							aResult.Return((SourcePage)null);
+						else
+							aResult.Throw(answer.Exception);
+					}
+					else
+					{
+						aResult.Return(new SourcePage(JObject.Parse(answer.Value.ToText())));
+					}
+				}
+				);
+			return aResult;
+
+		}
+
+
+		public Result<SearchResult<ScoreSearchItem>> SearchScore(int offset, int max, Dictionary<string, object> parameters, Result<SearchResult<ScoreSearchItem>> aResult)
+		{
+			Plug temp = theServiceUri
+				.At("scores", "search");
+			foreach(KeyValuePair<string, object> pair in parameters){
+				temp = temp.WithCheck(pair.Key, pair.Value);
+			}
+				temp
 				.Get(new Result<DreamMessage>())
 				.WhenDone(delegate(Result<DreamMessage> answer)
 				{

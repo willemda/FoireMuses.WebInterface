@@ -1,0 +1,15 @@
+﻿@model FoireMuses.Webinterface.Models.RegisterModel
+
+@{
+    ViewBag.HeadTitle = "Créer user";
+}
+
+<form action="" method="post">
+    <label>Username</label><input type="text" name="Username"/><br />
+    <label>Password</label><input type="text" name="Password"/><br />
+    <label>Password Confirmation</label><input type="text" name="PasswordConfirmation"/><br />
+    <label>Email</label><input type="text" name="Email"/><br />
+    <label>Administrator</label><input type="checkbox" name="IsAdmin" value="true"/><input type="hidden" name="IsAdmin" value="false" /><br />
+    <input type="submit" value="Creer" />
+</form>
+

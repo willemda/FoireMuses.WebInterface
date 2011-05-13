@@ -1,0 +1,18 @@
+﻿@model FoireMuses.Client.SourcePage
+
+@{
+    ViewBag.Title = "FoireMuses - Add a new page to a source";
+}
+ 
+ <form action="" method="post">
+    <input type="hidden" name="Id" value="@Model.Id" />
+    <input type="hidden" name="SourceId" value="@Model.SourceId" />
+    <table>
+    <tr><td>Numéro de page</td><td><input type="text" name="PageNumber" value="@Model.PageNumber" /></td></tr>
+    <tr><td>Numéro de page affiché</td><td><input type="text" name="DisplayPageNumber" value="@Model.DisplayPageNumber" /></td></tr>
+    <tr><td>Format de numérotation</td><td><input type="text" name="PageNumberFormat" value="@Model.PageNumberFormat" /></td></tr>
+    <tr><td>Contenu</td><td><textarea rows="20" cols="50" name="TextContent">@if(Model.TextContent!=null){@Model.TextContent}</textarea></td></tr>
+    </table>
+    <input type="submit" value="Creer" />
+</form>
+

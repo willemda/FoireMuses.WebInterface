@@ -1,0 +1,17 @@
+﻿@model FoireMuses.WebInterface.Models.SourceRightsModel
+@{
+    ViewBag.Title = "Rights Management";
+}
+
+<div>
+<form action="#" method="post">
+<ul>
+    @foreach (string user in Model.Users)
+    {
+        <li>user<input type="button" id="@user" value="-" /></li>
+    }
+</ul>
+<input type="text" id="iduser" name="iduser" /><input type="button" id="add" value="+" /><br />
+</form>
+<a href="/sources/details?sourceId=@Model.SourceId">Retour a la source</a>
+</div>
