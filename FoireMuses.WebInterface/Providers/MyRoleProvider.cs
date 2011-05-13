@@ -57,7 +57,7 @@ namespace FoireMuses.Webinterface
 
 		public override string[] GetRolesForUser(string username)
 		{
-			FoireMusesConnection connection = new FoireMusesConnection(new XUri("http://localhost/foiremuses"), Configuration.ApiUsername, Configuration.ApiPassword);
+            FoireMusesConnection connection = new FoireMusesConnection(new XUri(Configuration.ApiUrl + ":" + Configuration.ApiPort + "/" + Configuration.ApiAt), Configuration.ApiUsername, Configuration.ApiPassword);
 			User user = connection.GetUser(username, new Result<User>()).Wait();
 			if (user.IsAdmin)
 				return new string[] { "ADMIN", "MEMBER" };
@@ -74,7 +74,7 @@ namespace FoireMuses.Webinterface
 		{
 			if (roleName == "MEMBER")
 				return true;
-			FoireMusesConnection connection = new FoireMusesConnection(new XUri("http://localhost/foiremuses"),"secretusername", "secretpassword");
+            FoireMusesConnection connection = new FoireMusesConnection(new XUri(Configuration.ApiUrl + ":" + Configuration.ApiPort + "/" + Configuration.ApiAt), Configuration.ApiUsername, Configuration.ApiPassword);
 			User user = connection.GetUser(username, new Result<User>()).Wait();
 			if (user.IsAdmin)
 				return true;
