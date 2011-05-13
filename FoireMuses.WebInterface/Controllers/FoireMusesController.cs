@@ -15,7 +15,7 @@ namespace FoireMuses.WebInterface.Controllers
 		protected FoireMusesConnection GetConnection()
 		{
 
-			FoireMusesConnection connection = new FoireMusesConnection(new XUri("http://localhost/foiremuses"), Configuration.ApiUsername, Configuration.ApiPassword);
+			FoireMusesConnection connection = new FoireMusesConnection(new XUri(Configuration.ApiUrl+":"+Configuration.ApiPort+"/"+Configuration.ApiAt), Configuration.ApiUsername, Configuration.ApiPassword);
 
 			if (!User.Identity.IsAuthenticated)
 			{

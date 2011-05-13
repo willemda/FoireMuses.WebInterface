@@ -17,5 +17,20 @@ namespace FoireMuses.Webinterface.Configurations
 		{
 			get { return ConfigurationManager.AppSettings["ApiPassword"]; }
 		}
+
+        public static string ApiUrl
+        {
+            get { return ConfigurationManager.AppSettings["ApiUrl"]; }
+        }
+
+        public static string ApiPort
+        {
+            get { return ConfigurationManager.AppSettings["ApiPort"]; }
+        }
+
+        public static string ApiAt
+        {
+            get { return ConfigurationManager.AppSettings["ApiAt"]; }
+        }
 	}
 }

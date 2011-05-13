@@ -14,7 +14,7 @@ namespace FoireMuses.Webinterface
 	{
 		public override bool ValidateUser(string username, string password)
 		{
-			FoireMusesConnection connection = new FoireMusesConnection(new XUri("http://localhost/foiremuses"), Configuration.ApiUsername, Configuration.ApiPassword);
+            FoireMusesConnection connection = new FoireMusesConnection(new XUri(Configuration.ApiUrl + ":" + Configuration.ApiPort + "/" + Configuration.ApiAt), Configuration.ApiUsername, Configuration.ApiPassword);
 			if (connection.Login(username, password, new Result<User>()).Wait() == null)
 				return false;
 			return true;
