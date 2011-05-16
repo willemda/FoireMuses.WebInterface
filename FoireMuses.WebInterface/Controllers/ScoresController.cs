@@ -60,6 +60,7 @@ namespace FoireMuses.WebInterface.Controllers
 			// treat the result and return it to the view
 			FoireMusesConnection connection = GetConnection();
 			Score score = null;
+			Score genericScore = null;
 			Source sTextuelle = null;
 			Source sMusicale = null;
 			Play assPlay = null;
@@ -92,6 +93,7 @@ namespace FoireMuses.WebInterface.Controllers
 				}
 				else if(score.MasterId!=null)
 				{
+					genericScore = connection.GetScore(score.MasterId, new Result<Score>()).Wait();
 					otherTitlesScore = connection.SearchScore(0, 0, new Dictionary<string, object>() { { "masterId", score.MasterId} }, new Result<SearchResult<ScoreSearchItem>>()).Wait().Rows;
 				}
 			}
@@ -105,9 +107,41 @@ namespace FoireMuses.WebInterface.Controllers
 			ViewBag.AttachedFiles = attachedFiles;
 			ViewBag.Documents = documents;
 			ViewBag.OtherTitlesScore = otherTitlesScore;
+			ViewBag.GenericScore = genericScore;
 			return View(score);
 		}
 
+
+		public ActionResult Images(string scoreId, string fileName){
+			FoireMusesConnection connection = GetConnection();
+			Stream theStream;
+			theStream = connection.GetAttachements(scoreId, fileName, new Result<Stream>()).Wait();
+			return File(theStream, "image/png");
+		}
+
+		public ActionResult Download(string scoreId, string fileType, string fileName)
+		{
+			FoireMusesConnection connection = GetConnection();
+			Stream theStream;
+			string contentType;
+			switch (fileType)
+			{
+				case "pdf":
+					contentType = "application/pdf";
+						break;
+				case "mid":
+					contentType = "audio/midi";
+						break;
+				case "musicxml":
+					contentType = "text/xml";
+					break;
+				default:
+					contentType = "";
+					break;
+			}
+			theStream = connection.GetConvertedScore(scoreId, fileName, new Result<Stream>()).Wait();
+			return File(theStream, contentType, fileName);
+		}
 
 
 		public ViewResult Create()

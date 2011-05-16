@@ -8,20 +8,16 @@
     {
         <div id="downloads">
             <ul>
-                <li><a href="http://localhost/foiremuses/scores/@Model.Id/$@Model.Title@Html.Raw(".pdf")" target="_blank">
+                <li><a href="Download?scoreId=@Model.Id&fileType=pdf&fileName=@Model.Title@Html.Raw(".pdf")" target="_blank">
                     <img src="../../Content/images/pdfIcon.jpg" /></a> </li>
-                <li><a href="http://localhost/foiremuses/scores/@Model.Id/$@Model.Title@Html.Raw(".xml")" target="_blank">
+                <li><a href="Download?scoreId=@Model.Id&fileType=xml&fileName=@Model.Title@Html.Raw(".xml")" target="_blank">
                     <img src="../../Content/images/xmlIcon.png" /></a> </li>
-                <li><a href="http://localhost/foiremuses/scores/@Model.Id/$@Model.Title@Html.Raw(".mid")" target="_blank">
+                <li><a href="Download?scoreId=@Model.Id&fileType=mid&fileName=@Model.Title@Html.Raw(".mid")" target="_blank">
                     <img src="../../Content/images/midiIcon.png" /></a> </li>
             </ul>
         </div>
     }
-    <div id="titleDisplay">@Model.Title @if (Model.IsMaster)
-                                        {<span> (Maitre)</span>}@if (Model.MasterId != null)
-                                                               {
-        <div id="type"><a href="Details?ScoreId=@Model.MasterId"> (Aller à l'air maître)</a></div>
-                                                               }</div>
+    <div id="titleDisplay">@Model.Title</div>
     @if (Model.Composer != null)
     {
         <div id="composer">
@@ -74,7 +70,14 @@
         </div>
     }
     
-    @if (ViewBag.OtherTitlesScore != null)
+    @if (ViewBag.GenericScore != null)
+    {
+        <div id="genericTitle"><strong>Titre générique:</strong>
+        <a href="Details?scoreId=@ViewBag.GenericScore.Id">@ViewBag.GenericScore.Title</a>
+        </div>
+    }
+
+    @if (ViewBag.OtherTitlesScore != null && (ViewBag.OtherTitlesScore as IEnumerable<FoireMuses.Client.ScoreSearchItem>).Where(x=>x.Id!=Model.Id).Count()>0)
     {
         <div id="otherTitles"><strong>Autre(s) titre(s):</strong><ul>
         @foreach (var item in ViewBag.OtherTitlesScore)
@@ -85,7 +88,7 @@
                 <a href="Details?scoreId=@item.Id">@item.Title</a>
                 </li>
             }
-            
+
         }</ul>
         </div>
     }
@@ -110,7 +113,7 @@
                     string fileName = "$partition" + i + ".png";
                     if (i == 1)
                     {
-                    <img src="http://localhost/foiremuses/scores/@Model.Id/attachments/@fileName" width="500" height="600" alt="Demo2 first"
+                    <img src="Images?scoreId=@Model.Id&fileName=@fileName" width="500" height="600" alt="Demo2 first"
                     title="Demo2 first" usemap="#img1map" />
                     <map name="img1map">
                         <area href="#img1map-area1" shape="rect" coords="100,100,200,200" />
@@ -119,7 +122,7 @@
                     }
                     else
                     {
-                    <img src="http://localhost/foiremuses/scores/@Model.Id/attachments/@fileName" width="500" height="600" alt="Demo2 second"
+                    <img src="Images?scoreId=@Model.Id&fileName=@fileName" width="500" height="600" alt="Demo2 second"
                     title="Demo2 second" />
                     }
                     <div class="SliderName_2Description">

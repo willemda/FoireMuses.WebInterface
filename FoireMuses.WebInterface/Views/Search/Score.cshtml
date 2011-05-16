@@ -68,7 +68,7 @@
         html = "<ul>";
         var chosenFields = fields.GetChosenFields();
         for (var item in chosenFields) {
-            html += "<li><div class=\"label\">" + item + "</div><input name=\"" + traductions[item] + "\" readyonly=readonly type=\"text\" class=\"input_value\" value=\"" + chosenFields[item] + "\"/><input type=\"button\" value=\"-\" class=\"removeField\" onclick=\"remove('" + item + "');\"/></li>";
+            html += "<li><div class=\"label\">" + item + "</div><input name=\"" + traductions[item] + "\" readonly=readonly type=\"text\" class=\"input_value\" value=\"" + chosenFields[item] + "\"/><input type=\"button\" value=\"-\" class=\"removeField\" onclick=\"remove('" + item + "');\"/></li>";
         }
         html += "</ul>";
         if (html != "<ul></ul>") {

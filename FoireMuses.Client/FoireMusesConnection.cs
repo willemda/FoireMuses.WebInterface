@@ -224,6 +224,29 @@ namespace FoireMuses.Client
 			return aResult;
 		}
 
+		public Result<Stream> GetConvertedScore(string scoreId, string fileName, Result<Stream> aResult)
+		{
+			theServiceUri
+				.At("scores", scoreId, XUri.Encode(fileName))
+				.Get(new Result<DreamMessage>())
+				.WhenDone(delegate(Result<DreamMessage> answer)
+				{
+					if (!answer.Value.IsSuccessful)
+					{
+						if (answer.Value.Status == DreamStatus.NotFound)
+							aResult.Return((Stream)null);
+						else
+							aResult.Throw(answer.Exception);
+					}
+					else
+					{
+						aResult.Return(answer.Value.ToStream());
+					}
+				}
+				);
+			return aResult;
+		}
+
 
 		public Result<Score> CreateScore(Score score, Result<Score> aResult)
 		{
@@ -341,10 +364,12 @@ namespace FoireMuses.Client
 			return aResult;
 		}
 
+		
+
 		public Result<Stream> GetAttachements(string scoreId, string fileName, Result<Stream> aResult)
 		{
 			theServiceUri
-				.At("scores", scoreId, "attachements", fileName)
+				.At("scores", scoreId, "attachments", fileName)
 				.Get(new Result<DreamMessage>())
 				.WhenDone(delegate(Result<DreamMessage> answer)
 				{
