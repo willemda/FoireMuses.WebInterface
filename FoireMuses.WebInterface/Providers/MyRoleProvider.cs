@@ -8,7 +8,7 @@ using MindTouch.Tasking;
 using MindTouch.Dream;
 using FoireMuses.Webinterface.Configurations;
 
-namespace FoireMuses.Webinterface
+namespace FoireMuses.WebInterface
 {
 	public class MyRoleProvider : RoleProvider
 	{

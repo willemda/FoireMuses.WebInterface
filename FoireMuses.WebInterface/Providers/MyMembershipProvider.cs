@@ -8,7 +8,7 @@ using MindTouch.Dream;
 using MindTouch.Tasking;
 using FoireMuses.Webinterface.Configurations;
 
-namespace FoireMuses.Webinterface
+namespace FoireMuses.WebInterface
 {
 	public class MyMembershipProvider : MembershipProvider
 	{

@@ -20,7 +20,7 @@
     <div id="titleDisplay">@Model.Title @if (Model.IsMaster)
                                         {<span> (Maitre)</span>}@if (Model.MasterId != null)
                                                                {
-        <div id="type"><a href="details?scoreId=@Model.MasterId"> (Aller à l'air maître)</a></div>
+        <div id="type"><a href="Details?ScoreId=@Model.MasterId"> (Aller à l'air maître)</a></div>
                                                                }</div>
     @if (Model.Composer != null)
     {
@@ -51,14 +51,14 @@
                 @if (Model.TextualSource != null)
                 {
                     <div id="sourcetext"><strong>Textuelle:</strong>
-                        <a href="sources?id=@ViewBag.TextualSource.Id" title="cliquer pour aller voir la source">@ViewBag.TextualSource.Name,
+                        <a href="Sources?id=@ViewBag.TextualSource.Id" title="cliquer pour aller voir la source">@ViewBag.TextualSource.Name,
                             @ViewBag.TextualSource.DateFrom - @ViewBag.TextualSource.DateTo, Page @Model.TextualSource.Page,
                             Volume @Model.TextualSource.Volume, Tome @Model.TextualSource.Tome,
                             de @ViewBag.TextualSource.Publisher</a></div>
                     
                           if (Model.TextualSource.PieceId != null)
                           {
-                        <div id="sourcepiece"><strong>Pièce associée:</strong> <a href="plays?id=@ViewBag.AssociatedPlay.Id" title="cliquer
+                        <div id="sourcepiece"><strong>Pièce associée:</strong> <a href="Plays?id=@ViewBag.AssociatedPlay.Id" title="cliquer
                         pour aller voir la pièce">@ViewBag.AssociatedPlay.Title, Act @Model.TextualSource.ActNumber,
                         Scene @Model.TextualSource.SceneNumber</a></div>
                           }
@@ -66,7 +66,7 @@
                 @if (Model.MusicalSource != null)
                 {
                     <div id="sourcemusic"><strong>Musicale:</strong>
-                        <a href="sources?id=@ViewBag.MusicalSource.Id" title="cliquer pour aller voir la source">@ViewBag.TextualSource.Name,
+                        <a href="Sources?id=@ViewBag.MusicalSource.Id" title="cliquer pour aller voir la source">@ViewBag.TextualSource.Name,
                             @ViewBag.TextualSource.DateFrom - @ViewBag.TextualSource.DateTo, Page @Model.TextualSource.Page,
                             Volume @Model.TextualSource.Volume, Tome @Model.TextualSource.Tome,
                             de @ViewBag.TextualSource.Publisher</a></div>}
@@ -82,7 +82,7 @@
             if (item.Id != Model.Id)
             {
                 <li>
-                <a href="details?scoreId=@item.Id">@item.Title</a>
+                <a href="Details?scoreId=@item.Id">@item.Title</a>
                 </li>
             }
             
@@ -166,9 +166,9 @@
 }
 <div id="menuScore">
     <ul>
-        <li><a href="publish?scoreId=@Model.Id">Changer partition</a>
+        <li><a href="Publish?scoreId=@Model.Id">Changer partition</a>
         </li>
-        <li><a href="edit?scoreId=@Model.Id">Modifier informations</a> </li>
+        <li><a href="Edit?scoreId=@Model.Id">Modifier informations</a> </li>
         <li><a href="#">Attacher un fichier</a> </li>
     </ul>
 </div>

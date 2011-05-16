@@ -1,0 +1,49 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="FoireMuses.WebInterface/Global.asax">
+    <Files>
+      <File FileName="FoireMuses.WebInterface/Providers/MyMembershipProvider.cs" Line="11" Column="26" />
+      <File FileName="FoireMuses.WebInterface/Providers/MyRoleProvider.cs" Line="1" Column="1" />
+      <File FileName="FoireMuses.WebInterface/Controllers/UsersController.cs" Line="1" Column="1" />
+      <File FileName="FoireMuses.WebInterface/Views/Users/Login.cshtml" Line="1" Column="1" />
+      <File FileName="FoireMuses.Client/FoireMusesConnection.cs" Line="1" Column="1" />
+      <File FileName="FoireMuses.WebInterface/Controllers/FoireMusesController.cs" Line="1" Column="1" />
+      <File FileName="FoireMuses.WebInterface/Configurations/Configuration.cs" Line="1" Column="1" />
+      <File FileName="../MindTouchDream/src/mindtouch.dream/dream/services/PubSubService.cs" Line="1" Column="1" />
+      <File FileName="FoireMuses.WebInterface/Controllers/AdminController.cs" Line="1" Column="1" />
+      <File FileName="FoireMuses.WebInterface/Controllers/ErrorController.cs" Line="1" Column="1" />
+      <File FileName="FoireMuses.WebInterface/Controllers/HomeController.cs" Line="1" Column="1" />
+      <File FileName="FoireMuses.WebInterface/Controllers/PlaysController.cs" Line="1" Column="1" />
+      <File FileName="FoireMuses.WebInterface/Controllers/ScoresController.cs" Line="1" Column="1" />
+      <File FileName="FoireMuses.WebInterface/Controllers/SearchController.cs" Line="1" Column="1" />
+      <File FileName="FoireMuses.WebInterface/Controllers/SourcesController.cs" Line="1" Column="1" />
+      <File FileName="FoireMuses.WebInterface/Views/Shared/_Layout.cshtml" Line="1" Column="1" />
+      <File FileName="FoireMuses.WebInterface/Views/Shared/Error.cshtml" Line="1" Column="1" />
+      <File FileName="FoireMuses.WebInterface/Views/Search/Score.cshtml" Line="1" Column="1" />
+      <File FileName="FoireMuses.WebInterface/Views/Search/Source.cshtml" Line="1" Column="1" />
+      <File FileName="FoireMuses.WebInterface/Views/Search/Play.cshtml" Line="1" Column="1" />
+      <File FileName="FoireMuses.WebInterface/Views/Search/Music.cshtml" Line="1" Column="1" />
+      <File FileName="FoireMuses.WebInterface/Views/Search/ListScoreSearch.cshtml" Line="1" Column="1" />
+      <File FileName="FoireMuses.WebInterface/Views/Scores/Details2.cshtml" Line="1" Column="1" />
+      <File FileName="FoireMuses.WebInterface/Views/Scores/Publish.cshtml" Line="1" Column="1" />
+      <File FileName="FoireMuses.WebInterface/Views/Scores/Index.cshtml" Line="1" Column="1" />
+      <File FileName="FoireMuses.WebInterface/Views/Scores/Create.cshtml" Line="1" Column="1" />
+      <File FileName="FoireMuses.WebInterface/Views/Scores/Search.cshtml" Line="1" Column="1" />
+      <File FileName="FoireMuses.WebInterface/Views/Scores/List.cshtml" Line="1" Column="1" />
+      <File FileName="FoireMuses.WebInterface/Views/Sources/Details.cshtml" Line="1" Column="1" />
+      <File FileName="FoireMuses.WebInterface/Views/Sources/Edit.cshtml" Line="1" Column="1" />
+      <File FileName="FoireMuses.WebInterface/Views/Sources/List.cshtml" Line="1" Column="1" />
+      <File FileName="FoireMuses.WebInterface/Views/Sources/PageDetails.cshtml" Line="1" Column="1" />
+      <File FileName="FoireMuses.WebInterface/Views/Sources/PageEdit.cshtml" Line="1" Column="1" />
+      <File FileName="FoireMuses.WebInterface/Views/Admin/CreateUser.cshtml" Line="1" Column="1" />
+      <File FileName="FoireMuses.WebInterface/Views/Admin/Index.cshtml" Line="1" Column="1" />
+      <File FileName="FoireMuses.WebInterface/Views/Scores/Details.cshtml" Line="160" Column="7" />
+      <File FileName="FoireMuses.WebInterface/Global.asax" Line="1" Column="63" />
+      <File FileName="FoireMuses.WebInterface/Global.asax.cs" Line="7" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

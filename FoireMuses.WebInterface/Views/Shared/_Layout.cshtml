@@ -13,7 +13,7 @@
                 <ul id="list">
                        @if (!User.Identity.IsAuthenticated)
                        {
-                    <li class="first"><a href="/users/login/">log in</a> </li>
+                    <li class="first"><a href="/Users/Login/">log in</a> </li>
                        }
                        else
                        {
@@ -22,7 +22,7 @@
                                <li><a href="/Admin/">Administration</a></li>
                            }
                            <li><a href="#">@User.Identity.Name</a></li>
-                           <li class="first"><a href="/users/logout/">log out</a></li>
+                           <li class="first"><a href="/Users/Logout/">log out</a></li>
                        }
                 </ul>
             </div>
@@ -35,39 +35,39 @@
         <div id="menu">
 <div id="primary">
 <ul> 
-<li><a href="/home/" title="Home page">Home</a></li> 
-<li><a href="/scores/list" title="Browse the Foire muses scores repository">Airs</a></li> 
-<li><a href="/sources/list" title="Browse the Foire muses sources repository">Sources</a></li> 
-<li><a href="/plays/list" title="Browse the Foire muses plays repository">Pièces</a></li> 
+<li><a href="/Home/" title="Home page">Home</a></li> 
+<li><a href="/Scores/List" title="Browse the Foire muses scores repository">Airs</a></li> 
+<li><a href="/Sources/List" title="Browse the Foire muses sources repository">Sources</a></li> 
+<li><a href="#" title="Browse the Foire muses plays repository">Pièces</a></li> 
 <li>
-<a href="/search/" >Recherche</a>
+<a href="/Search/" >Recherche</a>
 <ul>
 <li>
-<a href="/search/score" title="Chercher un air">Air</a>
+<a href="/Search/Score" title="Chercher un air">Air</a>
 </li>
 <li>
-<a href="/search/source" title="Chercher une source">Source</a>
+<a href="/Search/Source" title="Chercher une source">Source</a>
 </li>
 <li>
-<a href="/search/play" title="Chercher une pièce">Pièce</a>
+<a href="/Search/Play" title="Chercher une pièce">Pièce</a>
 </li>
 <li>
-<a href="/search/music" title="Chercher apd la musique">Music</a>
+<a href="/Search/Music" title="Chercher apd la musique">Music</a>
 </li>
 </ul>
 </li>
-<li><a href="/Faq/" title="Frequently Asked Questions">FAQ</a></li> 
+<li><a href="#" title="Frequently Asked Questions">FAQ</a></li> 
 <li>
 <a href="#" >Créer</a>
 <ul>
 <li>
-<a href="/scores/create" title="Créer un air">Air</a>
+<a href="/Scores/Create" title="Créer un air">Air</a>
 </li>
 <li>
-<a href="/sources/create" title="Créer une source">Source</a>
+<a href="/Sources/Create" title="Créer une source">Source</a>
 </li>
 <li>
-<a href="/plays/create" title="Créer une pièce">Pièce</a>
+<a href="/Plays/Create" title="Créer une pièce">Pièce</a>
 </li>
 </ul>
 </li> 
@@ -77,7 +77,7 @@
             @RenderBody()
         </div>
         <div id="footer">
-            2011, Foire Muses <a href="/contact">Contact us</a>
+            2011, Foire Muses <a href="#">Contact us</a>
         </div>
     </div>
 </body>

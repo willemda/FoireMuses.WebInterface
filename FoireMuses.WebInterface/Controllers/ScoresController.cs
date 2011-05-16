@@ -273,7 +273,7 @@ namespace FoireMuses.WebInterface.Controllers
 				//if during creation
 				if (model.Id == null)
 				{
-					return Redirect("erreur");
+					return Redirect("Error");
 				}
 				else
 				{//during update, redirect to details/edit + error message?

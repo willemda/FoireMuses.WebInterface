@@ -175,7 +175,7 @@
                                 </td>
                                 <td>
                                     <div class="value">
-                                        <a href="sources?id=@Model.TextualSource.Id" title="cliquer pour aller voir la source">@Model.TextualSource.Name,
+                                        <a href="Sources?id=@Model.TextualSource.Id" title="cliquer pour aller voir la source">@Model.TextualSource.Name,
                                             @Model.TextualSource.DateFrom - @Model.TextualSource.DateTo, Page @Model.Score.TextualSource.Page,
                                             Volume @Model.Score.TextualSource.Volume, Tome @Model.Score.TextualSource.Tome,
                                             de @Model.TextualSource.Publisher</a></div>
@@ -209,7 +209,7 @@
                 </td>
                 <td>
                     <div class="value">
-                        <a href="sources?id=@Model.MusicalSource.Id" title="cliquer pour aller voir la source">@Model.TextualSource.Name,
+                        <a href="Sources?id=@Model.MusicalSource.Id" title="cliquer pour aller voir la source">@Model.TextualSource.Name,
                             @Model.TextualSource.DateFrom - @Model.TextualSource.DateTo, Page @Model.Score.TextualSource.Page,
                             Volume @Model.Score.TextualSource.Volume, Tome @Model.Score.TextualSource.Tome,
                             de @Model.TextualSource.Publisher</a></div>
@@ -235,10 +235,10 @@
 
 <div id="menuScore">
     <ul>
-        <li><a href="publish?scoreId=@Model.Score.Id&scoreRev=@Model.Score.Rev">
+        <li><a href="Publish?scoreId=@Model.Score.Id&scoreRev=@Model.Score.Rev">
          Changer partition</a>
         </li>
-        <li><a href="edit?scoreId=@Model.Score.Id">Modifier informations</a> </li>
+        <li><a href="Edit?scoreId=@Model.Score.Id">Modifier informations</a> </li>
         <li><a href="#">Attacher un fichier</a> </li>
     </ul>
 </div>
