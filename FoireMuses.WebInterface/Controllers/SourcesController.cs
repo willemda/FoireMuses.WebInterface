@@ -19,17 +19,17 @@ namespace FoireMuses.WebInterface.Controllers
 			//use mindtouch dream to access the web service.
 			// treat the result and return it to the view
 			FoireMusesConnection connection = GetConnection();
-			SearchResult<Source> listSources = null;
+			SearchResult<SourceSearchItem> listSources = null;
 			try
 			{
-				listSources = connection.GetSources((page - 1) * PageSize, PageSize, new Result<SearchResult<Source>>()).Wait();
+				listSources = connection.GetSources((page - 1) * PageSize, PageSize, new Result<SearchResult<SourceSearchItem>>()).Wait();
 			}
 			catch (Exception e)
 			{
 				// do stuff to return error message to the screen
 			}
 
-			var viewModel = new ListViewModel<Source>()
+			var viewModel = new ListViewModel<SourceSearchItem>()
 			{
 				SearchResult = listSources,
 				CurrentPage = page,
@@ -46,6 +46,7 @@ namespace FoireMuses.WebInterface.Controllers
 			// treat the result and return it to the view
 			FoireMusesConnection connection = GetConnection();
 			Source source = null;
+			IList<SourcePageSearchItem> pages = null;
 			IEnumerable<string> attachedFiles = null;
 			IEnumerable<string> documents = null;
 			try
@@ -57,6 +58,8 @@ namespace FoireMuses.WebInterface.Controllers
 					attachedFiles = source.GetAttachmentNames().Where(x => !x.StartsWith("$"));
 					documents = source.GetAttachmentNames().Where(x => x.StartsWith("$"));
 				}
+
+				pages = connection.GetSourcePagesFromSource(source.Id, 0, 0, new Result<SearchResult<SourcePageSearchItem>>()).Wait().Rows;
 			}
 			catch (Exception e)
 			{
@@ -64,6 +67,7 @@ namespace FoireMuses.WebInterface.Controllers
 			}
 			ViewBag.AttachedFiles = attachedFiles;
 			ViewBag.Documents = documents;
+			ViewBag.Pages = pages;
 			return View(source);
 		}
 

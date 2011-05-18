@@ -176,7 +176,7 @@ namespace FoireMuses.Client
 			return aResult;
 		}
 
-		public Result<SearchResult<Source>> GetSources(int offset, int max, Result<SearchResult<Source>> aResult)
+		public Result<SearchResult<SourceSearchItem>> GetSources(int offset, int max, Result<SearchResult<SourceSearchItem>> aResult)
 		{
 			theServiceUri
 				.At("sources")
@@ -188,13 +188,13 @@ namespace FoireMuses.Client
 					if (!answer.Value.IsSuccessful)
 					{
 						if (answer.Value.Status == DreamStatus.NotFound)
-							aResult.Return((SearchResult<Source>)null);
+							aResult.Return((SearchResult<SourceSearchItem>)null);
 						else
 							aResult.Throw(answer.Exception);
 					}
 					else
 					{
-						aResult.Return(new SearchResult<Source>(JObject.Parse(answer.Value.ToText())));
+						aResult.Return(new SearchResult<SourceSearchItem>(JObject.Parse(answer.Value.ToText())));
 					}
 				}
 				);
@@ -220,6 +220,31 @@ namespace FoireMuses.Client
 							aResult.Return(new Score(JObject.Parse(answer.Value.ToText())));
 						}
 					}
+				);
+			return aResult;
+		}
+
+		public Result<SearchResult<SourcePageSearchItem>> GetSourcePagesFromSource(string sourceId, int max, int offset, Result<SearchResult<SourcePageSearchItem>> aResult)
+		{
+			theServiceUri
+				.At("sources", sourceId, "pages")
+				.With("max", max)
+				.With("offset", offset)
+				.Get(new Result<DreamMessage>())
+				.WhenDone(delegate(Result<DreamMessage> answer)
+				{
+					if (!answer.Value.IsSuccessful)
+					{
+						if (answer.Value.Status == DreamStatus.NotFound)
+							aResult.Return((SearchResult<SourcePageSearchItem>)null);
+						else
+							aResult.Throw(answer.Exception);
+					}
+					else
+					{
+						aResult.Return(new SearchResult<SourcePageSearchItem>(JObject.Parse(answer.Value.ToText())));
+					}
+				}
 				);
 			return aResult;
 		}
@@ -339,7 +364,7 @@ namespace FoireMuses.Client
 			return aResult;
 		}
 
-		public Result<SearchResult<Score>> GetScores(int offset, int max, Result<SearchResult<Score>> aResult)
+		public Result<SearchResult<ScoreSearchItem>> GetScores(int offset, int max, Result<SearchResult<ScoreSearchItem>> aResult)
 		{
 			theServiceUri
 				.At("scores")
@@ -351,13 +376,13 @@ namespace FoireMuses.Client
 						if (!answer.Value.IsSuccessful)
 						{
 							if (answer.Value.Status == DreamStatus.NotFound)
-								aResult.Return((SearchResult<Score>)null);
+								aResult.Return((SearchResult<ScoreSearchItem>)null);
 							else
 								aResult.Throw(answer.Exception);
 						}
 						else
 						{
-							aResult.Return(new SearchResult<Score>(JObject.Parse(answer.Value.ToText())));
+							aResult.Return(new SearchResult<ScoreSearchItem>(JObject.Parse(answer.Value.ToText())));
 						}
 					}
 				);
@@ -411,9 +436,9 @@ namespace FoireMuses.Client
 		public Result<SourcePage> EditSourcePage(SourcePage aSourcePage, Result<SourcePage> aResult)
 		{
 			theServiceUri
-				.At("sources", "pages")
-				.With("id", aSourcePage.Id)
-				.With("rev", aSourcePage.Rev)
+				.At("sources", aSourcePage.SourceId, "pages")
+				.With("sourcePageId", aSourcePage.Id)
+				.With("sourcePageRev", aSourcePage.Rev)
 				.Put(DreamMessage.Ok(MimeType.JSON, aSourcePage.ToString()), new Result<DreamMessage>())
 				.WhenDone(delegate(Result<DreamMessage> answer)
 				{

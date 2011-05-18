@@ -25,16 +25,16 @@ namespace FoireMuses.WebInterface.Controllers
 			//use mindtouch dream to access the web service.
 			// treat the result and return it to the view
 			FoireMusesConnection connection = GetConnection();
-			SearchResult<Score> listScores = null;
+			SearchResult<ScoreSearchItem> listScores = null;
 			try
 			{
-				listScores = connection.GetScores((page - 1) * PageSize, PageSize, new Result<SearchResult<Score>>()).Wait();
+				listScores = connection.GetScores((page - 1) * PageSize, PageSize, new Result<SearchResult<ScoreSearchItem>>()).Wait();
 			}
 			catch (Exception e)
 			{
 				return View("Error","Error while trying to retrieve the scores list");
 			}
-			var viewModel = new ListViewModel<Score>()
+			var viewModel = new ListViewModel<ScoreSearchItem>()
 			{
 				CurrentPage = page,
 				SearchResult = listScores
@@ -235,7 +235,7 @@ namespace FoireMuses.WebInterface.Controllers
 		{
 			FoireMusesConnection connection = GetConnection();
 			Score score = null;
-			SearchResult<Source> sourceList = null;
+			SearchResult<SourceSearchItem> sourceList = null;
 			try
 			{
 				if (scoreId != null)//get the score matching the id
@@ -259,7 +259,7 @@ namespace FoireMuses.WebInterface.Controllers
 					score = new Score();
 					ViewBag.HeadTitle = "Create";
 				}
-				sourceList = connection.GetSources(0, 0, new Result<SearchResult<Source>>()).Wait();
+				sourceList = connection.GetSources(0, 0, new Result<SearchResult<SourceSearchItem>>()).Wait();
 			}
 			catch (Exception e)
 			{

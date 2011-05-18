@@ -21,6 +21,19 @@
 {
     <div id="cote"><strong>Cote:</strong> @Model.Cote</div>
 }
+@if(ViewBag.Pages != null && (ViewBag.Pages as IEnumerable<FoireMuses.Client.SourcePageSearchItem>).Count()>0)
+{
+   <div id="pages">
+   <ul>
+   @foreach (var page in ViewBag.Pages)
+   {
+   <li>
+   <a href="PageDetails?sourcePageId=@page.Id">@page.PageNumber</a>
+   </li>
+   }
+   </ul>
+   </div>
+}
 
 <div id="menuSource">
 <ul>
