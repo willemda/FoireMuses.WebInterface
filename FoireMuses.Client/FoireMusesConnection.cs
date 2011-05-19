@@ -298,7 +298,7 @@ namespace FoireMuses.Client
 		{
 			theServiceUri
 				.At("scores", "musicxml")
-				.Post(DreamMessage.Ok(MimeType.XML, xdoc), new Result<DreamMessage>())
+				.Post(DreamMessage.Ok(MimeType.XML, xdoc.ToString()), new Result<DreamMessage>()) //WORKAROUND
 				.WhenDone(delegate(Result<DreamMessage> answer)
 				{
 					if (!answer.Value.IsSuccessful)
@@ -322,7 +322,7 @@ namespace FoireMuses.Client
 				.With("overwrite", overwrite)
 				.With("id", id)
 				.With("rev", rev)
-				.Put(DreamMessage.Ok(MimeType.XML, xdoc), new Result<DreamMessage>())
+				.Put(DreamMessage.Ok(MimeType.XML, xdoc.ToString()), new Result<DreamMessage>()) //WORKAROUND
 				.WhenDone(delegate(Result<DreamMessage> answer)
 				{
 					if (!answer.Value.IsSuccessful)
