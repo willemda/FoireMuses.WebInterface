@@ -58,28 +58,6 @@ namespace FoireMuses.Client
 			return aResult;
 		}
 
-		public Result<User> Login(string username, string password, Result<User> aResult)
-		{
-			theServiceUri.At("users", "login")
-				.WithCheck("username", username)
-				.WithCheck("password", password)
-				.Post(new Result<DreamMessage>())
-				.WhenDone(delegate(Result<DreamMessage> answer)
-				{
-					if (!answer.Value.IsSuccessful)
-					{
-						aResult.Throw(answer.Exception);
-					}
-					else
-					{
-						aResult.Return(new User(JObject.Parse(answer.Value.ToText())));
-					}
-				}
-				);
-			return aResult;
-
-		}
-
 		public Result<Play> GetPlay(string PlayId, Result<Play> aResult)
 		{
 			theServiceUri
