@@ -13,16 +13,16 @@
                 <ul id="list">
                        @if (!User.Identity.IsAuthenticated)
                        {
-                    <li class="first"><a href="/Users/Login/">log in</a> </li>
+                    <li class="first">@Html.ActionLink("login", "Login", "Users")</li>
                        }
                        else
                        {
                            if (Roles.IsUserInRole("ADMIN"))
                            {
-                               <li><a href="/Admin/">Administration</a></li>
+                               <li>@Html.ActionLink("administration", "Index", "Admin")</li>
                            }
                            <li><a href="#">@User.Identity.Name</a></li>
-                           <li class="first"><a href="/Users/Logout/">log out</a></li>
+                           <li class="first">@Html.ActionLink("logout", "Logout", "Users")</li>
                        }
                 </ul>
             </div>
@@ -35,24 +35,24 @@
         <div id="menu">
 <div id="primary">
 <ul> 
-<li><a href="/Home/" title="Home page">Home</a></li> 
-<li><a href="/Scores/List" title="Browse the Foire muses scores repository">Airs</a></li> 
-<li><a href="/Sources/List" title="Browse the Foire muses sources repository">Sources</a></li> 
+<li>@Html.ActionLink("Home", "Index", "Home")</li> 
+<li>@Html.ActionLink("Airs", "List", "Scores")</li> 
+<li>@Html.ActionLink("Sources", "List", "Sources")</li> 
 <li><a href="#" title="Browse the Foire muses plays repository">Pièces</a></li> 
 <li>
-<a href="/Search/" >Recherche</a>
+@Html.ActionLink("Recherche", "Index", "Search")
 <ul>
 <li>
-<a href="/Search/Score" title="Chercher un air">Air</a>
+@Html.ActionLink("Air", "Score", "Search")
 </li>
 <li>
-<a href="/Search/Source" title="Chercher une source">Source</a>
+@Html.ActionLink("Source", "Source", "Search")
 </li>
 <li>
-<a href="/Search/Play" title="Chercher une pièce">Pièce</a>
+@Html.ActionLink("Piece", "Play", "Search")
 </li>
 <li>
-<a href="/Search/Music" title="Chercher apd la musique">Music</a>
+@Html.ActionLink("Music", "Music", "Search")
 </li>
 </ul>
 </li>
@@ -61,13 +61,13 @@
 <a href="#" >Créer</a>
 <ul>
 <li>
-<a href="/Scores/Create" title="Créer un air">Air</a>
+@Html.ActionLink("Air", "Create", "Scores")
 </li>
 <li>
-<a href="/Sources/Create" title="Créer une source">Source</a>
+@Html.ActionLink("Source", "Create", "Sources")
 </li>
 <li>
-<a href="/Plays/Create" title="Créer une pièce">Pièce</a>
+<a href="#" title="Créer une pièce">Pièce</a>
 </li>
 </ul>
 </li> 
