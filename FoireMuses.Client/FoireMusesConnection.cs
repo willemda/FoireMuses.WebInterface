@@ -533,6 +533,29 @@ namespace FoireMuses.Client
 				);
 			return aResult;
 		}
+
+		public Result<User> CreateUser(User user, Result<User> aResult)
+		{
+			theServiceUri
+				.At("users")
+				.Post(DreamMessage.Ok(MimeType.JSON, user.ToString()), new Result<DreamMessage>())
+				.WhenDone(delegate(Result<DreamMessage> answer)
+				{
+					if (!answer.Value.IsSuccessful)
+					{
+						if (answer.Value.Status == DreamStatus.NotFound)
+							aResult.Return((User)null);
+						else
+							aResult.Throw(answer.Exception);
+					}
+					else
+					{
+						aResult.Return(new User(JObject.Parse(answer.Value.ToText())));
+					}
+				}
+				);
+			return aResult;
+		}
 	}
 }
 

@@ -29,14 +29,16 @@ namespace FoireMuses.WebInterface.Controllers
 		}
 
 		[HttpPost]
-		public ViewResult CreateUser(RegisterModel model)
+		public ActionResult CreateUser(RegisterModel model)
 		{
 			User user = new User();
 			user.Id = model.Username;
 			user.Password = model.Password;
 			user.Email = model.Email;
 			user.IsAdmin = model.IsAdmin;
-			return null;
+			FoireMusesConnection connection = GetConnection();
+			user = connection.CreateUser(user, new Result<User>()).Wait();
+			return RedirectToAction("Index", "Home", null);
 		}
 
 		/*public ViewResult ChangeRights(string sourceId)
