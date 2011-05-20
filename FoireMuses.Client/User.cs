@@ -7,72 +7,77 @@ using System.Text.RegularExpressions;
 
 namespace FoireMuses.Client
 {
-	public class User : JObject
+	public class User
 	{
+
+		private JObject json { get;  set; }
 
 		public User()
 		{
-
-			this.Add("otype", "user");
+			json = new JObject();
+			json.Add("otype", "user");
 		}
 
 		public User(JObject jobject)
-			: base(jobject)
 		{
+			json = jobject;
 			JToken type;
-			if (this.TryGetValue("otype", out type))
+			if (json.TryGetValue("otype", out type))
 			{
 				if (type.Value<string>() != "user")
 					throw new Exception("Bad object type");
 			}
 			else
 			{
-				this.Add("otype", "user");
+				json.Add("otype", "user");
 			}
 		}
 
 		public string Id
 		{
-			get { return this["_id"].Value<string>(); }
-			set { this["_id"] = value; }
+			get { return json["_id"].Value<string>(); }
+			set { json["_id"] = value; }
 		}
 
 		public string Password
 		{
-			get { return this["password"].Value<string>(); }
-			set { this["password"] = value; }
+			get { return json["password"].Value<string>(); }
+			set { json["password"] = value; }
 		}
 
 		public string Email
 		{
-			get { return this["email"].Value<string>(); }
-			set { this["email"] = value; }
+			get { return json["email"].Value<string>(); }
+			set { json["email"] = value; }
 		}
 
 		public bool IsAdmin
 		{
-			get { return this["isAdmin"].Value<bool>(); }
-			set { this["isAdmin"] = value; }
+			get {
+                if (json["admin"] == null)
+                    return false;
+                return json["isAdmin"].Value<bool>(); }
+			set { json["isAdmin"] = value; }
 		}
 
 		public IEnumerable<string> Groups
 		{
-			get { return this["groups"].Values<string>(); }
+			get { return json["groups"].Values<string>(); }
 		}
 
 		public void AddGroup(string group)
 		{
 			if (!Groups.Contains(group))
 			{
-				JArray temp = this["groups"].Value<JArray>();
+				JArray temp = json["groups"].Value<JArray>();
 				temp.Add(group);
-				this["groups"] = temp;
+				json["groups"] = temp;
 			}
 		}
 
 		public void RemoveGroup(string group)
 		{
-			this["groups"] = this["groups"].Value<JArray>().Remove(group);
+			json["groups"] = json["groups"].Value<JArray>().Remove(group);
 		}
 
 

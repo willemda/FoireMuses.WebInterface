@@ -47,6 +47,8 @@ namespace FoireMuses.Client
 				{
 					if (!answer.Value.IsSuccessful)
 					{
+                        if (answer.Value.Status == DreamStatus.NotFound)
+                           aResult.Return((User)null);
 						aResult.Throw(answer.Exception);
 					}
 					else
