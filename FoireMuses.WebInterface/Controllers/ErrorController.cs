@@ -13,7 +13,8 @@ namespace FoireMuses.Webinterface.Controllers
 
 		public ActionResult Problem()
 		{
-			ViewBag.Error = "Un problème est survenu, merci de contacter l'équipe technique.";
+			if(ViewBag.Error==null)
+				ViewBag.Error = "Désolé, une erreur s'est produite, contacter l'administrateur.";
 			return View("Error");
 		}
 

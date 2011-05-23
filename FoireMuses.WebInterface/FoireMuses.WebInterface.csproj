@@ -141,10 +141,12 @@
   <ItemGroup>
     <Content Include="Content\images\%24partition1.png" />
     <Content Include="Content\images\%24partition2.png" />
+    <Content Include="Content\images\addButton.png" />
     <Content Include="Content\images\bg.png" />
     <Content Include="Content\images\bullet.png" />
     <Content Include="Content\images\bullet_active.png" />
     <Content Include="Content\images\clear.gif" />
+    <Content Include="Content\images\editButton.png" />
     <Content Include="Content\images\helpIcon.png" />
     <Content Include="Content\images\left.png" />
     <Content Include="Content\images\loading.gif" />
@@ -671,6 +673,7 @@
     <Content Include="Content\images\piano_js\r4p.gif" />
     <Content Include="Content\images\piano_js\r8.gif" />
     <Content Include="Content\images\play.png" />
+    <Content Include="Content\images\removeButton.png" />
     <Content Include="Content\images\right.png" />
     <Content Include="Content\images\soundoff.png" />
     <Content Include="Content\images\soundon.png" />

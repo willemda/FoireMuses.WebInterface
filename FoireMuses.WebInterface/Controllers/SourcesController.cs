@@ -72,7 +72,7 @@ namespace FoireMuses.WebInterface.Controllers
 		}
 
 
-		public ViewResult Edit(string sourceId)
+		public ActionResult Edit(string sourceId)
 		{
 			FoireMusesConnection connection = GetConnection();
 			Source source = null;
@@ -81,21 +81,26 @@ namespace FoireMuses.WebInterface.Controllers
 				if (sourceId != null)//get the score matching the id
 				{
 					source = connection.GetSource(sourceId, new Result<Source>()).Wait();
-					ViewBag.HeadTitle = "Edit";
+					if (source == null)
+					{
+						return RedirectToAction("Missing", "Error", null);
+					}
+					ViewBag.HeadTitle = "Edition";
 				}
 				else
 				{
 					source = new Source();
-					ViewBag.HeadTitle = "Create";
+					ViewBag.HeadTitle = "Creation";
 				}
+			}
+			catch (ArgumentException e)
+			{
+				ViewBag.Error = "Veuillez remplir les champs correctement";
+				return View("Edit", source);
 			}
 			catch (Exception e)
 			{
-				// on redirige
-			}
-			if (source == null)
-			{
-				//on redirige
+				return RedirectToAction("Problem", "Error", null);
 			}
 			return View("Edit", source);
 		}
@@ -107,19 +112,43 @@ namespace FoireMuses.WebInterface.Controllers
 
 		public ActionResult PageCreate(string sourceId)
 		{
-			//test si sourceId est !null et appartient bien à une source
 			return RedirectToAction("PageEdit", new {sourceId = sourceId});
 		}
 
-		public ViewResult PageEdit(string sourcePageId, string sourceId){
+		public ActionResult PageEdit(string sourcePageId, string sourceId){
+			FoireMusesConnection connection = GetConnection();
 			SourcePage page = null;
-			if(sourcePageId == null)
+			try
 			{
-				page = new SourcePage();
-				page.SourceId = sourceId;
-			}else{
-				FoireMusesConnection connection = GetConnection();
-				page = connection.GetSourcePage(sourcePageId, new Result<SourcePage>()).Wait();
+				if (sourcePageId == null)
+				{
+					if (String.IsNullOrWhiteSpace(sourceId))
+					{
+						return RedirectToAction("Missing", "Error", null);
+					}
+					else
+					{
+						Source source = connection.GetSource(sourceId, new Result<Source>()).Wait();
+						if (source == null)
+						{
+							return RedirectToAction("Missing", "Error", null);
+						}
+					}
+					page = new SourcePage();
+					page.SourceId = sourceId;
+				}
+				else
+				{
+					page = connection.GetSourcePage(sourcePageId, new Result<SourcePage>()).Wait();
+					if (page == null)
+					{
+						return RedirectToAction("Missing", "Error", null);
+					}
+				}
+			}
+			catch (Exception e)
+			{
+				return RedirectToAction("Problem", "Error", null);
 			}
 			return View(page);
 		}
@@ -127,31 +156,59 @@ namespace FoireMuses.WebInterface.Controllers
 		[HttpPost]
 		public ActionResult PageEdit(SourcePage model)
 		{
+			if (!ValidatePage(model))
+			{
+				ViewBag.Error = "Certains champs sont mal rempli ou incomplet, veuillez les remplirs correctements.";
+				if (model.Id != null)
+					ViewBag.HeadTitle = "Edition";
+				else
+					ViewBag.HeadTitle = "Creation";
+				return View("PageEdit", model);
+			}
 			FoireMusesConnection connection = GetConnection();
-			if (model.Id == null)
+			try
 			{
-				model = connection.CreateSourcePage(model, new Result<SourcePage>()).Wait();
+				if (model.Id == null)
+				{
+					model = connection.CreateSourcePage(model, new Result<SourcePage>()).Wait();
+				}
+				else
+				{
+					SourcePage current = connection.GetSourcePage(model.Id, new Result<SourcePage>()).Wait();
+					if(current == null)
+						return RedirectToAction("Problem", "Error", null);
+					TryUpdateModel(current);
+					model = connection.EditSourcePage(current, new Result<SourcePage>()).Wait();
+				}
 			}
-			else
+			catch (Exception e)
 			{
-				SourcePage current = connection.GetSourcePage(model.Id, new Result<SourcePage>()).Wait();
-				TryUpdateModel(current);
-				model = connection.EditSourcePage(current, new Result<SourcePage>()).Wait();
+				return RedirectToAction("Problem", "Error", null);
 			}
+			if (model == null)
+				return RedirectToAction("Problem", "Error", null);
 			return View("PageDetails", model);
 		}
 
-		public ViewResult PageDetails(string sourcePageId)
+		public ActionResult PageDetails(string sourcePageId)
 		{
 			if (String.IsNullOrWhiteSpace(sourcePageId))
 			{
-				return View("Error", "The page you are looking for doesn't exist.");
+				return RedirectToAction("Missing","Error",null);
 			}
 			FoireMusesConnection connection = GetConnection();
-			SourcePage page = connection.GetSourcePage(sourcePageId, new Result<SourcePage>()).Wait();
+			SourcePage page;
+			try
+			{
+				page = connection.GetSourcePage(sourcePageId, new Result<SourcePage>()).Wait();
+			}
+			catch (Exception e)
+			{
+				return RedirectToAction("Problem", "Error", null);
+			}
 			if (page == null)
 			{
-				return View("Error", "The page you are looking for doesn't exist.");
+				return RedirectToAction("Missing", "Error", null);
 			}
 			return View(page);
 		}
@@ -159,8 +216,18 @@ namespace FoireMuses.WebInterface.Controllers
 		[HttpPost]
 		public ActionResult Edit(Source model, FormCollection collection)
 		{
-			//little trick here because it automatically creates a TextualSource and MusicalSource even if they are empty
-
+			if (model == null)
+			{
+				return RedirectToAction("Problem", "Error", null);
+			}
+			if(!ValidateSource(model)){
+				ViewBag.Error = "Certains champs sont mal rempli ou incomplet, veuillez les remplirs correctements.";
+				if (model.Id != null)
+					ViewBag.HeadTitle = "Edition";
+				else
+					ViewBag.HeadTitle = "Creation";
+				return View("Edit", model);
+			}
 			FoireMusesConnection connection = GetConnection();
 			try
 			{
@@ -173,31 +240,34 @@ namespace FoireMuses.WebInterface.Controllers
 				{
 					//when updating, first get the current score out of the db then update with values
 					Source current = connection.GetSource(model.Id, new Result<Source>()).Wait();
+					if (current == null)
+						return RedirectToAction("Problem", "Error", null);
 					TryUpdateModel(current);
 					model = connection.EditSource(current, new Result<Source>()).Wait();
 				}
 			}
 			catch (Exception e)
 			{
-				//if during creation
-				if (model.Id == null)
-				{
-					//log
-					return View("Error", "Error while creating the source");
-				}
-				else
-				{
-					//during update, redirect to details/edit + error message?
-					//log
-					ViewBag.Error = "Error while updating the score";
-					return Redirect("Details?sourceId=" + model.Id);
-				}
-
+				return RedirectToAction("Problem", "Error", null);
 			}
-
+			if (model == null)
+				return RedirectToAction("Problem", "Error", null);
 			//redirect to details
 			return Redirect("Details?sourceId=" + model.Id);
 		}
 
+		private bool ValidateSource(Source source)
+		{
+			if (String.IsNullOrWhiteSpace(source.Name))
+				return false;
+			return true;
+		}
+
+		private bool ValidatePage(SourcePage page)
+		{
+			if (page.PageNumber != null && page.PageNumber>=0)
+				return false;
+			return true;
+		}
 	}
 }

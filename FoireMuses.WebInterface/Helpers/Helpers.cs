@@ -5,6 +5,7 @@ using FoireMuses.Client;
 using System.Web.Mvc.Html;
 using MindTouch.Dream;
 using System.Security.Policy;
+using System.Web;
 
 namespace FoireMuses.WebInterface.HtmlHelpers
 {
@@ -28,6 +29,134 @@ namespace FoireMuses.WebInterface.HtmlHelpers
 
 	public static class PagingHelpers
 	{
+
+		public static MvcHtmlString CheckboxInputField(this HtmlHelper html, string fieldName, string fieldExpression, bool? fieldValue)
+		{
+			StringBuilder result = new StringBuilder();
+			TagBuilder tagB = new TagBuilder("label");
+			tagB.MergeAttribute("for", fieldExpression);
+			tagB.InnerHtml = fieldName;
+			result.AppendLine(tagB.ToString());
+			tagB = new TagBuilder("input");
+			tagB.MergeAttribute("type", "checkbox");
+			tagB.MergeAttribute("id", fieldExpression);
+			tagB.MergeAttribute("name", fieldExpression);
+			tagB.MergeAttribute("value", "true");
+			if (fieldValue != null && fieldValue.Value)
+			{
+				tagB.MergeAttribute("checked", "checked");
+			}
+			result.AppendLine(tagB.ToString());
+			tagB = new TagBuilder("input");
+			tagB.MergeAttribute("type", "hidden");
+			tagB.MergeAttribute("name", fieldExpression);
+			tagB.MergeAttribute("value", "false");
+			result.AppendLine(tagB.ToString());
+			MvcHtmlString mvc = MvcHtmlString.Create(result.ToString());
+			return mvc;
+		}
+
+		public static MvcHtmlString TextInputField(this HtmlHelper html, string fieldName, string fieldExpression, int? fieldValue)
+		{
+			StringBuilder result = new StringBuilder();
+			TagBuilder tagB = new TagBuilder("label");
+			tagB.MergeAttribute("for", fieldExpression);
+			tagB.InnerHtml = fieldName;
+			result.AppendLine(tagB.ToString());
+			tagB = new TagBuilder("input");
+			tagB.MergeAttribute("type", "text");
+			tagB.MergeAttribute("id", fieldExpression);
+			tagB.MergeAttribute("name", fieldExpression);
+			if (fieldValue!=null)
+				tagB.MergeAttribute("value", fieldValue.Value.ToString());
+			result.AppendLine(tagB.ToString());
+			MvcHtmlString mvc = MvcHtmlString.Create(result.ToString());
+			return mvc;
+		}
+
+		public static MvcHtmlString TextInputField(this HtmlHelper html, string fieldName, string fieldExpression, string fieldValue)
+		{
+			StringBuilder result = new StringBuilder();
+			TagBuilder tagB = new TagBuilder("label");
+			tagB.MergeAttribute("for", fieldExpression);
+			tagB.InnerHtml = fieldName;
+			result.AppendLine(tagB.ToString());
+			tagB = new TagBuilder("input");
+			tagB.MergeAttribute("type", "text");
+			tagB.MergeAttribute("id", fieldExpression);
+			tagB.MergeAttribute("name", fieldExpression);
+			if (!String.IsNullOrWhiteSpace(fieldValue))
+				tagB.MergeAttribute("value", fieldValue);
+			result.AppendLine(tagB.ToString());
+			MvcHtmlString mvc = MvcHtmlString.Create(result.ToString());
+			return mvc;
+		}
+
+		public static MvcHtmlString HiddenInputField(this HtmlHelper html, string fieldExpression, string fieldValue)
+		{
+			StringBuilder result = new StringBuilder();
+			TagBuilder tagB = new TagBuilder("input");
+			tagB.MergeAttribute("id", fieldExpression);
+			tagB.MergeAttribute("name", fieldExpression);
+			tagB.MergeAttribute("type", "hidden");
+			if (!String.IsNullOrWhiteSpace(fieldValue))
+				tagB.MergeAttribute("value", fieldValue);
+			result.AppendLine(tagB.ToString());
+			MvcHtmlString mvc = MvcHtmlString.Create(result.ToString());
+			return mvc;
+		}
+
+		public static MvcHtmlString StringField(this HtmlHelper html, string fieldName, string fieldValue, bool boldValue = false, bool displayNullValue = true)
+		{
+			StringBuilder result = new StringBuilder();
+			TagBuilder tagB = new TagBuilder("div");
+			tagB.AddCssClass("label");
+			tagB.InnerHtml = fieldName;
+			result.AppendLine(tagB.ToString());
+			tagB = new TagBuilder("div");
+			tagB.AddCssClass("value");
+			if(boldValue)
+				tagB.MergeAttribute("style", "font-weight:bold;");
+			if (!String.IsNullOrWhiteSpace(fieldValue))
+				tagB.InnerHtml = fieldValue;
+			else
+			{
+				if (displayNullValue)
+					tagB.InnerHtml = "/";
+				else
+					return MvcHtmlString.Empty;
+			}
+			result.AppendLine(tagB.ToString());
+			MvcHtmlString mvc = MvcHtmlString.Create(result.ToString());
+			return mvc;
+		}
+
+		public static MvcHtmlString NullableBooleanField(this HtmlHelper html, string fieldName, bool? fieldValue)
+		{
+			StringBuilder result = new StringBuilder();
+			TagBuilder tagB = new TagBuilder("div");
+			tagB.AddCssClass("label");
+			tagB.InnerHtml = fieldName;
+			result.AppendLine(tagB.ToString());
+			tagB = new TagBuilder("div");
+			tagB.AddCssClass("value");
+			if (fieldValue != null)
+			{
+				TagBuilder input = new TagBuilder("input");
+				input.MergeAttribute("type", "checkbox");
+				input.MergeAttribute("disabled", "disabled");
+				input.MergeAttribute("style", "height:15px;");
+				if(fieldValue.Value)
+					input.MergeAttribute("checked", "checked");
+				tagB.InnerHtml = input.ToString();
+			}
+			else
+				tagB.InnerHtml = "/";
+			result.AppendLine(tagB.ToString());
+			MvcHtmlString mvc = MvcHtmlString.Create(result.ToString());
+			return mvc;
+		}
+
 		public static string AddPageToUrl(this Uri uri,
 			int page)
 		{

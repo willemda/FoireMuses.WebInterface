@@ -1,28 +1,23 @@
 ﻿@model FoireMuses.Client.Source
-
-
+@using FoireMuses.WebInterface.HtmlHelpers
+@if (ViewBag.Error != null)
+{
+<div class="errorMessage">
+    <p>@ViewBag.Error</p>
+</div>
+}
+<div id="sourceEditForm">
+<fieldset>
+<legend>@ViewBag.HeadTitle d'une source</legend>
  <form action="" method="post">
-    <input type="hidden" name="Id" value="@Model.Id" />
-    <table>
-    <tr><td>Nom</td><td><input type="text" name="Name" value="@Model.Name" /></td></tr>
-    <tr><td>Editeur</td><td><input type="text" name="Publisher" value="@Model.Publisher" /></td></tr>
-    <tr><td>Cote</td><td><input type="text" name="Cote" value="@Model.Cote" /></td></tr>
-    <tr><td>Date</td><td>De <input type="text" name="DateFrom" value="@Model.DateFrom" /> à <input type="text" name="DateTo" value="@Model.DateTo" /></td></tr>
-    <tr><td>Abbreviation</td><td><input type="text" name="Abbreviation" value="@Model.Abbreviation" /></td></tr>
-    <tr><td>Date approximative</td><td>
-   
-        @if (Model.ApproxDate != null && Model.ApproxDate.Value)
-        { 
-        <input checked="checked" class="check-box" name="ApproxDate" type="checkbox" value="true" />
-        }
-        else
-        {
-            <input class="check-box" name="ApproxDate" type="checkbox" value="true" />
-        }
-        <input name="ApproxDate" type="hidden" value="false" />
-        
-    </td></tr>
-    </table>
-    <input type="submit" value="Creer" />
+    @Html.HiddenInputField("Id",Model.Id)
+    <div class="block">@Html.TextInputField("Nom", "Name", Model.Name)</div>
+    <div class="block">@Html.TextInputField("Editeur", "Publisher", Model.Publisher)</div>
+    <div class="block">@Html.TextInputField("Cote", "Cote", Model.Cote)</div>
+    <div class="block">@Html.Label("Date", "Date")De <input id="Date" type="text" name="DateFrom" value="@Model.DateFrom" /> à <input type="text" name="DateTo" value="@Model.DateTo" /></div>
+    <div class="block">@Html.TextInputField("Résumé", "Abbreviation", Model.Abbreviation)</div>
+    <div class="block">@Html.CheckboxInputField("Date approximative", "ApproxDate", Model.ApproxDate)</div>
+    <input class="submitButton" type="submit" value="@ViewBag.HeadTitle" />
 </form>
-
+</fieldset>
+</div>

@@ -20,7 +20,7 @@ namespace FoireMuses.WebInterface.Controllers
 
 		public ActionResult Index()
 		{
-			return Redirect("Score");
+			return RedirectToAction("Score");
 		}
 
 		public ViewResult Music()

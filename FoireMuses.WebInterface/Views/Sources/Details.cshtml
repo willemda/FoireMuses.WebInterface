@@ -1,27 +1,21 @@
 ﻿@model FoireMuses.Client.Source
-
+@using FoireMuses.WebInterface.HtmlHelpers
 @{
     ViewBag.Title = "Details - "+@Model.Name;
 }
-
-<div id="titleDisplay">@Model.Name</div>
-@if (Model.Publisher != null)
-{
-<div id="publisher">Published by <a href="#">@Model.Publisher</a></div>
-}
+<div id="sourceDetails">
+@Html.StringField("Nom", Model.Name, true)
+@Html.StringField("Editeur", Model.Publisher)
 @if (Model.DateFrom != null && Model.DateTo != null)
 {
-<div id="date">@Model.DateFrom - @Model.DateTo</div>
+<div class="label">Date</div><div class="value">@Model.DateFrom - @Model.DateTo</div>
 }
-@if (Model.Abbreviation != null)
-{
-    <div id="abbr"><strong>Résumé:</strong> @Model.Abbreviation</div>
-}
-@if (Model.Cote != null)
-{
-    <div id="cote"><strong>Cote:</strong> @Model.Cote</div>
-}
-@if(ViewBag.Pages != null && (ViewBag.Pages as IEnumerable<FoireMuses.Client.SourcePageSearchItem>).Count()>0)
+
+@Html.NullableBooleanField("Date approximative", Model.ApproxDate)
+
+@Html.StringField("Résumé", Model.Abbreviation)
+@Html.StringField("Cote", Model.Cote)
+@if (ViewBag.Pages != null && (ViewBag.Pages as IEnumerable<FoireMuses.Client.SourcePageSearchItem>).Count() > 0)
 {
    <div id="pages">
    <ul>
@@ -34,13 +28,12 @@
    </ul>
    </div>
 }
-
-<div id="menuSource">
-<ul>
-<li><a href="Edit?sourceId=@Model.Id">Modifier</a></li>
-<li><a href="PageCreate?sourceId=@Model.Id">Ajouter pages</a></li>
-</ul>
 </div>
 
-
-
+<hr />
+<div id="menuSource">
+<ul>
+<li><a href="Edit?sourceId=@Model.Id"><span class="editButton"></span>Modifier</a></li>
+<li><a href="PageCreate?sourceId=@Model.Id"><span class="addButton"></span>Ajouter page</a></li>
+</ul>
+</div>

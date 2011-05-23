@@ -47,8 +47,8 @@ namespace FoireMuses.Client
 				{
 					if (!answer.Value.IsSuccessful)
 					{
-                        if (answer.Value.Status == DreamStatus.NotFound)
-                           aResult.Return((User)null);
+						if (answer.Value.Status == DreamStatus.NotFound)
+							aResult.Return((User)null);
 						aResult.Throw(answer.Exception);
 					}
 					else
@@ -135,8 +135,8 @@ namespace FoireMuses.Client
 		{
 			theServiceUri
 				.At("sources")
-                .With("id", Source.Id)
-                .With("rev", Source.Rev)
+				.With("id", Source.Id)
+				.With("rev", Source.Rev)
 				.Put(DreamMessage.Ok(MimeType.JSON, Source.ToString()), new Result<DreamMessage>())
 				.WhenDone(delegate(Result<DreamMessage> answer)
 				{
@@ -323,8 +323,8 @@ namespace FoireMuses.Client
 		{
 			theServiceUri
 				.At("scores")
-                .With("Id",score.Id)
-                .With("Rev",score.Rev)
+				.With("Id", score.Id)
+				.With("Rev", score.Rev)
 				.Put(DreamMessage.Ok(MimeType.JSON, score.ToString()), new Result<DreamMessage>())
 				.WhenDone(delegate(Result<DreamMessage> answer)
 				{
@@ -369,7 +369,7 @@ namespace FoireMuses.Client
 			return aResult;
 		}
 
-		
+
 
 		public Result<Stream> GetAttachements(string scoreId, string fileName, Result<Stream> aResult)
 		{
@@ -395,7 +395,7 @@ namespace FoireMuses.Client
 		public Result<SourcePage> CreateSourcePage(SourcePage aSourcePage, Result<SourcePage> aResult)
 		{
 			theServiceUri
-				.At("sources","pages")
+				.At("sources", "pages")
 				.Post(DreamMessage.Ok(MimeType.JSON, aSourcePage.ToString()), new Result<DreamMessage>())
 				.WhenDone(delegate(Result<DreamMessage> answer)
 				{
@@ -465,7 +465,7 @@ namespace FoireMuses.Client
 		public Result<SourcePage> GetSourcePage(string sourcePageId, Result<SourcePage> aResult)
 		{
 			theServiceUri
-				.At("sources","pages",sourcePageId)
+				.At("sources", "pages", sourcePageId)
 				.Get(new Result<DreamMessage>())
 				.WhenDone(delegate(Result<DreamMessage> answer)
 				{
@@ -491,26 +491,27 @@ namespace FoireMuses.Client
 		{
 			Plug temp = theServiceUri
 				.At("scores", "search");
-			foreach(KeyValuePair<string, object> pair in parameters){
+			foreach (KeyValuePair<string, object> pair in parameters)
+			{
 				temp = temp.WithCheck(pair.Key, pair.Value);
 			}
-				temp
-				.Get(new Result<DreamMessage>())
-				.WhenDone(delegate(Result<DreamMessage> answer)
+			temp
+			.Get(new Result<DreamMessage>())
+			.WhenDone(delegate(Result<DreamMessage> answer)
+			{
+				if (!answer.Value.IsSuccessful)
 				{
-					if (!answer.Value.IsSuccessful)
-					{
-						if (answer.Value.Status == DreamStatus.NotFound)
-							aResult.Return((SearchResult<ScoreSearchItem>)null);
-						else
-							aResult.Throw(answer.Exception);
-					}
+					if (answer.Value.Status == DreamStatus.NotFound)
+						aResult.Return((SearchResult<ScoreSearchItem>)null);
 					else
-					{
-						aResult.Return(new SearchResult<ScoreSearchItem>(JObject.Parse(answer.Value.ToText())));
-					}
+						aResult.Throw(answer.Exception);
 				}
-				);
+				else
+				{
+					aResult.Return(new SearchResult<ScoreSearchItem>(JObject.Parse(answer.Value.ToText())));
+				}
+			}
+			);
 			return aResult;
 		}
 

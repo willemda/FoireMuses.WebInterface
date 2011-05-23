@@ -424,12 +424,42 @@ border:1px lightblue solid;
 
 /*CSS DETAILS SOURCE */
 
-#name
+#sourceDetails div.label
 {
-    font-family:"Trebuchet MS";
-    font-size:14px;
+    width:200px;
+    float:left;
+}
+
+#menuSource ul
+{
+    list-style-type:none;
+}
+
+#menuSource li
+{
+    width:150px;
+    height:25px;
+    border: lightgrey 1px solid;
+    display:inline-block;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#menuSource a
+{
     font-weight:bold;
-    text-transform:uppercase;
+    width:150px;
+    display:inline-block;
+    line-height:24px;
+    height:25px;
+    color:Black;
+    text-decoration:none;
+}
+
+#menuSource a:hover
+{
+    color:lightblue;
 }
 
 
@@ -853,3 +883,63 @@ ul#tabnav li.active {
     width:50px;
     height:50px;
 }
+
+
+/*CSS FOR LOGIN FORM*/
+
+.errorMessage
+{
+    color:Red;
+}
+
+#connectionForm label
+{
+    float:left;
+    width:250px;
+}
+
+#connectionForm div.block
+{
+    margin-bottom:5px;
+}
+
+#connectionForm input.submitButton
+{
+    /*float:right;*/
+}
+
+/*SOURCE EDIT FORM*/
+
+#sourceEditForm label
+{
+    width:250px;
+    float:left;
+}
+
+#sourceEditForm div.block
+{
+    margin-bottom:5px;
+}
+
+div.block
+{
+    display:block;
+}
+
+.editButton
+{
+	background:url(../../Content/images/editButton.png) no-repeat;
+    display:inline-block;
+	height:15px;
+	width:15px;
+}
+
+.addButton
+{
+	background:url(../../Content/images/addButton.png) no-repeat;
+	display:inline-block;
+	height:15px;
+	width:15px;
+}
+
+/*PAGE EDIT FORM*/

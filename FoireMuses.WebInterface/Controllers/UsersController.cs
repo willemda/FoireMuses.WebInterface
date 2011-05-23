@@ -48,18 +48,26 @@ namespace FoireMuses.Webinterface.Controllers
 		[HttpPost]
 		public ActionResult Login(string username, string password, bool rememberMe)
 		{
-			FoireMusesConnection connection = GetConnection();
 			try
 			{
 				if (MembershipService.ValidateUser(username, password))
 				{
 					FormsService.SignIn(username, rememberMe);
 				}
+				else
+				{
+					ViewBag.Error = "Username ou password incorrect";
+					return View("Login");
+				}
+			}
+			catch (ArgumentException e)
+			{
+				ViewBag.Error = "Veuillez remplir les champs correctement";
+				return View("Login");
 			}
 			catch (Exception e)
 			{
-				ViewBag.Error("Impossible de se logger, username ou password incorrect");
-				RedirectToAction("Login");
+				return RedirectToAction("Problem", "Error", null);
 			}
 			return RedirectToAction("Index","Home",null);
 		}
