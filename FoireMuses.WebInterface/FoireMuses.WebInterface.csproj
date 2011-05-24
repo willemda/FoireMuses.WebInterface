@@ -142,6 +142,7 @@
     <Content Include="Content\images\%24partition1.png" />
     <Content Include="Content\images\%24partition2.png" />
     <Content Include="Content\images\addButton.png" />
+    <Content Include="Content\images\backButton.png" />
     <Content Include="Content\images\bg.png" />
     <Content Include="Content\images\bullet.png" />
     <Content Include="Content\images\bullet_active.png" />

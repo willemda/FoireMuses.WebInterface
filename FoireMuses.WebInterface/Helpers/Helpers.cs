@@ -92,6 +92,23 @@ namespace FoireMuses.WebInterface.HtmlHelpers
 			return mvc;
 		}
 
+        public static MvcHtmlString TextareaInputField(this HtmlHelper html, string fieldName, string fieldExpression, string fieldValue)
+        {
+            StringBuilder result = new StringBuilder();
+            TagBuilder tagB = new TagBuilder("label");
+            tagB.MergeAttribute("for", fieldExpression);
+            tagB.InnerHtml = fieldName;
+            result.AppendLine(tagB.ToString());
+            tagB = new TagBuilder("textarea");
+            tagB.MergeAttribute("id", fieldExpression);
+            tagB.MergeAttribute("name", fieldExpression);
+            if (!String.IsNullOrWhiteSpace(fieldValue))
+                tagB.InnerHtml = fieldValue;
+            result.AppendLine(tagB.ToString());
+            MvcHtmlString mvc = MvcHtmlString.Create(result.ToString());
+            return mvc;
+        }
+
 		public static MvcHtmlString HiddenInputField(this HtmlHelper html, string fieldExpression, string fieldValue)
 		{
 			StringBuilder result = new StringBuilder();
@@ -130,6 +147,31 @@ namespace FoireMuses.WebInterface.HtmlHelpers
 			MvcHtmlString mvc = MvcHtmlString.Create(result.ToString());
 			return mvc;
 		}
+
+        public static MvcHtmlString NullableIntField(this HtmlHelper html, string fieldName, int? fieldValue, bool boldValue = false, bool displayNullValue = true)
+        {
+            StringBuilder result = new StringBuilder();
+            TagBuilder tagB = new TagBuilder("div");
+            tagB.AddCssClass("label");
+            tagB.InnerHtml = fieldName;
+            result.AppendLine(tagB.ToString());
+            tagB = new TagBuilder("div");
+            tagB.AddCssClass("value");
+            if (boldValue)
+                tagB.MergeAttribute("style", "font-weight:bold;");
+            if (fieldValue!=null)
+                tagB.InnerHtml = fieldValue.Value.ToString();
+            else
+            {
+                if (displayNullValue)
+                    tagB.InnerHtml = "/";
+                else
+                    return MvcHtmlString.Empty;
+            }
+            result.AppendLine(tagB.ToString());
+            MvcHtmlString mvc = MvcHtmlString.Create(result.ToString());
+            return mvc;
+        }
 
 		public static MvcHtmlString NullableBooleanField(this HtmlHelper html, string fieldName, bool? fieldValue)
 		{

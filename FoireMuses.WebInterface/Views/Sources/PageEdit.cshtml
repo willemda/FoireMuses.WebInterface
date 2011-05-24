@@ -3,15 +3,17 @@
 @{
     ViewBag.Title = "FoireMuses - Add a new page to a source";
 }
- 
+ <div id="pageEditForm">
  <form action="" method="post">
  <fieldset><legend>@ViewBag.HeadTitle d'une page</legend>
     @Html.HiddenInputField("Id",Model.Id)
-    @Html.HiddenInputField("SourceId", Model.SourceId)
-    @Html.TextInputField("Numéro de page", "PageNumber", Model.PageNumber)
-    @Html.TextInputField("Numéro affiché", "DisplayPageNumber", Model.DisplayPageNumber)
-    @Html.TextInputField("Contenu", "PageNumber", Model.PageNumber)
+    <div class="block">@Html.HiddenInputField("SourceId", Model.SourceId)</div>
+    <div class="block">@Html.TextInputField("Numéro de page", "PageNumber", Model.PageNumber)</div>
+    <div class="block">@Html.TextInputField("Numéro affiché", "DisplayPageNumber", Model.DisplayPageNumber)</div>
+    <div class="block">@Html.TextInputField("Format de numérotation", "PageNumberFormat", Model.PageNumberFormat)</div>
+    <div class="block">@Html.TextareaInputField("Contenu", "TextContent", Model.TextContent)</div>
     <input class="submitButton" type="submit" value="@ViewBag.HeadTitle" />
     </fieldset>
 </form>
+</div>
 

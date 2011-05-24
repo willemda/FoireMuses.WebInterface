@@ -1,6 +1,6 @@
 soundManager.debugMode = true; 
 soundManager.debugFlash = true;
-soundManager.url = '../../Content/soundmanager/soundmanager2_debug.swf';
+soundManager.url = '~/Content/soundmanager/soundmanager2_debug.swf';
 soundManager.onerror = function() {
   // SM2 could not start, no sound support, something broke etc. Handle gracefully.
   alert('error while loading sound player');

@@ -18,20 +18,23 @@
 @if (ViewBag.Pages != null && (ViewBag.Pages as IEnumerable<FoireMuses.Client.SourcePageSearchItem>).Count() > 0)
 {
    <div id="pages">
+   <div class="label">Pages</div>
+   <div class="value">
    <ul>
    @foreach (var page in ViewBag.Pages)
    {
    <li>
-   <a href="PageDetails?sourcePageId=@page.Id">@page.PageNumber</a>
+   <a href="PageDetails?sourcePageId=@page.Id">Page @page.PageNumber</a>
    </li>
    }
    </ul>
+   </div>
    </div>
 }
 </div>
 
 <hr />
-<div id="menuSource">
+<div id="menuModif">
 <ul>
 <li><a href="Edit?sourceId=@Model.Id"><span class="editButton"></span>Modifier</a></li>
 <li><a href="PageCreate?sourceId=@Model.Id"><span class="addButton"></span>Ajouter page</a></li>

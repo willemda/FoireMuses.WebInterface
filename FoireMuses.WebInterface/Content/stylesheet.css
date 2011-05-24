@@ -430,12 +430,12 @@ border:1px lightblue solid;
     float:left;
 }
 
-#menuSource ul
+#menuModif ul
 {
     list-style-type:none;
 }
 
-#menuSource li
+#menuModif li
 {
     width:150px;
     height:25px;
@@ -446,7 +446,7 @@ border:1px lightblue solid;
     border-radius: 5px;
 }
 
-#menuSource a
+#menuModif a
 {
     font-weight:bold;
     width:150px;
@@ -457,7 +457,7 @@ border:1px lightblue solid;
     text-decoration:none;
 }
 
-#menuSource a:hover
+#menuModif a:hover
 {
     color:lightblue;
 }
@@ -921,6 +921,114 @@ ul#tabnav li.active {
     margin-bottom:5px;
 }
 
+
+/*PAGE EDIT FORM*/
+
+#pageEditForm label
+{
+    width:250px;
+    float:left;
+}
+
+#pageEditForm div.block
+{
+    margin-bottom:5px;
+}
+
+/*PAGE DETAILS*/
+
+#pageDetails div.label
+{
+    width:200px;
+    float:left;
+}
+
+#pageDetails div.value
+{
+    margin-left:200px;
+}
+
+#pages ul
+{
+    list-style-type:none;
+}
+
+#pages li
+{
+    display:inline;
+}
+
+#pages div.value
+{
+    margin-left:200px;
+}
+
+#pages a
+{
+    text-decoration:none;
+    color:lightblue;
+}
+
+#pages a:visited
+{
+    color:lightblue;
+}
+
+
+/*CSS FOR PUBLISH FORM*/
+
+
+#publishForm label
+{
+    width:250px;
+    float:left;
+}
+
+#publishForm div.block
+{
+    margin-bottom:5px;
+}
+
+
+/*CSS FOR SCORE CREATION FORM*/
+
+#scoreForm label
+{
+    width:250px;
+    float:left;
+}
+
+#scoreForm div.block
+{
+    margin-bottom:5px;
+}
+
+#scoreForm input, textarea
+{
+    width:350px;
+}
+
+#scoreForm div.checkbox input
+{
+    width:15px;
+}
+
+#scoreForm input.submitButton
+{
+    width:80px;
+}
+
+#scoreForm select
+{
+    width:600px;
+}
+
+
+#pieceAss
+{
+    display:none;
+}
+
 div.block
 {
     display:block;
@@ -942,4 +1050,10 @@ div.block
 	width:15px;
 }
 
-/*PAGE EDIT FORM*/
+.backButton
+{
+	background:url(../../Content/images/backButton.png) no-repeat;
+	display:inline-block;
+	height:15px;
+	width:15px;
+}

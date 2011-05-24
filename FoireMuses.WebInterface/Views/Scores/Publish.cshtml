@@ -1,6 +1,7 @@
 ﻿@{
     ViewBag.HeadTitle = "Publish";
 }
+@using FoireMuses.WebInterface.HtmlHelpers
 <div id="encadreInfo">
 <p>
 	<img class="helpIcon" src="../../Content/images/helpIcon.png" alt="help icon" />Insertion d'un air sur base d'un fichier music xml</p>
@@ -9,18 +10,21 @@
 	Cliquez sur le bouton afin de choisir un fichier music xml présent sur votre ordinateur. Lorsque vous avez choisis, cliquez sur le bouton créer.
 </p>
 	</div>
-	<div>
+	<div id="publishForm">
 <form method="post" action="" enctype="multipart/form-data">
-<input type="file" id="file" name="file"/><br/>
+<fieldset>
+<legend>Upload Music XML</legend>
+<label for="file">Fichier</label><input type="file" id="file" name="file"/><br/>
 @if (ViewBag.ScoreId != null)
 {
-    Html.Raw("Overwrite xml: "); <input type="checkbox" name="overwrite" value="true" /><input type="hidden" name="overwrite" value="false" />
-    <input type="hidden" name="scoreId" value="@ViewBag.ScoreId" />
+    <div class="block">@Html.CheckboxInputField("Garder les valeurs actuelles", "overwrite", false)</div>
+    <div class="block">@Html.HiddenInputField("scoreId", (string)ViewBag.ScoreId)</div>
 }
 else
 {
     <input type="hidden" name="overwrite" value="true" />
 }
-<input class="right" type="submit" value="Creer"/>
+<input class="submitButton" type="submit" value="Creer"/>
+</fieldset>
 </form>
 </div>

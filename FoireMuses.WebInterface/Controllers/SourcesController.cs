@@ -134,6 +134,7 @@ namespace FoireMuses.WebInterface.Controllers
 							return RedirectToAction("Missing", "Error", null);
 						}
 					}
+                    ViewBag.HeadTitle = "Creation";
 					page = new SourcePage();
 					page.SourceId = sourceId;
 				}
@@ -144,6 +145,7 @@ namespace FoireMuses.WebInterface.Controllers
 					{
 						return RedirectToAction("Missing", "Error", null);
 					}
+                    ViewBag.HeadTitle = "Edition";
 				}
 			}
 			catch (Exception e)
@@ -265,7 +267,7 @@ namespace FoireMuses.WebInterface.Controllers
 
 		private bool ValidatePage(SourcePage page)
 		{
-			if (page.PageNumber != null && page.PageNumber>=0)
+			if (page.PageNumber == null || page.PageNumber <0)
 				return false;
 			return true;
 		}

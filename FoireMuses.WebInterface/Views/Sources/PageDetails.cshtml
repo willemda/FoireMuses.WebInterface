@@ -1,33 +1,21 @@
 ﻿@model FoireMuses.Client.SourcePage
-
+@using FoireMuses.WebInterface.HtmlHelpers
 @{
     ViewBag.Title = "PageDetails";
 }
 
-@if (Model.PageNumber != null)
-{
-    <div>Numéro de page</div><div>@Model.PageNumber</div>
-}
+<div id="pageDetails">
 
-@if (Model.DisplayPageNumber != null)
-{
-    <div>Numéro de page affiché</div><div>@Model.DisplayPageNumber</div>
-}
+@Html.NullableIntField("Numéro de page", Model.PageNumber,true)
+@Html.NullableIntField("Numéro affiché", Model.DisplayPageNumber)
+@Html.NullableIntField("Format de numérotation", Model.PageNumberFormat)
+@Html.StringField("Contenu", Model.TextContent)
+</div>
+<hr />
 
-@if (Model.PageNumberFormat != null)
-{
-    <div>Format du numéro de page</div><div>@Model.PageNumberFormat</div>
-}
-
-@if (Model.TextContent != null)
-{
-    <div>Contenu</div><div>@Model.TextContent</div>
-}
-
-
-<div id="menuSourcePage">
+<div id="menuModif">
 <ul>
-<li><a href="PageEdit?sourcePageId=@Model.Id">Modifier</a></li>
-<li><a href="Details?sourceId=@Model.SourceId">Retour source</a></li>
+<li><a href="PageEdit?sourcePageId=@Model.Id"><span class="editButton"></span>Modifier</a></li>
+<li><a href="Details?sourceId=@Model.SourceId"><span class="backButton"></span>Retour source</a></li>
 </ul>
 </div>
