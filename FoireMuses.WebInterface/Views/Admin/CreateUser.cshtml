@@ -1,15 +1,19 @@
 ﻿@model FoireMuses.Webinterface.Models.RegisterModel
-
+@using FoireMuses.WebInterface.HtmlHelpers
 @{
     ViewBag.HeadTitle = "Créer user";
 }
 
+<div id="createUserForm">
 <form action="" method="post">
-    <label>Username</label><input type="text" name="Username"/><br />
-    <label>Password</label><input type="text" name="Password"/><br />
-    <label>Password Confirmation</label><input type="text" name="PasswordConfirmation"/><br />
-    <label>Email</label><input type="text" name="Email"/><br />
-    <label>Administrator</label><input type="checkbox" name="IsAdmin" value="true"/><input type="hidden" name="IsAdmin" value="false" /><br />
+    <fieldset>
+    <legend>Créer un utilisateur</legend>
+    <div class="block">@Html.TextInputField("Username", "Username", String.Empty)</div>
+    <div class="block">@Html.PasswordInputField("Password", "Password", String.Empty)</div>
+    <div class="block">@Html.PasswordInputField("Confirmation", "Password", String.Empty)</div>
+    <div class="block">@Html.TextInputField("Email", "Email", String.Empty)</div>
+   <div class="block"> @Html.CheckboxInputField("Administrateur", "IsAdmin", false)</div>
     <input type="submit" value="Creer" />
+    </fieldset>
 </form>
-
+</div>

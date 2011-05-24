@@ -54,7 +54,7 @@ namespace FoireMuses.Client
 		public bool IsAdmin
 		{
 			get {
-                if (json["admin"] == null)
+                if (json["isAdmin"] == null)
                     return false;
                 return json["isAdmin"].Value<bool>(); }
 			set { json["isAdmin"] = value; }
@@ -124,5 +124,10 @@ namespace FoireMuses.Client
 			}
 			return false;
 		}
+
+        public override string ToString()
+        {
+            return json.ToString();
+        }
 	}
 }

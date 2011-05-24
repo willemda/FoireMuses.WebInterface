@@ -95,7 +95,7 @@ namespace FoireMuses.Client
 			}
 		}
 
-		public string CodeMelodiqueRISM
+		public string CodageMelodiqueRISM
 		{
 			get
 			{

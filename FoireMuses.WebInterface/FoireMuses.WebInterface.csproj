@@ -729,6 +729,7 @@
     <Content Include="Content\mp3\notes\gis1_8.mp3" />
     <Content Include="Content\mp3\notes\gis2_8.mp3" />
     <Content Include="Content\mp3\notes\gis3_8.mp3" />
+    <Content Include="Content\partitionButton.png" />
     <Content Include="Content\soundmanager\soundmanager2-jsmin.js" />
     <Content Include="Content\soundmanager\soundmanager2-nodebug-jsmin.js" />
     <Content Include="Content\soundmanager\soundmanager2-nodebug.js" />
@@ -740,6 +741,8 @@
     <Content Include="Content\images\tabs.gif" />
     <Content Include="Content\images\xmlIcon.png" />
     <Content Include="Content\stylesheet.css" />
+    <Content Include="Content\uploadButton.png" />
+    <Content Include="Content\userButton.png" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

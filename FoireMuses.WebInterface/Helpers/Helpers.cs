@@ -92,6 +92,25 @@ namespace FoireMuses.WebInterface.HtmlHelpers
 			return mvc;
 		}
 
+
+        public static MvcHtmlString PasswordInputField(this HtmlHelper html, string fieldName, string fieldExpression, string fieldValue)
+        {
+            StringBuilder result = new StringBuilder();
+            TagBuilder tagB = new TagBuilder("label");
+            tagB.MergeAttribute("for", fieldExpression);
+            tagB.InnerHtml = fieldName;
+            result.AppendLine(tagB.ToString());
+            tagB = new TagBuilder("input");
+            tagB.MergeAttribute("type", "password");
+            tagB.MergeAttribute("id", fieldExpression);
+            tagB.MergeAttribute("name", fieldExpression);
+            if (!String.IsNullOrWhiteSpace(fieldValue))
+                tagB.MergeAttribute("value", fieldValue);
+            result.AppendLine(tagB.ToString());
+            MvcHtmlString mvc = MvcHtmlString.Create(result.ToString());
+            return mvc;
+        }
+
         public static MvcHtmlString TextareaInputField(this HtmlHelper html, string fieldName, string fieldExpression, string fieldValue)
         {
             StringBuilder result = new StringBuilder();

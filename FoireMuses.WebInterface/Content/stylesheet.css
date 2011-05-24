@@ -55,6 +55,12 @@ body
     display:inline;
 }
 
+#firstPart
+{
+    width:1004px;
+    min-height:300px;
+}
+
 #gauche
 {
     padding-right:4px;
@@ -870,6 +876,37 @@ ul#tabnav li.active {
     text-decoration: underline;
 }
 
+#adminSpace ul
+{
+    list-style-type:none;
+}
+
+#adminSpace li
+{
+    width:150px;
+    height:25px;
+    border: lightgrey 1px solid;
+    display:inline-block;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#adminSpace a
+{
+    font-weight:bold;
+    width:150px;
+    display:inline-block;
+    line-height:24px;
+    height:25px;
+    color:Black;
+    text-decoration:none;
+}
+
+#adminSpace a:hover
+{
+    color:lightblue;
+}
 
 /*CSS FOR ERRORS*/
 #errorMessage
@@ -1029,6 +1066,47 @@ ul#tabnav li.active {
     display:none;
 }
 
+/*CSS FOR SCORE DETAILS*/
+
+#scoreDetails div.label
+{
+    width:180px;
+    float:left;
+}
+
+#scoreDetails div.value
+{
+   margin-left:180px;
+}
+
+#downloads
+{
+    display:block;
+    width:500px;
+}
+
+
+#downloads li
+{
+    float:right;
+}
+
+
+
+/*CSS FOR CREATE USER*/
+
+#createUserForm label
+{
+    width:250px;
+    float:left;
+}
+
+#createUserForm div.block
+{
+   margin-bottom:5px;
+}
+
+
 div.block
 {
     display:block;
@@ -1053,6 +1131,30 @@ div.block
 .backButton
 {
 	background:url(../../Content/images/backButton.png) no-repeat;
+	display:inline-block;
+	height:15px;
+	width:15px;
+}
+
+.partitionButton
+{
+	background:url(../../Content/images/partitionButton.png) no-repeat;
+	display:inline-block;
+	height:15px;
+	width:15px;
+}
+
+.uploadButton
+{
+	background:url(../../Content/images/uploadButton.png) no-repeat;
+	display:inline-block;
+	height:15px;
+	width:15px;
+}
+
+.userButton
+{
+	background:url(../../Content/images/userButton.png) no-repeat;
 	display:inline-block;
 	height:15px;
 	width:15px;

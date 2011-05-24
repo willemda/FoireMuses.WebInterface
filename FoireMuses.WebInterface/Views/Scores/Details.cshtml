@@ -1,12 +1,16 @@
 ﻿@model FoireMuses.Client.Score
+@using FoireMuses.WebInterface.HtmlHelpers
 @{
     ViewBag.HeadTitle = "Details - " + @Model.Title;
     ViewBag.AddJs = "<script type=\"text/javascript\" src=\"../../Content/js/sliderman.1.2.1.js\"></script>";
 }
+<div id="scoreDetails">
+<div id="firstPart">
 <div id="gauche">
     @if (ViewBag.Documents != null && (ViewBag.Documents as IEnumerable<string>).Contains("$musicxml.xml"))
     {
         <div id="downloads">
+       
             <ul>
                 <li><a href="Download?scoreId=@Model.Id&fileType=pdf&fileName=@Model.Title@Html.Raw(".pdf")" target="_blank">
                     <img src="../../Content/images/pdfIcon.jpg" /></a> </li>
@@ -15,30 +19,26 @@
                 <li><a href="Download?scoreId=@Model.Id&fileType=mid&fileName=@Model.Title@Html.Raw(".mid")" target="_blank">
                     <img src="../../Content/images/midiIcon.png" /></a> </li>
             </ul>
+           
         </div>
     }
-    <div id="titleDisplay">@Model.Title</div>
-    @if (Model.Composer != null)
-    {
-        <div id="composer">
-            Composé par <a href="#">@Model.Composer</a></div>
+    @Html.StringField("Titre", Model.Title, true)
+    @if(ViewBag.GenericScore!=null){
+        @Html.StringField("Titre générique", "<a href=\"details?scoreId=" + (string)ViewBag.GenericScore.Id + "\">"+(string)ViewBag.GenericScore.Title+"</a>")
     }
-    @if (Model.Editor != null)
-    {
-        <div id="editor">
-            Edité par <a href="#">@Model.Editor</a></div>
-              
-    }
-    @if (Model.Verses != null)
-    {
-        <div id="versets">@Model.Verses</div>
-    }
-    
-     @if (Model.ScoreType != null)
-     {
-        <div id="type"><strong>Type:</strong> @Model.ScoreType</div>
-     }
-    
+    @Html.NullableBooleanField("Maitre", new Nullable<bool>(Model.IsMaster))
+    @Html.StringField("Compositeur", Model.Composer)
+    @Html.StringField("Editeur", Model.Editor)
+    @Html.StringField("Versets", Model.Verses)
+    @Html.StringField("Type", Model.ScoreType)
+    @Html.StringField("Strophe", Model.Stanza)
+    @Html.StringField("Coirault", Model.Coirault)
+    @Html.StringField("Delarue", Model.Delarue)
+    @Html.StringField("Coupe métrique", Model.CoupeMetrique)
+    @Html.StringField("Codage mélodique RISM", Model.CodageMelodiqueRISM)
+    @Html.StringField("Codage par intervalles", Model.CodageParIntervalles)
+    @Html.StringField("Codage rythmique", Model.CodageRythmique)
+    @Html.StringField("Commentaires", Model.Comments)
 
     @if (Model.TextualSource != null || Model.MusicalSource != null)
     {
@@ -69,17 +69,10 @@
             </div>
         </div>
     }
-    
-    @if (ViewBag.GenericScore != null)
-    {
-        <div id="genericTitle"><strong>Titre générique:</strong>
-        <a href="Details?scoreId=@ViewBag.GenericScore.Id">@ViewBag.GenericScore.Title</a>
-        </div>
-    }
 
     @if (ViewBag.OtherTitlesScore != null && (ViewBag.OtherTitlesScore as IEnumerable<FoireMuses.Client.ScoreSearchItem>).Where(x=>x.Id!=Model.Id).Count()>0)
     {
-        <div id="otherTitles"><strong>Autre(s) titre(s):</strong><ul>
+        <div id="otherTitles">Autres titres<ul>
         @foreach (var item in ViewBag.OtherTitlesScore)
         {
             if (item.Id != Model.Id)
@@ -153,6 +146,7 @@
         </div>
     </div>
 }
+</div>
 @if (ViewBag.AttachedFiles != null && (ViewBag.AttachedFiles as IEnumerable<string>).Count() > 0)
 {
     <div id="attachedFiles">
@@ -167,11 +161,13 @@
         </ul>-->
     </div>
 }
-<div id="menuScore">
+</div>
+<hr />
+<div id="menuModif">
     <ul>
-        <li><a href="Publish?scoreId=@Model.Id">Changer partition</a>
+        <li><a href="Publish?scoreId=@Model.Id"><span class="partitionButton"></span>Changer partition</a>
         </li>
-        <li><a href="Edit?scoreId=@Model.Id">Modifier informations</a> </li>
-        <li><a href="#">Attacher un fichier</a> </li>
+        <li><a href="Edit?scoreId=@Model.Id"><span class="editButton"></span>Modifier</a> </li>
+        <li><a href="#"><span class="uploadButton"></span>Attacher un fichier</a></li>
     </ul>
 </div>
