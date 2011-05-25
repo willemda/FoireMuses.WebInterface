@@ -5,97 +5,92 @@
     ViewBag.AddJs = "<script type=\"text/javascript\" src=\"../../Content/js/sliderman.1.2.1.js\"></script>";
 }
 <div id="scoreDetails">
-<div id="firstPart">
-<div id="gauche">
-    @if (ViewBag.Documents != null && (ViewBag.Documents as IEnumerable<string>).Contains("$musicxml.xml"))
-    {
-        <div id="downloads">
-       
-            <ul>
-                <li><a href="Download?scoreId=@Model.Id&fileType=pdf&fileName=@Model.Title@Html.Raw(".pdf")" target="_blank">
-                    <img src="../../Content/images/pdfIcon.jpg" /></a> </li>
-                <li><a href="Download?scoreId=@Model.Id&fileType=xml&fileName=@Model.Title@Html.Raw(".xml")" target="_blank">
-                    <img src="../../Content/images/xmlIcon.png" /></a> </li>
-                <li><a href="Download?scoreId=@Model.Id&fileType=mid&fileName=@Model.Title@Html.Raw(".mid")" target="_blank">
-                    <img src="../../Content/images/midiIcon.png" /></a> </li>
-            </ul>
-           
-        </div>
-    }
-    @Html.StringField("Titre", Model.Title, true)
-    @if(ViewBag.GenericScore!=null){
-        @Html.StringField("Titre générique", "<a href=\"details?scoreId=" + (string)ViewBag.GenericScore.Id + "\">"+(string)ViewBag.GenericScore.Title+"</a>")
-    }
-    @Html.NullableBooleanField("Maitre", new Nullable<bool>(Model.IsMaster))
-    @Html.StringField("Compositeur", Model.Composer)
-    @Html.StringField("Editeur", Model.Editor)
-    @Html.StringField("Versets", Model.Verses)
-    @Html.StringField("Type", Model.ScoreType)
-    @Html.StringField("Strophe", Model.Stanza)
-    @Html.StringField("Coirault", Model.Coirault)
-    @Html.StringField("Delarue", Model.Delarue)
-    @Html.StringField("Coupe métrique", Model.CoupeMetrique)
-    @Html.StringField("Codage mélodique RISM", Model.CodageMelodiqueRISM)
-    @Html.StringField("Codage par intervalles", Model.CodageParIntervalles)
-    @Html.StringField("Codage rythmique", Model.CodageRythmique)
-    @Html.StringField("Commentaires", Model.Comments)
-
-    @if (Model.TextualSource != null || Model.MusicalSource != null)
-    {
-        <div><strong>Sources:</strong>
-            <div id="sources">
-                @if (Model.TextualSource != null)
-                {
-                    <div id="sourcetext"><strong>Textuelle:</strong>
-                        <a href="Sources?id=@ViewBag.TextualSource.Id" title="cliquer pour aller voir la source">@ViewBag.TextualSource.Name,
-                            @ViewBag.TextualSource.DateFrom - @ViewBag.TextualSource.DateTo, Page @Model.TextualSource.Page,
-                            Volume @Model.TextualSource.Volume, Tome @Model.TextualSource.Tome,
-                            de @ViewBag.TextualSource.Publisher</a></div>
-                    
-                          if (Model.TextualSource.PieceId != null)
-                          {
-                        <div id="sourcepiece"><strong>Pièce associée:</strong> <a href="Plays?id=@ViewBag.AssociatedPlay.Id" title="cliquer
+    <div id="firstPart">
+        <div id="gauche">
+            @if (ViewBag.Documents != null && (ViewBag.Documents as IEnumerable<string>).Contains("$musicxml.xml"))
+            {
+                <div id="downloads">
+                    <ul>
+                        <li><a href="Download?scoreId=@Model.Id&fileType=pdf&fileName=@Model.Title@Html.Raw(".pdf")" target="_blank">
+                            <img src="../../Content/images/pdfIcon.jpg" /></a> </li>
+                        <li><a href="Download?scoreId=@Model.Id&fileType=xml&fileName=@Model.Title@Html.Raw(".xml")" target="_blank">
+                            <img src="../../Content/images/xmlIcon.png" /></a> </li>
+                        <li><a href="Download?scoreId=@Model.Id&fileType=mid&fileName=@Model.Title@Html.Raw(".mid")" target="_blank">
+                            <img src="../../Content/images/midiIcon.png" /></a> </li>
+                    </ul>
+                </div>
+            }
+            @Html.StringField("Titre", Model.Title, true)
+            @if (ViewBag.GenericScore != null)
+            {
+                @Html.StringField("Titre générique", "<a href=\"details?scoreId=" + (string)ViewBag.GenericScore.Id + "\">" + (string)ViewBag.GenericScore.Title + "</a>")
+            }
+            @Html.NullableBooleanField("Maitre", new Nullable<bool>(Model.IsMaster))
+            @Html.StringField("Compositeur", Model.Composer)
+            @Html.StringField("Editeur", Model.Editor)
+            @Html.StringField("Versets", Model.Verses)
+            @Html.StringField("Type", Model.ScoreType)
+            @Html.StringField("Strophe", Model.Stanza)
+            @Html.StringField("Coirault", Model.Coirault)
+            @Html.StringField("Delarue", Model.Delarue)
+            @Html.StringField("Coupe métrique", Model.CoupeMetrique)
+            @Html.StringField("Codage mélodique RISM", Model.CodageMelodiqueRISM)
+            @Html.StringField("Codage par intervalles", Model.CodageParIntervalles)
+            @Html.StringField("Codage rythmique", Model.CodageRythmique)
+            @Html.StringField("Commentaires", Model.Comments)
+            @if (Model.TextualSource != null)
+            {
+                <div class="label">
+                    Source textuelle</div>
+                <div class="value">
+                    <a href="./../Sources/Details?sourceId=@ViewBag.TextualSource.Id" title="cliquer pour aller voir la source">@ViewBag.TextualSource.Name,
+                        @ViewBag.TextualSource.DateFrom - @ViewBag.TextualSource.DateTo, Page @Model.TextualSource.Page,
+                        Volume @Model.TextualSource.Volume, Tome @Model.TextualSource.Tome, de @ViewBag.TextualSource.Publisher</a>
+                </div>
+            }
+            @if (Model.TextualSource.PieceId != null)
+            {
+                <div class="label">
+                    Pièce associée</div>
+                <div class="value">
+                    <a href="#" title="cliquer
                         pour aller voir la pièce">@ViewBag.AssociatedPlay.Title, Act @Model.TextualSource.ActNumber,
                         Scene @Model.TextualSource.SceneNumber</a></div>
-                          }
-                }
-                @if (Model.MusicalSource != null)
-                {
-                    <div id="sourcemusic"><strong>Musicale:</strong>
-                        <a href="Sources?id=@ViewBag.MusicalSource.Id" title="cliquer pour aller voir la source">@ViewBag.TextualSource.Name,
-                            @ViewBag.TextualSource.DateFrom - @ViewBag.TextualSource.DateTo, Page @Model.TextualSource.Page,
-                            Volume @Model.TextualSource.Volume, Tome @Model.TextualSource.Tome,
-                            de @ViewBag.TextualSource.Publisher</a></div>}
-            </div>
-        </div>
-    }
-
-    @if (ViewBag.OtherTitlesScore != null && (ViewBag.OtherTitlesScore as IEnumerable<FoireMuses.Client.ScoreSearchItem>).Where(x=>x.Id!=Model.Id).Count()>0)
-    {
-        <div id="otherTitles">Autres titres<ul>
-        @foreach (var item in ViewBag.OtherTitlesScore)
-        {
-            if (item.Id != Model.Id)
-            {
-                <li>
-                <a href="Details?scoreId=@item.Id">@item.Title</a>
-                </li>
             }
-
-        }</ul>
-        </div>
-    }
-
-    @if (Model.Tags != null)
-    {
-        <div id="tags">
-            @foreach (string tag in Model.Tags)
+            @if (Model.MusicalSource != null)
             {
-                <a href="#">@tag</a>
+                <div class="label">
+                    Source musicale</div>
+                <div class="value">
+                    <a href="./../Sources/Details?sourceId=@ViewBag.MusicalSource.Id" title="cliquer pour aller voir la source">@ViewBag.TextualSource.Name,
+                        @ViewBag.TextualSource.DateFrom - @ViewBag.TextualSource.DateTo, Page @Model.TextualSource.Page,
+                        Volume @Model.TextualSource.Volume, Tome @Model.TextualSource.Tome, de @ViewBag.TextualSource.Publisher</a>
+                </div>
+            }
+            @if (ViewBag.OtherTitlesScore != null && (ViewBag.OtherTitlesScore as IEnumerable<FoireMuses.Client.ScoreSearchItem>).Where(x => x.Id != Model.Id).Count() > 0)
+            {
+                <div id="otherTitles">
+                    Autres titres<ul>
+                        @foreach (var item in ViewBag.OtherTitlesScore)
+                        {
+                            if (item.Id != Model.Id)
+                            {
+                            <li><a href="Details?scoreId=@item.Id">@item.Title</a> </li>
+                            }
+
+                        }</ul>
+                </div>
+            }
+            @if (Model.Tags != null)
+            {
+                <div id="tags">
+                    @foreach (string tag in Model.Tags)
+                    {
+                        <a href="#">@tag</a>
+                    }
+                </div>
             }
         </div>
-    }
-</div>
 @if (ViewBag.Documents != null && (ViewBag.Documents as IEnumerable<string>).Contains("$musicxml.xml"))
 {
     <div id="pagePrincipale">
@@ -162,12 +157,14 @@
     </div>
 }
 </div>
-<hr />
+
 <div id="menuModif">
+<hr />
     <ul>
-        <li><a href="Publish?scoreId=@Model.Id"><span class="partitionButton"></span>Changer partition</a>
+        <li><a href="Publish?scoreId=@Model.Id"><span class="partitionButton"></span>Changer
+            partition</a> </li>
+        <li><a href="Edit?scoreId=@Model.Id"><span class="editButton"></span>Modifier</a>
         </li>
-        <li><a href="Edit?scoreId=@Model.Id"><span class="editButton"></span>Modifier</a> </li>
         <li><a href="#"><span class="uploadButton"></span>Attacher un fichier</a></li>
     </ul>
 </div>

@@ -58,7 +58,7 @@ body
 #firstPart
 {
     width:1004px;
-    min-height:300px;
+    position:relative;
 }
 
 #gauche
@@ -463,6 +463,13 @@ border:1px lightblue solid;
     text-decoration:none;
 }
 
+#menuModif
+{
+    padding-top:20px;
+    position:relative;
+    clear:both;
+}
+
 #menuModif a:hover
 {
     color:lightblue;
@@ -709,9 +716,10 @@ font-style:italic;
 {
     position:absolute;
     background-color:white;
-    width:640px;
+    width:350px;
     border: 1px solid black;
-    text-align:left;
+    margin-left:250px;
+    margin-top:-5px;
 }
 
 .suggest
@@ -1044,6 +1052,7 @@ ul#tabnav li.active {
 {
     width:350px;
 }
+
 
 #scoreForm div.checkbox input
 {

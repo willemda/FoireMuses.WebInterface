@@ -11,9 +11,10 @@
 @Html.NullableIntField("Format de numérotation", Model.PageNumberFormat)
 @Html.StringField("Contenu", Model.TextContent)
 </div>
-<hr />
+
 
 <div id="menuModif">
+<hr />
 <ul>
 <li><a href="PageEdit?sourcePageId=@Model.Id"><span class="editButton"></span>Modifier</a></li>
 <li><a href="Details?sourceId=@Model.SourceId"><span class="backButton"></span>Retour source</a></li>

@@ -47,13 +47,20 @@ namespace FoireMuses.WebInterface.Controllers
 		public ActionResult SearchScore(string title = null, string editor = null, string composer = null, string verses = null,int page = 1)
 		{
 			FoireMusesConnection connection = GetConnection();
-			Result<SearchResult<ScoreSearchItem>> result = new Result<SearchResult<ScoreSearchItem>>();
 			if (String.IsNullOrWhiteSpace(title) && String.IsNullOrWhiteSpace(editor) && String.IsNullOrWhiteSpace(composer) && String.IsNullOrWhiteSpace(verses))
 			{
 				ViewBag.Error = "You must specify at least one criteria before making a search";
 				return View("Score");
 			}
-			SearchResult<ScoreSearchItem> searchResult = connection.SearchScore((page - 1) * PageSize, PageSize, new Dictionary<string, object>() { {"title",title},{"editor",editor},{"composer",composer},{"verses",verses}}, result).Wait();
+			SearchResult<ScoreSearchItem> searchResult = null;
+			try
+			{
+				searchResult = connection.SearchScore((page - 1) * PageSize, PageSize, new Dictionary<string, object>() { { "title", title }, { "editor", editor }, { "composer", composer }, { "verses", verses } }, new Result<SearchResult<ScoreSearchItem>>()).Wait();
+			}
+			catch (Exception e)
+			{
+				return RedirectToAction("Problem", "Error", null);
+			}
 			var viewModel = new ListViewModel<ScoreSearchItem>()
 			{
 				CurrentPage = page,
@@ -62,7 +69,7 @@ namespace FoireMuses.WebInterface.Controllers
 			return View("ListScoreSearch", viewModel);
 		}
 
-		public ViewResult SearchMusic(string music = null, int page = 1)
+		public ActionResult SearchMusic(string music = null, int page = 1)
 		{
 			if (String.IsNullOrWhiteSpace(music))
 			{
@@ -70,8 +77,15 @@ namespace FoireMuses.WebInterface.Controllers
 				return View("Music");
 			}
 			FoireMusesConnection connection = GetConnection();
-			Result<SearchResult<ScoreSearchItem>> result = new Result<SearchResult<ScoreSearchItem>>();
-			SearchResult<ScoreSearchItem> searchResult = connection.SearchScore((page - 1) * PageSize, PageSize, new Dictionary<string, object>() { {"music",music}}, result).Wait();
+			SearchResult<ScoreSearchItem> searchResult = null;
+			try
+			{
+				searchResult = connection.SearchScore((page - 1) * PageSize, PageSize, new Dictionary<string, object>() { { "music", music } }, new Result<SearchResult<ScoreSearchItem>>()).Wait();
+			}
+			catch (Exception e)
+			{
+				return RedirectToAction("Problem", "Error", null);
+			}
 			var viewModel = new ListViewModel<ScoreSearchItem>()
 			{
 				CurrentPage = page,

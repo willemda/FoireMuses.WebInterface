@@ -3,7 +3,14 @@
 @{
     ViewBag.HeadTitle = "All Scores";
 }
-
+@if (Model.SearchResult.Rows.Count() == 0)
+{
+    <div id="noResults">
+        <p>Il n'y a aucun air actuellement, @Html.ActionLink("créer un air", "Create", "Scores", null, null)</p>
+    </div>
+}
+else
+{
 <div id="pre-list">
 Airs
 </div>
@@ -71,3 +78,4 @@ Airs
        @Html.PageLinks(Model.TotalPages, Model.CurrentPage,
             x => Url.Action("List", new { page = x }))
 </div>
+}

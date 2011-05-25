@@ -5,6 +5,15 @@
     ViewBag.Title = "Resultat de recherche";
 }
 
+@if (Model.SearchResult.Rows.Count() == 0)
+{
+    <div id="noResults">
+    <p>Il n'y a aucun résultat pour cette recherche, @Html.ActionLink("faire une autre recherche", "Index")</p>
+    </div>
+}
+else
+{
+
 <div id="pre-list">
 Resultats
 </div>
@@ -70,14 +79,13 @@ Resultats
 </div>
 <div id="pager">
        @{
-           string titleValue = Context.Request.Params["title"];
-           string composerValue = Context.Request.Params["composer"];
-           string editorValue = Context.Request.Params["editor"];
-           string versesValue = Context.Request.Params["verses"];
-           string musicValue = Context.Request.Params["music"];
+  string titleValue = Context.Request.Params["title"];
+  string composerValue = Context.Request.Params["composer"];
+  string editorValue = Context.Request.Params["editor"];
+  string versesValue = Context.Request.Params["verses"];
+  string musicValue = Context.Request.Params["music"];
            @Html.PageLinks(Model.TotalPages, Model.CurrentPage,
-                     x => Url.Action(ViewBag.Action, new { page = x, title = titleValue, composer = composerValue, editor = editorValue, verses = versesValue, music = musicValue}));
+                     x => Url.Action(ViewBag.Action, new { page = x, title = titleValue, composer = composerValue, editor = editorValue, verses = versesValue, music = musicValue }));
                      }
 </div>
-
-
+}

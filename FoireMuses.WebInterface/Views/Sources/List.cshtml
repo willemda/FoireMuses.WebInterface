@@ -3,7 +3,14 @@
 @{
     ViewBag.HeadTitle = "All Sources";
 }
-
+@if (Model.SearchResult.Rows.Count() == 0)
+{
+    <div id="noResults">
+        <p>Il n'y a aucune source actuellement, @Html.ActionLink("créer une source", "Create", "Sources", null, null)</p>
+    </div>
+}
+else
+{
 <div id="pre-list">
 Sources
 </div>
@@ -47,3 +54,4 @@ Sources
        @Html.PageLinks(Model.TotalPages, Model.CurrentPage,
             x => Url.Action("List", new { page = x }))
 </div>
+}

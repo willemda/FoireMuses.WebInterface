@@ -149,6 +149,7 @@
     <Content Include="Content\images\clear.gif" />
     <Content Include="Content\images\editButton.png" />
     <Content Include="Content\images\helpIcon.png" />
+    <Content Include="Content\images\indisponible.gif" />
     <Content Include="Content\images\left.png" />
     <Content Include="Content\images\loading.gif" />
     <Content Include="Content\images\midiIcon.png" />
@@ -729,7 +730,7 @@
     <Content Include="Content\mp3\notes\gis1_8.mp3" />
     <Content Include="Content\mp3\notes\gis2_8.mp3" />
     <Content Include="Content\mp3\notes\gis3_8.mp3" />
-    <Content Include="Content\partitionButton.png" />
+    <Content Include="Content\images\partitionButton.png" />
     <Content Include="Content\soundmanager\soundmanager2-jsmin.js" />
     <Content Include="Content\soundmanager\soundmanager2-nodebug-jsmin.js" />
     <Content Include="Content\soundmanager\soundmanager2-nodebug.js" />
@@ -741,8 +742,8 @@
     <Content Include="Content\images\tabs.gif" />
     <Content Include="Content\images\xmlIcon.png" />
     <Content Include="Content\stylesheet.css" />
-    <Content Include="Content\uploadButton.png" />
-    <Content Include="Content\userButton.png" />
+    <Content Include="Content\images\uploadButton.png" />
+    <Content Include="Content\images\userButton.png" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -830,9 +831,6 @@
     <Content Include="Views\Scores\Publish.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Scores\Edit.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Shared\playList.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -841,13 +839,10 @@
     </Content>
     <None Include="Content\images\piano_js\Thumbs.db" />
     <None Include="Content\images\Thumbs.db" />
-    <Content Include="Views\Scores\Details2.cshtml" />
     <Content Include="Views\Sources\List.cshtml" />
     <Content Include="Views\Sources\Details.cshtml" />
     <Content Include="Views\Scores\List.cshtml" />
-    <Content Include="Views\Scores\Searching.cshtml" />
-    <Content Include="Views\Scores\Search.cshtml" />
-    <Content Include="Views\Scores\Edit2.cshtml" />
+    <Content Include="Views\Scores\Edit.cshtml" />
     <Content Include="Views\Sources\Edit.cshtml" />
     <Content Include="Views\Shared\AjaxSearchForMaster.cshtml" />
     <Content Include="Views\Search\Score.cshtml" />

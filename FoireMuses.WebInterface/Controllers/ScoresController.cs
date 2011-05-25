@@ -20,7 +20,7 @@ namespace FoireMuses.WebInterface.Controllers
 
 		public int PageSize = 20;
 
-		public ViewResult List(int page = 1)
+		public ActionResult List(int page = 1)
 		{
 			//use mindtouch dream to access the web service.
 			// treat the result and return it to the view
@@ -32,7 +32,7 @@ namespace FoireMuses.WebInterface.Controllers
 			}
 			catch (Exception e)
 			{
-				return View("Error","Error while trying to retrieve the scores list");
+				return RedirectToAction("Problem", "Error", null);
 			}
 			var viewModel = new ListViewModel<ScoreSearchItem>()
 			{
@@ -42,22 +42,15 @@ namespace FoireMuses.WebInterface.Controllers
 			return View(viewModel);
 		}
 
-
-		public ViewResult Search()
-		{
-			return View();
-		}
-
 		//
 		// GET: /Scores/Details
-		public ViewResult Details(string scoreId)
+		public ActionResult Details(string scoreId)
 		{
 			if (String.IsNullOrWhiteSpace(scoreId))
 			{
-				return View("List");
+				return RedirectToAction("Missing", "Error", null);
 			}
-			//use mindtouch dream to access the web service.
-			// treat the result and return it to the view
+			
 			FoireMusesConnection connection = GetConnection();
 			Score score = null;
 			Score genericScore = null;
@@ -72,16 +65,32 @@ namespace FoireMuses.WebInterface.Controllers
 				score = connection.GetScore(scoreId, new Result<Score>()).Wait();
 				if (score == null)
 				{
-					return View("Error", "No score exists for id " + scoreId);
+					return RedirectToAction("Missing", "Error", null);
 				}
-				if (score.TextualSource != null)
+				if (score.TextualSource != null && !String.IsNullOrWhiteSpace(score.TextualSource.SourceId))
 				{
 					sTextuelle = connection.GetSource(score.TextualSource.SourceId, new Result<Source>()).Wait();
-					if (score.TextualSource.PieceId != null)
+					if (sTextuelle == null)
+					{
+						return RedirectToAction("Problem", "Error", null);
+					}
+					if (!String.IsNullOrWhiteSpace(score.TextualSource.PieceId))
+					{
 						assPlay = connection.GetPlay(score.TextualSource.PieceId, new Result<Play>()).Wait();
+						if (assPlay == null)
+						{
+							return RedirectToAction("Problem", "Error", null);
+						}
+					}
 				}
-				if (score.MusicalSource != null)
+				if (score.MusicalSource != null && !String.IsNullOrWhiteSpace(score.MusicalSource.SourceId))
+				{
 					sMusicale = connection.GetSource(score.MusicalSource.SourceId, new Result<Source>()).Wait();
+					if (sMusicale == null)
+					{
+						return RedirectToAction("Problem", "Error", null);
+					}
+				}
 				if (score.HasAttachement)
 				{
 					attachedFiles = score.GetAttachmentNames().Where(x => !x.StartsWith("$"));
@@ -89,17 +98,31 @@ namespace FoireMuses.WebInterface.Controllers
 				}
 				if (score.IsMaster)
 				{
-					otherTitlesScore = connection.SearchScore(0, 0, new Dictionary<string, object>() { { "masterId", score.Id } }, new Result<SearchResult<ScoreSearchItem>>()).Wait().Rows;
+					SearchResult<ScoreSearchItem> results = connection.SearchScore(0, 0, new Dictionary<string, object>() { { "masterId", score.Id } }, new Result<SearchResult<ScoreSearchItem>>()).Wait();
+					if (results == null)
+					{
+						return RedirectToAction("Problem", "Error", null);
+					}
+					otherTitlesScore = results.Rows;
 				}
 				else if(score.MasterId!=null)
 				{
 					genericScore = connection.GetScore(score.MasterId, new Result<Score>()).Wait();
-					otherTitlesScore = connection.SearchScore(0, 0, new Dictionary<string, object>() { { "masterId", score.MasterId} }, new Result<SearchResult<ScoreSearchItem>>()).Wait().Rows;
+					if (genericScore == null)
+					{
+						return RedirectToAction("Problem", "Error", null);
+					}
+					SearchResult<ScoreSearchItem> results = connection.SearchScore(0, 0, new Dictionary<string, object>() { { "masterId", score.MasterId } }, new Result<SearchResult<ScoreSearchItem>>()).Wait();
+					if (results == null)
+					{
+						return RedirectToAction("Problem", "Error", null);
+					}
+					otherTitlesScore = results.Rows;
 				}
 			}
 			catch (Exception e)
 			{
-				return View("Error", "Error while trying to retrieve informations of the score " + scoreId);
+				return RedirectToAction("Problem", "Error", null);
 			}
 			ViewBag.TextualSource = sTextuelle;
 			ViewBag.AssociatedPlay = assPlay;
@@ -115,7 +138,14 @@ namespace FoireMuses.WebInterface.Controllers
 		public ActionResult Images(string scoreId, string fileName){
 			FoireMusesConnection connection = GetConnection();
 			Stream theStream;
-			theStream = connection.GetAttachements(scoreId, fileName, new Result<Stream>()).Wait();
+			try
+			{
+				theStream = connection.GetAttachements(scoreId, fileName, new Result<Stream>()).Wait();
+			}
+			catch (Exception e)
+			{
+				return File(System.IO.File.OpenRead("~/Content/images/indisponible.gif"), "image/gif");
+			}
 			return File(theStream, "image/png");
 		}
 
@@ -139,7 +169,14 @@ namespace FoireMuses.WebInterface.Controllers
 					contentType = "";
 					break;
 			}
-			theStream = connection.GetConvertedScore(scoreId, fileName, new Result<Stream>()).Wait();
+			try
+			{
+				theStream = connection.GetConvertedScore(scoreId, fileName, new Result<Stream>()).Wait();
+			}
+			catch (Exception e)
+			{
+				return RedirectToAction("Problem", "Error", null);
+			}
 			return File(theStream, contentType, fileName);
 		}
 
@@ -158,10 +195,13 @@ namespace FoireMuses.WebInterface.Controllers
 		}
 
 
+		//AJAX CALL
 		public ActionResult GetPlaysForSource(string id)
 		{
+			theLogger.Info(String.Format("method GetPlaysForSource, parameter id {0}", id));
 			if (String.IsNullOrWhiteSpace(id))
 			{
+				theLogger.Error("Reason: id is null or white space");
 				return PartialView("playList", new List<Play>());
 			}
 			FoireMusesConnection connection = GetConnection();
@@ -172,116 +212,154 @@ namespace FoireMuses.WebInterface.Controllers
 			}
 			catch (Exception e)
 			{
-				theLogger.Error("Error while getting plays from source " + id);
-				theLogger.Error(e.StackTrace);
+				theLogger.Error("Stacktrace:\n"+e.StackTrace);
+				return PartialView("playList", new List<Play>());
+			}
+			if (searchResultPlay == null)
+			{
+				theLogger.Error("Reason: searchResultPlay result is null");
+				return PartialView("playList", new List<Play>());
 			}
 			return PartialView("playList", searchResultPlay.Rows);
 		}
 
-
+		//AJAX CALL
 		public ActionResult AjaxSearchMaster(string wordsToSearch)
 		{
+			theLogger.Info(String.Format("method GetPlaysForSource, parameter wordsToSearch {0}", wordsToSearch));
 			if (String.IsNullOrWhiteSpace(wordsToSearch))
 			{
+				theLogger.Error("Reason: wordsToSearch is null or white space");
 				return PartialView("AjaxSearchForMaster", new List<ScoreSearchItem>());
 			}
 			FoireMusesConnection connection = GetConnection();
 			SearchResult<ScoreSearchItem> searchResultMaster = null;
-			searchResultMaster = connection.SearchScore(0, 20, new Dictionary<string, object>() { {"isMaster",true},{"titleWild",wordsToSearch}}, new Result<SearchResult<ScoreSearchItem>>()).Wait();
+			try
+			{
+				searchResultMaster = connection.SearchScore(0, 20, new Dictionary<string, object>() { { "isMaster", true }, { "titleWild", wordsToSearch } }, new Result<SearchResult<ScoreSearchItem>>()).Wait();
+			}
+			catch (Exception e)
+			{
+				theLogger.Error("Stacktrace:\n"+e.StackTrace);
+				return PartialView("AjaxSearchForMaster", new List<ScoreSearchItem>());
+			}
+			if (searchResultMaster == null)
+			{
+				theLogger.Error("Reason: searchResultMaster is null");
+				return PartialView("AjaxSearchForMaster", new List<ScoreSearchItem>());
+			}
 			return PartialView("AjaxSearchForMaster", searchResultMaster.Rows);
 		}
 
+		/*
 		public FileStreamResult GetAttachements(string scoreId, string attachementName)
 		{
 			FoireMusesConnection connection = GetConnection();
 			Stream file = connection.GetAttachements(scoreId, attachementName , new Result<Stream>()).Wait();
 			return new FileStreamResult(file, "image/png");
-		}
+		}*/
 
 		[HttpPost]
 		public ActionResult Publish(string scoreId, bool overwrite, HttpPostedFileBase file)
 		{
+			theLogger.Info("POST Publish");
 			if (file == null || file.ContentType != "text/xml" || file.ContentLength == 0)
 			{
 				ViewBag.Error = "Error during the upload, please be sure to choose a valid xml file from your computer";
 				return View("Publish");
 			}
-			theLogger.Info("Start Publishing");
 			FoireMusesConnection connection = GetConnection();
 			Score score = null;
-			if (scoreId == null)
+			try
 			{
-				theLogger.Info("Starting To Create the xml doc");
-				XDoc theDoc = XDocFactory.From(file.InputStream, MimeType.XML);
-				theLogger.Info("Finished Creating the xml doc - making call to create the score");
-				score = connection.CreateScoreWithXml(theDoc, new Result<Score>()).Wait();
-			}
-			else
-			{
-				Score current = connection.GetScore(scoreId, new Result<Score>()).Wait();
-				if (current == null)
+				if (scoreId == null)
 				{
-					ViewBag.Error = "Error, there's no score with scoreId "+scoreId;
-					return View("Publish");
+					XDoc theDoc = XDocFactory.From(file.InputStream, MimeType.XML);
+					score = connection.CreateScoreWithXml(theDoc, new Result<Score>()).Wait();
 				}
-				score = connection.UpdateScoreWithXml(current.Id, current.Rev, XDocFactory.From(file.InputStream, MimeType.XML), overwrite, new Result<Score>()).Wait();
-				return Redirect("Details?scoreId=" + current.Id);
+				else
+				{
+					Score current = connection.GetScore(scoreId, new Result<Score>()).Wait();
+					if (current == null)
+						return RedirectToAction("Missing", "Error", null);
+					score = connection.UpdateScoreWithXml(current.Id, current.Rev, XDocFactory.From(file.InputStream, MimeType.XML), overwrite, new Result<Score>()).Wait();
+					if (score == null)
+						return RedirectToAction("Problem", "Error", null);
+					return RedirectToAction("Details", new {scoreId=score.Id});
+				}
 			}
-			return Redirect("Edit?scoreId=" + score.Id);
+			catch (Exception e)
+			{
+				theLogger.Error("Stacktrace:\n" + e.StackTrace);
+				return RedirectToAction("Problem", "Error", null);
+			}
+			return RedirectToAction("Edit", new { scoreId = score.Id });
 		}
 
 
-		public ViewResult Edit(string scoreId)
+		public ActionResult Edit(string scoreId)
 		{
+			theLogger.Info(String.Format("GET method Edit, parameter scoreId {0}", scoreId));
 			FoireMusesConnection connection = GetConnection();
 			Score score = null;
 			SearchResult<SourceSearchItem> sourceList = null;
 			try
 			{
-				if (scoreId != null)//get the score matching the id
+				if (!String.IsNullOrWhiteSpace(scoreId))//get the score matching the id
 				{
 					score = connection.GetScore(scoreId, new Result<Score>()).Wait();
+					if (score == null)
+						return RedirectToAction("Missing", "Error", null);
 					if (score.TextualSource != null && score.TextualSource.PieceId != null)
 					{
 						SearchResult<Play> searchResultPlay = null;
 						searchResultPlay = connection.GetPlaysFromSource(score.TextualSource.SourceId, 0, 0, new Result<SearchResult<Play>>()).Wait();
+						if (searchResultPlay == null)
+							return RedirectToAction("Problem", "Error", null);
 						ViewBag.Pieces = searchResultPlay.Rows;
 					}
 					if (score.MasterId != null)
 					{
 						Score maitre = connection.GetScore(score.MasterId, new Result<Score>()).Wait();
-						ViewBag.MasterIdTitle = maitre.Title;
+						if (maitre == null)
+						{
+							score.MasterId = null;
+						}
+						else
+						{
+							ViewBag.MasterIdTitle = maitre.Title;
+						}
 					}
-					ViewBag.HeadTitle = "Edit";
+					ViewBag.HeadTitle = "Edition";
 				}
 				else
 				{
 					score = new Score();
-					ViewBag.HeadTitle = "Create";
+					ViewBag.HeadTitle = "Création";
 				}
 				sourceList = connection.GetSources(0, 0, new Result<SearchResult<SourceSearchItem>>()).Wait();
 			}
 			catch (Exception e)
 			{
-				// on redirige
+				return RedirectToAction("Problem", "Error", null);
 			}
 			if (score == null || sourceList == null)
 			{
-				//on redirige
+				return RedirectToAction("Missing", "Error", null);
 			}
 			ViewBag.Sources = sourceList.Rows.OrderBy(x=>x.Name);
-			return View("Edit2", score);
+			return View("Edit", score);
 		}
 
 		[HttpPost]
 		public ActionResult Edit(Score model, FormCollection collection)
 		{
-			//little trick here because it automatically creates a TextualSource and MusicalSource even if they are empty
-
+			theLogger.Info("POST method Edit");
+			if (model == null)
+				return RedirectToAction("Missing", "Error", null);
 			FoireMusesConnection connection = GetConnection();
 			try
 			{
-				//we use the same view to edit and create, so let's differentiate both
 				if (model.Id == null)
 				{
 					if (model.TextualSource.SourceId == null)
@@ -292,8 +370,9 @@ namespace FoireMuses.WebInterface.Controllers
 				}
 				else
 				{
-					//when updating, first get the current score out of the db then update with values
 					Score current = connection.GetScore(model.Id, new Result<Score>()).Wait();
+					if (current == null)
+						return RedirectToAction("Missing", "Error", null);
 					TryUpdateModel(current);
 					if (current.TextualSource.SourceId == null)
 						current.TextualSource = null;
@@ -304,20 +383,14 @@ namespace FoireMuses.WebInterface.Controllers
 			}
 			catch (Exception e)
 			{
-				//if during creation
-				if (model.Id == null)
-				{
-					return Redirect("Error");
-				}
-				else
-				{//during update, redirect to details/edit + error message?
-					return Redirect("Details?scoreId=" + model.Id);
-				}
-
+				theLogger.Error("Stacktrace:\n" + e.StackTrace);
+				return RedirectToAction("Problem", "Error", null);
 			}
-
-			//redirect to details
-			return Redirect("Details?scoreId=" + model.Id);
+			if(model == null){
+				theLogger.Error("Reason: model is null");
+				return RedirectToAction("Problem", "Error", null);
+			}
+			return RedirectToAction("Details", new { scoreId = model.Id });
 		}
 	}
 }

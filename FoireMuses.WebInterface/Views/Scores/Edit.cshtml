@@ -1,4 +1,5 @@
 ﻿@model FoireMuses.Client.Score
+@using FoireMuses.WebInterface.HtmlHelpers
 <script type="text/javascript">
     $(function () {
         // Document.ready -> link up remove event handler
@@ -15,24 +16,72 @@ recordToDelete
                         // Update the page elements
                         if (data == '') {
                             $('#selectPiece').html("");
-                            $('.pieceAss input').attr("value", "");
-                            $('.pieceAss').fadeOut('slow');
+                            $('#pieceAss input').attr("value", "");
+                            $('#pieceAss').fadeOut('slow');
                             //$('.pieceAss').css("display", "none");
                         } else {
                             $('#selectPiece').html("");
                             $('#selectPiece').html(data);
                             //$('.pieceAss').css("display", "table-row");
-                            $('.pieceAss').fadeIn('slow');
+                            $('#pieceAss').fadeIn('slow');
                         }
                     });
             } else if (recordToDelete == null) {
                 $('#selectPiece').html("");
-                $('.pieceAss input').attr("value", "");
-                $('.pieceAss').fadeOut('slow');
+                $('#pieceAss input').attr("value", "");
+                $('#pieceAss').fadeOut('slow');
             }
         });
+        $("#MasterIdTitle").keyup(function () {
+            var wordsToSearch = $(this).attr("value");
+            if (wordsToSearch !== "" && wordsToSearch.length > 2) {
+                $.post("/Scores/AjaxSearchMaster", { "wordsToSearch":
+wordsToSearch
+                },
+                    function (data) {
+                        // Successful requests get here
+                        // Update the page elements
+                        if (data == '') {
+                            hideResult();
+                        } else {
+                            var elem = $(data + ' li')[0].getElementsByTagName('li');
+                            var html = "";
+                            for (var i = 0; i < elem.length; i++) {
+
+                                html += "<div onmouseover=\"suggestOver(this)\" onmouseout=\"suggestOut(this)\" onclick=\"setMatch('" + $(elem[i]).text() + "','" + $(elem[i]).attr('id') + "')\" class=\"suggest\">" + $(elem[i]).text() + "</div>";
+
+                            }
+                            $('#result').html(html);
+                            $('#result').fadeIn('fast');
+                        }
+                    });
+            } else {
+                hideResult();
+            }
+        });
+        hideResult();
         $("#TextualSourceSourceId").change();
     });
+
+
+    function suggestOver(elem) {
+        elem.className = "suggest_over";
+    }
+    function suggestOut(elem) {
+        elem.className = "suggest";
+    }
+
+    function setMatch(texte, id) {
+        hideResult();
+        $('#MasterId').attr('value', id);
+        $('#MasterIdTitle').attr('value', texte);
+    }
+
+    function hideResult() {
+        $('#MasterId').attr('value', '');
+        $('#result').fadeOut('fast');
+        $('#result').html("");
+    }
 </script>
 <div id="encadreInfo">
     <p>
@@ -44,123 +93,136 @@ recordToDelete
         le bouton créer.
     </p>
 </div>
-<div id="editForm">
+<div id="scoreForm">
     <form action="" method="post">
-    <input type="hidden" name="Id" value="@Model.Id" />
-    <div class="bigField"><label for="title">
-        Titre</label><input id ="title" name="Title" type="text" value="@Model.Title"/></div>
-    <div class="bigField"><label for="composer">
-        Compositeur</label><input id="composer" name="Composer" type="text" value="@Model.Composer"/></div>
-    <div class="bigField"><label for="editor">
-        Editeur</label><input id="editor" name="Editor" type="text" value="@Model.Editor"/></div>
-    <div class="bigField"><label for="scoreType">
-        Type</label><input id="scoreType" name="ScoreType" type="text" value="@Model.ScoreType"/></div>
-    <div class="bigField"><label for="stanze">
-        Strophe</label><input id="stanze" name="Stanze" type="text" value="@Model.Stanza"/></div>
-    <div class="bigField"><label for="delarue">
-        Delarue</label><input id="delarue" name="Delarue" type="text" value="@Model.Delarue"/></div>
-    <div class="bigField"><label for="coirault">
-        Coirault</label><input id="coirault" name="Coirault" type="text" value="@Model.Coirault"/></div>
-    <div class="bigField"><label for="verses">
-        Versets</label><textarea id="verses" name="Verses" rows="30" cols="50">@Model.Verses</textarea></div>
-    <div class="bigField"><label for="otherTitles">
-        Autres titres</label><textarea id="otherTitles" name="OthetTitles" rows="30" cols="50">@Model.OtherTitles</textarea></div>
-    <div class="bigField"><label for="comments">
-        Commentaires</label><textarea id="comments" name="Comments" rows="30" cols="50">@Model.Comments</textarea></div>
-    <div id="formSourceTextuelle"><label>
-        <strong>Source Textuelle</strong></label>
-    <label for="TextualSourceSourceId">
-        Titre</label>
-    <select id="TextualSourceSourceId" name="TextualSource.SourceId">
-        <option></option>
-        @foreach (var source in ViewBag.Sources)
-        {
-            if (Model.TextualSource != null && Model.TextualSource.SourceId == source.Id)
+    @Html.HiddenInputField("Id", Model.Id)
+    @Html.HiddenInputField("MasterId", Model.MasterId)
+    <fieldset>
+        <legend>Informations générale</legend>
+        <div class="block checkbox">@Html.CheckboxInputField("Maitre", "IsMaster", Model.IsMaster)</div>
+        <div class="block"><label for="MasterIdTitle">
+            Air dont j'hérite</label><input autocomplete="off" id="MasterIdTitle" name="MasterIdTitle" type="text" value="@ViewBag.MasterIdTitle"/></div>
+            <div id="result">
+            </div>
+        <div class="block">@Html.TextInputField("Titre", "Title", Model.Title)</div>
+        <div class="block">@Html.TextInputField("Compositeur", "Composer", Model.Composer)</div>
+        <div class="block">@Html.TextInputField("Editeur", "Editor", Model.Editor)</div>
+        <div class="block">@Html.TextInputField("Type", "ScoreType", Model.ScoreType)</div>
+        <div class="block">@Html.TextInputField("Strophe", "Stanza", Model.Stanza)</div>
+        <div class="block">@Html.TextInputField("Delarue", "Delarue", Model.Delarue)</div>
+        <div class="block">@Html.TextInputField("Coirault", "Coirault", Model.Coirault)</div>
+        <div class="block">@Html.TextareaInputField("Versets", "Verses", Model.Verses)</div>
+        <div class="block">@Html.TextareaInputField("Autres titres", "OtherTitles", Model.OtherTitles)</div>
+        <div class="block">@Html.TextareaInputField("Commentaires", "Comments", Model.Comments)</div>
+    </fieldset>
+    <fieldset>
+        <legend>Source textuelle</legend>
+        <div class="block"><label for="TextualSourceSourceId">
+            Titre</label>
+        <select id="TextualSourceSourceId" name="TextualSource.SourceId">
+            <option></option>
+            @foreach (var source in ViewBag.Sources)
             {
-            <option selected="selected" value="@source.Id" class="SourceOption">@source.Name</option>
-            }
-            else
-            {
-            <option value="@source.Id">@source.Name</option>
-            }
-        }
-    </select>
-    <label for="textualSourcePage">
-        Page</label><input id="textualSourcePage" name="TextualSource.Page" type="text" value="@if (Model.TextualSource != null)
-                                                                         {@Model.TextualSource.Page}"/>
-    <label for="textualSourceAirNumber">
-        Air n°</label><input id="textualSourceAirNumber" name="TextualSource.AirNumber" type="text" value="@if (Model.TextualSource != null)
-                                                                                {@Model.TextualSource.AirNumber}"/>
-    <label for="textualSourceTome">
-        Tome</label><input id="textualSourceTome" name="TextualSource.Tome" type="text" value="@if (Model.TextualSource != null)
-                                                                         {@Model.TextualSource.Tome}"/>
-    <label for="textualSourceVolume">
-        Volume</label><input id="textualSourceVolume" name="TextualSource.Volume" type="text" value="@if (Model.TextualSource != null)
-                                                                             {@Model.TextualSource.Volume}"/>
-    <label for="textualSourceComments">
-        Commentaire</label><textarea id="textualSourceComments" name="TextualSource.Comment" rows="30" cols="50">@if (Model.TextualSource != null)
-                                                                                      {@Model.TextualSource.Comment}</textarea>
-    @if (Model.TextualSource != null && Model.TextualSource.PieceId != null)
-    {<label for="textualSourcePieceId">Pièce associée</label>
-        <select id="textualSourcePieceId" name="TextualSource.PieceId">
-            @foreach (var piece in ViewBag.Pieces)
-            {
-                if (Model.TextualSource.PieceId == piece.Id)
+                if (Model.TextualSource != null && Model.TextualSource.SourceId == source.Id)
                 {
-                <option selected="selected" value="@piece.Id">@piece.Title</option>
+                <option selected="selected" value="@source.Id" class="SourceOption">@source.Name</option>
                 }
                 else
                 {
-                <option value="@piece.Id">@piece.Title</option>
+                <option value="@source.Id">@source.Name</option>
                 }
             }
-        </select>
-
-        <label for="textualSourceSceneNumber">
-            N° Scene</label><input id="textualSourceSceneNumber" name="TextualSource.SceneNumber" type="text" value="@Model.TextualSource.SceneNumber"/>
-        <label for="textualSourceActNumber">
-            N° Act</label><input id="textualSourceActNumber" name="TextualSource.ActNumber" type="text" value="@Model.TextualSource.ActNumber"/>
+        </select></div>
+        @if (Model.TextualSource != null)
+        {
+            <div class="block">@Html.TextInputField("Page", "TextualSource.Page", Model.TextualSource.Page)</div>
+            <div class="block">@Html.TextInputField("N° air", "TextualSource.AirNumber", Model.TextualSource.AirNumber)</div>
+            <div class="block">@Html.TextInputField("Tome", "TextualSource.Tome", Model.TextualSource.Tome)</div>
+            <div class="block">@Html.TextInputField("Volume", "TextualSource.Volume", Model.TextualSource.Volume)</div>
+            <div class="block">@Html.TextareaInputField("Commentaires", "TextualSource.Comment", Model.TextualSource.Comment)</div>
+        }
+        else
+        {
+            <div class="block">@Html.TextInputField("Page", "TextualSource.Page", String.Empty)</div>
+            <div class="block">@Html.TextInputField("N° air", "TextualSource.AirNumber", String.Empty)</div>
+            <div class="block">@Html.TextInputField("Tome", "TextualSource.Tome", String.Empty)</div>
+            <div class="block">@Html.TextInputField("Volume", "TextualSource.Volume", String.Empty)</div>
+            <div class="block">@Html.TextareaInputField("Commentaires", "TextualSource.Comment", String.Empty)</div>
+        }
+    </fieldset>
+    @if (Model.TextualSource != null && Model.TextualSource.PieceId != null)
+    {
+        <div id="pieceAss">
+            <fieldset>
+                <legend>Pièce associée</legend>
+                <div class="block"><label for="TextualSourcePieceId">
+                    Pièce associée</label>
+                <div id="selectPiece">
+                    <select id="TextualSourcePieceId" name="TextualSource.PieceId">
+                        @foreach (var piece in ViewBag.Pieces)
+                        {
+                            if (Model.TextualSource.PieceId == piece.Id)
+                            {
+                            <option selected="selected" value="@piece.Id">@piece.Title</option>
+                            }
+                            else
+                            {
+                            <option value="@piece.Id">@piece.Title</option>
+                            }
+                        }
+                    </select>
+                </div></div>
+                <div class="block">@Html.TextInputField("N° Scène", "TextualSource.SceneNumber", Model.TextualSource.SceneNumber)</div>
+                <div class="block">@Html.TextInputField("N° Acte", "TextualSource.ActNumber", Model.TextualSource.ActNumber)</div>
+            </fieldset>
+        </div>
     }
     else
-    {   <label for="textualSourcePieceId">Pièce associée</label>
-        <label for="textualSourceSceneNumber">
-            N° Scene</label><input id="textualSourceSceneNumber" name="TextualSource.SceneNumber" type="text" />
-        <label for="textualSourceActNumber">
-            N° Act</label><input id="textualSourceActNumber" name="TextualSource.ActNumber" type="text" />
+    {
+        <div id="pieceAss">
+            <fieldset>
+                <legend>Pièce associée</legend>
+                <div class="block"><label for="TextualSourcePieceId">
+                    Pièce associée</label><div id="selectPiece">
+                    </div></div>
+                <div class="block">@Html.TextInputField("N° Scène", "TextualSource.SceneNumber", String.Empty)</div>
+                <div class="block">@Html.TextInputField("N° Acte", "TextualSource.ActNumber", String.Empty)</div>
+            </fieldset>
+        </div>
     }
-    </div>
-    <div class="formMusicalSource">
-    <label>
-        Source Musicale</label>
-    <label for="musicalSourceSourceId">
-        Titre</label>
-    <select id="musicalSourceSourceId" name="MusicalSource.SourceId">
-        <option></option>
-        @foreach (var source in ViewBag.Sources)
+    <fieldset>
+        <legend>Source musicale</legend>
+        <div class="block"><label for="MusicalSourceSourceId">
+            Titre</label>
+        <select id="MusicalSourceSourceId" name="MusicalSource.SourceId">
+            <option></option>
+            @foreach (var source in ViewBag.Sources)
+            {
+                if (Model.MusicalSource != null && Model.MusicalSource.SourceId == source.Id)
+                {
+                <option selected="selected" value="@source.Id">@source.Name</option>
+                }
+                else
+                {
+                <option value="@source.Id">@source.Name</option>
+                }
+            }
+        </select></div>
+        @if (Model.MusicalSource != null)
         {
-            if (Model.MusicalSource != null && Model.MusicalSource.SourceId == source.Id)
-            {
-            <option selected="selected" value="@source.Id">@source.Name</option>
-            }
-            else
-            {
-            <option value="@source.Id">@source.Name</option>
-            }
+            <div class="block">@Html.TextInputField("Page", "MusicalSource.Page", Model.MusicalSource.Page)</div>
+            <div class="block">@Html.TextInputField("N° air", "MusicalSource.AirNumber", Model.MusicalSource.AirNumber)</div>
+            <div class="block">@Html.TextInputField("Tome", "MusicalSource.Tome", Model.MusicalSource.Tome)</div>
+            <div class="block">@Html.TextInputField("Volume", "MusicalSource.Volume", Model.MusicalSource.Volume)</div>
         }
-    </select>
-    <label for="musicalSourceAirNumber">
-        Air n°</label><input id="musicalSourceAirNumber" name="MusicalSource.AirNumber" type="text" value="@if (Model.MusicalSource != null)
-                                                                               {@Model.MusicalSource.AirNumber}"/>
-    <label for="musicalSourcePage">
-        Page</label><input id="musicalSourcePage" name="MusicalSource.Page" type="text" value="@if (Model.MusicalSource != null)
-                                                                        {@Model.MusicalSource.Page}"/>
-    <label for="musicalSourceTome">
-        Tome</label><input for="musicalSourceTome" name="MusicalSource.Tome" type="text" value="@if (Model.MusicalSource != null)
-                                                                        {@Model.MusicalSource.Tome}"/>
-    <label for="musicalSourceVolume">
-        Volume</label><input for="musicalSourceVolume" name="MusicalSource.Volume" type="text" value="@if (Model.MusicalSource != null)
-                                                                            {@Model.MusicalSource.Volume}"/>
-      </div>
-    <input class="right" type="submit" value="Creer" />
+        else
+        {
+            <div class="block">@Html.TextInputField("Page", "MusicalSource.Page", String.Empty)</div>
+            <div class="block">@Html.TextInputField("N° air", "MusicalSource.AirNumber", String.Empty)</div>
+            <div class="block">@Html.TextInputField("Tome", "MusicalSource.Tome", String.Empty)</div>
+            <div class="block">@Html.TextInputField("Volume", "MusicalSource.Volume", String.Empty)</div>
+        }
+    </fieldset>
+    <input class="submitButton" type="submit" value="@ViewBag.HeadTitle" />
     </form>
 </div>
