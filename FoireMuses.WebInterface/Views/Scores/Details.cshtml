@@ -33,6 +33,7 @@
             @Html.StringField("Strophe", Model.Stanza)
             @Html.StringField("Coirault", Model.Coirault)
             @Html.StringField("Delarue", Model.Delarue)
+            @Html.StringField("Ancien autres titres", Model.OtherTitles)
             @Html.StringField("Coupe métrique", Model.CoupeMetrique)
             @Html.StringField("Codage mélodique RISM", Model.CodageMelodiqueRISM)
             @Html.StringField("Codage par intervalles", Model.CodageParIntervalles)
@@ -48,7 +49,7 @@
                         Volume @Model.TextualSource.Volume, Tome @Model.TextualSource.Tome, de @ViewBag.TextualSource.Publisher</a>
                 </div>
             }
-            @if (Model.TextualSource.PieceId != null)
+            @if (Model.TextualSource != null && Model.TextualSource.PieceId != null)
             {
                 <div class="label">
                     Pièce associée</div>

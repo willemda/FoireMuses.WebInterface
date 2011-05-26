@@ -60,6 +60,29 @@ namespace FoireMuses.Client
 			return aResult;
 		}
 
+		public Result<bool> BulkFascimile(string sourceId, Stream file, Result<bool> aResult)
+		{
+			theServiceUri
+				.At("sources",sourceId,"fascimiles")
+				.Post(DreamMessage.Ok(new MimeType("application/zip"), file.Length, file),new Result<DreamMessage>())
+				.WhenDone(delegate(Result<DreamMessage> answer)
+				{
+					if (!answer.Value.IsSuccessful)
+					{
+						if (answer.Value.Status == DreamStatus.BadRequest)
+							aResult.Return(false);
+						else
+							aResult.Throw(answer.Exception);
+					}
+					else
+					{
+						aResult.Return(true);
+					}
+				}
+				);
+			return aResult;
+		}
+
 		public Result<Play> GetPlay(string PlayId, Result<Play> aResult)
 		{
 			theServiceUri

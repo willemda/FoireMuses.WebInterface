@@ -258,6 +258,37 @@ namespace FoireMuses.WebInterface.Controllers
 			return Redirect("Details?sourceId=" + model.Id);
 		}
 
+		
+		public ActionResult Fascimiles(string sourceId)
+		{
+			if (String.IsNullOrWhiteSpace(sourceId))
+				return RedirectToAction("Missing", "Error", null);
+			ViewBag.SourceId = sourceId;
+			return View();
+		}
+
+		[HttpPost]
+		public ActionResult Fascimiles(string sourceId, HttpPostedFileBase file)
+		{
+			if (String.IsNullOrWhiteSpace(sourceId))
+				return RedirectToAction("Missing", "Error", null);
+			if (file == null || file.ContentType != "application/x-zip-compressed" || file.ContentLength == 0)
+			{
+				ViewBag.Error = "Error during the upload, please be sure to choose a valid zip file from your computer";
+				return View("Fascimiles");
+			}
+			FoireMusesConnection connection = GetConnection();
+			try
+			{
+				connection.BulkFascimile(sourceId, file.InputStream, new Result<bool>()).Wait();
+			}
+			catch (Exception e)
+			{
+				return RedirectToAction("Problem", "Error", null);
+			}
+			return RedirectToAction("Details", new { sourceId = sourceId });
+		}
+
 		private bool ValidateSource(Source source)
 		{
 			if (String.IsNullOrWhiteSpace(source.Name))

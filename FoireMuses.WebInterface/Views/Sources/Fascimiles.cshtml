@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Fascimiles";
+}
+@using FoireMuses.WebInterface.HtmlHelpers
+
+<div id="bulkUpload">
+<form method="post" action="" enctype="multipart/form-data">
+@Html.HiddenInputField("sourceId", (string)ViewBag.SourceId)
+<label for="file">Fichier</label><input id="file" type="file" name="file"/>
+<input type="submit" class="submitButton" value="Envoyer"/>
+</form>
+</div>
+

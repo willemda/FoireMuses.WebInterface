@@ -858,6 +858,7 @@
     <Content Include="Views\Users\Denied.cshtml" />
     <Content Include="Views\Error\Error.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Sources\Fascimiles.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

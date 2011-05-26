@@ -58,11 +58,18 @@ namespace FoireMuses.WebInterface
 		public override string[] GetRolesForUser(string username)
 		{
             FoireMusesConnection connection = new FoireMusesConnection(new XUri(Configuration.ApiUrl + ":" + Configuration.ApiPort + "/" + Configuration.ApiAt), Configuration.ApiUsername, Configuration.ApiPassword);
-			User user = connection.GetUser(username, new Result<User>()).Wait();
-			if (user.IsAdmin)
-				return new string[] { "ADMIN", "MEMBER" };
-			else
-				return new string[] { "MEMBER" };
+			try
+			{
+				User user = connection.GetUser(username, new Result<User>()).Wait();
+				if (user.IsAdmin)
+					return new string[] { "ADMIN", "MEMBER" };
+				else
+					return new string[] { "MEMBER" };
+			}
+			catch (Exception e)
+			{
+				return new string[] { };
+			}
 		}
 
 		public override string[] GetUsersInRole(string roleName)
@@ -75,10 +82,17 @@ namespace FoireMuses.WebInterface
 			if (roleName == "MEMBER")
 				return true;
             FoireMusesConnection connection = new FoireMusesConnection(new XUri(Configuration.ApiUrl + ":" + Configuration.ApiPort + "/" + Configuration.ApiAt), Configuration.ApiUsername, Configuration.ApiPassword);
-			User user = connection.GetUser(username, new Result<User>()).Wait();
-			if (user.IsAdmin)
-				return true;
-			return false;
+			try
+			{
+				User user = connection.GetUser(username, new Result<User>()).Wait();
+				if (user.IsAdmin)
+					return true;
+				return false;
+			}
+			catch (Exception e)
+			{
+				return false;
+			}
 		}
 
 		public override void RemoveUsersFromRoles(string[] usernames, string[] roleNames)
