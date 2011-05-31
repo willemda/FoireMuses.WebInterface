@@ -2,8 +2,12 @@
 @using FoireMuses.WebInterface.HtmlHelpers
 @{
     ViewBag.HeadTitle = "Details - " + @Model.Title;
-    ViewBag.AddJs = "<script type=\"text/javascript\" src=\"../../Content/js/sliderman.1.2.1.js\"></script>";
 }
+
+@section javascriptSection{
+	<script src="../../Content/js/sliderman.1.2.1.js"
+}
+
 <div id="scoreDetails">
     <div id="firstPart">
         <div id="gauche">
