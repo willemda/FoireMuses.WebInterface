@@ -14,6 +14,7 @@
     <AssemblyName>FoireMuses.Webinterface</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -679,6 +680,8 @@
     <Content Include="Content\images\right.png" />
     <Content Include="Content\images\soundoff.png" />
     <Content Include="Content\images\soundon.png" />
+    <Content Include="Content\js\jquery-1.5.2.js" />
+    <Content Include="Content\js\jquery.tools.js" />
     <Content Include="Content\js\meledscripts.js" />
     <Content Include="Content\js\onload.js" />
     <Content Include="Content\js\sliderman.1.2.1.js" />
@@ -767,24 +770,6 @@
     <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
     <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
     <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
-    <Content Include="Scripts\jquery-1.4.4.js" />
-    <Content Include="Scripts\jquery-1.4.4.min.js" />
-    <Content Include="Scripts\jquery-1.4.4-vsdoc.js" />
-    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
-    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery-ui.js" />
-    <Content Include="Scripts\jquery-ui.min.js" />
-    <Content Include="Scripts\MicrosoftAjax.js" />
-    <Content Include="Scripts\MicrosoftAjax.debug.js" />
-    <Content Include="Scripts\MicrosoftMvcAjax.js" />
-    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
-    <Content Include="Scripts\MicrosoftMvcValidation.js" />
-    <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -838,7 +823,6 @@
       <SubType>Designer</SubType>
     </Content>
     <None Include="Content\images\piano_js\Thumbs.db" />
-    <None Include="Content\images\Thumbs.db" />
     <Content Include="Views\Sources\List.cshtml" />
     <Content Include="Views\Sources\Details.cshtml" />
     <Content Include="Views\Scores\List.cshtml" />
