@@ -1,81 +1,45 @@
 ﻿@model FoireMuses.WebInterface.Models.ListViewModel<FoireMuses.Client.ScoreSearchItem>
 @using FoireMuses.WebInterface.HtmlHelpers
 @{
-    ViewBag.HeadTitle = "All Scores";
+	ViewBag.HeadTitle = "All Scores";
 }
-@if (Model.SearchResult.Rows.Count() == 0)
-{
-    <div id="noResults">
-        <p>Il n'y a aucun air actuellement, @Html.ActionLink("créer un air", "Create", "Scores", null, null)</p>
-    </div>
-}
-else
-{
+<div id="noResults">
+	@Html.ActionLink("Créer un air", "Create", "Scores", null, null)
+</div>
 <div id="pre-list">
-Airs
+	Airs
 </div>
 <div id="list-item">
-<ul>
-@{bool fonce = true;
-  foreach (var score in Model.SearchResult.Rows)
-  {
-      if (fonce)
-      {
-            <li class="fonce">
-            <div class="score-item">
-            <div class="score-title"><a href="Details?scoreId=@score.Id">@score.Title</a></div>
-            @if (score.Editor != null)
-            {
-                <div class="score-editor">edited by @score.Editor</div>
-            }
-            
-            @if (score.Composer != null)
-            {
-                if (score.Editor != null)
-                {
-                <div class="score-composer">, composed by @score.Composer</div>
-                }
-                else
-                {
-                    <div class="score-composer">composed by @score.Composer</div>
-                }
-            }
-        </div>
-        </li>
-      }
-      else
-      {
-          <li>
-            <div class="score-item">
-            <div class="score-title"><a href="Details?scoreId=@score.Id">@score.Title</a></div>
-            @if (score.Editor != null)
-            {
-                <div class="score-editor">edited by @score.Editor</div>
-            }
-            
-            @if (score.Composer != null)
-            {
-                if (score.Editor != null)
-                {
-                <div class="score-composer">, composed by @score.Composer</div>
-                }
-                else
-                {
-                    <div class="score-composer">composed by @score.Composer</div>
-                }
-            }
-        </div>
-        </li>
-            
-      }
+	<ul>
+		@{
+			bool even = true;
+			foreach (var score in Model.SearchResult.Rows)
+			{
+					<li class="@(even ? "even_row" : "odd_row")">
+						<div class="score-item">
+							<div class="score-title">
+								<a href="Details?scoreId=@score.Id">@score.Title</a></div>
+								@if (score.Editor != null){
+								<div class="score-editor">
+									edited by @score.Editor
+								</div>
+								}
+								@if (score.Composer != null){
+									<div class="score-composer">composed by @score.Composer</div>
+								}
+								@if (score.Editor != null){
+									<div class="score-editor">, edited by @score.Editor</div>
+								}
+						</div>
+					</li>
+				even = !even;
+			}
+		}
+	</ul>
+</div>
 
-      fonce = !fonce;
-  }
-}
-</ul>
-</div>
-<div id="pager">
-       @Html.PageLinks(Model.TotalPages, Model.CurrentPage,
-            x => Url.Action("List", new { page = x }))
-</div>
+@if (Model.SearchResult.TotalCount > Model.SearchResult.Max){
+	<div id="pager">
+		@Html.PageLinks(Model.TotalPages, Model.CurrentPage,x => Url.Action("List", new { page = x }))
+	</div>
 }

@@ -1,57 +1,35 @@
 ﻿@model FoireMuses.WebInterface.Models.ListViewModel<FoireMuses.Client.SourceSearchItem>
 @using FoireMuses.WebInterface.HtmlHelpers
+
 @{
-    ViewBag.HeadTitle = "All Sources";
+	ViewBag.HeadTitle = "All Sources";
 }
-@if (Model.SearchResult.Rows.Count() == 0)
-{
-    <div id="noResults">
-        <p>Il n'y a aucune source actuellement, @Html.ActionLink("créer une source", "Create", "Sources", null, null)</p>
-    </div>
-}
-else
-{
+
+<p>@Html.ActionLink("Créer une source", "Create", "Sources", null, null)</p>
+
 <div id="pre-list">
-Sources
+	Sources
 </div>
 <div id="list-item">
-<ul>
-@{bool fonce = true;
-  foreach (var source in Model.SearchResult.Rows)
-  {
-      if (fonce)
-      {
-            <li class="fonce">
-            <div class="source-item">
-            <div class="source-title"><a href="Details?sourceId=@source.Id">@source.Name</a></div>
-            @if (source.Publisher != null)
-            {
-                <div class="source-publisher">published by @source.Publisher</div>
-            }
-            </div>
-        </li>
-      }
-      else
-      {
-          <li>
-            <div class="source-item">
-            <div class="source-title"><a href="Details?sourceId=@source.Id">@source.Name</a></div>
-            @if (source.Publisher != null)
-            {
-                <div class="source-publisher">published by @source.Publisher</div>
-            }
-            </div>
-        </li>
-            
-      }
+	<ul>
+		@{
+			bool even = true;
+			foreach (var source in Model.SearchResult.Rows)
+			{
+				<li class="@(even ? "even_row" : "odd_row")">
+					<div class="source-item">
+						<a href="Details?sourceId=@source.Id">@source.Name</a>
+						@Html.StringField("Publisher",source.Publisher)
+					</div>
+				</li>
+				even = !even;
+			}
+		}
+	</ul>
+</div>
 
-      fonce = !fonce;
-  }
-}
-</ul>
-</div>
-<div id="pager">
-       @Html.PageLinks(Model.TotalPages, Model.CurrentPage,
-            x => Url.Action("List", new { page = x }))
-</div>
+@if (Model.SearchResult.TotalCount > Model.SearchResult.Max){
+	<div id="pager">
+		@Html.PageLinks(Model.TotalPages, Model.CurrentPage,x => Url.Action("List", new { page = x }))
+	</div>
 }
