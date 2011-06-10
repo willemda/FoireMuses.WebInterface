@@ -29,12 +29,12 @@ namespace FoireMuses.WebInterface.Controllers
 				// do stuff to return error message to the screen
 			}
 
-			var viewModel = new ListViewModel<SourceSearchItem>()
+			ListViewModel<SourceSearchItem> viewModel = new ListViewModel<SourceSearchItem>
 			{
 				SearchResult = listSources,
 				CurrentPage = page,
-
 			};
+
 			return View(viewModel);
 		}
 

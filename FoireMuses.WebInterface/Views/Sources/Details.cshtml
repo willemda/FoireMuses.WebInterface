@@ -6,15 +6,16 @@
 <div id="sourceDetails">
 @Html.StringField("Nom", Model.Name, true)
 @Html.StringField("Editeur", Model.Publisher)
-@if (Model.DateFrom != null && Model.DateTo != null)
-{
-<div class="label">Date</div><div class="value">@Model.DateFrom - @Model.DateTo</div>
-}
-
-@Html.NullableBooleanField("Date approximative", Model.ApproxDate)
-
-@Html.StringField("Résumé", Model.Abbreviation)
+@Html.StringField("Résumé", Model.Abbreviation,false,false)
 @Html.StringField("Cote", Model.Cote)
+@if (Model.DateFrom.HasValue && Model.DateTo.HasValue)
+{
+	@Html.StringField("Date", Model.DateFrom + "-" + Model.DateTo);
+	if (Model.ApproxDate.HasValue && Model.ApproxDate.Value)
+	{
+		<i>Cette date est approximative</i>
+	}
+}
 @if (ViewBag.Pages != null && (ViewBag.Pages as IEnumerable<FoireMuses.Client.SourcePageSearchItem>).Count() > 0)
 {
    <div id="pages">

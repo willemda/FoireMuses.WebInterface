@@ -35,9 +35,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Web.Helpers">
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -140,24 +137,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\images\%24partition1.png" />
-    <Content Include="Content\images\%24partition2.png" />
-    <Content Include="Content\images\addButton.png" />
-    <Content Include="Content\images\backButton.png" />
-    <Content Include="Content\images\bg.png" />
-    <Content Include="Content\images\bullet.png" />
-    <Content Include="Content\images\bullet_active.png" />
-    <Content Include="Content\images\clear.gif" />
-    <Content Include="Content\images\editButton.png" />
-    <Content Include="Content\images\helpIcon.png" />
-    <Content Include="Content\images\indisponible.gif" />
-    <Content Include="Content\images\left.png" />
-    <Content Include="Content\images\loading.gif" />
-    <Content Include="Content\images\midiIcon.png" />
-    <Content Include="Content\images\partition.png" />
-    <Content Include="Content\images\partition2.png" />
-    <Content Include="Content\images\partitionIcon.jpeg" />
-    <Content Include="Content\images\pdfIcon.jpg" />
+    <Content Include="Content\images\fu_i1.png" />
+    <Content Include="Content\images\fu_i2.png" />
+    <Content Include="Content\images\fu_i3.png" />
+    <Content Include="Content\images\fu_i4.png" />
+    <Content Include="Content\images\img11.jpg" />
+    <Content Include="Content\images\img17.jpg" />
     <Content Include="Content\images\piano_js\00_0.gif" />
     <Content Include="Content\images\piano_js\a%27%271.gif" />
     <Content Include="Content\images\piano_js\a%27%2716.gif" />
@@ -676,10 +661,6 @@
     <Content Include="Content\images\piano_js\r4p.gif" />
     <Content Include="Content\images\piano_js\r8.gif" />
     <Content Include="Content\images\play.png" />
-    <Content Include="Content\images\removeButton.png" />
-    <Content Include="Content\images\right.png" />
-    <Content Include="Content\images\soundoff.png" />
-    <Content Include="Content\images\soundon.png" />
     <Content Include="Content\js\jquery-1.5.2.js" />
     <Content Include="Content\js\jquery.tools.js" />
     <Content Include="Content\js\meledscripts.js" />
@@ -733,7 +714,6 @@
     <Content Include="Content\mp3\notes\gis1_8.mp3" />
     <Content Include="Content\mp3\notes\gis2_8.mp3" />
     <Content Include="Content\mp3\notes\gis3_8.mp3" />
-    <Content Include="Content\images\partitionButton.png" />
     <Content Include="Content\soundmanager\soundmanager2-jsmin.js" />
     <Content Include="Content\soundmanager\soundmanager2-nodebug-jsmin.js" />
     <Content Include="Content\soundmanager\soundmanager2-nodebug.js" />
@@ -742,11 +722,8 @@
     <Content Include="Content\soundmanager\soundmanager2_debug.swf" />
     <Content Include="Content\soundmanager\soundmanager2_flash9.swf" />
     <Content Include="Content\soundmanager\soundmanager2_flash9_debug.swf" />
-    <Content Include="Content\images\tabs.gif" />
-    <Content Include="Content\images\xmlIcon.png" />
+    <Content Include="Content\styles.css" />
     <Content Include="Content\stylesheet.css" />
-    <Content Include="Content\images\uploadButton.png" />
-    <Content Include="Content\images\userButton.png" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -755,7 +732,6 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\jquery-ui.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -819,9 +795,6 @@
     <Content Include="Views\Shared\playList.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app.config">
-      <SubType>Designer</SubType>
-    </Content>
     <None Include="Content\images\piano_js\Thumbs.db" />
     <Content Include="Views\Sources\List.cshtml" />
     <Content Include="Views\Sources\Details.cshtml" />

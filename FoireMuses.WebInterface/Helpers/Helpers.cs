@@ -38,6 +38,7 @@ namespace FoireMuses.WebInterface.HtmlHelpers
 			tagB.InnerHtml = fieldName;
 			result.AppendLine(tagB.ToString());
 			tagB = new TagBuilder("input");
+			tagB.MergeAttribute("class","checkbox");
 			tagB.MergeAttribute("type", "checkbox");
 			tagB.MergeAttribute("id", fieldExpression);
 			tagB.MergeAttribute("name", fieldExpression);
@@ -142,27 +143,40 @@ namespace FoireMuses.WebInterface.HtmlHelpers
 			return mvc;
 		}
 
-		public static MvcHtmlString StringField(this HtmlHelper html, string fieldName, string fieldValue, bool boldValue = false, bool displayNullValue = true)
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="aHtml"></param>
+		/// <param name="aFieldName">Field name</param>
+		/// <param name="aFieldValue">Field value</param>
+		/// <param name="isBold">Field value must be bold</param>
+		/// <param name="aDisplayNullValue"></param>
+		/// <returns></returns>
+		public static MvcHtmlString StringField(
+			this HtmlHelper aHtml,
+			string aFieldName,
+			string aFieldValue,
+			bool isBold = false,
+			bool aDisplayNullValue = true)
 		{
+			if ((String.IsNullOrWhiteSpace(aFieldValue))&&(!aDisplayNullValue))
+				return MvcHtmlString.Empty;
+
 			StringBuilder result = new StringBuilder();
-			TagBuilder tagB = new TagBuilder("div");
-			tagB.AddCssClass("label");
-			tagB.InnerHtml = fieldName;
-			result.AppendLine(tagB.ToString());
-			tagB = new TagBuilder("div");
-			tagB.AddCssClass("value");
-			if(boldValue)
-				tagB.MergeAttribute("style", "font-weight:bold;");
-			if (!String.IsNullOrWhiteSpace(fieldValue))
-				tagB.InnerHtml = fieldValue;
-			else
+			TagBuilder divTagBuilder = new TagBuilder("div");
+			divTagBuilder.AddCssClass("label");
+			divTagBuilder.InnerHtml = aFieldName;
+			result.AppendLine(divTagBuilder.ToString());
+
+			divTagBuilder = new TagBuilder("div");
+			divTagBuilder.AddCssClass("value");
+			if (isBold)
 			{
-				if (displayNullValue)
-					tagB.InnerHtml = "/";
-				else
-					return MvcHtmlString.Empty;
+				divTagBuilder.MergeAttribute("style", "font-weight:bold;");
 			}
-			result.AppendLine(tagB.ToString());
+			divTagBuilder.InnerHtml = aFieldValue;
+
+			result.AppendLine(divTagBuilder.ToString());
 			MvcHtmlString mvc = MvcHtmlString.Create(result.ToString());
 			return mvc;
 		}
