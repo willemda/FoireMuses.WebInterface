@@ -17,7 +17,7 @@
                     <ul>
                         <li><a href="Download?scoreId=@Model.Id&fileType=pdf&fileName=@Model.Title@Html.Raw(".pdf")" target="_blank">
                             <img src="../../Content/images/pdfIcon.jpg" /></a> </li>
-                        <li><a href="Download?scoreId=@Model.Id&fileType=xml&fileName=@Model.Title@Html.Raw(".xml")" target="_blank">
+                        <li><a href="Download?scoreId=@Model.Id&fileType=musicxml&fileName=@Model.Title@Html.Raw(".xml")" target="_blank">
                             <img src="../../Content/images/xmlIcon.png" /></a> </li>
                         <li><a href="Download?scoreId=@Model.Id&fileType=mid&fileName=@Model.Title@Html.Raw(".mid")" target="_blank">
                             <img src="../../Content/images/midiIcon.png" /></a> </li>
@@ -106,8 +106,7 @@
                     string fileName = "$partition" + i + ".png";
                     if (i == 1)
                     {
-                    <img src="Images?scoreId=@Model.Id&fileName=@fileName" width="500" height="600" alt="Demo2 first"
-                    title="Demo2 first" usemap="#img1map" />
+                    <img src="Images?scoreId=@Model.Id&fileName=@fileName" width="500" height="600" alt="Demo2 first" title="Demo2 first" usemap="#img1map" />
                     <map name="img1map">
                         <area href="#img1map-area1" shape="rect" coords="100,100,200,200" />
                         <area href="#img1map-area2" shape="rect" coords="300,100,400,200" />
