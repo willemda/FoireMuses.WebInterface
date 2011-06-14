@@ -5,7 +5,17 @@
 	ViewBag.HeadTitle = "All Sources";
 }
 
-<p>@Html.ActionLink("Créer une source", "Create", "Sources", null, null)</p>
+@section topSection{
+	<img src="../../Content/images/img_top2.jpg" alt="top banner" />
+}
+
+@section commandsSection{
+<ul>
+	<li>
+		@Html.ActionLink("New", "Create", "Sources", null, null)
+	</li>
+</ul>
+}
 
 <div id="pre-list">
 	Sources

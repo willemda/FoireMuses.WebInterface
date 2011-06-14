@@ -1,6 +1,10 @@
 ﻿@model FoireMuses.Client.Source
 @using FoireMuses.WebInterface.HtmlHelpers
 
+@section topSection{
+<img src="../../Content/images/img_top2.jpg" alt="top banner" />
+}
+
 @if (ViewBag.Error != null)
 {
 <div class="errorMessage">
@@ -8,17 +12,18 @@
 </div>
 }
 <div id="sourceEditForm">
+<form action="" method="post">
 <fieldset>
 <legend>@ViewBag.HeadTitle d'une source</legend>
- <form action="" method="post">
+ 
     @Html.HiddenInputField("Id",Model.Id)
-    <div class="block">@Html.TextInputField("Nom", "Name", Model.Name)</div>
-    <div class="block">@Html.TextInputField("Editeur", "Publisher", Model.Publisher)</div>
-    <div class="block">@Html.TextInputField("Cote", "Cote", Model.Cote)</div>
-    <div class="block">@Html.Label("Date", "Date")De <input style="width:6em;" id="Date" type="text" name="DateFrom" value="@Model.DateFrom" /> à <input style="width:6em;"  type="text" name="DateTo" value="@Model.DateTo" /></div>
-    <div class="block">@Html.TextInputField("Résumé", "Abbreviation", Model.Abbreviation)</div>
-    <div class="block">@Html.CheckboxInputField("Date approximative", "ApproxDate", Model.ApproxDate)</div>
-    <input class="submitButton" type="submit" value="@ViewBag.HeadTitle" />
-</form>
+    <div>@Html.TextInputField("Name", "Name", Model.Name)</div>
+    <div>@Html.TextInputField("Publisher", "Publisher", Model.Publisher)</div>
+    <div>@Html.TextInputField("Cote", "Cote", Model.Cote)</div>
+    <div>@Html.Label("Date", "Date")De <input style="width:6em;" id="Date" type="text" name="DateFrom" value="@Model.DateFrom" /> à <input style="width:6em;"  type="text" name="DateTo" value="@Model.DateTo" /></div>
+    <div>@Html.TextInputField("Abbr", "Abbreviation", Model.Abbreviation)</div>
+    <div>@Html.CheckboxInputField("Date approximative", "ApproxDate", Model.ApproxDate)</div>
 </fieldset>
+<input class="submitButton" type="submit" value="@ViewBag.HeadTitle" />
+</form>
 </div>

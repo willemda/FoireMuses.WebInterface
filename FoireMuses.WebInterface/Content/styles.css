@@ -721,3 +721,45 @@ input.default {
 {
 	background: #FF9900;
 }
+
+/*Items Values*/
+.label
+{
+	clear:both;
+	float:left;
+	width:100px;
+}
+.value
+{
+	float:left;
+	width:400px;
+}
+
+
+/* Top Commands */
+.commands ul {
+	list-style:none;
+	padding: 0px 0px 0px 0px;
+	float:right;
+}
+
+.commands a{
+	display:block;
+	float: left;
+	height: 25px;
+	width: 74px;
+	text-align: center;
+	padding: 2px 0px 0px 0px;
+	text-decoration: none;
+	color: #ffffff;
+	text-decoration: none;
+	font-size:12px;
+	font-weight: 100;
+	background: url(images/read.png) left top no-repeat;
+}
+
+.commands a:hover {
+	text-decoration: underline;
+	color: #ffffff;
+}
+

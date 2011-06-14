@@ -174,7 +174,7 @@ namespace FoireMuses.WebInterface.HtmlHelpers
 			{
 				divTagBuilder.MergeAttribute("style", "font-weight:bold;");
 			}
-			divTagBuilder.InnerHtml = aFieldValue;
+			divTagBuilder.InnerHtml = aFieldValue.Replace("\n","<br/>");
 
 			result.AppendLine(divTagBuilder.ToString());
 			MvcHtmlString mvc = MvcHtmlString.Create(result.ToString());
