@@ -137,22 +137,23 @@ namespace FoireMuses.WebInterface.Controllers
 
 		public ActionResult Images(string scoreId, string fileName){
 			FoireMusesConnection connection = GetConnection();
-			Stream theStream;
+			Stream stream;
 			try
 			{
-				theStream = connection.GetAttachements(scoreId, fileName, new Result<Stream>()).Wait();
+				stream = connection.GetAttachements(scoreId, fileName, new Result<Stream>()).Wait();
 			}
 			catch (Exception e)
 			{
+				return null;
 				return File(System.IO.File.OpenRead("~/Content/images/indisponible.gif"), "image/gif");
 			}
-			return File(theStream, "image/png");
+			return File(stream, "image/png");
 		}
 
 		public ActionResult Download(string scoreId, string fileType, string fileName)
 		{
 			FoireMusesConnection connection = GetConnection();
-			Stream theStream;
+			Stream stream;
 			string contentType;
 			switch (fileType)
 			{
@@ -171,13 +172,13 @@ namespace FoireMuses.WebInterface.Controllers
 			}
 			try
 			{
-				theStream = connection.GetConvertedScore(scoreId, fileName, new Result<Stream>()).Wait();
+				stream = connection.GetConvertedScore(scoreId, fileName, new Result<Stream>()).Wait();
 			}
 			catch (Exception e)
 			{
 				return RedirectToAction("Problem", "Error", null);
 			}
-			return File(theStream, contentType, fileName);
+			return File(stream, contentType, fileName);
 		}
 
 
