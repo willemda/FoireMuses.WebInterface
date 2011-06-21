@@ -38,7 +38,6 @@ namespace FoireMuses.Client
 			theServiceUri = theServiceUri.WithHeader("FoireMusesImpersonate", username);
 		}
 
-
 		public Result<User> GetUser(string username, Result<User> aResult)
 		{
 			theServiceUri.At("users", username)
@@ -60,7 +59,14 @@ namespace FoireMuses.Client
 			return aResult;
 		}
 
-		public Result<bool> BulkFascimile(string sourceId, Stream file, Result<bool> aResult)
+		/// <summary>
+		/// Create Source Pages from Zip file of facsimilés
+		/// </summary>
+		/// <param name="sourceId">Is of the source</param>
+		/// <param name="file">Zip File name</param>
+		/// <param name="aResult">Async management Result</param>
+		/// <returns></returns>
+		public Result<bool> CreateSourcePagesFromFacsimileZipFile(string sourceId, Stream file, Result<bool> aResult)
 		{
 			theServiceUri
 				.At("sources",sourceId,"fascimiles")
@@ -106,7 +112,6 @@ namespace FoireMuses.Client
 			return aResult;
 		}
 
-
 		public Result<Source> GetSource(string SourceId, Result<Source> aResult)
 		{
 			theServiceUri
@@ -129,7 +134,6 @@ namespace FoireMuses.Client
 				);
 			return aResult;
 		}
-
 
 		public Result<Source> CreateSource(Source Source, Result<Source> aResult)
 		{
@@ -154,7 +158,7 @@ namespace FoireMuses.Client
 			return aResult;
 		}
 
-		public Result<Source> EditSource(Source Source, Result<Source> aResult)
+		public Result<Source> UpdateSource(Source Source, Result<Source> aResult)
 		{
 			theServiceUri
 				.At("sources")
@@ -275,7 +279,6 @@ namespace FoireMuses.Client
 			return aResult;
 		}
 
-
 		public Result<Score> CreateScore(Score score, Result<Score> aResult)
 		{
 			theServiceUri
@@ -342,7 +345,7 @@ namespace FoireMuses.Client
 			return aResult;
 		}
 
-		public Result<Score> EditScore(Score score, Result<Score> aResult)
+		public Result<Score> UpdateScore(Score score, Result<Score> aResult)
 		{
 			theServiceUri
 				.At("scores")
@@ -392,7 +395,26 @@ namespace FoireMuses.Client
 			return aResult;
 		}
 
-
+		public Result AddAttachment(string aScoreId, string aFileName, Result aResult)
+		{
+			theServiceUri
+				.At("scores", aScoreId, "attachments")
+				.Post(DreamMessage.FromFile(aFileName),new Result<DreamMessage>())
+				.WhenDone(delegate(Result<DreamMessage> answer)
+				{
+					if (!answer.Value.IsSuccessful)
+					{
+						if (answer.Value.Status != DreamStatus.Ok)
+							aResult.Throw(new Exception());
+					}
+					else
+					{
+						aResult.Return();
+					}
+				}
+				);
+			return aResult;
+		}
 
 		public Result<Stream> GetAttachements(string scoreId, string fileName, Result<Stream> aResult)
 		{
@@ -436,7 +458,7 @@ namespace FoireMuses.Client
 			return aResult;
 		}
 
-		public Result<SourcePage> EditSourcePage(SourcePage aSourcePage, Result<SourcePage> aResult)
+		public Result<SourcePage> UpdateSourcePage(SourcePage aSourcePage, Result<SourcePage> aResult)
 		{
 			theServiceUri
 				.At("sources", aSourcePage.SourceId, "pages")
@@ -484,7 +506,6 @@ namespace FoireMuses.Client
 			return aResult;
 		}
 
-
 		public Result<SourcePage> GetSourcePage(string sourcePageId, Result<SourcePage> aResult)
 		{
 			theServiceUri
@@ -508,7 +529,6 @@ namespace FoireMuses.Client
 			return aResult;
 
 		}
-
 
 		public Result<SearchResult<ScoreSearchItem>> SearchScore(int offset, int max, Dictionary<string, object> parameters, Result<SearchResult<ScoreSearchItem>> aResult)
 		{

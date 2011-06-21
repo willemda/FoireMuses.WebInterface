@@ -379,7 +379,7 @@ namespace FoireMuses.WebInterface.Controllers
 						current.TextualSource = null;
 					if (current.MusicalSource.SourceId == null)
 						current.MusicalSource = null;
-					model = connection.EditScore(current, new Result<Score>()).Wait();
+					model = connection.UpdateScore(current, new Result<Score>()).Wait();
 				}
 			}
 			catch (Exception e)

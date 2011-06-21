@@ -180,7 +180,7 @@ namespace FoireMuses.WebInterface.Controllers
 					if(current == null)
 						return RedirectToAction("Problem", "Error", null);
 					TryUpdateModel(current);
-					model = connection.EditSourcePage(current, new Result<SourcePage>()).Wait();
+					model = connection.UpdateSourcePage(current, new Result<SourcePage>()).Wait();
 				}
 			}
 			catch (Exception e)
@@ -245,7 +245,7 @@ namespace FoireMuses.WebInterface.Controllers
 					if (current == null)
 						return RedirectToAction("Problem", "Error", null);
 					TryUpdateModel(current);
-					model = connection.EditSource(current, new Result<Source>()).Wait();
+					model = connection.UpdateSource(current, new Result<Source>()).Wait();
 				}
 			}
 			catch (Exception e)
@@ -280,7 +280,7 @@ namespace FoireMuses.WebInterface.Controllers
 			FoireMusesConnection connection = GetConnection();
 			try
 			{
-				connection.BulkFascimile(sourceId, file.InputStream, new Result<bool>()).Wait();
+				connection.CreateSourcePagesFromFacsimileZipFile(sourceId, file.InputStream, new Result<bool>()).Wait();
 			}
 			catch (Exception e)
 			{
