@@ -59,6 +59,12 @@
     <Compile Include="TextualSource.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MindTouch.Dream\mindtouch.dream.csproj">
+      <Project>{3E706653-69D1-4522-BEE8-ECEC1A1BF7DE}</Project>
+      <Name>mindtouch.dream</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
@@ -67,10 +73,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <ItemGroup>
-    <ProjectReference Include="..\MindTouch.Dream\mindtouch.dream.csproj">
-      <Project>{3E706653-69D1-4522-BEE8-ECEC1A1BF7DE}</Project>
-      <Name>mindtouch.dream</Name>
-    </ProjectReference>
-  </ItemGroup>
 </Project>
