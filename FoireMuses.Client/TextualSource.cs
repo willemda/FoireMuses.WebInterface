@@ -29,6 +29,30 @@ namespace FoireMuses.Client
 			set { json["id"] = value; }
 		}
 
+		public string Page
+		{
+			get
+			{
+				if (json["page"] == null)
+					return null;
+				return json["page"].Value<string>();
+			}
+			set { json["page"] = value; }
+		}
+
+		public string PieceId
+		{
+			get
+			{
+				if (json["pieceId"] == null)
+					return null;
+				return json["pieceId"].Value<string>();
+			}
+			set
+			{
+				json["pieceId"] = value;
+			}
+		}
 
 		public int? AirNumber
 		{
@@ -44,16 +68,6 @@ namespace FoireMuses.Client
 			}
 		}
 
-		public string Page
-		{
-			get {
-				if (json["page"] == null)
-					return null;
-				return json["page"].Value<string>(); }
-			set { json["page"] = value; }
-		}
-
-
 		public string Comment
 		{
 			get
@@ -65,20 +79,6 @@ namespace FoireMuses.Client
 			set
 			{
 				json["comment"] = value;
-			}
-		}
-
-		public bool? IsSuggested
-		{
-			get
-			{
-				if (json["isSuggested"] == null)
-					return null;
-				return json["isSuggested"].Value<bool>();
-			}
-			set
-			{
-				json["isSuggested"] = value;
 			}
 		}
 
@@ -110,48 +110,6 @@ namespace FoireMuses.Client
 			}
 		}
 
-
-		public string PieceId
-		{
-			get
-			{
-				if (json["pieceId"] == null)
-					return null;
-				return json["pieceId"].Value<string>();
-			}
-			set
-			{
-				json["pieceId"] = value;
-			}
-		}
-
-
-		public int? Tome
-		{
-			get
-			{
-				if (json["tome"] == null)
-					return null;
-				return json["tome"].Value<int?>();
-			}
-			set
-			{
-				json["tome"] = value;
-			}
-		}
-
-		public int? Volume
-		{
-			get
-			{
-				if (json["volume"] == null)
-					return null;
-				return json["volume"].Value<int?>();
-			}
-			set
-			{
-				json["volume"] = value;
-			}
-		}
+		
 	}
 }

@@ -31,7 +31,6 @@ namespace FoireMuses.Client
 			set { json["id"] = value; }
 		}
 
-
 		public int? AirNumber
 		{
 			get
@@ -56,7 +55,6 @@ namespace FoireMuses.Client
 			}
 			set { json["page"] = value; }
 		}
-
 
 		public int? Tome
 		{
@@ -83,6 +81,20 @@ namespace FoireMuses.Client
 			set
 			{
 				json["volume"] = value;
+			}
+		}
+
+		public bool? IsSuggested
+		{
+			get
+			{
+				if (json["isSuggested"] == null)
+					return null;
+				return json["isSuggested"].Value<bool>();
+			}
+			set
+			{
+				json["isSuggested"] = value;
 			}
 		}
 	}
