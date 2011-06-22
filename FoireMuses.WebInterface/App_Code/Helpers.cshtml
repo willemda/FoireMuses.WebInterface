@@ -1,0 +1,90 @@
+﻿@helper AddField(string aFieldName, string aFieldValue, bool isBold = false, bool aDisplayNullValue = true)
+{
+	if ((!String.IsNullOrWhiteSpace(aFieldValue)) || (aDisplayNullValue))
+	{
+		<div class="label">@aFieldName :</div>
+		<div class="value">
+			@if (isBold)
+			{
+				<em>@aFieldValue</em>
+			}
+			else
+			{
+				@aFieldValue
+			}
+		</div>
+	}
+}
+
+@helper  CheckboxInputField(string fieldName, string fieldExpression, bool? fieldValue)
+{
+	<label for="@fieldExpression">
+		@fieldName
+	</label>
+	<input class="checkbox" type="checkbox" id="@fieldExpression" value="true" checked="@(fieldValue.HasValue && fieldValue.Value ? "checked" : "")" />
+	<input type="hidden" name="@fieldExpression" value="false" />
+}
+
+@helper TextInputField(string fieldName, string fieldExpression, string fieldValue)
+{
+	<label for="@fieldExpression">
+		@fieldName
+	</label>
+	<input type="text" id="@fieldExpression" name="@fieldExpression" value="@fieldValue" />
+}
+
+@helper  PasswordInputField(string fieldName, string fieldExpression, string fieldValue)
+{
+	<label for="@fieldExpression">
+		@fieldName
+	</label>
+	<input type="password" id="@fieldExpression" name="@fieldExpression" value="@fieldValue" />
+}
+
+@helper TextareaInputField(string fieldName, string fieldExpression, string fieldValue)
+{
+	<label for="@fieldExpression">
+		@fieldName
+	</label>
+	<textarea id="@fieldExpression" rows="20" name="@fieldExpression">
+		@fieldValue
+	</textarea>
+}
+
+@helper  HiddenInputField(string fieldExpression, string fieldValue)
+{
+	<input type="hidden" id="@fieldExpression" name="@fieldExpression" value="@fieldValue" />
+}
+
+@helper Pager(int totalPage, int currentPage, Func<int, string> pageUrl)
+{
+	if (totalPage > 1)
+	{
+		<div id="pager">
+		@{
+			if (currentPage != 1)
+			{
+				<a href="@pageUrl(1)">first</a>
+				<a href="@pageUrl(currentPage - 1)">previous</a>
+			}
+
+			int pageToGoFrom = currentPage;
+			if (currentPage >= (totalPage - 10))
+				pageToGoFrom = (totalPage - 9);
+			if (pageToGoFrom < 1)
+				pageToGoFrom = 1;
+
+			for (int i = pageToGoFrom; i < pageToGoFrom + 10 && i <= totalPage; i++)
+			{
+				<a class="@(i == currentPage ? "selected" : String.Empty)" href="@pageUrl(i)">@i.ToString()</a>
+			}
+
+			if (currentPage != totalPage)
+			{
+				<a href="@pageUrl(currentPage + 1)">next</a>
+				<a href="@pageUrl(totalPage)">last</a>
+			}
+		}
+		</div>
+	}
+}

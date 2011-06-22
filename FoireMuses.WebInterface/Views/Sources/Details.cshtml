@@ -18,9 +18,9 @@
 
 <div id="sourceDetails">
 <h1>@Model.Name</h1>
-@Html.StringField("Publisher :", Model.Publisher)
-@Html.StringField("Abbr. :", Model.Abbreviation,false,false)
-@Html.StringField("Cote :", Model.Cote)
+@Helpers.AddField("Publisher", Model.Publisher)
+@Helpers.AddField("Abbr.", Model.Abbreviation, false, false)
+@Helpers.AddField("Cote", Model.Cote)
 @if (Model.DateFrom.HasValue)
 {
 	<div class="label">Date :</div>

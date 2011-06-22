@@ -15,14 +15,13 @@
 <form action="" method="post">
 <fieldset>
 <legend>@ViewBag.HeadTitle d'une source</legend>
- 
-    @Html.HiddenInputField("Id",Model.Id)
-    <div>@Html.TextInputField("Name", "Name", Model.Name)</div>
-    <div>@Html.TextInputField("Publisher", "Publisher", Model.Publisher)</div>
-    <div>@Html.TextInputField("Cote", "Cote", Model.Cote)</div>
+    @Helpers.HiddenInputField("Id",Model.Id)
+    <div>@Helpers.TextInputField("Name", "Name", Model.Name)</div>
+    <div>@Helpers.TextInputField("Publisher", "Publisher", Model.Publisher)</div>
+    <div>@Helpers.TextInputField("Cote", "Cote", Model.Cote)</div>
+	<div>@Helpers.TextInputField("Abbr", "Abbreviation", Model.Abbreviation)</div>
     <div>@Html.Label("Date", "Date")De <input style="width:6em;" id="Date" type="text" name="DateFrom" value="@Model.DateFrom" /> à <input style="width:6em;"  type="text" name="DateTo" value="@Model.DateTo" /></div>
-    <div>@Html.TextInputField("Abbr", "Abbreviation", Model.Abbreviation)</div>
-    <div>@Html.CheckboxInputField("Date approximative", "ApproxDate", Model.ApproxDate)</div>
+    <div>@Helpers.CheckboxInputField("Date approximative", "ApproxDate", Model.ApproxDate)</div>
 </fieldset>
 <input class="submitButton" type="submit" value="@ViewBag.HeadTitle" />
 </form>

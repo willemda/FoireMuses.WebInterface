@@ -1,5 +1,4 @@
 ﻿@model FoireMuses.WebInterface.Models.ListViewModel<FoireMuses.Client.SourceSearchItem>
-@using FoireMuses.WebInterface.HtmlHelpers
 
 @{
 	ViewBag.HeadTitle = "All Sources";
@@ -29,7 +28,7 @@
 				<li class="@(even ? "even_row" : "odd_row")">
 					<div class="source-item">
 						<a href="Details?sourceId=@source.Id">@source.Name</a>
-						@Html.StringField("Publisher",source.Publisher)
+						@Helpers.AddField("Publisher",source.Publisher)
 					</div>
 				</li>
 				even = !even;
@@ -38,8 +37,4 @@
 	</ul>
 </div>
 
-@if (Model.SearchResult.TotalCount > Model.SearchResult.Max){
-	<div id="pager">
-		@Html.PageLinks(Model.TotalPages, Model.CurrentPage,x => Url.Action("List", new { page = x }))
-	</div>
-}
+@Helpers.Pager(Model.TotalPages, Model.CurrentPage, x => Url.Action("List", new { page = x }))
