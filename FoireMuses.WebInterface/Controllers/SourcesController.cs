@@ -14,15 +14,12 @@ namespace FoireMuses.WebInterface.Controllers
 	{
 		public int PageSize = 20;
 
-		public ViewResult List(int page = 1)
+		public ViewResult List(int aPage = 1)
 		{
-			//use mindtouch dream to access the web service.
-			// treat the result and return it to the view
-			FoireMusesConnection connection = GetConnection();
 			SearchResult<SourceSearchItem> listSources = null;
 			try
 			{
-				listSources = connection.GetSources((page - 1) * PageSize, PageSize, new Result<SearchResult<SourceSearchItem>>()).Wait();
+				listSources = FoireMusesConnection.GetSources((aPage - 1) * PageSize, PageSize, new Result<SearchResult<SourceSearchItem>>()).Wait();
 			}
 			catch (Exception e)
 			{
@@ -32,26 +29,21 @@ namespace FoireMuses.WebInterface.Controllers
 			ListViewModel<SourceSearchItem> viewModel = new ListViewModel<SourceSearchItem>
 			{
 				SearchResult = listSources,
-				CurrentPage = page,
+				CurrentPage = aPage,
 			};
 
 			return View(viewModel);
 		}
 
-		//
-		// GET: /Scores/Details
 		public ViewResult Details(string sourceId)
 		{
-			//use mindtouch dream to access the web service.
-			// treat the result and return it to the view
-			FoireMusesConnection connection = GetConnection();
 			Source source = null;
 			IList<SourcePageSearchItem> pages = null;
 			IEnumerable<string> attachedFiles = null;
 			IEnumerable<string> documents = null;
 			try
 			{
-				source = connection.GetSource(sourceId, new Result<Source>()).Wait();
+				source = FoireMusesConnection.GetSource(sourceId, new Result<Source>()).Wait();
 
 				if (source.HasAttachement)
 				{
@@ -59,7 +51,7 @@ namespace FoireMuses.WebInterface.Controllers
 					documents = source.GetAttachmentNames().Where(x => x.StartsWith("$"));
 				}
 
-				pages = connection.GetSourcePagesFromSource(source.Id, 0, 0, new Result<SearchResult<SourcePageSearchItem>>()).Wait().Rows;
+				pages = FoireMusesConnection.GetSourcePagesFromSource(source.Id, 0, 0, new Result<SearchResult<SourcePageSearchItem>>()).Wait().Rows;
 			}
 			catch (Exception e)
 			{
@@ -71,16 +63,14 @@ namespace FoireMuses.WebInterface.Controllers
 			return View(source);
 		}
 
-
 		public ActionResult Edit(string sourceId)
 		{
-			FoireMusesConnection connection = GetConnection();
 			Source source = null;
 			try
 			{
 				if (sourceId != null)//get the score matching the id
 				{
-					source = connection.GetSource(sourceId, new Result<Source>()).Wait();
+					source = FoireMusesConnection.GetSource(sourceId, new Result<Source>()).Wait();
 					if (source == null)
 					{
 						return RedirectToAction("Missing", "Error", null);
@@ -116,7 +106,6 @@ namespace FoireMuses.WebInterface.Controllers
 		}
 
 		public ActionResult PageEdit(string sourcePageId, string sourceId){
-			FoireMusesConnection connection = GetConnection();
 			SourcePage page = null;
 			try
 			{
@@ -128,7 +117,7 @@ namespace FoireMuses.WebInterface.Controllers
 					}
 					else
 					{
-						Source source = connection.GetSource(sourceId, new Result<Source>()).Wait();
+						Source source = FoireMusesConnection.GetSource(sourceId, new Result<Source>()).Wait();
 						if (source == null)
 						{
 							return RedirectToAction("Missing", "Error", null);
@@ -140,7 +129,7 @@ namespace FoireMuses.WebInterface.Controllers
 				}
 				else
 				{
-					page = connection.GetSourcePage(sourcePageId, new Result<SourcePage>()).Wait();
+					page = FoireMusesConnection.GetSourcePage(sourcePageId, new Result<SourcePage>()).Wait();
 					if (page == null)
 					{
 						return RedirectToAction("Missing", "Error", null);
@@ -167,20 +156,20 @@ namespace FoireMuses.WebInterface.Controllers
 					ViewBag.HeadTitle = "Creation";
 				return View("PageEdit", model);
 			}
-			FoireMusesConnection connection = GetConnection();
+			
 			try
 			{
 				if (model.Id == null)
 				{
-					model = connection.CreateSourcePage(model, new Result<SourcePage>()).Wait();
+					model = FoireMusesConnection.CreateSourcePage(model, new Result<SourcePage>()).Wait();
 				}
 				else
 				{
-					SourcePage current = connection.GetSourcePage(model.Id, new Result<SourcePage>()).Wait();
+					SourcePage current = FoireMusesConnection.GetSourcePage(model.Id, new Result<SourcePage>()).Wait();
 					if(current == null)
 						return RedirectToAction("Problem", "Error", null);
 					TryUpdateModel(current);
-					model = connection.UpdateSourcePage(current, new Result<SourcePage>()).Wait();
+					model = FoireMusesConnection.UpdateSourcePage(current, new Result<SourcePage>()).Wait();
 				}
 			}
 			catch (Exception e)
@@ -198,11 +187,11 @@ namespace FoireMuses.WebInterface.Controllers
 			{
 				return RedirectToAction("Missing","Error",null);
 			}
-			FoireMusesConnection connection = GetConnection();
+
 			SourcePage page;
 			try
 			{
-				page = connection.GetSourcePage(sourcePageId, new Result<SourcePage>()).Wait();
+				page = FoireMusesConnection.GetSourcePage(sourcePageId, new Result<SourcePage>()).Wait();
 			}
 			catch (Exception e)
 			{
@@ -222,7 +211,9 @@ namespace FoireMuses.WebInterface.Controllers
 			{
 				return RedirectToAction("Problem", "Error", null);
 			}
-			if(!ValidateSource(model)){
+
+			if(!ValidateSource(model))
+			{
 				ViewBag.Error = "Certains champs sont mal rempli ou incomplet, veuillez les remplirs correctements.";
 				if (model.Id != null)
 					ViewBag.HeadTitle = "Edition";
@@ -230,22 +221,21 @@ namespace FoireMuses.WebInterface.Controllers
 					ViewBag.HeadTitle = "Creation";
 				return View("Edit", model);
 			}
-			FoireMusesConnection connection = GetConnection();
 			try
 			{
 				//we use the same view to edit and create, so let's differentiate both
 				if (model.Id == null)
 				{
-					model = connection.CreateSource(model, new Result<Source>()).Wait();
+					model = FoireMusesConnection.CreateSource(model, new Result<Source>()).Wait();
 				}
 				else
 				{
 					//when updating, first get the current score out of the db then update with values
-					Source current = connection.GetSource(model.Id, new Result<Source>()).Wait();
+					Source current = FoireMusesConnection.GetSource(model.Id, new Result<Source>()).Wait();
 					if (current == null)
 						return RedirectToAction("Problem", "Error", null);
 					TryUpdateModel(current);
-					model = connection.UpdateSource(current, new Result<Source>()).Wait();
+					model = FoireMusesConnection.UpdateSource(current, new Result<Source>()).Wait();
 				}
 			}
 			catch (Exception e)
@@ -277,10 +267,10 @@ namespace FoireMuses.WebInterface.Controllers
 				ViewBag.Error = "Error during the upload, please be sure to choose a valid zip file from your computer";
 				return View("Fascimiles");
 			}
-			FoireMusesConnection connection = GetConnection();
+
 			try
 			{
-				connection.CreateSourcePagesFromFacsimileZipFile(sourceId, file.InputStream, new Result<bool>()).Wait();
+				FoireMusesConnection.CreateSourcePagesFromFacsimileZipFile(sourceId, file.InputStream, new Result<bool>()).Wait();
 			}
 			catch (Exception e)
 			{

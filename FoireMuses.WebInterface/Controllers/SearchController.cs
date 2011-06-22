@@ -46,7 +46,6 @@ namespace FoireMuses.WebInterface.Controllers
 
 		public ActionResult SearchScore(string title = null, string editor = null, string composer = null, string verses = null,int page = 1)
 		{
-			FoireMusesConnection connection = GetConnection();
 			if (String.IsNullOrWhiteSpace(title) && String.IsNullOrWhiteSpace(editor) && String.IsNullOrWhiteSpace(composer) && String.IsNullOrWhiteSpace(verses))
 			{
 				ViewBag.Error = "You must specify at least one criteria before making a search";
@@ -55,7 +54,7 @@ namespace FoireMuses.WebInterface.Controllers
 			SearchResult<ScoreSearchItem> searchResult = null;
 			try
 			{
-				searchResult = connection.SearchScore((page - 1) * PageSize, PageSize, new Dictionary<string, object>() { { "title", title }, { "editor", editor }, { "composer", composer }, { "verses", verses } }, new Result<SearchResult<ScoreSearchItem>>()).Wait();
+				searchResult = FoireMusesConnection.SearchScore((page - 1) * PageSize, PageSize, new Dictionary<string, object>() { { "title", title }, { "editor", editor }, { "composer", composer }, { "verses", verses } }, new Result<SearchResult<ScoreSearchItem>>()).Wait();
 			}
 			catch (Exception e)
 			{
@@ -76,11 +75,11 @@ namespace FoireMuses.WebInterface.Controllers
 				ViewBag.Error = "You must at least search for one note";
 				return View("Music");
 			}
-			FoireMusesConnection connection = GetConnection();
+
 			SearchResult<ScoreSearchItem> searchResult = null;
 			try
 			{
-				searchResult = connection.SearchScore((page - 1) * PageSize, PageSize, new Dictionary<string, object>() { { "music", music } }, new Result<SearchResult<ScoreSearchItem>>()).Wait();
+				searchResult = FoireMusesConnection.SearchScore((page - 1) * PageSize, PageSize, new Dictionary<string, object>() { { "music", music } }, new Result<SearchResult<ScoreSearchItem>>()).Wait();
 			}
 			catch (Exception e)
 			{

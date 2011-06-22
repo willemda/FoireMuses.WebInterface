@@ -795,6 +795,7 @@
     <Content Include="Views\Shared\playList.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Code\Helpers.cshtml" />
     <None Include="Content\images\piano_js\Thumbs.db" />
     <Content Include="Views\Sources\List.cshtml" />
     <Content Include="Views\Sources\Details.cshtml" />

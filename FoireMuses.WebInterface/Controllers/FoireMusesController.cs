@@ -12,22 +12,24 @@ namespace FoireMuses.WebInterface.Controllers
 {
 	public class FoireMusesController : Controller
 	{
-		protected FoireMusesConnection GetConnection()
+		private FoireMusesConnection theConnection;
+
+		protected FoireMusesConnection FoireMusesConnection 
 		{
-
-			FoireMusesConnection connection = new FoireMusesConnection(new XUri(Configuration.ApiUrl+":"+Configuration.ApiPort+"/"+Configuration.ApiAt), Configuration.ApiUsername, Configuration.ApiPassword);
-
-			if (!User.Identity.IsAuthenticated)
+			get
 			{
-				return connection;
-			}
-			else
-			{
-				// Enables the remote process to use the user's credentials instead of this process' credentials
-				//use settings to create default creditentials to be used by the server.
-				//use some secret key
-				connection.Impersonate(User.Identity.Name);
-				return connection;
+				if (theConnection == null)
+				{
+					theConnection = new FoireMusesConnection(
+						new XUri(Configuration.ApiUrl + ":" + Configuration.ApiPort + "/" + Configuration.ApiAt),
+						Configuration.ApiUsername,
+						Configuration.ApiPassword);
+					if (User.Identity.IsAuthenticated)
+					{
+						theConnection.Impersonate(User.Identity.Name);
+					}
+				}
+				return theConnection;
 			}
 		}
 	}

@@ -36,8 +36,7 @@ namespace FoireMuses.WebInterface.Controllers
 			user.Password = model.Password;
 			user.Email = model.Email;
 			user.IsAdmin = model.IsAdmin;
-			FoireMusesConnection connection = GetConnection();
-			user = connection.CreateUser(user, new Result<User>()).Wait();
+			user = FoireMusesConnection.CreateUser(user, new Result<User>()).Wait();
 			return RedirectToAction("Index", "Home", null);
 		}
 

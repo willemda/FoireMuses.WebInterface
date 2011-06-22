@@ -24,11 +24,10 @@ namespace FoireMuses.WebInterface.Controllers
 		{
 			//use mindtouch dream to access the web service.
 			// treat the result and return it to the view
-			FoireMusesConnection connection = GetConnection();
 			SearchResult<ScoreSearchItem> listScores = null;
 			try
 			{
-				listScores = connection.GetScores((page - 1) * PageSize, PageSize, new Result<SearchResult<ScoreSearchItem>>()).Wait();
+				listScores = FoireMusesConnection.GetScores((page - 1) * PageSize, PageSize, new Result<SearchResult<ScoreSearchItem>>()).Wait();
 			}
 			catch (Exception e)
 			{
@@ -51,7 +50,6 @@ namespace FoireMuses.WebInterface.Controllers
 				return RedirectToAction("Missing", "Error", null);
 			}
 			
-			FoireMusesConnection connection = GetConnection();
 			Score score = null;
 			Score genericScore = null;
 			Source sTextuelle = null;
@@ -62,21 +60,21 @@ namespace FoireMuses.WebInterface.Controllers
 			IEnumerable<string> documents = null;
 			try
 			{
-				score = connection.GetScore(scoreId, new Result<Score>()).Wait();
+				score = FoireMusesConnection.GetScore(scoreId, new Result<Score>()).Wait();
 				if (score == null)
 				{
 					return RedirectToAction("Missing", "Error", null);
 				}
 				if (score.TextualSource != null && !String.IsNullOrWhiteSpace(score.TextualSource.SourceId))
 				{
-					sTextuelle = connection.GetSource(score.TextualSource.SourceId, new Result<Source>()).Wait();
+					sTextuelle = FoireMusesConnection.GetSource(score.TextualSource.SourceId, new Result<Source>()).Wait();
 					if (sTextuelle == null)
 					{
 						return RedirectToAction("Problem", "Error", null);
 					}
 					if (!String.IsNullOrWhiteSpace(score.TextualSource.PieceId))
 					{
-						assPlay = connection.GetPlay(score.TextualSource.PieceId, new Result<Play>()).Wait();
+						assPlay = FoireMusesConnection.GetPlay(score.TextualSource.PieceId, new Result<Play>()).Wait();
 						if (assPlay == null)
 						{
 							return RedirectToAction("Problem", "Error", null);
@@ -85,7 +83,7 @@ namespace FoireMuses.WebInterface.Controllers
 				}
 				if (score.MusicalSource != null && !String.IsNullOrWhiteSpace(score.MusicalSource.SourceId))
 				{
-					sMusicale = connection.GetSource(score.MusicalSource.SourceId, new Result<Source>()).Wait();
+					sMusicale = FoireMusesConnection.GetSource(score.MusicalSource.SourceId, new Result<Source>()).Wait();
 					if (sMusicale == null)
 					{
 						return RedirectToAction("Problem", "Error", null);
@@ -98,7 +96,7 @@ namespace FoireMuses.WebInterface.Controllers
 				}
 				if (score.IsMaster)
 				{
-					SearchResult<ScoreSearchItem> results = connection.SearchScore(0, 0, new Dictionary<string, object>() { { "masterId", score.Id } }, new Result<SearchResult<ScoreSearchItem>>()).Wait();
+					SearchResult<ScoreSearchItem> results = FoireMusesConnection.SearchScore(0, 0, new Dictionary<string, object>() { { "masterId", score.Id } }, new Result<SearchResult<ScoreSearchItem>>()).Wait();
 					if (results == null)
 					{
 						return RedirectToAction("Problem", "Error", null);
@@ -107,12 +105,12 @@ namespace FoireMuses.WebInterface.Controllers
 				}
 				else if(score.MasterId!=null)
 				{
-					genericScore = connection.GetScore(score.MasterId, new Result<Score>()).Wait();
+					genericScore = FoireMusesConnection.GetScore(score.MasterId, new Result<Score>()).Wait();
 					if (genericScore == null)
 					{
 						return RedirectToAction("Problem", "Error", null);
 					}
-					SearchResult<ScoreSearchItem> results = connection.SearchScore(0, 0, new Dictionary<string, object>() { { "masterId", score.MasterId } }, new Result<SearchResult<ScoreSearchItem>>()).Wait();
+					SearchResult<ScoreSearchItem> results = FoireMusesConnection.SearchScore(0, 0, new Dictionary<string, object>() { { "masterId", score.MasterId } }, new Result<SearchResult<ScoreSearchItem>>()).Wait();
 					if (results == null)
 					{
 						return RedirectToAction("Problem", "Error", null);
@@ -136,11 +134,11 @@ namespace FoireMuses.WebInterface.Controllers
 
 
 		public ActionResult Images(string scoreId, string fileName){
-			FoireMusesConnection connection = GetConnection();
+
 			Stream stream;
 			try
 			{
-				stream = connection.GetAttachements(scoreId, fileName, new Result<Stream>()).Wait();
+				stream = FoireMusesConnection.GetAttachements(scoreId, fileName, new Result<Stream>()).Wait();
 			}
 			catch (Exception e)
 			{
@@ -152,7 +150,6 @@ namespace FoireMuses.WebInterface.Controllers
 
 		public ActionResult Download(string scoreId, string fileType, string fileName)
 		{
-			FoireMusesConnection connection = GetConnection();
 			Stream stream;
 			string contentType;
 			switch (fileType)
@@ -172,7 +169,7 @@ namespace FoireMuses.WebInterface.Controllers
 			}
 			try
 			{
-				stream = connection.GetConvertedScore(scoreId, fileName, new Result<Stream>()).Wait();
+				stream = FoireMusesConnection.GetConvertedScore(scoreId, fileName, new Result<Stream>()).Wait();
 			}
 			catch (Exception e)
 			{
@@ -205,11 +202,11 @@ namespace FoireMuses.WebInterface.Controllers
 				theLogger.Error("Reason: id is null or white space");
 				return PartialView("playList", new List<Play>());
 			}
-			FoireMusesConnection connection = GetConnection();
+
 			SearchResult<Play> searchResultPlay = null;
 			try
 			{
-				searchResultPlay = connection.GetPlaysFromSource(id, 0, 0, new Result<SearchResult<Play>>()).Wait();
+				searchResultPlay = FoireMusesConnection.GetPlaysFromSource(id, 0, 0, new Result<SearchResult<Play>>()).Wait();
 			}
 			catch (Exception e)
 			{
@@ -233,11 +230,11 @@ namespace FoireMuses.WebInterface.Controllers
 				theLogger.Error("Reason: wordsToSearch is null or white space");
 				return PartialView("AjaxSearchForMaster", new List<ScoreSearchItem>());
 			}
-			FoireMusesConnection connection = GetConnection();
+
 			SearchResult<ScoreSearchItem> searchResultMaster = null;
 			try
 			{
-				searchResultMaster = connection.SearchScore(0, 20, new Dictionary<string, object>() { { "isMaster", true }, { "titleWild", wordsToSearch } }, new Result<SearchResult<ScoreSearchItem>>()).Wait();
+				searchResultMaster = FoireMusesConnection.SearchScore(0, 20, new Dictionary<string, object>() { { "isMaster", true }, { "titleWild", wordsToSearch } }, new Result<SearchResult<ScoreSearchItem>>()).Wait();
 			}
 			catch (Exception e)
 			{
@@ -269,21 +266,21 @@ namespace FoireMuses.WebInterface.Controllers
 				ViewBag.Error = "Error during the upload, please be sure to choose a valid xml file from your computer";
 				return View("Publish");
 			}
-			FoireMusesConnection connection = GetConnection();
+
 			Score score = null;
 			try
 			{
 				if (scoreId == null)
 				{
 					XDoc theDoc = XDocFactory.From(file.InputStream, MimeType.XML);
-					score = connection.CreateScoreWithXml(theDoc, new Result<Score>()).Wait();
+					score = FoireMusesConnection.CreateScoreWithXml(theDoc, new Result<Score>()).Wait();
 				}
 				else
 				{
-					Score current = connection.GetScore(scoreId, new Result<Score>()).Wait();
+					Score current = FoireMusesConnection.GetScore(scoreId, new Result<Score>()).Wait();
 					if (current == null)
 						return RedirectToAction("Missing", "Error", null);
-					score = connection.UpdateScoreWithXml(current.Id, current.Rev, XDocFactory.From(file.InputStream, MimeType.XML), overwrite, new Result<Score>()).Wait();
+					score = FoireMusesConnection.UpdateScoreWithXml(current.Id, current.Rev, XDocFactory.From(file.InputStream, MimeType.XML), overwrite, new Result<Score>()).Wait();
 					if (score == null)
 						return RedirectToAction("Problem", "Error", null);
 					return RedirectToAction("Details", new {scoreId=score.Id});
@@ -301,27 +298,26 @@ namespace FoireMuses.WebInterface.Controllers
 		public ActionResult Edit(string scoreId)
 		{
 			theLogger.Info(String.Format("GET method Edit, parameter scoreId {0}", scoreId));
-			FoireMusesConnection connection = GetConnection();
 			Score score = null;
 			SearchResult<SourceSearchItem> sourceList = null;
 			try
 			{
 				if (!String.IsNullOrWhiteSpace(scoreId))//get the score matching the id
 				{
-					score = connection.GetScore(scoreId, new Result<Score>()).Wait();
+					score = FoireMusesConnection.GetScore(scoreId, new Result<Score>()).Wait();
 					if (score == null)
 						return RedirectToAction("Missing", "Error", null);
 					if (score.TextualSource != null && score.TextualSource.PieceId != null)
 					{
 						SearchResult<Play> searchResultPlay = null;
-						searchResultPlay = connection.GetPlaysFromSource(score.TextualSource.SourceId, 0, 0, new Result<SearchResult<Play>>()).Wait();
+						searchResultPlay = FoireMusesConnection.GetPlaysFromSource(score.TextualSource.SourceId, 0, 0, new Result<SearchResult<Play>>()).Wait();
 						if (searchResultPlay == null)
 							return RedirectToAction("Problem", "Error", null);
 						ViewBag.Pieces = searchResultPlay.Rows;
 					}
 					if (score.MasterId != null)
 					{
-						Score maitre = connection.GetScore(score.MasterId, new Result<Score>()).Wait();
+						Score maitre = FoireMusesConnection.GetScore(score.MasterId, new Result<Score>()).Wait();
 						if (maitre == null)
 						{
 							score.MasterId = null;
@@ -338,7 +334,7 @@ namespace FoireMuses.WebInterface.Controllers
 					score = new Score();
 					ViewBag.HeadTitle = "Création";
 				}
-				sourceList = connection.GetSources(0, 0, new Result<SearchResult<SourceSearchItem>>()).Wait();
+				sourceList = FoireMusesConnection.GetSources(0, 0, new Result<SearchResult<SourceSearchItem>>()).Wait();
 			}
 			catch (Exception e)
 			{
@@ -358,7 +354,6 @@ namespace FoireMuses.WebInterface.Controllers
 			theLogger.Info("POST method Edit");
 			if (model == null)
 				return RedirectToAction("Missing", "Error", null);
-			FoireMusesConnection connection = GetConnection();
 			try
 			{
 				if (model.Id == null)
@@ -367,11 +362,11 @@ namespace FoireMuses.WebInterface.Controllers
 						model.TextualSource = null;
 					if (model.MusicalSource.SourceId == null)
 						model.MusicalSource = null;
-					model = connection.CreateScore(model, new Result<Score>()).Wait();
+					model = FoireMusesConnection.CreateScore(model, new Result<Score>()).Wait();
 				}
 				else
 				{
-					Score current = connection.GetScore(model.Id, new Result<Score>()).Wait();
+					Score current = FoireMusesConnection.GetScore(model.Id, new Result<Score>()).Wait();
 					if (current == null)
 						return RedirectToAction("Missing", "Error", null);
 					TryUpdateModel(current);
@@ -379,7 +374,7 @@ namespace FoireMuses.WebInterface.Controllers
 						current.TextualSource = null;
 					if (current.MusicalSource.SourceId == null)
 						current.MusicalSource = null;
-					model = connection.UpdateScore(current, new Result<Score>()).Wait();
+					model = FoireMusesConnection.UpdateScore(current, new Result<Score>()).Wait();
 				}
 			}
 			catch (Exception e)
