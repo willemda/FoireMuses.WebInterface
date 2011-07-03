@@ -64,15 +64,17 @@
 		@{
 			if (currentPage != 1)
 			{
-				<a href="@pageUrl(1)">first</a>
-				<a href="@pageUrl(currentPage - 1)">previous</a>
+				<a href="@pageUrl(1)">&lt;&lt;</a>
+				<a href="@pageUrl(currentPage - 1)">&lt;</a>
 			}
 
 			int pageToGoFrom = currentPage;
-			if (currentPage >= (totalPage - 10))
+			if (currentPage >= (totalPage - 10)){
 				pageToGoFrom = (totalPage - 9);
-			if (pageToGoFrom < 1)
+			}
+			if (pageToGoFrom < 1){
 				pageToGoFrom = 1;
+			}
 
 			for (int i = pageToGoFrom; i < pageToGoFrom + 10 && i <= totalPage; i++)
 			{
@@ -81,8 +83,8 @@
 
 			if (currentPage != totalPage)
 			{
-				<a href="@pageUrl(currentPage + 1)">next</a>
-				<a href="@pageUrl(totalPage)">last</a>
+				<a href="@pageUrl(currentPage + 1)">&gt;</a>
+				<a href="@pageUrl(totalPage)">&gt;&gt;</a>
 			}
 		}
 		</div>

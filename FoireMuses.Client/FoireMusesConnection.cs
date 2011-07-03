@@ -69,7 +69,7 @@ namespace FoireMuses.Client
 		public Result<bool> CreateSourcePagesFromFacsimileZipFile(string sourceId, Stream file, Result<bool> aResult)
 		{
 			theServiceUri
-				.At("sources",sourceId,"fascimiles")
+				.At("sources",sourceId,"pages")
 				.Post(DreamMessage.Ok(new MimeType("application/zip"), file.Length, file),new Result<DreamMessage>())
 				.WhenDone(delegate(Result<DreamMessage> answer)
 				{
@@ -161,8 +161,7 @@ namespace FoireMuses.Client
 		public Result<Source> UpdateSource(Source Source, Result<Source> aResult)
 		{
 			theServiceUri
-				.At("sources")
-				.With("id", Source.Id)
+				.At("sources",Source.Id)
 				.With("rev", Source.Rev)
 				.Put(DreamMessage.Ok(MimeType.JSON, Source.ToString()), new Result<DreamMessage>())
 				.WhenDone(delegate(Result<DreamMessage> answer)
@@ -303,7 +302,7 @@ namespace FoireMuses.Client
 		public Result<Score> CreateScoreWithXml(XDoc xdoc, Result<Score> aResult)
 		{
 			theServiceUri
-				.At("scores", "musicxml")
+				.At("scores")
 				.Post(DreamMessage.Ok(MimeType.XML, xdoc.ToString()), new Result<DreamMessage>()) //WORKAROUND
 				.WhenDone(delegate(Result<DreamMessage> answer)
 				{
@@ -324,9 +323,8 @@ namespace FoireMuses.Client
 		public Result<Score> UpdateScoreWithXml(string id, string rev, XDoc xdoc, bool overwrite, Result<Score> aResult)
 		{
 			theServiceUri
-				.At("scores", "musicxml")
+				.At("scores", id)
 				.With("overwrite", overwrite)
-				.With("id", id)
 				.With("rev", rev)
 				.Put(DreamMessage.Ok(MimeType.XML, xdoc.ToString()), new Result<DreamMessage>()) //WORKAROUND
 				.WhenDone(delegate(Result<DreamMessage> answer)
@@ -348,8 +346,7 @@ namespace FoireMuses.Client
 		public Result<Score> UpdateScore(Score score, Result<Score> aResult)
 		{
 			theServiceUri
-				.At("scores")
-				.With("Id", score.Id)
+				.At("scores", score.Id)
 				.With("Rev", score.Rev)
 				.Put(DreamMessage.Ok(MimeType.JSON, score.ToString()), new Result<DreamMessage>())
 				.WhenDone(delegate(Result<DreamMessage> answer)
@@ -437,10 +434,10 @@ namespace FoireMuses.Client
 			return aResult;
 		}
 
-		public Result<SourcePage> CreateSourcePage(SourcePage aSourcePage, Result<SourcePage> aResult)
+		public Result<SourcePage> CreateSourcePage(string aSourceId, SourcePage aSourcePage, Result<SourcePage> aResult)
 		{
 			theServiceUri
-				.At("sources", "pages")
+				.At("sources", aSourceId, "pages")
 				.Post(DreamMessage.Ok(MimeType.JSON, aSourcePage.ToString()), new Result<DreamMessage>())
 				.WhenDone(delegate(Result<DreamMessage> answer)
 				{
@@ -458,11 +455,10 @@ namespace FoireMuses.Client
 			return aResult;
 		}
 
-		public Result<SourcePage> UpdateSourcePage(SourcePage aSourcePage, Result<SourcePage> aResult)
+		public Result<SourcePage> UpdateSourcePage(string aSourceId, SourcePage aSourcePage, Result<SourcePage> aResult)
 		{
 			theServiceUri
-				.At("sources", aSourcePage.SourceId, "pages")
-				.With("sourcePageId", aSourcePage.Id)
+				.At("sources", aSourceId, "pages", aSourcePage.Id)
 				.With("sourcePageRev", aSourcePage.Rev)
 				.Put(DreamMessage.Ok(MimeType.JSON, aSourcePage.ToString()), new Result<DreamMessage>())
 				.WhenDone(delegate(Result<DreamMessage> answer)
@@ -532,8 +528,8 @@ namespace FoireMuses.Client
 
 		public Result<SearchResult<ScoreSearchItem>> SearchScore(int offset, int max, Dictionary<string, object> parameters, Result<SearchResult<ScoreSearchItem>> aResult)
 		{
-			Plug temp = theServiceUri
-				.At("scores", "search");
+			Plug temp = theServiceUri.At("scores", "search");
+
 			foreach (KeyValuePair<string, object> pair in parameters)
 			{
 				temp = temp.WithCheck(pair.Key, pair.Value);

@@ -9,7 +9,6 @@ using System.Web;
 
 namespace FoireMuses.WebInterface.HtmlHelpers
 {
-
 	public static class PlugHelpers
 	{
 		public static Plug WithCheck(this Plug plug, string fieldName, string fieldValue)

@@ -12,14 +12,14 @@ namespace FoireMuses.WebInterface.Controllers
 	[Authorize]
 	public class SourcesController : FoireMusesController
 	{
-		public int PageSize = 20;
+		public int PageSize = 2;
 
-		public ViewResult List(int aPage = 1)
+		public ViewResult List(int page = 1)
 		{
 			SearchResult<SourceSearchItem> listSources = null;
 			try
 			{
-				listSources = FoireMusesConnection.GetSources((aPage - 1) * PageSize, PageSize, new Result<SearchResult<SourceSearchItem>>()).Wait();
+				listSources = FoireMusesConnection.GetSources((page - 1) * PageSize, PageSize, new Result<SearchResult<SourceSearchItem>>()).Wait();
 			}
 			catch (Exception e)
 			{
@@ -29,7 +29,7 @@ namespace FoireMuses.WebInterface.Controllers
 			ListViewModel<SourceSearchItem> viewModel = new ListViewModel<SourceSearchItem>
 			{
 				SearchResult = listSources,
-				CurrentPage = aPage,
+				CurrentPage = page,
 			};
 
 			return View(viewModel);
@@ -161,7 +161,7 @@ namespace FoireMuses.WebInterface.Controllers
 			{
 				if (model.Id == null)
 				{
-					model = FoireMusesConnection.CreateSourcePage(model, new Result<SourcePage>()).Wait();
+					model = FoireMusesConnection.CreateSourcePage(model.SourceId,model, new Result<SourcePage>()).Wait();
 				}
 				else
 				{
@@ -169,7 +169,7 @@ namespace FoireMuses.WebInterface.Controllers
 					if(current == null)
 						return RedirectToAction("Problem", "Error", null);
 					TryUpdateModel(current);
-					model = FoireMusesConnection.UpdateSourcePage(current, new Result<SourcePage>()).Wait();
+					model = FoireMusesConnection.UpdateSourcePage(model.SourceId, current, new Result<SourcePage>()).Wait();
 				}
 			}
 			catch (Exception e)
@@ -248,7 +248,6 @@ namespace FoireMuses.WebInterface.Controllers
 			return Redirect("Details?sourceId=" + model.Id);
 		}
 
-		
 		public ActionResult Fascimiles(string sourceId)
 		{
 			if (String.IsNullOrWhiteSpace(sourceId))
