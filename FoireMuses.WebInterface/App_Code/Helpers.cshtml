@@ -21,7 +21,11 @@
 	<label for="@fieldExpression">
 		@fieldName
 	</label>
-	<input class="checkbox" type="checkbox" id="@fieldExpression" value="true" checked="@(fieldValue.HasValue && fieldValue.Value ? "checked" : "")" />
+	if(fieldValue.HasValue && fieldValue.Value){
+		<input class="checkbox" type="checkbox" id="@fieldExpression" name="@fieldExpression" value="true" checked="checked"/>
+	}else{
+		<input class="checkbox" type="checkbox" id="@fieldExpression" name="@fieldExpression" value="true"/>
+	}
 	<input type="hidden" name="@fieldExpression" value="false" />
 }
 
