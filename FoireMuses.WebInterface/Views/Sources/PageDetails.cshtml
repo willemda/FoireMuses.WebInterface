@@ -4,20 +4,18 @@
     ViewBag.Title = "PageDetails";
 }
 
-<div id="pageDetails">
-
-@Html.NullableIntField("Numéro de page", Model.PageNumber,true)
-@Html.NullableIntField("Numéro affiché", Model.DisplayPageNumber)
-@Html.NullableIntField("Format de numérotation", Model.PageNumberFormat)
-@Html.StringField("Contenu", Model.TextContent)
-</div>
-
-
-<div id="menuModif">
-<hr />
+@section commandsSection{
 <ul>
-<li><a href="PageEdit?sourcePageId=@Model.Id"><span class="editButton"></span>Modifier</a></li>
-<li><a href="PageFascimile?sourcePageId=@Model.Id"><span class="uploadButton"></span>Fascimile</a></li>
-<li><a href="Details?sourceId=@Model.SourceId"><span class="backButton"></span>Retour source</a></li>
+	<li><a href="PageEdit?sourceId=@Model.SourceId&sourcePageId=@Model.Id">Edit</a></li>
+	<li><a href="PageCreate?sourceId=@Model.SourceId&sourcePageId=@Model.Id"><span class="addButton"></span>Add Page</a></li>
+	<li><a href="Fascimiles?sourceId=@Model.SourceId&sourcePageId=@Model.Id"><span class="uploadButton"></span>Fascimilé</a></li>
 </ul>
+}
+
+<div id="pageDetails">
+@Helpers.AddField("Numéro de page", Model.PageNumber, true)
+@Helpers.AddField("Numéro affiché", Model.DisplayPageNumber)
+@Helpers.AddField("Format de numérotation", Model.PageNumberFormat)
+@Helpers.AddField("Contenu", Model.TextContent)
 </div>
+

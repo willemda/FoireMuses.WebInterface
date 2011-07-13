@@ -6,12 +6,12 @@
  <div id="pageEditForm">
  <form action="" method="post">
  <fieldset><legend>@ViewBag.HeadTitle d'une page</legend>
-    @Html.HiddenInputField("Id",Model.Id)
-    <div class="block">@Html.HiddenInputField("SourceId", Model.SourceId)</div>
-    <div class="block">@Html.TextInputField("Numéro de page", "PageNumber", Model.PageNumber)</div>
-    <div class="block">@Html.TextInputField("Numéro affiché", "DisplayPageNumber", Model.DisplayPageNumber)</div>
-    <div class="block">@Html.TextInputField("Format de numérotation", "PageNumberFormat", Model.PageNumberFormat)</div>
-    <div class="block">@Html.TextareaInputField("Contenu", "TextContent", Model.TextContent)</div>
+    @Helpers.HiddenInputField("Id", Model.Id)
+    <div class="block">@Helpers.HiddenInputField("SourceId", Model.SourceId)</div>
+    <div class="block">@Helpers.TextInputField("Numéro de page", "PageNumber", Model.PageNumber)</div>
+    <div class="block">@Helpers.TextInputField("Numéro affiché", "DisplayPageNumber", Model.DisplayPageNumber)</div>
+    <div class="block">@Helpers.TextInputField("Format de numérotation", "PageNumberFormat", Model.PageNumberFormat)</div>
+    <div class="block">@Helpers.TextareaInputField("Contenu", "TextContent", Model.TextContent)</div>
     <input class="submitButton" type="submit" value="@ViewBag.HeadTitle" />
     </fieldset>
 </form>

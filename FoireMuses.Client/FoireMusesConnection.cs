@@ -502,10 +502,10 @@ namespace FoireMuses.Client
 			return aResult;
 		}
 
-		public Result<SourcePage> GetSourcePage(string sourcePageId, Result<SourcePage> aResult)
+		public Result<SourcePage> GetSourcePage(string sourceId, string sourcePageId, Result<SourcePage> aResult)
 		{
 			theServiceUri
-				.At("sources", "pages", sourcePageId)
+				.At("sources", sourceId, "pages", sourcePageId)
 				.Get(new Result<DreamMessage>())
 				.WhenDone(delegate(Result<DreamMessage> answer)
 				{

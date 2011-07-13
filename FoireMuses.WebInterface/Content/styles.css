@@ -694,7 +694,7 @@ legend span {
 }
 input,textarea {
 	padding:0.15em;
-	width:15em;
+	width:25em;
 	border:1px solid #ddd;
 	background:#fafafa;
 	font:bold 0.95em arial, sans-serif;
@@ -733,6 +733,7 @@ input.default {
 {
 	float:left;
 	width:400px;
+	white-space: pre;
 }
 
 

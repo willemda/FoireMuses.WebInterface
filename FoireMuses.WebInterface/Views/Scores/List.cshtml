@@ -37,9 +37,4 @@
 		}
 	</ul>
 </div>
-
-@if (Model.SearchResult.TotalCount > Model.SearchResult.Max){
-	<div id="pager">
-		@Html.PageLinks(Model.TotalPages, Model.CurrentPage,x => Url.Action("List", new { page = x }))
-	</div>
-}
+@Helpers.Pager(Model.TotalPages, Model.CurrentPage, x => Url.Action("List", new { page = x }))

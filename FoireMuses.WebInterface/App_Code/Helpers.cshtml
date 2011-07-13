@@ -16,6 +16,24 @@
 	}
 }
 
+@helper AddField(string aFieldName, int? aFieldValue, bool isBold = false, bool aDisplayNullValue = true)
+{
+	if(aFieldValue.HasValue || (aDisplayNullValue))
+	{
+		<div class="label">@aFieldName :</div>
+		<div class="value">
+			@if (isBold)
+			{
+				<em>@aFieldValue.Value</em>
+			}
+			else
+			{
+				@aFieldValue.Value
+			}
+		</div>
+	}
+}
+
 @helper  CheckboxInputField(string fieldName, string fieldExpression, bool? fieldValue)
 {
 	<label for="@fieldExpression">
@@ -37,6 +55,14 @@
 	<input type="text" id="@fieldExpression" name="@fieldExpression" value="@fieldValue" />
 }
 
+@helper TextInputField(string fieldName, string fieldExpression, int? fieldValue)
+{
+	<label for="@fieldExpression">
+		@fieldName
+	</label>
+	<input type="text" id="@fieldExpression" name="@fieldExpression" value="@fieldValue" />
+}
+
 @helper  PasswordInputField(string fieldName, string fieldExpression, string fieldValue)
 {
 	<label for="@fieldExpression">
@@ -50,9 +76,7 @@
 	<label for="@fieldExpression">
 		@fieldName
 	</label>
-	<textarea id="@fieldExpression" rows="20" name="@fieldExpression">
-		@fieldValue
-	</textarea>
+	<textarea id="@fieldExpression" rows="20" name="@fieldExpression">@fieldValue</textarea>
 }
 
 @helper  HiddenInputField(string fieldExpression, string fieldValue)

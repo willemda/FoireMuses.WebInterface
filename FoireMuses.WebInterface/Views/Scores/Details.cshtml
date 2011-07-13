@@ -24,25 +24,27 @@
                     </ul>
                 </div>
             }
-            @Html.StringField("Titre", Model.Title, true)
+            @Helpers.AddField("Titre", Model.Title, true)
             @if (ViewBag.GenericScore != null)
             {
-                @Html.StringField("Titre générique", "<a href=\"details?scoreId=" + (string)ViewBag.GenericScore.Id + "\">" + (string)ViewBag.GenericScore.Title + "</a>")
+                @Helpers.AddField("Titre générique", "<a href=\"details?scoreId=" + (string)ViewBag.GenericScore.Id + "\">" + (string)ViewBag.GenericScore.Title + "</a>")
             }
-            @Html.NullableBooleanField("Maitre", new Nullable<bool>(Model.IsMaster))
-            @Html.StringField("Compositeur", Model.Composer)
-            @Html.StringField("Editeur", Model.Editor)
-            @Html.StringField("Versets", Model.Verses)
-            @Html.StringField("Type", Model.ScoreType)
-            @Html.StringField("Strophe", Model.Stanza)
-            @Html.StringField("Coirault", Model.Coirault)
-            @Html.StringField("Delarue", Model.Delarue)
-            @Html.StringField("Ancien autres titres", Model.OtherTitles)
-            @Html.StringField("Coupe métrique", Model.CoupeMetrique)
-            @Html.StringField("Codage mélodique RISM", Model.CodageMelodiqueRISM)
-            @Html.StringField("Codage par intervalles", Model.CodageParIntervalles)
-            @Html.StringField("Codage rythmique", Model.CodageRythmique)
-            @Html.StringField("Commentaires", Model.Comments)
+			@if(Model.IsMaster){
+				Helpers.AddField("Is Master", "True");
+			}
+            @Helpers.AddField("Compositeur", Model.Composer)
+            @Helpers.AddField("Editeur", Model.Editor)
+            @Helpers.AddField("Versets", Model.Verses)
+            @Helpers.AddField("Type", Model.ScoreType)
+            @Helpers.AddField("Strophe", Model.Stanza)
+            @Helpers.AddField("Coirault", Model.Coirault)
+            @Helpers.AddField("Delarue", Model.Delarue)
+            @Helpers.AddField("Ancien autres titres", Model.OtherTitles)
+            @Helpers.AddField("Coupe métrique", Model.CoupeMetrique)
+            @Helpers.AddField("Codage mélodique RISM", Model.CodageMelodiqueRISM)
+            @Helpers.AddField("Codage par intervalles", Model.CodageParIntervalles)
+            @Helpers.AddField("Codage rythmique", Model.CodageRythmique)
+            @Helpers.AddField("Commentaires", Model.Comments)
             @if (Model.TextualSource != null)
             {
                 <div class="label">
@@ -50,7 +52,7 @@
                 <div class="value">
                     <a href="./../Sources/Details?sourceId=@ViewBag.TextualSource.Id" title="cliquer pour aller voir la source">@ViewBag.TextualSource.Name,
                         @ViewBag.TextualSource.DateFrom - @ViewBag.TextualSource.DateTo, Page @Model.TextualSource.Page,
-                        Volume @Model.TextualSource.Volume, Tome @Model.TextualSource.Tome, de @ViewBag.TextualSource.Publisher</a>
+                        de @ViewBag.TextualSource.Publisher</a>
                 </div>
             }
             @if (Model.TextualSource != null && Model.TextualSource.PieceId != null)
@@ -67,9 +69,10 @@
                 <div class="label">
                     Source musicale</div>
                 <div class="value">
-                    <a href="./../Sources/Details?sourceId=@ViewBag.MusicalSource.Id" title="cliquer pour aller voir la source">@ViewBag.TextualSource.Name,
-                        @ViewBag.TextualSource.DateFrom - @ViewBag.TextualSource.DateTo, Page @Model.TextualSource.Page,
-                        Volume @Model.TextualSource.Volume, Tome @Model.TextualSource.Tome, de @ViewBag.TextualSource.Publisher</a>
+				Le Théâtre de la Foire (I-III) (1721), Air : 181, Volume III
+                    <a href="./../Sources/Details?sourceId=@ViewBag.MusicalSource.Id" title="cliquer pour aller voir la source">@ViewBag.MusicalSource.Name,
+                        @ViewBag.MusicalSource.DateFrom - @ViewBag.MusicalSource.DateTo, Page @Model.MusicalSource.Page,
+                        Volume @Model.MusicalSource.Volume, Tome @Model.MusicalSource.Tome, de @ViewBag.MusicalSource.Publisher</a>
                 </div>
             }
             @if (ViewBag.OtherTitlesScore != null && (ViewBag.OtherTitlesScore as IEnumerable<FoireMuses.Client.ScoreSearchItem>).Where(x => x.Id != Model.Id).Count() > 0)

@@ -36,6 +36,8 @@
 		}
 	</div>
 }
+@Helpers.AddField("FreeZone",Model.FreeZone)
+
 @if (ViewBag.Pages != null && (ViewBag.Pages as IEnumerable<FoireMuses.Client.SourcePageSearchItem>).Count() > 0)
 {
    <div id="pages">
@@ -45,7 +47,7 @@
    @foreach (var page in ViewBag.Pages)
    {
    <li>
-   <a href="PageDetails?sourcePageId=@page.Id">Page @page.PageNumber</a>
+   <a href="PageDetails?sourcePageId=@page.Id&sourceId=@Model.Id">Page @page.PageNumber</a>
    </li>
    }
    </ul>

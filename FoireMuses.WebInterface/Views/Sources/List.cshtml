@@ -28,7 +28,6 @@
 				<li class="@(even ? "even_row" : "odd_row")">
 					<div class="source-item">
 						<a href="Details?sourceId=@source.Id">@source.Name</a>
-						@Helpers.AddField("Publisher",source.Publisher)
 					</div>
 				</li>
 				even = !even;

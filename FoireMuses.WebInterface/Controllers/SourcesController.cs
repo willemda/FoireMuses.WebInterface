@@ -12,7 +12,7 @@ namespace FoireMuses.WebInterface.Controllers
 	[Authorize]
 	public class SourcesController : FoireMusesController
 	{
-		public int PageSize = 2;
+		public int PageSize = 20;
 
 		public ViewResult List(int page = 1)
 		{
@@ -105,7 +105,7 @@ namespace FoireMuses.WebInterface.Controllers
 			return RedirectToAction("PageEdit", new {sourceId = sourceId});
 		}
 
-		public ActionResult PageEdit(string sourcePageId, string sourceId){
+		public ActionResult PageEdit(string sourceId,string sourcePageId){
 			SourcePage page = null;
 			try
 			{
@@ -129,7 +129,7 @@ namespace FoireMuses.WebInterface.Controllers
 				}
 				else
 				{
-					page = FoireMusesConnection.GetSourcePage(sourcePageId, new Result<SourcePage>()).Wait();
+					page = FoireMusesConnection.GetSourcePage(sourceId, sourcePageId, new Result<SourcePage>()).Wait();
 					if (page == null)
 					{
 						return RedirectToAction("Missing", "Error", null);
@@ -165,7 +165,7 @@ namespace FoireMuses.WebInterface.Controllers
 				}
 				else
 				{
-					SourcePage current = FoireMusesConnection.GetSourcePage(model.Id, new Result<SourcePage>()).Wait();
+					SourcePage current = FoireMusesConnection.GetSourcePage(model.SourceId, model.Id, new Result<SourcePage>()).Wait();
 					if(current == null)
 						return RedirectToAction("Problem", "Error", null);
 					TryUpdateModel(current);
@@ -181,7 +181,7 @@ namespace FoireMuses.WebInterface.Controllers
 			return View("PageDetails", model);
 		}
 
-		public ActionResult PageDetails(string sourcePageId)
+		public ActionResult PageDetails(string sourceId,string sourcePageId)
 		{
 			if (String.IsNullOrWhiteSpace(sourcePageId))
 			{
@@ -191,7 +191,7 @@ namespace FoireMuses.WebInterface.Controllers
 			SourcePage page;
 			try
 			{
-				page = FoireMusesConnection.GetSourcePage(sourcePageId, new Result<SourcePage>()).Wait();
+				page = FoireMusesConnection.GetSourcePage(sourceId, sourcePageId, new Result<SourcePage>()).Wait();
 			}
 			catch (Exception e)
 			{

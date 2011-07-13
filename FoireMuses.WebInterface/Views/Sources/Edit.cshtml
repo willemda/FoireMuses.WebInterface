@@ -22,7 +22,9 @@
 	<div>@Helpers.TextInputField("Abbr", "Abbreviation", Model.Abbreviation)</div>
     <div>@Html.Label("Date", "Date")De <input style="width:6em;" id="Date" type="text" name="DateFrom" value="@Model.DateFrom" /> à <input style="width:6em;"  type="text" name="DateTo" value="@Model.DateTo" /></div>
     <div>@Helpers.CheckboxInputField("Date approximative", "ApproxDate", Model.ApproxDate)</div>
+	<div>@Helpers.TextareaInputField("Free", "FreeZone", Model.FreeZone)</div>
+	<input class="submitButton" type="submit" value="Save" />
 </fieldset>
-<input class="submitButton" type="submit" value="@ViewBag.HeadTitle" />
+
 </form>
 </div>
