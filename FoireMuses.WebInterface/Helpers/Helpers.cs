@@ -7,7 +7,7 @@ using MindTouch.Dream;
 using System.Security.Policy;
 using System.Web;
 
-namespace FoireMuses.WebInterface.HtmlHelpers
+namespace FoireMuses.WebInterface.Helpers
 {
 	public static class PlugHelpers
 	{

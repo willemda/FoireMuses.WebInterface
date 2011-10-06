@@ -1,5 +1,5 @@
 ﻿@model FoireMuses.Client.Score
-@using FoireMuses.WebInterface.HtmlHelpers
+@using FoireMuses.WebInterface.Helpers
 <script type="text/javascript">
     $(function () {
         // Document.ready -> link up remove event handler
@@ -95,25 +95,25 @@ wordsToSearch
 </div>
 <div id="scoreForm">
     <form action="" method="post">
-    @Html.HiddenInputField("Id", Model.Id)
-    @Html.HiddenInputField("MasterId", Model.MasterId)
+    @Helpers.HiddenInputField("Id", Model.Id)
+    @Helpers.HiddenInputField("MasterId", Model.MasterId)
     <fieldset>
         <legend>Informations générale</legend>
-        <div class="block checkbox">@Html.CheckboxInputField("Maitre", "IsMaster", Model.IsMaster)</div>
+        <div class="block checkbox">@Helpers.CheckboxInputField("Maitre", "IsMaster", Model.IsMaster)</div>
         <div class="block"><label for="MasterIdTitle">
             Air dont j'hérite</label><input autocomplete="off" id="MasterIdTitle" name="MasterIdTitle" type="text" value="@ViewBag.MasterIdTitle"/></div>
             <div id="result">
             </div>
-        <div class="block">@Html.TextInputField("Titre", "Title", Model.Title)</div>
-        <div class="block">@Html.TextInputField("Compositeur", "Composer", Model.Composer)</div>
-        <div class="block">@Html.TextInputField("Editeur", "Editor", Model.Editor)</div>
-        <div class="block">@Html.TextInputField("Type", "ScoreType", Model.ScoreType)</div>
-        <div class="block">@Html.TextInputField("Strophe", "Stanza", Model.Stanza)</div>
-        <div class="block">@Html.TextInputField("Delarue", "Delarue", Model.Delarue)</div>
-        <div class="block">@Html.TextInputField("Coirault", "Coirault", Model.Coirault)</div>
-        <div class="block">@Html.TextareaInputField("Versets", "Verses", Model.Verses)</div>
-        <div class="block">@Html.TextareaInputField("Autres titres", "OtherTitles", Model.OtherTitles)</div>
-        <div class="block">@Html.TextareaInputField("Commentaires", "Comments", Model.Comments)</div>
+        <div class="block">@Helpers.TextInputField("Titre", "Title", Model.Title)</div>
+        <div class="block">@Helpers.TextInputField("Compositeur", "Composer", Model.Composer)</div>
+        <div class="block">@Helpers.TextInputField("Editeur", "Editor", Model.Editor)</div>
+        <div class="block">@Helpers.TextInputField("Type", "ScoreType", Model.ScoreType)</div>
+        <div class="block">@Helpers.TextInputField("Strophe", "Stanza", Model.Stanza)</div>
+        <div class="block">@Helpers.TextareaInputField("Delarue", "Delarue", Model.Delarue)</div>
+        <div class="block">@Helpers.TextInputField("Coirault", "Coirault", Model.Coirault)</div>
+        <div class="block">@Helpers.TextareaInputField("Versets", "Verses", Model.Verses)</div>
+        <div class="block">@Helpers.TextareaInputField("Autres titres", "OtherTitles", Model.OtherTitles)</div>
+        <div class="block">@Helpers.TextareaInputField("Commentaires", "Comments", Model.Comments)</div>
     </fieldset>
     <fieldset>
         <legend>Source textuelle</legend>
@@ -135,23 +135,23 @@ wordsToSearch
         </select></div>
         @if (Model.TextualSource != null)
         {
-            <div class="block">@Html.TextInputField("Page", "TextualSource.Page", Model.TextualSource.Page)</div>
-            <div class="block">@Html.TextInputField("N° air", "TextualSource.AirNumber", Model.TextualSource.AirNumber)</div>
-            <div class="block">@Html.TextInputField("Tome", "TextualSource.Tome", Model.TextualSource.Tome)</div>
-            <div class="block">@Html.TextInputField("Volume", "TextualSource.Volume", Model.TextualSource.Volume)</div>
-            <div class="block">@Html.TextareaInputField("Commentaires", "TextualSource.Comment", Model.TextualSource.Comment)</div>
-        }
-        else
-        {
-            <div class="block">@Html.TextInputField("Page", "TextualSource.Page", String.Empty)</div>
-            <div class="block">@Html.TextInputField("N° air", "TextualSource.AirNumber", String.Empty)</div>
-            <div class="block">@Html.TextInputField("Tome", "TextualSource.Tome", String.Empty)</div>
-            <div class="block">@Html.TextInputField("Volume", "TextualSource.Volume", String.Empty)</div>
-            <div class="block">@Html.TextareaInputField("Commentaires", "TextualSource.Comment", String.Empty)</div>
-        }
+            <div class="block">@Helpers.TextInputField("Page", "TextualSource.Page", Model.TextualSource.Page)</div>
+            <div class="block">@Helpers.TextInputField("N° air", "TextualSource.AirNumber", Model.TextualSource.AirNumber)</div>
+			<div class="block">@Helpers.TextInputField("Tome", "TextualSource.Tome", Model.TextualSource.Tome)</div>
+			<div class="block">@Helpers.TextInputField("Volume", "TextualSource.Volume", Model.TextualSource.Volume)</div>
+            <div class="block">@Helpers.TextareaInputField("Commentaires", "TextualSource.Comment", Model.TextualSource.Comment)</div>
+		}
+		else
+		{
+            <div class="block">@Helpers.TextInputField("Page", "TextualSource.Page", String.Empty)</div>
+            <div class="block">@Helpers.TextInputField("N° air", "TextualSource.AirNumber", String.Empty)</div>
+			<div class="block">@Helpers.TextInputField("Tome", "TextualSource.Tome", String.Empty)</div>
+			<div class="block">@Helpers.TextInputField("Volume", "TextualSource.Volume", String.Empty)</div>
+            <div class="block">@Helpers.TextareaInputField("Commentaires", "TextualSource.Comment", String.Empty)</div>
+		}
     </fieldset>
     @if (Model.TextualSource != null && Model.TextualSource.PieceId != null)
-    {
+	{
         <div id="pieceAss">
             <fieldset>
                 <legend>Pièce associée</legend>
@@ -160,36 +160,36 @@ wordsToSearch
                 <div id="selectPiece">
                     <select id="TextualSourcePieceId" name="TextualSource.PieceId">
                         @foreach (var piece in ViewBag.Pieces)
-                        {
-                            if (Model.TextualSource.PieceId == piece.Id)
-                            {
+						{
+							if (Model.TextualSource.PieceId == piece.Id)
+							{
                             <option selected="selected" value="@piece.Id">@piece.Title</option>
-                            }
-                            else
-                            {
+							}
+							else
+							{
                             <option value="@piece.Id">@piece.Title</option>
-                            }
-                        }
+							}
+						}
                     </select>
                 </div></div>
-                <div class="block">@Html.TextInputField("N° Scène", "TextualSource.SceneNumber", Model.TextualSource.SceneNumber)</div>
-                <div class="block">@Html.TextInputField("N° Acte", "TextualSource.ActNumber", Model.TextualSource.ActNumber)</div>
+                <div class="block">@Helpers.TextInputField("N° Scène", "TextualSource.SceneNumber", Model.TextualSource.SceneNumber)</div>
+                <div class="block">@Helpers.TextInputField("N° Acte", "TextualSource.ActNumber", Model.TextualSource.ActNumber)</div>
             </fieldset>
         </div>
-    }
-    else
-    {
+	}
+	else
+	{
         <div id="pieceAss">
             <fieldset>
                 <legend>Pièce associée</legend>
                 <div class="block"><label for="TextualSourcePieceId">
                     Pièce associée</label><div id="selectPiece">
                     </div></div>
-                <div class="block">@Html.TextInputField("N° Scène", "TextualSource.SceneNumber", String.Empty)</div>
-                <div class="block">@Html.TextInputField("N° Acte", "TextualSource.ActNumber", String.Empty)</div>
+                <div class="block">@Helpers.TextInputField("N° Scène", "TextualSource.SceneNumber", String.Empty)</div>
+                <div class="block">@Helpers.TextInputField("N° Acte", "TextualSource.ActNumber", String.Empty)</div>
             </fieldset>
         </div>
-    }
+	}
     <fieldset>
         <legend>Source musicale</legend>
         <div class="block"><label for="MusicalSourceSourceId">
@@ -197,31 +197,31 @@ wordsToSearch
         <select id="MusicalSourceSourceId" name="MusicalSource.SourceId">
             <option></option>
             @foreach (var source in ViewBag.Sources)
-            {
-                if (Model.MusicalSource != null && Model.MusicalSource.SourceId == source.Id)
-                {
+			{
+				if (Model.MusicalSource != null && Model.MusicalSource.SourceId == source.Id)
+				{
                 <option selected="selected" value="@source.Id">@source.Name</option>
-                }
-                else
-                {
+				}
+				else
+				{
                 <option value="@source.Id">@source.Name</option>
-                }
-            }
+				}
+			}
         </select></div>
         @if (Model.MusicalSource != null)
-        {
-            <div class="block">@Html.TextInputField("Page", "MusicalSource.Page", Model.MusicalSource.Page)</div>
-            <div class="block">@Html.TextInputField("N° air", "MusicalSource.AirNumber", Model.MusicalSource.AirNumber)</div>
-            <div class="block">@Html.TextInputField("Tome", "MusicalSource.Tome", Model.MusicalSource.Tome)</div>
-            <div class="block">@Html.TextInputField("Volume", "MusicalSource.Volume", Model.MusicalSource.Volume)</div>
-        }
-        else
-        {
-            <div class="block">@Html.TextInputField("Page", "MusicalSource.Page", String.Empty)</div>
-            <div class="block">@Html.TextInputField("N° air", "MusicalSource.AirNumber", String.Empty)</div>
-            <div class="block">@Html.TextInputField("Tome", "MusicalSource.Tome", String.Empty)</div>
-            <div class="block">@Html.TextInputField("Volume", "MusicalSource.Volume", String.Empty)</div>
-        }
+		{
+            <div class="block">@Helpers.TextInputField("Page", "MusicalSource.Page", Model.MusicalSource.Page)</div>
+            <div class="block">@Helpers.TextInputField("N° air", "MusicalSource.AirNumber", Model.MusicalSource.AirNumber)</div>
+            <div class="block">@Helpers.TextInputField("Tome", "MusicalSource.Tome", Model.MusicalSource.Tome)</div>
+            <div class="block">@Helpers.TextInputField("Volume", "MusicalSource.Volume", Model.MusicalSource.Volume)</div>
+		}
+		else
+		{
+            <div class="block">@Helpers.TextInputField("Page", "MusicalSource.Page", String.Empty)</div>
+            <div class="block">@Helpers.TextInputField("N° air", "MusicalSource.AirNumber", String.Empty)</div>
+            <div class="block">@Helpers.TextInputField("Tome", "MusicalSource.Tome", String.Empty)</div>
+            <div class="block">@Helpers.TextInputField("Volume", "MusicalSource.Volume", String.Empty)</div>
+		}
     </fieldset>
     <input class="submitButton" type="submit" value="@ViewBag.HeadTitle" />
     </form>

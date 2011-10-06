@@ -10,10 +10,8 @@ namespace FoireMuses.Client
 	/// <summary>
 	/// represent a Score(un air) object in json
 	/// </summary>
-
 	public class Score
 	{
-
 		private JObject json { get; set; }
 
 		public Score()
@@ -61,27 +59,27 @@ namespace FoireMuses.Client
 			}
 		}
 
-        public bool IsMaster
-        {
-            get
-            {
-                if (json["isMaster"] == null)
-                    return false;
-                return json["isMaster"].Value<bool>();
-            }
-            set { json["isMaster"] = value; }
-        }
+		public bool IsMaster
+		{
+			get
+			{
+				if (json["isMaster"] == null)
+					return false;
+				return json["isMaster"].Value<bool>();
+			}
+			set { json["isMaster"] = value; }
+		}
 
-        public string MasterId
-        {
-            get
-            {
-                if (json["masterId"] == null)
-                    return null;
-                return json["masterId"].Value<string>();
-            }
-            set { json["masterId"] = value; }
-        }
+		public string MasterId
+		{
+			get
+			{
+				if (json["masterId"] == null)
+					return null;
+				return json["masterId"].Value<string>();
+			}
+			set { json["masterId"] = value; }
+		}
 
 		public string Title
 		{
@@ -276,7 +274,7 @@ namespace FoireMuses.Client
 
 				if (value != null)
 				{
-					json["textualSource"] = value.json;
+					json["textualSource"] = value.theJson;
 				}
 				else
 					json.Remove("textualSource");
@@ -295,7 +293,7 @@ namespace FoireMuses.Client
 			{
 				if (value != null)
 				{
-					json["musicalSource"] = value.json;
+					json["musicalSource"] = value.theJson;
 				}
 				else
 					json.Remove("musicalSource");

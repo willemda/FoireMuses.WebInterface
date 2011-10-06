@@ -1,54 +1,64 @@
-﻿@helper AddField(string aFieldName, string aFieldValue, bool isBold = false, bool aDisplayNullValue = true)
-{
-	if ((!String.IsNullOrWhiteSpace(aFieldValue)) || (aDisplayNullValue))
+﻿
+@using FoireMuses.WebInterface.Helpers;
+@using FoireMuses.Client;
+
+@helper AddField(string aFieldName, string aFieldValue, bool isBold = false, bool aDisplayNullValue = true)
 	{
+		if ((!String.IsNullOrWhiteSpace(aFieldValue)) || (aDisplayNullValue))
+		{
 		<div class="label">@aFieldName :</div>
 		<div class="value">
 			@if (isBold)
-			{
+   {
 				<em>@aFieldValue</em>
-			}
-			else
-			{
+   }
+   else
+   {
 				@aFieldValue
-			}
+   }
 		</div>
-	}
+		}
 }
 
 @helper AddField(string aFieldName, int? aFieldValue, bool isBold = false, bool aDisplayNullValue = true)
-{
-	if(aFieldValue.HasValue || (aDisplayNullValue))
 	{
+		if (aFieldValue.HasValue || (aDisplayNullValue))
+		{
 		<div class="label">@aFieldName :</div>
 		<div class="value">
-			@if (isBold)
-			{
+		@if (aFieldValue.HasValue)
+  {
+	  if (isBold)
+	  {
 				<em>@aFieldValue.Value</em>
-			}
-			else
-			{
+	  }
+	  else
+	  {
 				@aFieldValue.Value
-			}
+	  }
+  }
 		</div>
-	}
+		}
 }
 
 @helper  CheckboxInputField(string fieldName, string fieldExpression, bool? fieldValue)
-{
+	{
 	<label for="@fieldExpression">
 		@fieldName
 	</label>
-	if(fieldValue.HasValue && fieldValue.Value){
+		if (fieldValue.HasValue && fieldValue.Value)
+		{
 		<input class="checkbox" type="checkbox" id="@fieldExpression" name="@fieldExpression" value="true" checked="checked"/>
-	}else{
+		}
+		else
+		{
 		<input class="checkbox" type="checkbox" id="@fieldExpression" name="@fieldExpression" value="true"/>
-	}
+		}
 	<input type="hidden" name="@fieldExpression" value="false" />
 }
 
 @helper TextInputField(string fieldName, string fieldExpression, string fieldValue)
-{
+	{
 	<label for="@fieldExpression">
 		@fieldName
 	</label>
@@ -56,7 +66,7 @@
 }
 
 @helper TextInputField(string fieldName, string fieldExpression, int? fieldValue)
-{
+	{
 	<label for="@fieldExpression">
 		@fieldName
 	</label>
@@ -64,7 +74,7 @@
 }
 
 @helper  PasswordInputField(string fieldName, string fieldExpression, string fieldValue)
-{
+	{
 	<label for="@fieldExpression">
 		@fieldName
 	</label>
@@ -72,7 +82,7 @@
 }
 
 @helper TextareaInputField(string fieldName, string fieldExpression, string fieldValue)
-{
+	{
 	<label for="@fieldExpression">
 		@fieldName
 	</label>
@@ -80,14 +90,99 @@
 }
 
 @helper  HiddenInputField(string fieldExpression, string fieldValue)
-{
+	{
 	<input type="hidden" id="@fieldExpression" name="@fieldExpression" value="@fieldValue" />
 }
 
-@helper Pager(int totalPage, int currentPage, Func<int, string> pageUrl)
+@helper MusicalSource(MusicalSource aMusicalSourceReference, Source aSource)
 {
-	if (totalPage > 1)
+	if (aSource != null)
 	{
+		<div class="label">Source Musicale:</div>
+		<div class="value">
+			<a href="~/Sources/Details?sourceId=@aMusicalSourceReference.SourceId" title="cliquer pour aller voir la source">
+			@aSource.Name
+			@if (aSource.DateFrom.HasValue)
+			{
+				@: (@aSource.DateFrom.Value)
+			}
+			@if (!String.IsNullOrEmpty(aMusicalSourceReference.Page))
+			{
+				@:, Page : @aMusicalSourceReference.Page
+			}
+			@if (aMusicalSourceReference.AirNumber.HasValue)
+			{
+				@:, Air : @aMusicalSourceReference.AirNumber.Value
+			}
+			@if (aMusicalSourceReference.Tome.HasValue)
+			{
+				@:, Tome : @RomanNumber.ToRoman(aMusicalSourceReference.Tome.Value)
+			}
+			@if (aMusicalSourceReference.Volume.HasValue)
+			{
+				@:, Volume : @RomanNumber.ToRoman(aMusicalSourceReference.Volume.Value)
+			}
+			</a>
+			@if (aMusicalSourceReference.IsSuggested.HasValue && aMusicalSourceReference.IsSuggested.Value)
+			{
+				<i>(Suggestion)</i>
+			}
+		</div>
+	}
+}
+
+@helper TextualSource(TextualSource aTextualSourceReference, Source aSource, Play aPlay)
+{
+	if (aSource != null)
+	{
+		<div class="label">Source Textuelle:</div>
+		<div class="value">
+			<a href="~/Sources/Details?sourceId=@aTextualSourceReference.SourceId" title="cliquer pour aller voir la source">
+			@aSource.Name
+			@if (aSource.DateFrom.HasValue)
+			{
+				@: (@aSource.DateFrom.Value)
+			}
+			@if (!String.IsNullOrEmpty(aTextualSourceReference.Page))
+			{
+				@:, Page : @aTextualSourceReference.Page
+			}
+			@if (aTextualSourceReference.AirNumber.HasValue)
+			{
+				@:, Air : @aTextualSourceReference.AirNumber.Value
+			}
+			@if (aTextualSourceReference.Tome.HasValue)
+			{
+				@:, Tome : @RomanNumber.ToRoman(aTextualSourceReference.Tome.Value)
+			}
+			@if (aTextualSourceReference.Volume.HasValue)
+			{
+				@:, Volume : @RomanNumber.ToRoman(aTextualSourceReference.Volume.Value)
+			}
+			</a>
+		</div>
+
+		if(aPlay != null){
+		<div class="label">Pièce associée:</div>
+		<div class="value">@aPlay.Title
+			@if(aTextualSourceReference.ActNumber.HasValue)
+			{
+				@:, Act @RomanNumber.ToRoman(aTextualSourceReference.ActNumber.Value)
+			}
+			@if(aTextualSourceReference.SceneNumber.HasValue)
+			{
+				@:, Scène @aTextualSourceReference.SceneNumber
+			}
+		</div>
+		}
+	}
+}
+
+
+@helper Pager(int totalPage, int currentPage, Func<int, string> pageUrl)
+	{
+		if (totalPage > 1)
+		{
 		<div id="pager">
 		@{
 			if (currentPage != 1)
@@ -97,10 +192,12 @@
 			}
 
 			int pageToGoFrom = currentPage;
-			if (currentPage >= (totalPage - 10)){
+			if (currentPage >= (totalPage - 10))
+			{
 				pageToGoFrom = (totalPage - 9);
 			}
-			if (pageToGoFrom < 1){
+			if (pageToGoFrom < 1)
+			{
 				pageToGoFrom = 1;
 			}
 
@@ -116,5 +213,5 @@
 			}
 		}
 		</div>
-	}
+		}
 }

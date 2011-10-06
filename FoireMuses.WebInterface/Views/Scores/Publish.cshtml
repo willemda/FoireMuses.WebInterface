@@ -1,7 +1,8 @@
 ﻿@{
     ViewBag.HeadTitle = "Publish";
 }
-@using FoireMuses.WebInterface.HtmlHelpers
+@using FoireMuses.WebInterface.Helpers
+
 <div id="encadreInfo">
 <p>
 	<img class="helpIcon" src="../../Content/images/helpIcon.png" alt="help icon" />Insertion d'un air sur base d'un fichier music xml</p>
@@ -17,8 +18,8 @@
 <label for="file">Fichier</label><input type="file" id="file" name="file"/><br/>
 @if (ViewBag.ScoreId != null)
 {
-    <div class="block">@Html.CheckboxInputField("Garder les valeurs actuelles", "overwrite", false)</div>
-    <div class="block">@Html.HiddenInputField("scoreId", (string)ViewBag.ScoreId)</div>
+    <div class="block">@Helpers.CheckboxInputField("Garder les valeurs actuelles", "overwrite", false)</div>
+    <div class="block">@Helpers.HiddenInputField("scoreId", (string)ViewBag.ScoreId)</div>
 }
 else
 {

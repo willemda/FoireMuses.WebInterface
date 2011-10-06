@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using FoireMuses.Client.Helpers;
 using Newtonsoft.Json.Linq;
 
 namespace FoireMuses.Client
@@ -37,7 +38,26 @@ namespace FoireMuses.Client
 
 		public string Id
 		{
-			get { return json["_id"].Value<string>(); }
+			get
+			{
+				return json.RetrieveStringCheck("_id");
+			}
+			set
+			{
+				json.AddCheck("_id", value);
+			}
+		}
+
+		public string Rev
+		{
+			get
+			{
+				return json.RetrieveStringCheck("_rev");
+			}
+			set
+			{
+				json.AddCheck("_rev", value);
+			}
 		}
 
 		public string Abstract
@@ -348,6 +368,11 @@ namespace FoireMuses.Client
 		public void RemoveCollaborator(string collab)
 		{
 			json["collaboratorsId"] = json["collaboratorsId"].Value<JArray>().Remove(collab);
+		}
+		public override string ToString()
+		{
+			string jsonS = json.ToString();
+			return jsonS;
 		}
 	}
 }

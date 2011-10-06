@@ -6,51 +6,28 @@ using Newtonsoft.Json.Linq;
 
 namespace FoireMuses.Client
 {
-	public class TextualSource
+	public class TextualSource : SourceReference
 	{
-		internal JObject json { get; private set; }
-
-		public TextualSource()
+		public TextualSource():base()
 		{
-			json = new JObject();
 		}
 
 		public TextualSource(JObject jobject)
+			:base(jobject)
 		{
-			json = jobject;
-		}
-
-		public string SourceId
-		{
-			get {
-				if (json["id"] == null)
-					return null;
-				return json["id"].Value<string>(); }
-			set { json["id"] = value; }
-		}
-
-		public string Page
-		{
-			get
-			{
-				if (json["page"] == null)
-					return null;
-				return json["page"].Value<string>();
-			}
-			set { json["page"] = value; }
 		}
 
 		public string PieceId
 		{
 			get
 			{
-				if (json["pieceId"] == null)
+				if (theJson["pieceId"] == null)
 					return null;
-				return json["pieceId"].Value<string>();
+				return theJson["pieceId"].Value<string>();
 			}
 			set
 			{
-				json["pieceId"] = value;
+				theJson["pieceId"] = value;
 			}
 		}
 
@@ -58,13 +35,13 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (json["air"] == null)
+				if (theJson["air"] == null)
 					return null;
-				return json["air"].Value<int?>();
+				return theJson["air"].Value<int?>();
 			}
 			set
 			{
-				json["air"] = value;
+				theJson["air"] = value;
 			}
 		}
 
@@ -72,13 +49,13 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (json["comment"] == null)
+				if (theJson["comment"] == null)
 					return null;
-				return json["comment"].Value<string>();
+				return theJson["comment"].Value<string>();
 			}
 			set
 			{
-				json["comment"] = value;
+				theJson["comment"] = value;
 			}
 		}
 
@@ -86,13 +63,13 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (json["actNumber"] == null)
+				if (theJson["actNumber"] == null)
 					return null;
-				return json["actNumber"].Value<int?>();
+				return theJson["actNumber"].Value<int?>();
 			}
 			set
 			{
-				json["actNumber"] = value;
+				theJson["actNumber"] = value;
 			}
 		}
 
@@ -100,13 +77,13 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (json["sceneNumber"] == null)
+				if (theJson["sceneNumber"] == null)
 					return null;
-				return json["sceneNumber"].Value<int?>();
+				return theJson["sceneNumber"].Value<int?>();
 			}
 			set
 			{
-				json["sceneNumber"] = value;
+				theJson["sceneNumber"] = value;
 			}
 		}
 

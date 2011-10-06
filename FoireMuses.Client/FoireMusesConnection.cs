@@ -207,29 +207,6 @@ namespace FoireMuses.Client
 			return aResult;
 		}
 
-		public Result<Score> GetScore(string scoreId, Result<Score> aResult)
-		{
-			theServiceUri
-				.At("scores", scoreId)
-				.Get(new Result<DreamMessage>())
-				.WhenDone(delegate(Result<DreamMessage> answer)
-					{
-						if (!answer.Value.IsSuccessful)
-						{
-							if (answer.Value.Status == DreamStatus.NotFound)
-								aResult.Return((Score)null);
-							else
-								aResult.Throw(answer.Exception);
-						}
-						else
-						{
-							aResult.Return(new Score(JObject.Parse(answer.Value.ToText())));
-						}
-					}
-				);
-			return aResult;
-		}
-
 		public Result<SearchResult<SourcePageSearchItem>> GetSourcePagesFromSource(string sourceId, int max, int offset, Result<SearchResult<SourcePageSearchItem>> aResult)
 		{
 			theServiceUri
@@ -255,23 +232,46 @@ namespace FoireMuses.Client
 			return aResult;
 		}
 
-		public Result<Stream> GetConvertedScore(string scoreId, string fileName, Result<Stream> aResult)
+		public Result<Score> GetScore(string scoreId, Result<Score> aResult)
 		{
 			theServiceUri
-				.At("scores", scoreId, XUri.Encode(fileName))
+				.At("scores", scoreId)
 				.Get(new Result<DreamMessage>())
 				.WhenDone(delegate(Result<DreamMessage> answer)
 				{
 					if (!answer.Value.IsSuccessful)
 					{
 						if (answer.Value.Status == DreamStatus.NotFound)
-							aResult.Return((Stream)null);
+							aResult.Return((Score)null);
 						else
 							aResult.Throw(answer.Exception);
 					}
 					else
 					{
-						aResult.Return(answer.Value.ToStream());
+						aResult.Return(new Score(JObject.Parse(answer.Value.ToText())));
+					}
+				}
+				);
+			return aResult;
+		}
+
+		public Result<Stream> GetConvertedScore(string aScoreId, string aFileName, Result<Stream> aResult)
+		{
+			theServiceUri
+				.At("scores", aScoreId, XUri.Encode(aFileName))
+				.Get(new Result<DreamMessage>())
+				.WhenDone(delegate(Result<DreamMessage> anAnswer)
+				{
+					if (!anAnswer.Value.IsSuccessful)
+					{
+						if (anAnswer.Value.Status == DreamStatus.NotFound)
+							aResult.Return((Stream)null);
+						else
+							aResult.Throw(anAnswer.Exception);
+					}
+					else
+					{
+						aResult.Return(anAnswer.Value.ToStream());
 					}
 				}
 				);
@@ -345,7 +345,7 @@ namespace FoireMuses.Client
 
 		public Result<Score> UpdateScore(Score score, Result<Score> aResult)
 		{
-			theServiceUri
+			 theServiceUri
 				.At("scores", score.Id)
 				.With("Rev", score.Rev)
 				.Put(DreamMessage.Ok(MimeType.JSON, score.ToString()), new Result<DreamMessage>())
@@ -364,6 +364,50 @@ namespace FoireMuses.Client
 					}
 				}
 				);
+			return aResult;
+		}
+
+		public Result<Play> CreatePlay(Play aPlay, Result<Play> aResult)
+		{
+			theServiceUri
+				.At("plays")
+				.Post(DreamMessage.Ok(MimeType.JSON, aPlay.ToString()), new Result<DreamMessage>())
+				.WhenDone(delegate(Result<DreamMessage> answer)
+				{
+					if (!answer.Value.IsSuccessful)
+					{
+						if (answer.Value.Status != DreamStatus.Ok)
+							aResult.Throw(new Exception());
+					}
+					else
+					{
+						aResult.Return(new Play(JObject.Parse(answer.Value.ToText())));
+					}
+				}
+				);
+			return aResult;
+		}
+
+		public Result<Play> UpdatePlay(Play aPlay, Result<Play> aResult)
+		{
+			theServiceUri.At("plays", aPlay.Id).With("Rev", aPlay.Rev).Put(DreamMessage.Ok(MimeType.JSON, aPlay.ToString()),
+			                                                               new Result<DreamMessage>())
+				.WhenDone(delegate(Result<DreamMessage> answer)
+				          	{
+				          		if (!answer.Value.IsSuccessful)
+				          		{
+				          			if (answer.Value.Status == DreamStatus.NotFound)
+				          				aResult.Return((Play) null);
+				          			else
+				          				aResult.Throw(answer.Exception);
+				          		}
+				          		else
+				          		{
+				          			aResult.Return(new Play(JObject.Parse(answer.Value.ToText())));
+				          		}
+				          	}
+				);
+
 			return aResult;
 		}
 
@@ -395,7 +439,7 @@ namespace FoireMuses.Client
 		public Result AddAttachment(string aScoreId, string aFileName, Result aResult)
 		{
 			theServiceUri
-				.At("scores", aScoreId, "attachments")
+				.At("scores", aScoreId, "attachments", Path.GetFileName(aFileName))
 				.Post(DreamMessage.FromFile(aFileName),new Result<DreamMessage>())
 				.WhenDone(delegate(Result<DreamMessage> answer)
 				{

@@ -1,177 +1,107 @@
 ﻿@model FoireMuses.Client.Score
-@using FoireMuses.WebInterface.HtmlHelpers
+@using FoireMuses.WebInterface.Helpers
+@using FoireMuses.Client;
 @{
 	ViewBag.HeadTitle = "Details - " + @Model.Title;
+	IEnumerable<string> documents = ViewBag.Documents;
+	IEnumerable<ScoreSearchItem> otherTitleScores = ViewBag.OtherTitlesScore;
 }
 
 @section javascriptSection{
 	<script src="../../Content/js/sliderman.1.2.1.js" type="text/javascript"></script>
 }
-
 <div id="scoreDetails">
-    <div id="firstPart">
-        <div id="gauche">
-            @if (ViewBag.Documents != null && (ViewBag.Documents as IEnumerable<string>).Contains("$musicxml.xml"))
-            {
-                <div id="downloads">
-                    <ul>
-                        <li><a href="Download?scoreId=@Model.Id&fileType=pdf&fileName=@Model.Title@Html.Raw(".pdf")" target="_blank">
-                            <img src="../../Content/images/pdfIcon.jpg" /></a> </li>
-                        <li><a href="Download?scoreId=@Model.Id&fileType=musicxml&fileName=@Model.Title@Html.Raw(".xml")" target="_blank">
-                            <img src="../../Content/images/xmlIcon.png" /></a> </li>
-                        <li><a href="Download?scoreId=@Model.Id&fileType=mid&fileName=@Model.Title@Html.Raw(".mid")" target="_blank">
-                            <img src="../../Content/images/midiIcon.png" /></a> </li>
-                    </ul>
-                </div>
-            }
-            @Helpers.AddField("Titre", Model.Title, true)
-            @if (ViewBag.GenericScore != null)
-            {
-                @Helpers.AddField("Titre générique", "<a href=\"details?scoreId=" + (string)ViewBag.GenericScore.Id + "\">" + (string)ViewBag.GenericScore.Title + "</a>")
-            }
-			@if(Model.IsMaster){
+	<div id="firstPart">
+		<div id="gauche">
+			@if (documents != null && documents.Contains("$musicxml.xml")){
+				<div id="downloads">
+					<ul>
+						<li><a href="Download?scoreId=@Model.Id&fileType=pdf&fileName=@Model.Title@Html.Raw(".pdf")" target="_blank">
+							<img src="../../Content/images/pdfIcon.jpg" /></a> </li>
+						<li><a href="Download?scoreId=@Model.Id&fileType=musicxml&fileName=@Model.Title@Html.Raw(".xml")" target="_blank">
+							<img src="../../Content/images/xmlIcon.png" /></a> </li>
+						<li><a href="Download?scoreId=@Model.Id&fileType=mid&fileName=@Model.Title@Html.Raw(".mid")" target="_blank">
+							<img src="../../Content/images/midiIcon.png" /></a> </li>
+					</ul>
+				</div>
+			}
+			
+			<div class="partition">
+			@if (documents != null && documents.Contains("$musicxml.xml")){
+				for (int i = 1; i <= documents.Where(x => x.StartsWith("$partition")).Count(); i++){
+					string fileName = "$partition" + i + ".png";
+					<img src="Images?scoreId=@Model.Id&fileName=@fileName" width="500" height="600" alt="Demo2 second" title="Demo2 second" />
+					break;
+				}
+			}
+			</div>
+
+			@Helpers.AddField("Titre", Model.Title, true)
+			@if (ViewBag.GenericScore != null){
+				@Helpers.AddField("Titre générique", "<a href=\"details?scoreId=" + (string)ViewBag.GenericScore.Id + "\">" + (string)ViewBag.GenericScore.Title + "</a>")
+			}
+			@if (Model.IsMaster){
 				Helpers.AddField("Is Master", "True");
 			}
-            @Helpers.AddField("Compositeur", Model.Composer)
-            @Helpers.AddField("Editeur", Model.Editor)
-            @Helpers.AddField("Versets", Model.Verses)
-            @Helpers.AddField("Type", Model.ScoreType)
-            @Helpers.AddField("Strophe", Model.Stanza)
-            @Helpers.AddField("Coirault", Model.Coirault)
-            @Helpers.AddField("Delarue", Model.Delarue)
-            @Helpers.AddField("Ancien autres titres", Model.OtherTitles)
-            @Helpers.AddField("Coupe métrique", Model.CoupeMetrique)
-            @Helpers.AddField("Codage mélodique RISM", Model.CodageMelodiqueRISM)
-            @Helpers.AddField("Codage par intervalles", Model.CodageParIntervalles)
-            @Helpers.AddField("Codage rythmique", Model.CodageRythmique)
-            @Helpers.AddField("Commentaires", Model.Comments)
-            @if (Model.TextualSource != null)
-            {
-                <div class="label">
-                    Source textuelle</div>
-                <div class="value">
-                    <a href="./../Sources/Details?sourceId=@ViewBag.TextualSource.Id" title="cliquer pour aller voir la source">@ViewBag.TextualSource.Name,
-                        @ViewBag.TextualSource.DateFrom - @ViewBag.TextualSource.DateTo, Page @Model.TextualSource.Page,
-                        de @ViewBag.TextualSource.Publisher</a>
-                </div>
-            }
-            @if (Model.TextualSource != null && Model.TextualSource.PieceId != null)
-            {
-                <div class="label">
-                    Pièce associée</div>
-                <div class="value">
-                    <a href="#" title="cliquer
-                        pour aller voir la pièce">@ViewBag.AssociatedPlay.Title, Act @Model.TextualSource.ActNumber,
-                        Scene @Model.TextualSource.SceneNumber</a></div>
-            }
-            @if (Model.MusicalSource != null)
-            {
-                <div class="label">
-                    Source musicale</div>
-                <div class="value">
-				Le Théâtre de la Foire (I-III) (1721), Air : 181, Volume III
-                    <a href="./../Sources/Details?sourceId=@ViewBag.MusicalSource.Id" title="cliquer pour aller voir la source">@ViewBag.MusicalSource.Name,
-                        @ViewBag.MusicalSource.DateFrom - @ViewBag.MusicalSource.DateTo, Page @Model.MusicalSource.Page,
-                        Volume @Model.MusicalSource.Volume, Tome @Model.MusicalSource.Tome, de @ViewBag.MusicalSource.Publisher</a>
-                </div>
-            }
-            @if (ViewBag.OtherTitlesScore != null && (ViewBag.OtherTitlesScore as IEnumerable<FoireMuses.Client.ScoreSearchItem>).Where(x => x.Id != Model.Id).Count() > 0)
-            {
-                <div id="otherTitles">
-                    Autres titres<ul>
-                        @foreach (var item in ViewBag.OtherTitlesScore)
-                        {
-                            if (item.Id != Model.Id)
-                            {
-                            <li><a href="Details?scoreId=@item.Id">@item.Title</a> </li>
-                            }
+			@Helpers.AddField("Compositeur", Model.Composer, aDisplayNullValue:false)
+			@Helpers.AddField("Editeur", Model.Editor, aDisplayNullValue: false)
+			@Helpers.AddField("Versets", Model.Verses, aDisplayNullValue: false)
+			@Helpers.AddField("Type", Model.ScoreType, aDisplayNullValue: false)
+			@Helpers.AddField("Strophe", Model.Stanza, aDisplayNullValue: false)
+			@Helpers.AddField("Coirault", Model.Coirault, aDisplayNullValue: false)
+			@Helpers.AddField("Delarue", Model.Delarue, aDisplayNullValue: false)
+			@Helpers.AddField("Ancien autres titres", Model.OtherTitles, aDisplayNullValue: false)
+			@Helpers.AddField("Coupe métrique", Model.CoupeMetrique, aDisplayNullValue: false)
+			@Helpers.AddField("Codage mélodique RISM", Model.CodageMelodiqueRISM, aDisplayNullValue: false)
+			@Helpers.AddField("Codage par intervalles", Model.CodageParIntervalles, aDisplayNullValue: false)
+			@Helpers.AddField("Codage rythmique", Model.CodageRythmique, aDisplayNullValue: false)
+			@Helpers.AddField("Commentaires", Model.Comments, aDisplayNullValue: false)
+			@Helpers.TextualSource(Model.TextualSource, ViewBag.TextualSource, ViewBag.AssociatedPlay)
+			@Helpers.MusicalSource(Model.MusicalSource, ViewBag.MusicalSource)
 
-                        }</ul>
-                </div>
-            }
-            @if (Model.Tags != null)
-            {
-                <div id="tags">
-                    @foreach (string tag in Model.Tags)
-                    {
-                        <a href="#">@tag</a>
-                    }
-                </div>
-            }
-        </div>
-@if (ViewBag.Documents != null && (ViewBag.Documents as IEnumerable<string>).Contains("$musicxml.xml"))
-{
-    <div id="pagePrincipale">
-        <div id="slider_container_2">
-            <div id="SliderName_2" class="SliderName_2">
-                @for (int i = 1; i <= (ViewBag.Documents as IEnumerable<string>).Where(x => x.StartsWith("$partition")).Count(); i++)
-                {
-                    string fileName = "$partition" + i + ".png";
-                    if (i == 1)
-                    {
-                    <img src="Images?scoreId=@Model.Id&fileName=@fileName" width="500" height="600" alt="Demo2 first" title="Demo2 first" usemap="#img1map" />
-                    <map name="img1map">
-                        <area href="#img1map-area1" shape="rect" coords="100,100,200,200" />
-                        <area href="#img1map-area2" shape="rect" coords="300,100,400,200" />
-                    </map>
-                    }
-                    else
-                    {
-                    <img src="Images?scoreId=@Model.Id&fileName=@fileName" width="500" height="600" alt="Demo2 second"
-                    title="Demo2 second" />
-                    }
-                    <div class="SliderName_2Description">
-                        Page @i</div>
-                    
-                }
-            </div>
-            <div class="c">
-            </div>
-            <div id="SliderNameNavigation_2">
-            </div>
-            <div class="c">
-            </div>
-            <script type="text/javascript">
-                effectsDemo2 = 'rain,stairs,fade';
-                var demoSlider_2 = Sliderman.slider({ container: 'SliderName_2', width: 500, height: 600, effects: effectsDemo2,
-                    display: {
-                        autoplay: 0,
-                        loading: { background: '#000000', opacity: 0.5, image: '../../Content/images/loading.gif' },
-                        buttons: { hide: true, opacity: 1, prev: { className: 'SliderNamePrev_2', label: '' }, next: { className: 'SliderNameNext_2', label: ''} },
-                        description: { hide: true, background: '#000000', opacity: 0.4, height: 50, position: 'bottom' },
-                        navigation: { container: 'SliderNameNavigation_2', label: '<img src="../../Content/images/clear.gif" />' }
-                    }
-                });
-            </script>
-            <div class="c">
-            </div>
-        </div>
-    </div>
-}
+			@if (otherTitleScores != null && (otherTitleScores.Where(x => x.Id != Model.Id).Count() > 0))
+   {
+				<div id="otherTitles">Autres titres
+					<ul>
+						@foreach (var item in ViewBag.OtherTitlesScore)
+	  {
+		  if (item.Id != Model.Id)
+		  {
+								<li><a href="Details?scoreId=@item.Id">@item.Title</a></li>
+		  }
+	  }
+					</ul>
+				</div>
+   }
+			@if (Model.Tags != null)
+   {
+				<div id="tags">
+					@foreach (string tag in Model.Tags)
+	 {
+						<a href="#">@tag</a>
+	 }
+				</div>
+   }
+		</div>
+	</div>
+	@if (ViewBag.AttachedFiles != null && (ViewBag.AttachedFiles as IEnumerable<string>).Count() > 0)
+ {
+		<div id="attachedFiles">
+			<h3>Fichiers attachés:</h3>
+			<ul>
+			@foreach (var file in @ViewBag.AttachedFiles)
+   {
+				<li class="file"><a href="Attachments/@file" title="telecharger le fichier">@file</a> </li>
+   }
+			</ul>
+		</div>
+ }
 </div>
-@if (ViewBag.AttachedFiles != null && (ViewBag.AttachedFiles as IEnumerable<string>).Count() > 0)
-{
-    <div id="attachedFiles">
-        <!--<h3>
-            Fichiers attachés:</h3>
-        <ul>
-            @foreach (var file in @ViewBag.AttachedFiles)
-            {
-                <li class="file"><a href="http://localhost/foiremuses/scores/@file" title="telecharger le fichier">
-                    @file</a> </li>
-            }
-        </ul>-->
-    </div>
-}
-</div>
-
 <div id="menuModif">
-<hr />
-    <ul>
-        <li><a href="Publish?scoreId=@Model.Id"><span class="partitionButton"></span>Changer
-            partition</a> </li>
-        <li><a href="Edit?scoreId=@Model.Id"><span class="editButton"></span>Modifier</a>
-        </li>
-        <li><a href="#"><span class="uploadButton"></span>Attacher un fichier</a></li>
-    </ul>
+	<hr />
+	<ul>
+		<li><a href="Publish?scoreId=@Model.Id"><span class="partitionButton"></span>Changer partition</a> </li>
+		<li><a href="Edit?scoreId=@Model.Id"><span class="editButton"></span>Modifier</a></li>
+		<li><a href="#"><span class="uploadButton"></span>Attacher un fichier</a></li>
+	</ul>
 </div>

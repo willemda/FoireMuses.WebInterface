@@ -6,95 +6,29 @@ using Newtonsoft.Json.Linq;
 
 namespace FoireMuses.Client
 {
-	public class MusicalSource 
+	public class MusicalSource : SourceReference
 	{
-		internal JObject json { get; private set; }
-
 		public MusicalSource()
+			:base()
 		{
-			json = new JObject();
 		}
 
-		public MusicalSource(JObject jobject)
+		public MusicalSource(JObject anObject)
+			:base(anObject)
 		{
-			json = jobject;
-		}
-
-		public string SourceId
-		{
-			get
-			{
-				if (json["id"] == null)
-					return null;
-				return json["id"].Value<string>();
-			}
-			set { json["id"] = value; }
-		}
-
-		public int? AirNumber
-		{
-			get
-			{
-				if (json["air"] == null)
-					return null;
-				return json["air"].Value<int?>();
-			}
-			set
-			{
-				json["air"] = value;
-			}
-		}
-
-		public string Page
-		{
-			get
-			{
-				if (json["page"] == null)
-					return null;
-				return json["page"].Value<string>();
-			}
-			set { json["page"] = value; }
-		}
-
-		public int? Tome
-		{
-			get
-			{
-				if (json["tome"] == null)
-					return null;
-				return json["tome"].Value<int?>();
-			}
-			set
-			{
-				json["tome"] = value;
-			}
-		}
-
-		public int? Volume
-		{
-			get
-			{
-				if (json["volume"] == null)
-					return null;
-				return json["volume"].Value<int?>();
-			}
-			set
-			{
-				json["volume"] = value;
-			}
 		}
 
 		public bool? IsSuggested
 		{
 			get
 			{
-				if (json["isSuggested"] == null)
+				if (theJson["isSuggested"] == null)
 					return null;
-				return json["isSuggested"].Value<bool>();
+				return theJson["isSuggested"].Value<bool>();
 			}
 			set
 			{
-				json["isSuggested"] = value;
+				theJson["isSuggested"] = value;
 			}
 		}
 	}

@@ -41,15 +41,13 @@ namespace FoireMuses.WebInterface.Controllers
 			return View(viewModel);
 		}
 
-		//
-		// GET: /Scores/Details
 		public ActionResult Details(string scoreId)
 		{
 			if (String.IsNullOrWhiteSpace(scoreId))
 			{
 				return RedirectToAction("Missing", "Error", null);
 			}
-			
+
 			Score score = null;
 			Score genericScore = null;
 			Source sTextuelle = null;
@@ -103,7 +101,7 @@ namespace FoireMuses.WebInterface.Controllers
 					}
 					otherTitlesScore = results.Rows;
 				}
-				else if(score.MasterId!=null)
+				else if (score.MasterId != null)
 				{
 					genericScore = FoireMusesConnection.GetScore(score.MasterId, new Result<Score>()).Wait();
 					if (genericScore == null)
@@ -132,9 +130,8 @@ namespace FoireMuses.WebInterface.Controllers
 			return View(score);
 		}
 
-
-		public ActionResult Images(string scoreId, string fileName){
-
+		public ActionResult Images(string scoreId, string fileName)
+		{
 			Stream stream;
 			try
 			{
@@ -156,10 +153,10 @@ namespace FoireMuses.WebInterface.Controllers
 			{
 				case "pdf":
 					contentType = "application/pdf";
-						break;
+					break;
 				case "mid":
 					contentType = "audio/midi";
-						break;
+					break;
 				case "musicxml":
 					contentType = "text/xml";
 					break;
@@ -178,7 +175,6 @@ namespace FoireMuses.WebInterface.Controllers
 			return File(stream, contentType, fileName);
 		}
 
-
 		public ViewResult Create()
 		{
 			return View();
@@ -191,7 +187,6 @@ namespace FoireMuses.WebInterface.Controllers
 			ViewBag.ScoreId = scoreId;
 			return View();
 		}
-
 
 		//AJAX CALL
 		public ActionResult GetPlaysForSource(string id)
@@ -210,7 +205,7 @@ namespace FoireMuses.WebInterface.Controllers
 			}
 			catch (Exception e)
 			{
-				theLogger.Error("Stacktrace:\n"+e.StackTrace);
+				theLogger.Error("Stacktrace:\n" + e.StackTrace);
 				return PartialView("playList", new List<Play>());
 			}
 			if (searchResultPlay == null)
@@ -238,7 +233,7 @@ namespace FoireMuses.WebInterface.Controllers
 			}
 			catch (Exception e)
 			{
-				theLogger.Error("Stacktrace:\n"+e.StackTrace);
+				theLogger.Error("Stacktrace:\n" + e.StackTrace);
 				return PartialView("AjaxSearchForMaster", new List<ScoreSearchItem>());
 			}
 			if (searchResultMaster == null)
@@ -248,14 +243,6 @@ namespace FoireMuses.WebInterface.Controllers
 			}
 			return PartialView("AjaxSearchForMaster", searchResultMaster.Rows);
 		}
-
-		/*
-		public FileStreamResult GetAttachements(string scoreId, string attachementName)
-		{
-			FoireMusesConnection connection = GetConnection();
-			Stream file = connection.GetAttachements(scoreId, attachementName , new Result<Stream>()).Wait();
-			return new FileStreamResult(file, "image/png");
-		}*/
 
 		[HttpPost]
 		public ActionResult Publish(string scoreId, bool overwrite, HttpPostedFileBase file)
@@ -283,7 +270,7 @@ namespace FoireMuses.WebInterface.Controllers
 					score = FoireMusesConnection.UpdateScoreWithXml(current.Id, current.Rev, XDocFactory.From(file.InputStream, MimeType.XML), overwrite, new Result<Score>()).Wait();
 					if (score == null)
 						return RedirectToAction("Problem", "Error", null);
-					return RedirectToAction("Details", new {scoreId=score.Id});
+					return RedirectToAction("Details", new { scoreId = score.Id });
 				}
 			}
 			catch (Exception e)
@@ -293,7 +280,6 @@ namespace FoireMuses.WebInterface.Controllers
 			}
 			return RedirectToAction("Edit", new { scoreId = score.Id });
 		}
-
 
 		public ActionResult Edit(string scoreId)
 		{
@@ -344,7 +330,7 @@ namespace FoireMuses.WebInterface.Controllers
 			{
 				return RedirectToAction("Missing", "Error", null);
 			}
-			ViewBag.Sources = sourceList.Rows.OrderBy(x=>x.Name);
+			ViewBag.Sources = sourceList.Rows.OrderBy(x => x.Name);
 			return View("Edit", score);
 		}
 
@@ -382,7 +368,8 @@ namespace FoireMuses.WebInterface.Controllers
 				theLogger.Error("Stacktrace:\n" + e.StackTrace);
 				return RedirectToAction("Problem", "Error", null);
 			}
-			if(model == null){
+			if (model == null)
+			{
 				theLogger.Error("Reason: model is null");
 				return RedirectToAction("Problem", "Error", null);
 			}

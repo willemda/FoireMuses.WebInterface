@@ -733,7 +733,6 @@ input.default {
 {
 	float:left;
 	width:400px;
-	white-space: pre;
 }
 
 
@@ -764,3 +763,9 @@ input.default {
 	color: #ffffff;
 }
 
+
+.partition 
+{
+	float:right; 
+	background-color:White;
+}
