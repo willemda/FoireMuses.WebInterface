@@ -725,7 +725,6 @@ input.default {
 /*Items Values*/
 .label
 {
-	clear:both;
 	float:left;
 	width:100px;
 }

@@ -10,6 +10,15 @@
 @section javascriptSection{
 	<script src="../../Content/js/sliderman.1.2.1.js" type="text/javascript"></script>
 }
+
+@section commandsSection{
+	<ul>
+		<li><a href="Edit?scoreId=@Model.Id"><span class="editButton"></span>Edit</a></li>
+		<li><a href="Publish?scoreId=@Model.Id"><span class="partitionButton"></span>New score</a> </li>
+		<li><a href="#"><span class="uploadButton"></span>Add file</a></li>
+	</ul>
+}
+
 <div id="scoreDetails">
 	<div id="firstPart">
 		<div id="gauche">
@@ -30,7 +39,7 @@
 			@if (documents != null && documents.Contains("$musicxml.xml")){
 				for (int i = 1; i <= documents.Where(x => x.StartsWith("$partition")).Count(); i++){
 					string fileName = "$partition" + i + ".png";
-					<img src="Images?scoreId=@Model.Id&fileName=@fileName" width="500" height="600" alt="Demo2 second" title="Demo2 second" />
+					<img src="Images?scoreId=@Model.Id&fileName=@fileName" width="400"alt="Demo2 second" title="Score" />
 					break;
 				}
 			}
@@ -44,44 +53,39 @@
 				Helpers.AddField("Is Master", "True");
 			}
 			@Helpers.AddField("Compositeur", Model.Composer, aDisplayNullValue:false)
+			@Helpers.TextualSource(Model.TextualSource, ViewBag.TextualSource, ViewBag.AssociatedPlay)
+			@Helpers.MusicalSource(Model.MusicalSource, ViewBag.MusicalSource)
 			@Helpers.AddField("Editeur", Model.Editor, aDisplayNullValue: false)
 			@Helpers.AddField("Versets", Model.Verses, aDisplayNullValue: false)
 			@Helpers.AddField("Type", Model.ScoreType, aDisplayNullValue: false)
 			@Helpers.AddField("Strophe", Model.Stanza, aDisplayNullValue: false)
-			@Helpers.AddField("Coirault", Model.Coirault, aDisplayNullValue: false)
-			@Helpers.AddField("Delarue", Model.Delarue, aDisplayNullValue: false)
 			@Helpers.AddField("Ancien autres titres", Model.OtherTitles, aDisplayNullValue: false)
 			@Helpers.AddField("Coupe métrique", Model.CoupeMetrique, aDisplayNullValue: false)
 			@Helpers.AddField("Codage mélodique RISM", Model.CodageMelodiqueRISM, aDisplayNullValue: false)
 			@Helpers.AddField("Codage par intervalles", Model.CodageParIntervalles, aDisplayNullValue: false)
 			@Helpers.AddField("Codage rythmique", Model.CodageRythmique, aDisplayNullValue: false)
 			@Helpers.AddField("Commentaires", Model.Comments, aDisplayNullValue: false)
-			@Helpers.TextualSource(Model.TextualSource, ViewBag.TextualSource, ViewBag.AssociatedPlay)
-			@Helpers.MusicalSource(Model.MusicalSource, ViewBag.MusicalSource)
+			@Helpers.AddField("Coirault", Model.Coirault, aDisplayNullValue: false)
+			@Helpers.AddField("Delarue", Model.Delarue, aDisplayNullValue: false)
 
-			@if (otherTitleScores != null && (otherTitleScores.Where(x => x.Id != Model.Id).Count() > 0))
-   {
+			@if (otherTitleScores != null && (otherTitleScores.Where(x => x.Id != Model.Id).Count() > 0)){
 				<div id="otherTitles">Autres titres
 					<ul>
-						@foreach (var item in ViewBag.OtherTitlesScore)
-	  {
-		  if (item.Id != Model.Id)
-		  {
+						@foreach (var item in ViewBag.OtherTitlesScore){
+							if (item.Id != Model.Id){
 								<li><a href="Details?scoreId=@item.Id">@item.Title</a></li>
-		  }
-	  }
+							}
+						}
 					</ul>
 				</div>
-   }
-			@if (Model.Tags != null)
-   {
+			}
+			@if (Model.Tags != null){
 				<div id="tags">
-					@foreach (string tag in Model.Tags)
-	 {
+					@foreach (string tag in Model.Tags){
 						<a href="#">@tag</a>
-	 }
+					}
 				</div>
-   }
+			}
 		</div>
 	</div>
 	@if (ViewBag.AttachedFiles != null && (ViewBag.AttachedFiles as IEnumerable<string>).Count() > 0)
@@ -97,11 +101,4 @@
 		</div>
  }
 </div>
-<div id="menuModif">
-	<hr />
-	<ul>
-		<li><a href="Publish?scoreId=@Model.Id"><span class="partitionButton"></span>Changer partition</a> </li>
-		<li><a href="Edit?scoreId=@Model.Id"><span class="editButton"></span>Modifier</a></li>
-		<li><a href="#"><span class="uploadButton"></span>Attacher un fichier</a></li>
-	</ul>
-</div>
+

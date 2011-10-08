@@ -100,7 +100,7 @@
 	{
 		<div class="label">Source Musicale:</div>
 		<div class="value">
-			<a href="~/Sources/Details?sourceId=@aMusicalSourceReference.SourceId" title="cliquer pour aller voir la source">
+			<a href="/Sources/Details?sourceId=@aMusicalSourceReference.SourceId" title="cliquer pour aller voir la source">
 			@aSource.Name
 			@if (aSource.DateFrom.HasValue)
 			{
@@ -108,19 +108,19 @@
 			}
 			@if (!String.IsNullOrEmpty(aMusicalSourceReference.Page))
 			{
-				@:, Page : @aMusicalSourceReference.Page
+				@:, Page @aMusicalSourceReference.Page
 			}
 			@if (aMusicalSourceReference.AirNumber.HasValue)
 			{
-				@:, Air : @aMusicalSourceReference.AirNumber.Value
+				@:, Air @aMusicalSourceReference.AirNumber.Value
 			}
 			@if (aMusicalSourceReference.Tome.HasValue)
 			{
-				@:, Tome : @RomanNumber.ToRoman(aMusicalSourceReference.Tome.Value)
+				@:, Tome @RomanNumber.ToRoman(aMusicalSourceReference.Tome.Value)
 			}
 			@if (aMusicalSourceReference.Volume.HasValue)
 			{
-				@:, Volume : @RomanNumber.ToRoman(aMusicalSourceReference.Volume.Value)
+				@:, Volume @RomanNumber.ToRoman(aMusicalSourceReference.Volume.Value)
 			}
 			</a>
 			@if (aMusicalSourceReference.IsSuggested.HasValue && aMusicalSourceReference.IsSuggested.Value)
@@ -137,7 +137,7 @@
 	{
 		<div class="label">Source Textuelle:</div>
 		<div class="value">
-			<a href="~/Sources/Details?sourceId=@aTextualSourceReference.SourceId" title="cliquer pour aller voir la source">
+			<a href="/Sources/Details?sourceId=@aTextualSourceReference.SourceId" title="cliquer pour aller voir la source">
 			@aSource.Name
 			@if (aSource.DateFrom.HasValue)
 			{
@@ -145,19 +145,19 @@
 			}
 			@if (!String.IsNullOrEmpty(aTextualSourceReference.Page))
 			{
-				@:, Page : @aTextualSourceReference.Page
+				@:, Page @aTextualSourceReference.Page
 			}
 			@if (aTextualSourceReference.AirNumber.HasValue)
 			{
-				@:, Air : @aTextualSourceReference.AirNumber.Value
+				@:, Air @aTextualSourceReference.AirNumber.Value
 			}
 			@if (aTextualSourceReference.Tome.HasValue)
 			{
-				@:, Tome : @RomanNumber.ToRoman(aTextualSourceReference.Tome.Value)
+				@:, Tome @RomanNumber.ToRoman(aTextualSourceReference.Tome.Value)
 			}
 			@if (aTextualSourceReference.Volume.HasValue)
 			{
-				@:, Volume : @RomanNumber.ToRoman(aTextualSourceReference.Volume.Value)
+				@:, Volume @RomanNumber.ToRoman(aTextualSourceReference.Volume.Value)
 			}
 			</a>
 		</div>
