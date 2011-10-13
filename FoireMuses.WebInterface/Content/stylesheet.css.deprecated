@@ -1,0 +1,1170 @@
+
+html,body,table,td,tr,p,ul,li,h1,h2,h3,h4,h5,h6,form,input,select,tbody
+{
+    margin:0px;
+    padding:0px;
+    font-size:100%;
+    font-family:Verdana,"Trebuchet MS";
+}
+
+body
+{
+    margin: 0px;
+    text-align:center;
+}
+
+#header{
+    margin-left: auto;
+    margin-right: auto;
+	width:1024px;
+	background-color: #0880B5;
+    height: 70px;
+}
+
+#global
+{
+    padding:10px;
+    text-align:left;
+    margin-left:auto;
+    margin-right:auto;
+    width:1004px;
+    font-size:75%;
+	margin-bottom:10px;
+    min-height:500px;
+}
+
+#menuScore
+{
+    clear:both;
+    position:relative;
+    text-align:left;
+    padding-top:20px;
+    width: 1024px;
+    height:30px;
+}
+
+#menuScore img
+{
+    width:30px;
+    height:30px;
+}
+
+#menuScore li
+{
+    list-style-type:none;
+    display:inline;
+}
+
+#firstPart
+{
+    width:1004px;
+    position:relative;
+}
+
+#gauche
+{
+    padding-right:4px;
+    float:left;
+    position:relative;
+    width:500px;
+}
+
+
+#footer
+{
+    margin-left: auto;
+    margin-right:auto;
+    position:relative;
+    height:80px;
+    clear:both;
+    width:1024px;
+    background-color:#E5EDF0;
+    text-align: center;
+    font-size:85%;
+}
+
+#pagePrincipale
+{
+    float:left;
+    position: relative;
+    left:0px;
+    width:500px;
+}
+
+
+
+a:hover{
+text-decoration:none;
+}
+
+#banner
+{
+    text-align:left;
+    padding-top: 22px;
+    padding-left: 10px;
+    font-size:110%;
+}
+
+#banner a, #banner a:visited
+{
+    color: White;
+    text-decoration: none;
+}
+#links
+{
+    padding-top:0px;
+}
+
+#list li
+{
+    font-size:65%;
+    list-style-type:none;
+    display:inline;
+    float:right;
+    border-left: 1px solid #77BCFF;
+    padding: 0 .7em 0 .3em;
+}
+
+#list li.first
+{
+    border: none;
+}
+
+#list a, #list a:visited
+{
+    color: White;
+}
+
+#list a:hover
+{
+    text-decoration:none;
+}
+
+#menu
+{
+    border-top: 1px solid white;
+    margin-left: auto;
+    margin-right: auto;
+    width:1024px;
+    background-color: #188BC1;
+    height: 25px;
+    text-align:left;
+}
+
+#primary 
+{
+  
+  display:inline-block;
+  line-height:normal;
+}
+
+#primary ul 
+{
+  padding-top:0;
+  margin:0;
+  list-style:none;
+  
+}
+
+#primary li 
+{
+    width:100px;
+    height:25px;
+    display:inline;
+    float:left;
+}
+
+#primary li.sign
+{
+    float:left;
+    color: white;
+    line-height:25px;
+    font-weight:bold;
+}
+
+#primary a 
+{
+  
+  width:100px;
+  height:25px;
+  border-right:1px solid white;
+  line-height:24px;
+  font-weight:bold;
+  font-size:15px;
+  font-family:"Trebuchet MS";
+  color:#188BC1;
+  text-align:center;
+  display:block;
+  margin: 0px 10px 0px 0px;
+  color:White;
+  text-decoration:none;
+}
+
+#primary li.selected a
+{
+    background-color:White;
+    color:#0880B5;
+}
+
+#primary a:hover {
+  color:#05AFFF;
+}
+
+#primary ul ul
+{
+    border-top: 1px white solid;
+    position:absolute;
+    display:none;
+    margin-top:0px;
+    z-index:2;
+}
+
+#primary ul ul li
+{
+    display:list-item;
+    float:none;
+    border-bottom:1px solid white;
+}
+
+#primary ul ul li a
+{
+    text-align:left;
+    padding-left:5px;
+}
+
+#primary li:hover ul
+{
+    display:block;
+    background-color:#188BC1;
+}
+
+
+.right{
+float:right;
+}
+
+#encadreInfo{
+background-color: lightyellow;
+padding-bottom:1px;
+margin-bottom:10px;
+}
+
+#encadreInfo p{
+padding-left:5px;
+}
+
+#encadreInfo a
+{
+    color: #05AFFF;
+}
+
+#encadreInfo a:visited
+{
+    color: #05AFFF;
+}
+
+#create{
+width:100%;
+border-collapse:collapse
+}
+
+#create tr{
+border-bottom:1px solid lightgrey;
+}
+
+#create td{
+padding:5px;
+}
+
+table.innerTable{
+width:100%;
+}
+
+table.innerTable select,table.innerTable input,table.innerTable textarea{
+width:100%;
+}
+
+#create td.label{
+width:35%;
+}
+
+#create td.value{
+width:65%;
+}
+
+#create td.valueLeft{
+width:10px;
+}
+
+.pieceAss
+{
+display:none;
+}
+
+
+#create label{
+width:100%;
+font-weight:bold;
+}
+
+#create input{
+width:100%;
+}
+#create textarea{
+width:100%;
+height:60px;
+}
+
+
+img.helpIcon{
+	width:20px;
+	height:20px;
+}
+
+
+#floatRight{
+float: right;
+}
+
+#downloads
+{
+    float:right;
+}
+
+#downloads img
+{
+    width:45px;
+    height:45px;
+}
+
+
+#downloads ul , #editMenu ul
+{
+  padding:0;
+  margin:0;
+  list-style:none;
+}
+
+#downloads li 
+{
+  display:inline;
+}
+
+#editMenu li
+{
+    font-size:75%;
+}
+
+#tags{
+text-align:center;
+}
+
+#infos{
+	text-align:center;
+}
+
+#infos table{
+float:left;
+border-collapse: collapse;
+}
+
+
+#infos td {
+border: 1px lightblue solid;
+padding: 7px;
+}
+
+#inner td{
+border : none;
+}
+
+#inner .innerLast td{
+border:none;}
+
+
+#infos td .label{
+font-weight:bold;
+width:100%;
+text-align:right;
+}
+
+#inner  td .label{
+text-align:left;
+}
+
+#infos td .value{
+}
+
+#content h2{
+	text-decoration:underline;
+}
+
+#attachedFiles{
+margin:10px;
+height:200px;
+}
+
+#attachedFiles ul{
+	display:inline;
+	font-size:110%;
+	list-style:none;
+}
+
+.file {
+text-align:center;
+float:left;
+}
+
+.file{
+border: 1px white solid;
+}
+
+.file img{
+width:140px;
+height:165px;
+}
+
+li.file:hover{
+border:1px lightblue solid;
+}
+
+/*CSS DETAILS SOURCE */
+
+#sourceDetails div.label
+{
+    width:200px;
+    float:left;
+}
+
+#menuModif ul
+{
+    list-style-type:none;
+}
+
+#menuModif li
+{
+    width:150px;
+    height:25px;
+    border: lightgrey 1px solid;
+    display:inline-block;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#menuModif a
+{
+    font-weight:bold;
+    width:150px;
+    display:inline-block;
+    line-height:24px;
+    height:25px;
+    color:Black;
+    text-decoration:none;
+}
+
+#menuModif
+{
+    padding-top:20px;
+    position:relative;
+    clear:both;
+}
+
+#menuModif a:hover
+{
+    color:lightblue;
+}
+
+
+/*CSS DETAILS SCORE*/
+
+#barreHaut
+{
+width:1004px;
+position:relative;
+
+}
+
+#firstInfo
+{
+    width:50%;
+    position:relative;
+    float:left;
+    margin-bottom:20px;
+}
+
+
+#gauche div{
+margin-bottom:2px;
+}
+
+#titleDisplay
+{
+    font-family:"Trebuchet MS";
+    font-size:14px;
+    font-weight:bold;
+    text-transform:uppercase;
+}
+
+#versets{
+	
+	margin:30px auto 0px auto;
+	font-style:italic;
+	text-align:center;
+	width:250px;
+	padding-bottom:20px;
+}
+
+#sources{
+text-indent:22px;
+
+}
+#sourcetext{
+font-style:italic;
+}
+
+#sourcepiece{
+text-indent:44px;
+font-style:italic;
+}
+
+#sourcemusic{
+font-style:italic;
+}
+
+#slider_container_2 {float: left; padding: 0px; width: 500px; }
+
+.SliderName_2 {
+	float: left;
+	width: 500px;
+	height: 600px;
+	border:1px solid black;
+	overflow: hidden;
+}
+
+.c
+{
+    clear:both;
+}
+
+.SliderNamePrev_2 {
+	background: url(../../Content/images/left.png) no-repeat left center;
+	width: 50px;
+	height: 600px;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	text-decoration: none;
+}
+
+.SliderNameNext_2 {
+	background: url(../../Content/images/right.png) no-repeat right center;
+	width: 50px;
+	height: 600px;
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	text-decoration: none;
+}
+
+.SliderName_2Description {
+	padding: 10px;
+	font-family: Tahoma,Arial,Helvetica;
+	font-size: 14px;
+	line-height: 30px;
+	letter-spacing: 1px;
+	text-align: center;
+	color: #ffffff;
+	text-shadow: 0 1px 3px #000000;
+}
+
+#SliderNameNavigation_2 { margin: 0; padding: 10px 0 0 0; height: 16px; text-align: center; overflow-y: hidden; }
+
+#SliderNameNavigation_2 a:link, #SliderNameNavigation_2 a:active, #SliderNameNavigation_2 a:visited, #SliderNameNavigation_2 a:hover{
+	margin: 0;
+	padding: 0;
+	font-size: 0;
+	line-height: 0;
+	text-decoration: none;
+}
+
+#SliderNameNavigation_2 a img
+{
+	border: none;
+	width: 16px;
+	height: 16px;
+	background: url(../../Content/images/bullet.png) no-repeat center center;
+}
+
+#SliderNameNavigation_2 a.active img
+{
+	background: url(../../Content/images/bullet_active.png) no-repeat center center;
+}
+
+#otherTitles ul
+{
+    list-style-type:none;
+    padding-left:20px;
+}
+
+/*CSS LIST SCORES*/
+
+#pre-list
+{
+    border-bottom: 1px solid lightgrey;
+    margin-bottom: 5px;
+    font-family:"Trebuchet MS";
+    font-size:14px;
+    font-weight:bold;
+    text-transform:uppercase;
+}
+
+
+#list-item a
+{
+    color: #1E90FF;
+    font-weight:bold;
+}
+
+
+#list-item ul
+{
+    width:1004px;
+    list-style:none;
+}
+
+#list-item li
+{
+    margin-bottom:2px;
+    padding:4px;
+    height:40px;
+    background-color:#E5EDF0;
+}
+
+#list-item li.fonce
+{
+    background-color:#D9E4E8;
+}
+
+.score-composer, .score-editor
+{
+    display:inline;
+}
+
+#pager
+{
+    margin:10px;
+    width:984px;
+    text-align:center;
+}
+
+#pager a
+{
+    color: #1E90FF;
+    font-weight:bold;
+    padding:3px;
+}
+
+#pager a.selected
+{
+    background-color: #0880B5;
+    color:White;
+    text-decoration:none;
+}
+
+#scoreSearch div
+{
+    width:1004px;
+    margin-bottom:2px;
+}
+
+#scoreSearch label
+{
+    float:left;
+    font-weight:bold;
+    width:150px;
+    position:relative;
+}
+
+#editForm div.bigField
+{
+    width:1004px;
+    margin-bottom:2px;
+}
+
+#editForm div.bigField input, #editForm div.bigField select, #editForm div.bigField textarea
+{
+    width:804px;
+}
+
+#editForm div.bigField textarea
+{
+    height:100px;
+}
+
+#editForm div.bigField label
+{
+    font-weight:bold;
+    float:left;
+    width:200px;
+}
+
+
+#result
+{
+    position:absolute;
+    background-color:white;
+    width:350px;
+    border: 1px solid black;
+    margin-left:250px;
+    margin-top:-5px;
+}
+
+.suggest
+{
+    padding:2px;
+}
+
+.suggest_over
+{
+    padding:2px;
+    background-color:#E5EDF0;
+}
+
+/*CSS SEARCH NAVIGUATION*/
+
+ul#tabnav {
+    font: bold 11px verdana, arial, sans-serif;
+    list-style-type: none;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #E5EDF0;
+    margin: 0;
+}
+
+ul#tabnav li {
+    float: left;
+    height: 21px;
+    background-color: #E5EDF0;
+    margin: 2px 2px 0 2px;
+    border: 1px solid #E5EDF0;
+}
+
+ul#tabnav li.active {
+    border-bottom: 1px solid #fff;
+    background-color: #fff;
+}
+
+#tabnav a {
+    float: left;
+    display: block;
+    color: #666;
+    text-decoration: none;
+    padding: 4px;
+}
+
+#tabnav a:hover {
+    background: #fff;
+}
+
+
+/*CSS SEARCH SCORE*/
+
+#scoreSearch input
+{
+    margin-left:5px;
+}
+
+#scoreSearch select
+{
+    width:150px;
+}
+
+#fieldValue, .input_value
+{
+     width:250px;
+}
+
+#addField
+{
+    width:20px;
+    height:20px;
+}
+
+.removeField
+{
+    width:20px;
+    height:20px;
+}
+#scoreSearch ul
+{
+    list-style-type:none;
+}
+
+#scoreSearch div.label
+{
+    float:left;
+    width:150px;
+}
+
+#scoreSearch input.input_value
+{
+    width:250px;
+}
+
+#scoreSearch input.submit
+{
+    margin:0px;
+    padding:0px;
+}
+
+/*CSS PART FOR MUSIC SEARCH WITH THE PIANO*/
+
+#firstLine
+{
+    width:1004px;
+    height:150px;
+    position:relative;
+}
+
+#sound img
+{
+    width:20px;
+    height:20px;
+}
+
+#piano
+{
+    float:left;
+}
+
+
+#changeNote ul
+{
+    list-style-type:none;
+}
+
+#changeNote li
+{
+    display:inline;
+}
+#changeNote img
+{
+    width:20px;
+    height:40px;
+}
+
+#options
+{
+    padding-left:4px;
+    float:left;
+}
+
+#displayNotes
+{
+    position:relative;
+}
+
+/*CSS FOR ADMIN SPACE*/
+#adminSpace ul
+{
+    list-style-type:none;
+    margin-top:15px;
+    margin-left:15px;
+}
+
+#adminSpace a:visited
+{
+    color:Blue;
+}
+
+#adminSpace h3
+{
+    text-decoration: underline;
+}
+
+#adminSpace ul
+{
+    list-style-type:none;
+}
+
+#adminSpace li
+{
+    width:150px;
+    height:25px;
+    border: lightgrey 1px solid;
+    display:inline-block;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#adminSpace a
+{
+    font-weight:bold;
+    width:150px;
+    display:inline-block;
+    line-height:24px;
+    height:25px;
+    color:Black;
+    text-decoration:none;
+}
+
+#adminSpace a:hover
+{
+    color:lightblue;
+}
+
+/*CSS FOR ERRORS*/
+#errorMessage
+{
+    width:1004px;
+    text-align:center;
+}
+
+#errorMessage img
+{
+    width:50px;
+    height:50px;
+}
+
+
+/*CSS FOR LOGIN FORM*/
+
+.errorMessage
+{
+    color:Red;
+}
+
+#connectionForm label
+{
+    float:left;
+    width:250px;
+}
+
+#connectionForm div.block
+{
+    margin-bottom:5px;
+}
+
+#connectionForm input.submitButton
+{
+    /*float:right;*/
+}
+
+/*SOURCE EDIT FORM*/
+
+#sourceEditForm label
+{
+    width:250px;
+    float:left;
+}
+
+#sourceEditForm div.block
+{
+    margin-bottom:5px;
+}
+
+
+/*PAGE EDIT FORM*/
+
+#pageEditForm label
+{
+    width:250px;
+    float:left;
+}
+
+#pageEditForm div.block
+{
+    margin-bottom:5px;
+}
+
+/*PAGE DETAILS*/
+
+#pageDetails div.label
+{
+    width:200px;
+    float:left;
+}
+
+#pageDetails div.value
+{
+    margin-left:200px;
+}
+
+#pages ul
+{
+    list-style-type:none;
+}
+
+#pages li
+{
+    display:inline;
+}
+
+#pages div.value
+{
+    margin-left:200px;
+}
+
+#pages a
+{
+    text-decoration:none;
+    color:lightblue;
+}
+
+#pages a:visited
+{
+    color:lightblue;
+}
+
+
+/*CSS FOR PUBLISH FORM*/
+
+
+#publishForm label
+{
+    width:250px;
+    float:left;
+}
+
+#publishForm div.block
+{
+    margin-bottom:5px;
+}
+
+
+/*CSS FOR SCORE CREATION FORM*/
+
+#scoreForm label
+{
+    width:250px;
+    float:left;
+}
+
+#scoreForm div.block
+{
+    margin-bottom:5px;
+}
+
+#scoreForm input, textarea
+{
+    width:350px;
+}
+
+
+#scoreForm div.checkbox input
+{
+    width:15px;
+}
+
+#scoreForm input.submitButton
+{
+    width:80px;
+}
+
+#scoreForm select
+{
+    width:600px;
+}
+
+
+#pieceAss
+{
+    display:none;
+}
+
+/*CSS FOR SCORE DETAILS*/
+
+#scoreDetails div.label
+{
+    width:180px;
+    float:left;
+}
+
+#scoreDetails div.value
+{
+   margin-left:180px;
+}
+
+#downloads
+{
+    display:block;
+    width:500px;
+}
+
+
+#downloads li
+{
+    float:right;
+}
+
+
+
+/*CSS FOR CREATE USER*/
+
+#createUserForm label
+{
+    width:250px;
+    float:left;
+}
+
+#createUserForm div.block
+{
+   margin-bottom:5px;
+}
+
+
+div.block
+{
+    display:block;
+}
+
+.editButton
+{
+	background:url(../../Content/images/editButton.png) no-repeat;
+    display:inline-block;
+	height:15px;
+	width:15px;
+}
+
+.addButton
+{
+	background:url(../../Content/images/addButton.png) no-repeat;
+	display:inline-block;
+	height:15px;
+	width:15px;
+}
+
+.backButton
+{
+	background:url(../../Content/images/backButton.png) no-repeat;
+	display:inline-block;
+	height:15px;
+	width:15px;
+}
+
+.partitionButton
+{
+	background:url(../../Content/images/partitionButton.png) no-repeat;
+	display:inline-block;
+	height:15px;
+	width:15px;
+}
+
+.uploadButton
+{
+	background:url(../../Content/images/uploadButton.png) no-repeat;
+	display:inline-block;
+	height:15px;
+	width:15px;
+}
+
+.userButton
+{
+	background:url(../../Content/images/userButton.png) no-repeat;
+	display:inline-block;
+	height:15px;
+	width:15px;
+}

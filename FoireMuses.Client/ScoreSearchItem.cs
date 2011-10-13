@@ -13,84 +13,98 @@ namespace FoireMuses.Client
 
 	public class ScoreSearchItem
 	{
-
-		private JObject json { get; set; }
+		private readonly JObject theJson;
 
 		public ScoreSearchItem()
 		{
 		}
 
-		public ScoreSearchItem(JObject jobject)
+		public ScoreSearchItem(JObject aJObject)
 		{
-			json = jobject;
+			theJson = aJObject;
 		}
 
 		public string Id
 		{
 			get
 			{
-				return json.RetrieveStringCheck("_id");
+				return theJson.RetrieveStringCheck("_id");
 			}
 			set
 			{
-				json.AddCheck("_id", value);
+				theJson.AddCheck("_id", value);
 			}
 		}
-
-
 
 		public string Title
 		{
 			get
 			{
-				return json.RetrieveStringCheck("title");
+				return theJson.RetrieveStringCheck("title");
 			}
 			set
 			{
-				json.AddCheck("title", value);
+				theJson.AddCheck("title", value);
 			}
 		}
-
-
-
 
 		public string Composer
 		{
 			get
 			{
-				return json.RetrieveStringCheck("composer");
+				return theJson.RetrieveStringCheck("composer");
 			}
 			set
 			{
-				json.AddCheck("composer", value);
+				theJson.AddCheck("composer", value);
 			}
 		}
-
-
 
 		public string Verses
 		{
 			get
 			{
-				return json.RetrieveStringCheck("verses");
+				return theJson.RetrieveStringCheck("verses");
 			}
 			set
 			{
-				json.AddCheck("verses", value);
+				theJson.AddCheck("verses", value);
 			}
 		}
-
-
 
 		public string Editor
 		{
 			get
 			{
-				return json.RetrieveStringCheck("editor");
+				return theJson.RetrieveStringCheck("editor");
 			}
 			set
 			{
-				json.AddCheck("editor", value);
+				theJson.AddCheck("editor", value);
+			}
+		}
+
+		public string MusicalSourceReferenceText
+		{
+			get
+			{
+				return theJson.RetrieveStringCheck("musicalSourceReferenceText");
+			}
+			set
+			{
+				theJson.AddCheck("musicalSourceReferenceText", value);
+			}
+		}
+
+		public string TextualSourceReferenceText
+		{
+			get
+			{
+				return theJson.RetrieveStringCheck("textualSourceReferenceText");
+			}
+			set
+			{
+				theJson.AddCheck("textualSourceReferenceText", value);
 			}
 		}
 	}

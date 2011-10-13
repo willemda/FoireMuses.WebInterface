@@ -64,7 +64,6 @@ namespace FoireMuses.Client.Helpers
 				jo.Remove(fieldName);
 		}
 
-
 		public static string RetrieveStringCheck(this JObject jo, string fieldName)
 		{
 			if (jo[fieldName] != null)

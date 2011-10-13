@@ -22,7 +22,7 @@
 								@Html.ActionLink("Airs", "List", "Scores")
 								@Html.ActionLink("Sources", "List", "Sources")
 								<!--@Html.ActionLink("Piece", "Play", "Search")-->
-								@Html.ActionLink("Music", "Music", "Search")
+								@Html.ActionLink("Search", "Music", "Search")
 								@if (!User.Identity.IsAuthenticated){
 									@Html.ActionLink("login", "Login", "Users")
 								}
@@ -30,7 +30,7 @@
 								{
 									if (Roles.IsUserInRole("ADMIN"))
 									{
-										@Html.ActionLink("administration", "Index", "Admin")
+										@Html.ActionLink("Admin", "Index", "Admin")
 									}
 									@Html.ActionLink("logout", "Logout", "Users")
 								}

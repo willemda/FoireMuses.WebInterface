@@ -341,10 +341,10 @@ function toggleFlats() {
 
 function toggleSound(elem) {
     playsound = !playsound;
-    var imageName = "soundoff.png";
+    var imageName = "sound_mute.png";
     if(playsound)
-      imageName = "soundon.png";
-    $(elem).html("<img src=\"../../Content/images/" + imageName + "\">");
+      imageName = "sound.png";
+    $(elem).html("<img src=\"/Content/images/" + imageName + "\">");
 }
 
 function cssReplaceClass(oldClass, newClass) {

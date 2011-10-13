@@ -39,13 +39,13 @@
 			@if (documents != null && documents.Contains("$musicxml.xml")){
 				for (int i = 1; i <= documents.Where(x => x.StartsWith("$partition")).Count(); i++){
 					string fileName = "$partition" + i + ".png";
-					<img src="Images?scoreId=@Model.Id&fileName=@fileName" width="400"alt="Demo2 second" title="Score" />
+					<img src="Images?scoreId=@Model.Id&fileName=@fileName" width="500"alt="Demo2 second" title="Score" />
 					break;
 				}
 			}
 			</div>
-
-			@Helpers.AddField("Titre", Model.Title, true)
+			<h1>@Model.Title</h1>
+			
 			@if (ViewBag.GenericScore != null){
 				@Helpers.AddField("Titre générique", "<a href=\"details?scoreId=" + (string)ViewBag.GenericScore.Id + "\">" + (string)ViewBag.GenericScore.Title + "</a>")
 			}

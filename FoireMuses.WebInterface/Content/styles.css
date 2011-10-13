@@ -196,6 +196,7 @@ H1{
 	color: #324003;
 	text-align: left;
 	padding: 0px 0px 0px 0px;
+	margin-bottom:20px;
 }
 
 .a_h1 {
@@ -725,15 +726,30 @@ input.default {
 /*Items Values*/
 .label
 {
-	float:left;
-	width:100px;
-}
-.value
-{
-	float:left;
-	width:400px;
+	font-weight:bold;
 }
 
+.sublabel
+{
+	font-weight:bold;
+	margin-left:20px;
+}
+
+.value
+{
+	margin-left:20px;
+}
+
+.subvalue
+{
+	margin-left:40px;
+}
+
+#downloads
+{
+	visibility:hidden;
+	height:0px;
+}
 
 /* Top Commands */
 .commands ul {
@@ -765,6 +781,15 @@ input.default {
 
 .partition 
 {
+	clear:both;
 	float:right; 
 	background-color:White;
+	margin:5px;
+}
+
+/* Search page*/
+
+#changeNote 
+{
+	float:right;
 }

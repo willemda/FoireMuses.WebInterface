@@ -8,14 +8,15 @@
 		{
 		<div class="label">@aFieldName :</div>
 		<div class="value">
-			@if (isBold)
-   {
-				<em>@aFieldValue</em>
-   }
-   else
-   {
-				@aFieldValue
-   }
+			@if(!String.IsNullOrEmpty(aFieldValue)){
+				if (isBold){
+					<em>@aFieldValue</em>
+				}
+				else
+				{
+					@System.Web.Mvc.MvcHtmlString.Create(aFieldValue.Replace("\n","<br/>"))
+				}
+			}
 		</div>
 		}
 }
@@ -26,17 +27,15 @@
 		{
 		<div class="label">@aFieldName :</div>
 		<div class="value">
-		@if (aFieldValue.HasValue)
-  {
-	  if (isBold)
-	  {
-				<em>@aFieldValue.Value</em>
-	  }
-	  else
-	  {
-				@aFieldValue.Value
-	  }
-  }
+			@if (aFieldValue.HasValue){
+				if (isBold){
+					<em>@aFieldValue.Value</em>
+				}
+				else
+				{
+					@aFieldValue.Value
+				}
+			}
 		</div>
 		}
 }
@@ -163,8 +162,8 @@
 		</div>
 
 		if(aPlay != null){
-		<div class="label">Pièce associée:</div>
-		<div class="value">@aPlay.Title
+		<div class="sublabel">Pièce associée:</div>
+		<div class="subvalue">@aPlay.Title
 			@if(aTextualSourceReference.ActNumber.HasValue)
 			{
 				@:, Act @RomanNumber.ToRoman(aTextualSourceReference.ActNumber.Value)

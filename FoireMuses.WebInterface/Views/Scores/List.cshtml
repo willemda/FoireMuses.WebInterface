@@ -3,12 +3,12 @@
 @{
 	ViewBag.HeadTitle = "All Scores";
 }
-<div id="noResults">
-	@Html.ActionLink("Créer un air", "Create", "Scores", null, null)
-</div>
-<div id="pre-list">
-	Airs
-</div>
+@section commandsSection{
+	<ul>
+		<li><a href="Create">New</a></li>
+	</ul>
+}
+<h1>Airs</h1>
 <div id="list-item">
 	<ul>
 		@{
@@ -18,18 +18,24 @@
 					<li class="@(even ? "even_row" : "odd_row")">
 						<div class="score-item">
 							<div class="score-title">
-								<a href="Details?scoreId=@score.Id">@score.Title</a></div>
-								@if (score.Editor != null){
-								<div class="score-editor">
-									edited by @score.Editor
+								<a href="Details?scoreId=@score.Id">@score.Title</a>
+							</div>
+							@if (!String.IsNullOrEmpty(score.Editor)){
+							<div class="score-editor">
+								edited by @score.Editor
+							</div>
+							}
+							@if (!String.IsNullOrEmpty(score.Composer)){
+								<div class="score-composer">
+									composed by @score.Composer
 								</div>
-								}
-								@if (score.Composer != null){
-									<div class="score-composer">composed by @score.Composer</div>
-								}
-								@if (score.Editor != null){
-									<div class="score-editor">, edited by @score.Editor</div>
-								}
+							}
+							<div>
+							@score.TextualSourceReferenceText
+							</div>
+							<div>
+							@score.MusicalSourceReferenceText
+							</div>
 						</div>
 					</li>
 				even = !even;

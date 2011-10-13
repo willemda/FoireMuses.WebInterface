@@ -138,12 +138,52 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\images\ajax-loader.gif" />
+    <Content Include="Content\images\a_blog.gif" />
+    <Content Include="Content\images\bg.jpg" />
+    <Content Include="Content\images\bg_bot.gif" />
+    <Content Include="Content\images\bg_bot1.jpg" />
+    <Content Include="Content\images\bg_top.gif" />
+    <Content Include="Content\images\bg_top1.jpg" />
+    <Content Include="Content\images\bottom.gif" />
+    <Content Include="Content\images\but_razd.gif" />
+    <Content Include="Content\images\b_c.png" />
+    <Content Include="Content\images\b_l.png" />
+    <Content Include="Content\images\b_r.png" />
+    <Content Include="Content\images\circl.gif" />
+    <Content Include="Content\images\circl_hov.gif" />
+    <Content Include="Content\images\content_razd.gif" />
+    <Content Include="Content\images\content_razd_bot.gif" />
+    <Content Include="Content\images\content_razd_top.gif" />
+    <Content Include="Content\images\c_l.png" />
+    <Content Include="Content\images\c_r.png" />
+    <Content Include="Content\images\datc_coment.gif" />
+    <Content Include="Content\images\fish_bloger.gif" />
+    <Content Include="Content\images\fish_comments.gif" />
+    <Content Include="Content\images\fish_dat.gif" />
     <Content Include="Content\images\fu_i1.png" />
     <Content Include="Content\images\fu_i2.png" />
     <Content Include="Content\images\fu_i3.png" />
     <Content Include="Content\images\fu_i4.png" />
-    <Content Include="Content\images\img11.jpg" />
-    <Content Include="Content\images\img17.jpg" />
+    <Content Include="Content\images\img12.jpg" />
+    <Content Include="Content\images\img14.jpg" />
+    <Content Include="Content\images\img15.jpg" />
+    <Content Include="Content\images\img16.jpg" />
+    <Content Include="Content\images\img_top.jpg" />
+    <Content Include="Content\images\img_top2.jpg" />
+    <Content Include="Content\images\img_top3.jpg" />
+    <Content Include="Content\images\img_top4.jpg" />
+    <Content Include="Content\images\img_top5.jpg" />
+    <Content Include="Content\images\input_txt.png" />
+    <Content Include="Content\images\input_txt2.gif" />
+    <Content Include="Content\images\kv_bot.gif" />
+    <Content Include="Content\images\kv_top.gif" />
+    <Content Include="Content\images\link_out.png" />
+    <Content Include="Content\images\link_out_h.png" />
+    <Content Include="Content\images\next.png" />
+    <Content Include="Content\images\next_h.png" />
+    <Content Include="Content\images\pause.png" />
+    <Content Include="Content\images\pause_h.png" />
     <Content Include="Content\images\piano_js\00_0.gif" />
     <Content Include="Content\images\piano_js\a%27%271.gif" />
     <Content Include="Content\images\piano_js\a%27%2716.gif" />
@@ -662,6 +702,24 @@
     <Content Include="Content\images\piano_js\r4p.gif" />
     <Content Include="Content\images\piano_js\r8.gif" />
     <Content Include="Content\images\play.png" />
+    <Content Include="Content\images\play_h.png" />
+    <Content Include="Content\images\prev.png" />
+    <Content Include="Content\images\prev_h.png" />
+    <Content Include="Content\images\razd_col.gif" />
+    <Content Include="Content\images\razd_h.gif" />
+    <Content Include="Content\images\read.png" />
+    <Content Include="Content\images\sound.png" />
+    <Content Include="Content\images\sound_mute.png" />
+    <Content Include="Content\images\spis.gif" />
+    <Content Include="Content\images\spis2.gif" />
+    <Content Include="Content\images\style.css" />
+    <Content Include="Content\images\text_area.png" />
+    <Content Include="Content\images\text_area2.gif" />
+    <Content Include="Content\images\top_left.png" />
+    <Content Include="Content\images\top_right.png" />
+    <Content Include="Content\images\t_c.png" />
+    <Content Include="Content\images\t_l.png" />
+    <Content Include="Content\images\t_r.png" />
     <Content Include="Content\js\jquery-1.5.2.js" />
     <Content Include="Content\js\jquery.tools.js" />
     <Content Include="Content\js\meledscripts.js" />
@@ -724,7 +782,7 @@
     <Content Include="Content\soundmanager\soundmanager2_flash9.swf" />
     <Content Include="Content\soundmanager\soundmanager2_flash9_debug.swf" />
     <Content Include="Content\styles.css" />
-    <Content Include="Content\stylesheet.css" />
+    <None Include="Content\stylesheet.css.deprecated" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -834,7 +892,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>4875</DevelopmentServerPort>
+          <DevelopmentServerPort>52834</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/FoireMuses.WebInterface</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
