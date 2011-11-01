@@ -11,86 +11,65 @@ namespace FoireMuses.Client
 	/// represent a Score(un air) object in json
 	/// </summary>
 
-	public class SourceSearchItem
+	public class SourceSearchItem : SearchResultItem
 	{
-
-		private JObject json { get; set; }
-
-		public SourceSearchItem()
-		{
-		}
-
-		public SourceSearchItem(JObject jobject)
-		{
-			json = jobject;
-		}
-
 		public string Id
 		{
 			get
 			{
-				return json.RetrieveStringCheck("_id");
+				return Json.RetrieveStringCheck("_id");
 			}
 			set
 			{
-				json.AddCheck("_id", value);
+				Json.AddCheck("_id", value);
 			}
 		}
-
-
 
 		public string Name
 		{
 			get
 			{
-				return json.RetrieveStringCheck("name");
+				return Json.RetrieveStringCheck("name");
 			}
 			set
 			{
-				json.AddCheck("name", value);
+				Json.AddCheck("name", value);
 			}
 		}
-
-
-
 
 		public string Publisher
 		{
 			get
 			{
-				return json.RetrieveStringCheck("publisher");
+				return Json.RetrieveStringCheck("publisher");
 			}
 			set
 			{
-				json.AddCheck("publisher", value);
+				Json.AddCheck("publisher", value);
 			}
 		}
-
-
 
 		public string DateFrom
 		{
 			get
 			{
-				return json.RetrieveStringCheck("dateFrom");
+				return Json.RetrieveStringCheck("dateFrom");
 			}
 			set
 			{
-				json.AddCheck("dateFrom", value);
+				Json.AddCheck("dateFrom", value);
 			}
 		}
-
-
 
 		public string DateTo
 		{
 			get
 			{
-				return json.RetrieveStringCheck("dateTo");
+				return Json.RetrieveStringCheck("dateTo");
 			}
 			set
 			{
-				json.AddCheck("dateTo", value);
+				Json.AddCheck("dateTo", value);
 			}
 		}
 	}

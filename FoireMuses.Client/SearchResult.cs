@@ -8,8 +8,10 @@ using System.Reflection;
 namespace FoireMuses.Client
 {
 
-	public class SearchResult<T>
+	public class SearchResult<T> where T : SearchResultItem, new()
 	{
+		private IList<T> theRows;
+
 		public JObject json { get; private set; }
 		public int Offset { get { return json["offset"].Value<int>(); } }
 		public int Max { get { return json["max"].Value<int>(); } }
@@ -20,18 +22,20 @@ namespace FoireMuses.Client
 			json = jo;
 		}
 
-		public IList<T> Rows
+		public IEnumerable<T> Rows
 		{
 			get{
-				JArray test = json["rows"].Value<JArray>();
-				IList<T> tlist = new List<T>();
-				ConstructorInfo ctor = typeof(T).GetConstructor(new Type[] { typeof(JObject) });
-				foreach (JObject jsonT in test.Values<JObject>())
+				if (theRows == null)
 				{
-					T obj = (T)ctor.Invoke(new object[] { jsonT});
-					tlist.Add(obj);
+					JArray test = json["rows"].Value<JArray>();
+					theRows = new List<T>();
+					ConstructorInfo ctor = typeof (T).GetConstructor(new Type[] {typeof (JObject)});
+					foreach (T obj in test.Values<JObject>().Select(jsonT => new T {Json = jsonT}))
+					{
+						theRows.Add(obj);
+					}
 				}
-				return tlist;
+				return theRows;
 			}
 		}
 	}

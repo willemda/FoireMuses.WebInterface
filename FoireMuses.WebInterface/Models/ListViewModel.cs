@@ -6,7 +6,7 @@ using FoireMuses.Client;
 
 namespace FoireMuses.WebInterface.Models
 {
-    public class ListViewModel<T>
+    public class ListViewModel<T> where T : SearchResultItem, new()
     {
         public SearchResult<T> SearchResult{ get; set; }
         public int CurrentPage { get; set; }

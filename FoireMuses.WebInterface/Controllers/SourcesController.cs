@@ -38,7 +38,7 @@ namespace FoireMuses.WebInterface.Controllers
 		public ViewResult Details(string sourceId)
 		{
 			Source source = null;
-			IList<SourcePageSearchItem> pages = null;
+			IEnumerable<SourcePageSearchItem> pages = null;
 			IEnumerable<string> attachedFiles = null;
 			IEnumerable<string> documents = null;
 			try

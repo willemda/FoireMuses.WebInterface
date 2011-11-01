@@ -32,4 +32,10 @@ namespace FoireMuses.Client
 			}
 		}
 	}
+
+	public class CompleteMusicalSource : MusicalSource
+	{
+		public CompleteMusicalSource(JObject anObject) : base(anObject) { }
+		public Source Source { get; set; }
+	}
 }

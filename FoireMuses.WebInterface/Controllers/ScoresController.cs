@@ -53,7 +53,7 @@ namespace FoireMuses.WebInterface.Controllers
 			Source sTextuelle = null;
 			Source sMusicale = null;
 			Play assPlay = null;
-			IList<ScoreSearchItem> otherTitlesScore = null;
+			IEnumerable<ScoreSearchItem> otherTitlesScore = null;
 			IEnumerable<string> attachedFiles = null;
 			IEnumerable<string> documents = null;
 			try

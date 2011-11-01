@@ -31,20 +31,6 @@ namespace FoireMuses.Client
 			}
 		}
 
-		public int? AirNumber
-		{
-			get
-			{
-				if (theJson["air"] == null)
-					return null;
-				return theJson["air"].Value<int?>();
-			}
-			set
-			{
-				theJson["air"] = value;
-			}
-		}
-
 		public string Comment
 		{
 			get
@@ -86,7 +72,13 @@ namespace FoireMuses.Client
 				theJson["sceneNumber"] = value;
 			}
 		}
+	}
 
-		
+	public class CompleteTextualSource : TextualSource
+	{
+		public CompleteTextualSource(JObject anObject):base(anObject){}
+
+		public Source Source { get; set; }
+		public Play Play { get; set; }
 	}
 }

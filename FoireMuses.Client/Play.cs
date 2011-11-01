@@ -10,41 +10,24 @@ namespace FoireMuses.Client
 	/// <summary>
 	/// represent a Play(une pièce) object in json
 	/// </summary>
-	public class Play 
+	public class Play : SearchResultItem
 	{
-
-		public JObject json { get; private set; }
 
 		public Play()
 		{
-			json = new JObject();
-			json.Add("otype", "play");
-		}
-
-		public Play(JObject jobject)
-		{
-			json = jobject;
-			JToken type;
-			if (json.TryGetValue("otype", out type))
-			{
-				if (type.Value<string>() != "play")
-					throw new Exception("Bad object type");
-			}
-			else
-			{
-				json.Add("otype", "play");
-			}
+			Json = new JObject();
+			Json.Add("otype", "play");
 		}
 
 		public string Id
 		{
 			get
 			{
-				return json.RetrieveStringCheck("_id");
+				return Json.RetrieveStringCheck("_id");
 			}
 			set
 			{
-				json.AddCheck("_id", value);
+				Json.AddCheck("_id", value);
 			}
 		}
 
@@ -52,11 +35,11 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				return json.RetrieveStringCheck("_rev");
+				return Json.RetrieveStringCheck("_rev");
 			}
 			set
 			{
-				json.AddCheck("_rev", value);
+				Json.AddCheck("_rev", value);
 			}
 		}
 
@@ -64,13 +47,13 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (json["abstract"] == null)
+				if (Json["abstract"] == null)
 					return null;
-				return json["abstract"].Value<string>();
+				return Json["abstract"].Value<string>();
 			}
 			set
 			{
-				json["abstract"] = value;
+				Json["abstract"] = value;
 			}
 		}
 
@@ -78,13 +61,13 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (json["actionLocation"] == null)
+				if (Json["actionLocation"] == null)
 					return null;
-				return json["actionLocation"].Value<string>();
+				return Json["actionLocation"].Value<string>();
 			}
 			set
 			{
-				json["actionLocation"] = value;
+				Json["actionLocation"] = value;
 			}
 		}
 
@@ -92,13 +75,13 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (json["author"] == null)
+				if (Json["author"] == null)
 					return null;
-				return json["author"].Value<string>();
+				return Json["author"].Value<string>();
 			}
 			set
 			{
-				json["author"] = value;
+				Json["author"] = value;
 			}
 		}
 
@@ -106,13 +89,13 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (json["comments"] == null)
+				if (Json["comments"] == null)
 					return null;
-				return json["comments"].Value<string>();
+				return Json["comments"].Value<string>();
 			}
 			set
 			{
-				json["comments"] = value;
+				Json["comments"] = value;
 			}
 		}
 
@@ -120,13 +103,13 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (json["creationPlace"] == null)
+				if (Json["creationPlace"] == null)
 					return null;
-				return json["creationPlace"].Value<string>();
+				return Json["creationPlace"].Value<string>();
 			}
 			set
 			{
-				json["creationPlace"] = value;
+				Json["creationPlace"] = value;
 			}
 		}
 
@@ -134,13 +117,13 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (json["creationYear"] == null)
+				if (Json["creationYear"] == null)
 					return null;
-				return json["creationYear"].Value<string>();
+				return Json["creationYear"].Value<string>();
 			}
 			set
 			{
-				json["creationYear"] = value;
+				Json["creationYear"] = value;
 			}
 		}
 
@@ -148,13 +131,13 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (json["critics"] == null)
+				if (Json["critics"] == null)
 					return null;
-				return json["critics"].Value<string>();
+				return Json["critics"].Value<string>();
 			}
 			set
 			{
-				json["critics"] = value;
+				Json["critics"] = value;
 			}
 		}
 
@@ -162,13 +145,13 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (json["decors"] == null)
+				if (Json["decors"] == null)
 					return null;
-				return json["decors"].Value<string>();
+				return Json["decors"].Value<string>();
 			}
 			set
 			{
-				json["decors"] = value;
+				Json["decors"] = value;
 			}
 		}
 
@@ -176,13 +159,13 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (json["entrepreneurName"] == null)
+				if (Json["entrepreneurName"] == null)
 					return null;
-				return json["entrepreneurName"].Value<string>();
+				return Json["entrepreneurName"].Value<string>();
 			}
 			set
 			{
-				json["entrepreneurName"] = value;
+				Json["entrepreneurName"] = value;
 			}
 		}
 
@@ -190,13 +173,13 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (json["type"] == null)
+				if (Json["type"] == null)
 					return null;
-				return json["type"].Value<string>();
+				return Json["type"].Value<string>();
 			}
 			set
 			{
-				json["type"] = value;
+				Json["type"] = value;
 			}
 		}
 
@@ -204,13 +187,13 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (json["iconography"] == null)
+				if (Json["iconography"] == null)
 					return null;
-				return json["iconography"].Value<string>();
+				return Json["iconography"].Value<string>();
 			}
 			set
 			{
-				json["iconography"] = value;
+				Json["iconography"] = value;
 			}
 		}
 
@@ -218,13 +201,13 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (json["musicianName"] == null)
+				if (Json["musicianName"] == null)
 					return null;
-				return json["musicianName"].Value<string>();
+				return Json["musicianName"].Value<string>();
 			}
 			set
 			{
-				json["musicianName"] = value;
+				Json["musicianName"] = value;
 			}
 		}
 
@@ -232,13 +215,13 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (json["resonances"] == null)
+				if (Json["resonances"] == null)
 					return null;
-				return json["resonances"].Value<string>();
+				return Json["resonances"].Value<string>();
 			}
 			set
 			{
-				json["resonances"] = value;
+				Json["resonances"] = value;
 			}
 		}
 
@@ -246,13 +229,13 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (json["sourceFolio"] == null)
+				if (Json["sourceFolio"] == null)
 					return null;
-				return json["sourceFolio"].Value<string>();
+				return Json["sourceFolio"].Value<string>();
 			}
 			set
 			{
-				json["sourceFolio"] = value;
+				Json["sourceFolio"] = value;
 			}
 		}
 
@@ -260,13 +243,13 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (json["title"] == null)
+				if (Json["title"] == null)
 					return null;
-				return json["title"].Value<string>();
+				return Json["title"].Value<string>();
 			}
 			set
 			{
-				json["title"] = value;
+				Json["title"] = value;
 			}
 		}
 
@@ -274,13 +257,13 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (json["sourceId"] == null)
+				if (Json["sourceId"] == null)
 					return null;
-				return json["sourceId"].Value<string>();
+				return Json["sourceId"].Value<string>();
 			}
 			set
 			{
-				json["sourceId"] = value;
+				Json["sourceId"] = value;
 			}
 		}
 
@@ -288,13 +271,13 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (json["sourceTome"] == null)
+				if (Json["sourceTome"] == null)
 					return null;
-				return json["sourceTome"].Value<int?>();
+				return Json["sourceTome"].Value<int?>();
 			}
 			set
 			{
-				json["sourceTome"] = value;
+				Json["sourceTome"] = value;
 			}
 		}
 
@@ -302,76 +285,76 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (json["sourceVolume"] == null)
+				if (Json["sourceVolume"] == null)
 					return null;
-				return json["sourceVolume"].Value<int?>();
+				return Json["sourceVolume"].Value<int?>();
 			}
 			set
 			{
-				json["sourceVolume"] = value;
+				Json["sourceVolume"] = value;
 			}
 		}
 
 		public IEnumerable<string> Tags
 		{
-			get { return json["tags"].Values<string>(); }
+			get { return Json["tags"].Values<string>(); }
 		}
 
 		public void AddTag(string tag)
 		{
 			if (!Tags.Contains(tag))
 			{
-				JArray temp = json["tags"].Value<JArray>();
+				JArray temp = Json["tags"].Value<JArray>();
 				temp.Add(tag);
-				json["tags"] = temp;
+				Json["tags"] = temp;
 			}
 		}
 
 		public void RemoveTag(string tag)
 		{
-			json["tags"] = json["tags"].Value<JArray>().Remove(tag);
+			Json["tags"] = Json["tags"].Value<JArray>().Remove(tag);
 		}
 
 		public string CreatorId
 		{
 			get {
-				if (json["creatorId"] == null)
+				if (Json["creatorId"] == null)
 					return null;
-				return json["creatorId"].Value<string>(); }
-			private set { json["creatorId"] = value; }
+				return Json["creatorId"].Value<string>(); }
+			private set { Json["creatorId"] = value; }
 		}
 
 		public string LastModifierId
 		{
 			get {
-				if (json["lastModifierId"] == null)
+				if (Json["lastModifierId"] == null)
 					return null;
-				return json["lastModifierId"].Value<string>(); }
-			private set { json["lastModifierId"] = value; }
+				return Json["lastModifierId"].Value<string>(); }
+			private set { Json["lastModifierId"] = value; }
 		}
 
 		public IEnumerable<string> CollaboratorsId
 		{
-			get { return json["collaboratorsId"].Values<string>(); }
+			get { return Json["collaboratorsId"].Values<string>(); }
 		}
 
 		public void AddCollaborator(string collab)
 		{
 			if (!Tags.Contains(collab))
 			{
-				JArray temp = json["collaboratorsId"].Value<JArray>();
+				JArray temp = Json["collaboratorsId"].Value<JArray>();
 				temp.Add(collab);
-				json["collaboratorsId"] = temp;
+				Json["collaboratorsId"] = temp;
 			}
 		}
 
 		public void RemoveCollaborator(string collab)
 		{
-			json["collaboratorsId"] = json["collaboratorsId"].Value<JArray>().Remove(collab);
+			Json["collaboratorsId"] = Json["collaboratorsId"].Value<JArray>().Remove(collab);
 		}
 		public override string ToString()
 		{
-			string jsonS = json.ToString();
+			string jsonS = Json.ToString();
 			return jsonS;
 		}
 	}

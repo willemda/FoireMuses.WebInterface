@@ -818,9 +818,6 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Scores\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Plays\List.cshtml" />
   </ItemGroup>
   <ItemGroup>

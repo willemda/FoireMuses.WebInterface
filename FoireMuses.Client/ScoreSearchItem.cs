@@ -10,29 +10,16 @@ namespace FoireMuses.Client
 	/// <summary>
 	/// represent a Score(un air) object in json
 	/// </summary>
-
-	public class ScoreSearchItem
+	public class ScoreSearchItem : SearchResultItem
 	{
-		private readonly JObject theJson;
-
-		public ScoreSearchItem()
-		{
-		}
-
-		public ScoreSearchItem(JObject aJObject)
-		{
-			theJson = aJObject;
-		}
+		private CompleteTextualSource theCompleteTextualSource;
+		private CompleteMusicalSource theCompleteMusicalSource;
 
 		public string Id
 		{
 			get
 			{
-				return theJson.RetrieveStringCheck("_id");
-			}
-			set
-			{
-				theJson.AddCheck("_id", value);
+				return Json.RetrieveStringCheck("_id");
 			}
 		}
 
@@ -40,11 +27,7 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				return theJson.RetrieveStringCheck("title");
-			}
-			set
-			{
-				theJson.AddCheck("title", value);
+				return Json.RetrieveStringCheck("title");
 			}
 		}
 
@@ -52,11 +35,7 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				return theJson.RetrieveStringCheck("composer");
-			}
-			set
-			{
-				theJson.AddCheck("composer", value);
+				return Json.RetrieveStringCheck("composer");
 			}
 		}
 
@@ -64,11 +43,7 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				return theJson.RetrieveStringCheck("verses");
-			}
-			set
-			{
-				theJson.AddCheck("verses", value);
+				return Json.RetrieveStringCheck("verses");
 			}
 		}
 
@@ -76,35 +51,27 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				return theJson.RetrieveStringCheck("editor");
-			}
-			set
-			{
-				theJson.AddCheck("editor", value);
+				return Json.RetrieveStringCheck("editor");
 			}
 		}
 
-		public string MusicalSourceReferenceText
+		public CompleteMusicalSource MusicalSource
 		{
 			get
 			{
-				return theJson.RetrieveStringCheck("musicalSourceReferenceText");
-			}
-			set
-			{
-				theJson.AddCheck("musicalSourceReferenceText", value);
+				if (theCompleteMusicalSource == null)
+					theCompleteMusicalSource = new CompleteMusicalSource((JObject)Json["musicalSource"]);
+				return theCompleteMusicalSource;
 			}
 		}
 
-		public string TextualSourceReferenceText
+		public CompleteTextualSource TextualSource
 		{
 			get
 			{
-				return theJson.RetrieveStringCheck("textualSourceReferenceText");
-			}
-			set
-			{
-				theJson.AddCheck("textualSourceReferenceText", value);
+				if (theCompleteTextualSource == null)
+					theCompleteTextualSource = new CompleteTextualSource((JObject)Json["textualSource"]);
+				return theCompleteTextualSource;
 			}
 		}
 	}

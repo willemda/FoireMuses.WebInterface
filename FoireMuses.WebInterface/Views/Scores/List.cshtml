@@ -31,10 +31,10 @@
 								</div>
 							}
 							<div>
-							@score.TextualSourceReferenceText
+							@Helpers.TextualSource(score.TextualSource,score.TextualSource.Source,score.TextualSource.Play)
 							</div>
 							<div>
-							@score.MusicalSourceReferenceText
+							@Helpers.MusicalSource(score.MusicalSource, score.MusicalSource.Source)
 							</div>
 						</div>
 					</li>

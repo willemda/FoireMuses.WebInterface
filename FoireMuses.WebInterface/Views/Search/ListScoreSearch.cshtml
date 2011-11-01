@@ -22,7 +22,7 @@ Resultats
 @{
 	bool fonce = true;
 	foreach (var score in Model.SearchResult.Rows){
-	<li class="@(if(fonce){"fonce"})">
+	<li class="@(fonce ? "fonce": String.Empty)">
 		<div class="score-item">
 			<div class="score-title"><a href="../Scores/Details?scoreId=@score.Id">@score.Title</a></div>
 			@if (score.Editor != null){
@@ -34,6 +34,12 @@ Resultats
 				}
 				<div class="score-composer">composed by @score.Composer</div>
 			}
+			<div>
+				@Helpers.TextualSource(score.TextualSource,score.TextualSource.Source,score.TextualSource.Play)
+			</div>
+			<div>
+				@Helpers.MusicalSource(score.MusicalSource, score.MusicalSource.Source)
+			</div>
 		</div>
 	</li>
 	fonce = !fonce;

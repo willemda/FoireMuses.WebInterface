@@ -1,0 +1,380 @@
+2011-10-22 22:21:25,402 [8] DEBUG MindTouch.Tasking.Async [(null)] - Using ElasticThreadPool with 4min / 200max
+2011-10-22 22:21:29,809 [8] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #13 created
+2011-10-22 22:21:29,856 [8] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #14 created
+2011-10-22 22:21:29,871 [8] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #15 created
+2011-10-22 22:21:29,871 [8] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #16 created
+2011-10-22 22:21:29,871 [8] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #17 created
+2011-10-22 22:21:29,902 [8] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #18 created
+2011-10-22 22:21:29,902 [8] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #19 created
+2011-10-22 22:21:29,902 [8] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #20 created
+2011-10-22 22:21:29,918 [8] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #21 created
+2011-10-22 22:21:29,918 [8] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #22 created
+2011-10-22 22:21:29,934 [8] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #23 created
+2011-10-22 22:21:29,934 [8] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #24 created
+2011-10-22 22:21:29,949 [8] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #25 created
+2011-10-22 22:21:29,949 [8] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #26 created
+2011-10-22 22:21:29,981 [8] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #27 created
+2011-10-22 22:21:29,996 [8] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #28 created
+2011-10-22 22:21:29,996 [8] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #29 created
+2011-10-22 22:21:30,012 [8] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #30 created
+2011-10-22 22:21:30,012 [8] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #31 created
+2011-10-22 22:21:30,043 [8] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #32 created
+2011-10-22 22:21:30,043 [8] DEBUG MindTouch.Threading.DispatchThreadScheduler [(null)] - request 4 threads to be created
+2011-10-22 22:21:30,074 [8] DEBUG MindTouch.Threading.ElasticThreadPool [(null)] - Create @ElasticThreadPool @1 (current: 0, reserve: 0, velocity: 0, min: 4, max: 200, items: 0)
+2011-10-22 22:21:30,137 [9] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #33 created
+2011-10-22 22:21:30,168 [9] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #34 created
+2011-10-22 22:21:30,184 [9] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #35 created
+2011-10-22 22:21:30,215 [9] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #37 created
+2011-10-22 22:23:30,019 [DispatchThread #28] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.ArgumentNullException: Value cannot be null.
+Parameter name: exception
+   at MindTouch.Tasking.AResult.Throw(Exception exception) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 323
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClass46.<SearchScore>b__45(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 590
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-10-22 22:23:30,034 [DispatchThread #29] ERROR MindTouch.Dream.Http.HttpPlugEndpoint [(null)] - HandleInvoke@BeginGetResponse(GET, http://localhost:8080/foiremuses/scores/search?music=c'2)
+System.TimeoutException: async operation timed out
+2011-10-22 22:48:39,190 [10] DEBUG MindTouch.Tasking.Async [(null)] - Using ElasticThreadPool with 4min / 200max
+2011-10-22 22:48:45,190 [10] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #42 created
+2011-10-22 22:48:45,393 [10] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #5 created
+2011-10-22 22:48:45,471 [10] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #36 created
+2011-10-22 22:48:45,471 [10] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #8 created
+2011-10-22 22:48:45,486 [10] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #39 created
+2011-10-22 22:48:45,486 [10] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #38 created
+2011-10-22 22:48:45,486 [10] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #37 created
+2011-10-22 22:48:45,502 [10] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #35 created
+2011-10-22 22:48:45,518 [10] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #34 created
+2011-10-22 22:48:45,518 [10] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #33 created
+2011-10-22 22:48:45,533 [10] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #32 created
+2011-10-22 22:48:45,533 [10] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #31 created
+2011-10-22 22:48:45,580 [10] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #30 created
+2011-10-22 22:48:45,580 [10] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #29 created
+2011-10-22 22:48:45,596 [10] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #28 created
+2011-10-22 22:48:45,596 [10] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #27 created
+2011-10-22 22:48:45,611 [10] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #26 created
+2011-10-22 22:48:45,627 [10] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #25 created
+2011-10-22 22:48:45,658 [10] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #24 created
+2011-10-22 22:48:45,674 [10] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #23 created
+2011-10-22 22:48:45,690 [10] DEBUG MindTouch.Threading.DispatchThreadScheduler [(null)] - request 4 threads to be created
+2011-10-22 22:48:45,690 [10] DEBUG MindTouch.Threading.ElasticThreadPool [(null)] - Create @ElasticThreadPool @1 (current: 0, reserve: 0, velocity: 0, min: 4, max: 200, items: 0)
+2011-10-22 22:48:45,908 [41] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #22 created
+2011-10-22 22:48:45,924 [41] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #20 created
+2011-10-22 22:48:45,924 [41] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #19 created
+2011-10-22 22:48:45,940 [41] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #18 created
+2011-10-22 22:58:54,134 [17] DEBUG MindTouch.Tasking.Async [(null)] - Using ElasticThreadPool with 4min / 200max
+2011-10-22 22:58:57,352 [17] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #19 created
+2011-10-22 22:58:57,399 [17] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #20 created
+2011-10-22 22:58:57,415 [17] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #21 created
+2011-10-22 22:58:57,431 [17] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #22 created
+2011-10-22 22:58:57,446 [17] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #23 created
+2011-10-22 22:58:57,446 [17] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #24 created
+2011-10-22 22:58:57,462 [17] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #25 created
+2011-10-22 22:58:57,477 [17] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #26 created
+2011-10-22 22:58:57,477 [17] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #27 created
+2011-10-22 22:58:57,493 [17] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #28 created
+2011-10-22 22:58:57,524 [17] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #29 created
+2011-10-22 22:58:57,524 [17] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #30 created
+2011-10-22 22:58:57,540 [17] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #31 created
+2011-10-22 22:58:57,556 [17] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #32 created
+2011-10-22 22:58:57,556 [17] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #33 created
+2011-10-22 22:58:57,571 [17] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #34 created
+2011-10-22 22:58:57,587 [17] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #35 created
+2011-10-22 22:58:57,587 [17] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #37 created
+2011-10-22 22:58:57,602 [17] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #38 created
+2011-10-22 22:58:57,602 [17] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #39 created
+2011-10-22 22:58:57,618 [17] DEBUG MindTouch.Threading.DispatchThreadScheduler [(null)] - request 4 threads to be created
+2011-10-22 22:58:57,618 [17] DEBUG MindTouch.Threading.ElasticThreadPool [(null)] - Create @ElasticThreadPool @1 (current: 0, reserve: 0, velocity: 0, min: 4, max: 200, items: 0)
+2011-10-22 22:58:57,821 [18] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #8 created
+2011-10-22 22:58:57,821 [18] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #5 created
+2011-10-22 22:58:57,852 [18] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #42 created
+2011-10-22 22:58:57,868 [18] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #41 created
+2011-10-22 23:04:47,841 [DispatchThread #33] ERROR MindTouch.Dream.Http.HttpPlugEndpoint [(null)] - HandleInvoke@EndGetResponse(GET, http://localhost:8080/foiremuses/scores/search?music=c'2)
+System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:8080
+   at System.Net.Sockets.Socket.EndConnect(IAsyncResult asyncResult)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.EndGetResponse(IAsyncResult asyncResult)
+   at MindTouch.Dream.Http.HttpPlugEndpoint.<HandleInvoke>d__d.MoveNext() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\plug\HttpPlugEndpoint.cs:line 361
+2011-10-22 23:04:47,920 [DispatchThread #34] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.ArgumentNullException: Value cannot be null.
+Parameter name: exception
+   at MindTouch.Tasking.AResult.Throw(Exception exception) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 323
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClass49.<SearchScore>b__48(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 590
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-10-31 08:41:08,257 [65] DEBUG MindTouch.Tasking.Async [(null)] - Using ElasticThreadPool with 4min / 200max
+2011-10-31 08:41:11,224 [65] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #63 created
+2011-10-31 08:41:11,275 [65] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #62 created
+2011-10-31 08:41:11,292 [65] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #61 created
+2011-10-31 08:41:11,292 [65] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #60 created
+2011-10-31 08:41:11,326 [65] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #59 created
+2011-10-31 08:41:11,343 [65] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #58 created
+2011-10-31 08:41:11,360 [65] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #57 created
+2011-10-31 08:41:11,360 [65] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #56 created
+2011-10-31 08:41:11,377 [65] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #55 created
+2011-10-31 08:41:11,394 [65] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #54 created
+2011-10-31 08:41:11,428 [65] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #53 created
+2011-10-31 08:41:11,480 [65] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #52 created
+2011-10-31 08:41:11,497 [65] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #51 created
+2011-10-31 08:41:11,514 [65] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #50 created
+2011-10-31 08:41:11,531 [65] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #49 created
+2011-10-31 08:41:11,548 [65] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #48 created
+2011-10-31 08:41:11,565 [65] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #43 created
+2011-10-31 08:41:11,565 [65] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #17 created
+2011-10-31 08:41:11,582 [65] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #15 created
+2011-10-31 08:41:11,599 [65] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #13 created
+2011-10-31 08:41:11,633 [65] DEBUG MindTouch.Threading.DispatchThreadScheduler [(null)] - request 4 threads to be created
+2011-10-31 08:41:11,633 [65] DEBUG MindTouch.Threading.ElasticThreadPool [(null)] - Create @ElasticThreadPool @1 (current: 0, reserve: 0, velocity: 0, min: 4, max: 200, items: 0)
+2011-10-31 08:41:11,872 [68] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #40 created
+2011-10-31 08:41:11,889 [68] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #18 created
+2011-10-31 08:41:11,907 [68] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #10 created
+2011-10-31 08:41:11,924 [68] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #36 created
+2011-10-31 08:58:33,537 [77] DEBUG MindTouch.Tasking.Async [(null)] - Using ElasticThreadPool with 4min / 200max
+2011-10-31 08:58:36,427 [77] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #75 created
+2011-10-31 08:58:36,443 [77] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #36 created
+2011-10-31 08:58:36,459 [77] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #10 created
+2011-10-31 08:58:36,474 [77] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #18 created
+2011-10-31 08:58:36,506 [77] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #11 created
+2011-10-31 08:58:36,506 [77] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #40 created
+2011-10-31 08:58:36,521 [77] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #13 created
+2011-10-31 08:58:36,552 [77] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #15 created
+2011-10-31 08:58:36,568 [77] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #17 created
+2011-10-31 08:58:36,584 [77] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #43 created
+2011-10-31 08:58:36,584 [77] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #48 created
+2011-10-31 08:58:36,599 [77] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #49 created
+2011-10-31 08:58:36,615 [77] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #50 created
+2011-10-31 08:58:36,631 [77] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #51 created
+2011-10-31 08:58:36,646 [77] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #52 created
+2011-10-31 08:58:36,662 [77] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #53 created
+2011-10-31 08:58:36,662 [77] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #54 created
+2011-10-31 08:58:36,709 [77] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #55 created
+2011-10-31 08:58:36,709 [77] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #56 created
+2011-10-31 08:58:36,724 [77] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #57 created
+2011-10-31 08:58:36,740 [77] DEBUG MindTouch.Threading.DispatchThreadScheduler [(null)] - request 4 threads to be created
+2011-10-31 08:58:36,740 [77] DEBUG MindTouch.Threading.ElasticThreadPool [(null)] - Create @ElasticThreadPool @1 (current: 0, reserve: 0, velocity: 0, min: 4, max: 200, items: 0)
+2011-10-31 08:58:36,896 [16] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #58 created
+2011-10-31 08:58:36,959 [16] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #60 created
+2011-10-31 08:58:36,990 [16] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #61 created
+2011-10-31 08:58:37,006 [16] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #62 created
+2011-10-31 09:02:46,755 [16] DEBUG MindTouch.Tasking.Async [(null)] - Using ElasticThreadPool with 4min / 200max
+2011-10-31 09:02:50,606 [16] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #64 created
+2011-10-31 09:02:50,668 [16] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #66 created
+2011-10-31 09:02:50,699 [16] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #65 created
+2011-10-31 09:02:50,715 [16] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #69 created
+2011-10-31 09:02:50,731 [16] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #19 created
+2011-10-31 09:02:50,746 [16] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #71 created
+2011-10-31 09:02:50,762 [16] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #74 created
+2011-10-31 09:02:50,777 [16] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #73 created
+2011-10-31 09:02:50,793 [16] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #72 created
+2011-10-31 09:02:50,824 [16] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #20 created
+2011-10-31 09:02:50,871 [16] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #21 created
+2011-10-31 09:02:50,902 [16] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #22 created
+2011-10-31 09:02:50,918 [16] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #23 created
+2011-10-31 09:02:50,918 [16] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #24 created
+2011-10-31 09:02:50,934 [16] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #25 created
+2011-10-31 09:02:50,949 [16] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #26 created
+2011-10-31 09:02:50,965 [16] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #27 created
+2011-10-31 09:02:50,965 [16] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #28 created
+2011-10-31 09:02:50,981 [16] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #29 created
+2011-10-31 09:02:50,981 [16] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #30 created
+2011-10-31 09:02:50,996 [16] DEBUG MindTouch.Threading.DispatchThreadScheduler [(null)] - request 4 threads to be created
+2011-10-31 09:02:50,996 [16] DEBUG MindTouch.Threading.ElasticThreadPool [(null)] - Create @ElasticThreadPool @1 (current: 0, reserve: 0, velocity: 0, min: 4, max: 200, items: 0)
+2011-10-31 09:02:51,121 [9] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #31 created
+2011-10-31 09:02:51,137 [9] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #33 created
+2011-10-31 09:02:51,137 [9] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #34 created
+2011-10-31 09:02:51,152 [9] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #35 created
+2011-10-31 18:12:11,054 [42] DEBUG MindTouch.Tasking.Async [(null)] - Using ElasticThreadPool with 4min / 200max
+2011-10-31 18:12:13,633 [42] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #29 created
+2011-10-31 18:12:13,774 [42] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #28 created
+2011-10-31 18:12:13,868 [42] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #27 created
+2011-10-31 18:12:13,899 [42] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #26 created
+2011-10-31 18:12:13,915 [42] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #25 created
+2011-10-31 18:12:13,915 [42] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #24 created
+2011-10-31 18:12:13,930 [42] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #23 created
+2011-10-31 18:12:13,930 [42] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #22 created
+2011-10-31 18:12:13,946 [42] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #21 created
+2011-10-31 18:12:13,962 [42] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #20 created
+2011-10-31 18:12:13,962 [42] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #72 created
+2011-10-31 18:12:13,977 [42] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #73 created
+2011-10-31 18:12:13,977 [42] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #74 created
+2011-10-31 18:12:13,993 [42] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #71 created
+2011-10-31 18:12:13,993 [42] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #19 created
+2011-10-31 18:12:14,008 [42] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #69 created
+2011-10-31 18:12:14,008 [42] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #65 created
+2011-10-31 18:12:14,024 [42] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #66 created
+2011-10-31 18:12:14,024 [42] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #64 created
+2011-10-31 18:12:14,040 [42] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #47 created
+2011-10-31 18:12:14,055 [42] DEBUG MindTouch.Threading.DispatchThreadScheduler [(null)] - request 4 threads to be created
+2011-10-31 18:12:14,055 [42] DEBUG MindTouch.Threading.ElasticThreadPool [(null)] - Create @ElasticThreadPool @1 (current: 0, reserve: 0, velocity: 0, min: 4, max: 200, items: 0)
+2011-10-31 18:12:14,212 [45] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #123 created
+2011-10-31 18:12:14,243 [45] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #121 created
+2011-10-31 18:12:14,243 [DispatchThread #65] ERROR MindTouch.Threading.DispatchThread [(null)] - DispatchLoop #65: FATAL ERROR
+System.InvalidOperationException: async operation has not finished
+   at MindTouch.Tasking.AResult.EnsureFinished() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 349
+   at MindTouch.Tasking.AResult.get_Exception() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 276
+   at MindTouch.Tasking.AResult.Confirm() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 311
+   at MindTouch.Tasking.Result`1.get_Value() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1099
+   at MindTouch.Threading.DispatchThread.DispatchLoop() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Threading\DispatchThread.cs:line 172
+2011-10-31 18:12:14,274 [45] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #79 created
+2011-10-31 18:12:14,274 [45] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #68 created
+2011-10-31 18:12:48,861 [DispatchThread #69] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.ArgumentNullException: Value cannot be null.
+Parameter name: exception
+   at MindTouch.Tasking.AResult.Throw(Exception exception) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 323
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClass8.<GetPlay>b__7(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 104
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-10-31 18:22:19,022 [DispatchThread #19] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.TimeoutException: async operation timed out
+   at System.SysUtil.Rethrow(Exception exception) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\system\SysUtil.cs:line 161
+   at MindTouch.Tasking.AResult.Confirm() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 313
+   at MindTouch.Tasking.AResult.Wait() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 650
+   at MindTouch.Tasking.Result`1.Wait() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1317
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClass34.<GetScores>b__33(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 444
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-10-31 18:22:26,930 [75] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #18 created
+2011-10-31 18:22:27,211 [75] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #50 created
+2011-10-31 18:22:27,289 [75] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #80 created
+2011-10-31 18:22:27,336 [75] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #84 created
+2011-10-31 18:22:27,367 [75] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #86 created
+2011-10-31 18:22:27,414 [75] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #85 created
+2011-10-31 18:22:27,461 [75] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #87 created
+2011-10-31 18:22:27,492 [75] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #88 created
+2011-10-31 18:22:27,539 [75] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #89 created
+2011-10-31 18:22:27,555 [75] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #90 created
+2011-10-31 18:22:27,586 [75] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #91 created
+2011-10-31 18:22:27,602 [75] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #92 created
+2011-10-31 18:22:27,617 [75] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #93 created
+2011-10-31 18:22:27,633 [75] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #94 created
+2011-10-31 18:22:27,648 [75] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #95 created
+2011-10-31 18:22:27,664 [75] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #96 created
+2011-10-31 18:22:27,680 [75] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #97 created
+2011-10-31 18:22:27,695 [75] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #98 created
+2011-10-31 18:22:27,711 [75] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #99 created
+2011-10-31 18:22:27,727 [75] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #100 created
+2011-10-31 18:22:27,742 [75] DEBUG MindTouch.Threading.DispatchThreadScheduler [(null)] - request 4 threads to be created
+2011-10-31 18:22:27,758 [75] DEBUG MindTouch.Threading.ElasticThreadPool [(null)] - Create @ElasticThreadPool @1 (current: 0, reserve: 0, velocity: 0, min: 4, max: 200, items: 0)
+2011-10-31 18:22:27,805 [36] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #101 created
+2011-10-31 18:22:27,820 [36] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #103 created
+2011-10-31 18:22:27,883 [36] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #104 created
+2011-10-31 18:22:27,914 [36] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #105 created
+2011-10-31 18:41:12,244 [11] DEBUG MindTouch.Tasking.Async [(null)] - Using ElasticThreadPool with 4min / 200max
+2011-10-31 18:41:18,846 [11] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #36 created
+2011-10-31 18:41:19,070 [11] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #10 created
+2011-10-31 18:41:19,083 [11] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #17 created
+2011-10-31 18:41:19,095 [11] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #13 created
+2011-10-31 18:41:19,095 [11] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #40 created
+2011-10-31 18:41:19,107 [11] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #15 created
+2011-10-31 18:41:19,120 [11] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #43 created
+2011-10-31 18:41:19,120 [11] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #48 created
+2011-10-31 18:41:19,132 [11] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #49 created
+2011-10-31 18:41:19,145 [11] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #51 created
+2011-10-31 18:41:19,145 [11] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #52 created
+2011-10-31 18:41:19,157 [11] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #53 created
+2011-10-31 18:41:19,157 [11] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #54 created
+2011-10-31 18:41:19,170 [11] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #55 created
+2011-10-31 18:41:19,170 [11] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #56 created
+2011-10-31 18:41:19,182 [11] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #57 created
+2011-10-31 18:41:19,182 [11] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #58 created
+2011-10-31 18:41:19,195 [11] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #59 created
+2011-10-31 18:41:19,207 [11] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #60 created
+2011-10-31 18:41:19,207 [11] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #61 created
+2011-10-31 18:41:19,220 [11] DEBUG MindTouch.Threading.DispatchThreadScheduler [(null)] - request 4 threads to be created
+2011-10-31 18:41:19,220 [11] DEBUG MindTouch.Threading.ElasticThreadPool [(null)] - Create @ElasticThreadPool @1 (current: 0, reserve: 0, velocity: 0, min: 4, max: 200, items: 0)
+2011-10-31 18:41:19,312 [122] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #62 created
+2011-10-31 18:41:19,323 [122] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #9 created
+2011-10-31 18:41:19,334 [122] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #37 created
+2011-10-31 18:41:19,334 [122] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #38 created
+2011-10-31 18:41:29,946 [DispatchThread #59] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-10-31 18:41:29,956 [DispatchThread #57] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-10-31 18:41:30,057 [DispatchThread #58] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-10-31 18:41:30,299 [DispatchThread #57] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-10-31 18:41:30,329 [DispatchThread #58] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-10-31 18:41:30,329 [DispatchThread #59] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-10-31 18:41:30,501 [DispatchThread #58] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-10-31 18:41:31,026 [DispatchThread #57] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-10-31 18:41:31,026 [DispatchThread #58] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-10-31 18:41:31,026 [DispatchThread #59] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-10-31 18:41:31,187 [DispatchThread #55] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-10-31 18:41:31,248 [DispatchThread #59] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-10-31 18:41:31,298 [DispatchThread #58] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-10-31 18:41:31,298 [DispatchThread #57] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-10-31 18:41:31,419 [DispatchThread #59] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-10-31 18:41:36,261 [DispatchThread #57] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492

@@ -16,6 +16,7 @@ namespace FoireMuses.Client
 	{
 		private Plug theServiceUri;
 		private ICredentials theCredentials;
+		private Dictionary<string, Source> theSourcesCache = new Dictionary<string, Source>();
 
 		public FoireMusesConnection(XUri aServiceUri, string username, string password)
 			: this(aServiceUri, new NetworkCredential(username, password))
@@ -105,17 +106,22 @@ namespace FoireMuses.Client
 					}
 					else
 					{
-						aResult.Return(new Play(JObject.Parse(answer.Value.ToText())));
+						aResult.Return(new Play {Json = JObject.Parse(answer.Value.ToText())});
 					}
 				}
 				);
 			return aResult;
 		}
 
-		public Result<Source> GetSource(string SourceId, Result<Source> aResult)
+		public Result<Source> GetSource(string aSourceId, Result<Source> aResult)
 		{
+			if (theSourcesCache.ContainsKey(aSourceId))
+			{
+				aResult.Return(theSourcesCache[aSourceId]);
+			}
+
 			theServiceUri
-				.At("sources", SourceId)
+				.At("sources", aSourceId)
 				.Get(new Result<DreamMessage>())
 				.WhenDone(delegate(Result<DreamMessage> answer)
 				{
@@ -128,7 +134,14 @@ namespace FoireMuses.Client
 					}
 					else
 					{
-						aResult.Return(new Source(JObject.Parse(answer.Value.ToText())));
+						Source src = new Source(JObject.Parse(answer.Value.ToText()));
+						lock(theSourcesCache)
+						{
+							if (theSourcesCache.ContainsKey(aSourceId))
+								theSourcesCache.Remove(aSourceId);
+							theSourcesCache.Add(aSourceId,src);
+						}
+						aResult.Return(src);
 					}
 				}
 				);
@@ -160,6 +173,12 @@ namespace FoireMuses.Client
 
 		public Result<Source> UpdateSource(Source Source, Result<Source> aResult)
 		{
+			lock (theSourcesCache)
+			{
+				if (theSourcesCache.ContainsKey(Source.Id))
+					theSourcesCache.Remove(Source.Id);
+			}
+
 			theServiceUri
 				.At("sources",Source.Id)
 				.With("rev", Source.Rev)
@@ -381,7 +400,7 @@ namespace FoireMuses.Client
 					}
 					else
 					{
-						aResult.Return(new Play(JObject.Parse(answer.Value.ToText())));
+						aResult.Return(new Play {Json = JObject.Parse(answer.Value.ToText())});
 					}
 				}
 				);
@@ -403,7 +422,7 @@ namespace FoireMuses.Client
 				          		}
 				          		else
 				          		{
-				          			aResult.Return(new Play(JObject.Parse(answer.Value.ToText())));
+				          			aResult.Return(new Play{Json = JObject.Parse(answer.Value.ToText())});
 				          		}
 				          	}
 				);
@@ -411,12 +430,12 @@ namespace FoireMuses.Client
 			return aResult;
 		}
 
-		public Result<SearchResult<ScoreSearchItem>> GetScores(int offset, int max, Result<SearchResult<ScoreSearchItem>> aResult)
+		public Result<SearchResult<ScoreSearchItem>> GetScores(int anOffset, int aMax, Result<SearchResult<ScoreSearchItem>> aResult)
 		{
 			theServiceUri
 				.At("scores")
-				.With("offset", offset)
-				.With("max", max)
+				.With("offset", anOffset)
+				.With("max", aMax)
 				.Get(new Result<DreamMessage>())
 				.WhenDone(delegate(Result<DreamMessage> answer)
 					{
@@ -429,7 +448,28 @@ namespace FoireMuses.Client
 						}
 						else
 						{
-							aResult.Return(new SearchResult<ScoreSearchItem>(JObject.Parse(answer.Value.ToText())));
+							SearchResult<ScoreSearchItem> searchResult =
+								new SearchResult<ScoreSearchItem>(JObject.Parse(answer.Value.ToText()));
+
+							foreach(ScoreSearchItem item in searchResult.Rows)
+							{
+								if(item.TextualSource != null && !String.IsNullOrEmpty(item.TextualSource.SourceId))
+								{
+									Source src = GetSource(item.TextualSource.SourceId, new Result<Source>()).Wait();
+
+									item.TextualSource.Source = src;
+									if(!String.IsNullOrEmpty(item.TextualSource.PieceId))
+									{
+										item.TextualSource.Play = GetPlay(item.TextualSource.PieceId, new Result<Play>()).Wait();
+									}
+								}
+								if(item.MusicalSource != null && !String.IsNullOrEmpty(item.MusicalSource.SourceId))
+								{
+									item.MusicalSource.Source = GetSource(item.MusicalSource.SourceId, new Result<Source>()).Wait();
+								}
+							}
+
+							aResult.Return(searchResult);
 						}
 					}
 				);
@@ -591,7 +631,28 @@ namespace FoireMuses.Client
 				}
 				else
 				{
-					aResult.Return(new SearchResult<ScoreSearchItem>(JObject.Parse(answer.Value.ToText())));
+					SearchResult<ScoreSearchItem> searchResult =
+	new SearchResult<ScoreSearchItem>(JObject.Parse(answer.Value.ToText()));
+
+					foreach (ScoreSearchItem item in searchResult.Rows)
+					{
+						if (item.TextualSource != null && !String.IsNullOrEmpty(item.TextualSource.SourceId))
+						{
+							Source src = GetSource(item.TextualSource.SourceId, new Result<Source>()).Wait();
+
+							item.TextualSource.Source = src;
+							if (!String.IsNullOrEmpty(item.TextualSource.PieceId))
+							{
+								item.TextualSource.Play = GetPlay(item.TextualSource.PieceId, new Result<Play>()).Wait();
+							}
+						}
+						if (item.MusicalSource != null && !String.IsNullOrEmpty(item.MusicalSource.SourceId))
+						{
+							item.MusicalSource.Source = GetSource(item.MusicalSource.SourceId, new Result<Source>()).Wait();
+						}
+					}
+
+					aResult.Return(searchResult);
 				}
 			}
 			);

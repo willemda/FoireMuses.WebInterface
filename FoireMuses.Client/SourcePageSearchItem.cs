@@ -11,29 +11,17 @@ namespace FoireMuses.Client
 	/// represent a Score(un air) object in json
 	/// </summary>
 
-	public class SourcePageSearchItem
+	public class SourcePageSearchItem : SearchResultItem
 	{
-
-		private JObject json { get; set; }
-
-		public SourcePageSearchItem()
-		{
-		}
-
-		public SourcePageSearchItem(JObject jobject)
-		{
-			json = jobject;
-		}
-
 		public string Id
 		{
 			get
 			{
-				return json.RetrieveStringCheck("_id");
+				return Json.RetrieveStringCheck("_id");
 			}
 			set
 			{
-				json.AddCheck("_id", value);
+				Json.AddCheck("_id", value);
 			}
 		}
 
@@ -42,11 +30,11 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				return json.RetrieveStringCheck("sourceId");
+				return Json.RetrieveStringCheck("sourceId");
 			}
 			set
 			{
-				json.AddCheck("sourceId", value);
+				Json.AddCheck("sourceId", value);
 			}
 		}
 
@@ -55,11 +43,11 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				return json.RetrieveStringCheck("pageNumber");
+				return Json.RetrieveStringCheck("pageNumber");
 			}
 			set
 			{
-				json.AddCheck("pageNumber", value);
+				Json.AddCheck("pageNumber", value);
 			}
 		}
 
@@ -68,11 +56,11 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				return json.RetrieveStringCheck("displayPageNumber");
+				return Json.RetrieveStringCheck("displayPageNumber");
 			}
 			set
 			{
-				json.AddCheck("displayPageNumber", value);
+				Json.AddCheck("displayPageNumber", value);
 			}
 		}
 
