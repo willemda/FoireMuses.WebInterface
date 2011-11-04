@@ -8,15 +8,17 @@
 		{
 		<div class="label">@aFieldName :</div>
 		<div class="value">
-			@if(!String.IsNullOrEmpty(aFieldValue)){
-				if (isBold){
+			@if (!String.IsNullOrEmpty(aFieldValue))
+   {
+	   if (isBold)
+	   {
 					<em>@aFieldValue</em>
-				}
-				else
-				{
-					@System.Web.Mvc.MvcHtmlString.Create(aFieldValue.Replace("\n","<br/>"))
-				}
-			}
+	   }
+	   else
+	   {
+					@System.Web.Mvc.MvcHtmlString.Create(aFieldValue.Replace("\n", "<br/>"))
+	   }
+   }
 		</div>
 		}
 }
@@ -27,15 +29,17 @@
 		{
 		<div class="label">@aFieldName :</div>
 		<div class="value">
-			@if (aFieldValue.HasValue){
-				if (isBold){
+			@if (aFieldValue.HasValue)
+   {
+	   if (isBold)
+	   {
 					<em>@aFieldValue.Value</em>
-				}
-				else
-				{
+	   }
+	   else
+	   {
 					@aFieldValue.Value
-				}
-			}
+	   }
+   }
 		</div>
 		}
 }
@@ -93,101 +97,82 @@
 	<input type="hidden" id="@fieldExpression" name="@fieldExpression" value="@fieldValue" />
 }
 
-@helper MusicalSource(MusicalSource aMusicalSourceReference, Source aSource)
-{
-	if (aSource != null)
+@helper DisplayPlay(Play aPlay, int? anActNumber, int? aSceneNumber)
 	{
-		<div class="label">Source Musicale:</div>
-		<div class="value">
-			<a href="/Sources/Details?sourceId=@aMusicalSourceReference.SourceId" title="cliquer pour aller voir la source">
-			@aSource.Name
-			@if (aSource.DateFrom.HasValue)
-			{
-				@: (@aSource.DateFrom.Value)
-			}
-			@if (!String.IsNullOrEmpty(aMusicalSourceReference.Page))
-			{
-				@:, Page @aMusicalSourceReference.Page
-			}
-			@if (aMusicalSourceReference.AirNumber.HasValue)
-			{
-				@:, Air @aMusicalSourceReference.AirNumber.Value
-			}
-			@if (aMusicalSourceReference.Tome.HasValue)
-			{
-				@:, Tome @RomanNumber.ToRoman(aMusicalSourceReference.Tome.Value)
-			}
-			@if (aMusicalSourceReference.Volume.HasValue)
-			{
-				@:, Volume @RomanNumber.ToRoman(aMusicalSourceReference.Volume.Value)
-			}
-			</a>
-			@if (aMusicalSourceReference.IsSuggested.HasValue && aMusicalSourceReference.IsSuggested.Value)
-			{
-				<i>(Suggestion)</i>
-			}
-		</div>
+	@aPlay.Title
+	if (anActNumber.HasValue && anActNumber.Value != 0)
+	{
+		@:, Act @RomanNumber.ToRoman(anActNumber.Value)
+	}
+	if (aSceneNumber.HasValue && aSceneNumber.Value != 0)
+	{
+		@:, Scène @aSceneNumber
 	}
 }
-
-@helper TextualSource(TextualSource aTextualSourceReference, Source aSource, Play aPlay)
-{
-	if (aSource != null)
+@helper DisplaySource(Source aSource, string aPage, int? anAirNumber, int? aTome, int? aVolume)
 	{
-		<div class="label">Source Textuelle:</div>
-		<div class="value">
-			<a href="/Sources/Details?sourceId=@aTextualSourceReference.SourceId" title="cliquer pour aller voir la source">
-			@aSource.Name
-			@if (aSource.DateFrom.HasValue)
-			{
-				@: (@aSource.DateFrom.Value)
-			}
-			@if (!String.IsNullOrEmpty(aTextualSourceReference.Page))
-			{
-				@:, Page @aTextualSourceReference.Page
-			}
-			@if (aTextualSourceReference.AirNumber.HasValue)
-			{
-				@:, Air @aTextualSourceReference.AirNumber.Value
-			}
-			@if (aTextualSourceReference.Tome.HasValue)
-			{
-				@:, Tome @RomanNumber.ToRoman(aTextualSourceReference.Tome.Value)
-			}
-			@if (aTextualSourceReference.Volume.HasValue)
-			{
-				@:, Volume @RomanNumber.ToRoman(aTextualSourceReference.Volume.Value)
-			}
-			</a>
-		</div>
-
-		if(aPlay != null){
-		<div class="sublabel">Pièce associée:</div>
-		<div class="subvalue">@aPlay.Title
-			@if(aTextualSourceReference.ActNumber.HasValue)
-			{
-				@:, Act @RomanNumber.ToRoman(aTextualSourceReference.ActNumber.Value)
-			}
-			@if(aTextualSourceReference.SceneNumber.HasValue)
-			{
-				@:, Scène @aTextualSourceReference.SceneNumber
-			}
-		</div>
-		}
-	}
-}
-
-
-@helper Pager(int totalPage, int currentPage, Func<int, string> pageUrl)
-	{
-		if (totalPage > 1)
+	<a href="/Sources/Details?sourceId=@aSource.Id" title="">
+		@aSource.Name
+	</a>
+		if (aSource.DateFrom.HasValue)
 		{
-		<div id="pager">
-		@{
+			@: (@aSource.DateFrom.Value)
+		}
+		if (!String.IsNullOrEmpty(aPage))
+		{
+			@:, Page @aPage
+		}
+		if (anAirNumber.HasValue)
+		{
+			@:, Air @anAirNumber.Value
+		}
+		if (aTome.HasValue)
+		{
+			@:, Tome @RomanNumber.ToRoman(aTome.Value)
+		}
+		if (aVolume.HasValue)
+		{
+			@:, Volume @RomanNumber.ToRoman(aVolume.Value)
+		}
+}
+
+@helper DisplayMusicalSource(CompleteMusicalSource aMusicalSource)
+	{
+	if (aMusicalSource != null && aMusicalSource.Source != null)
+	{
+		<div>
+			Musical Source : <span class="@(aMusicalSource.IsSuggested.HasValue && aMusicalSource.IsSuggested.Value ? "suggested" : String.Empty)">
+				@Helpers.DisplaySource(aMusicalSource.Source, aMusicalSource.Page, aMusicalSource.AirNumber, aMusicalSource.Tome, aMusicalSource.Volume)
+			</span>
+		</div>
+	}
+}
+
+@helper DisplayTextualSource(CompleteTextualSource aTextualSource){
+	if (aTextualSource != null && aTextualSource.Source != null){
+		<div>
+			Textual Source : @Helpers.DisplaySource(aTextualSource.Source, aTextualSource.Page, aTextualSource.AirNumber, aTextualSource.Tome, aTextualSource.Volume)<br />
+			@if (aTextualSource.Play != null){
+				<div>
+					Associated Play : @Helpers.DisplayPlay(aTextualSource.Play, aTextualSource.ActNumber, aTextualSource.SceneNumber);
+				</div>
+			}
+		</div>
+	}
+}
+
+@helper Pager(SearchResult aSearchResult, Func<int, string> pageUrl){
+		if (aSearchResult.TotalCount > aSearchResult.Max)
+		{
+	<div id="pager">
+	@{
+			int totalPage = (aSearchResult.TotalCount / aSearchResult.Max) + 1;
+			int currentPage = (aSearchResult.Offset / aSearchResult.Max) + 1;
+
 			if (currentPage != 1)
 			{
-				<a href="@pageUrl(1)">&lt;&lt;</a>
-				<a href="@pageUrl(currentPage - 1)">&lt;</a>
+			<a href="@pageUrl(1)">&lt;&lt;</a>
+			<a href="@pageUrl(currentPage - 1)">&lt;</a>
 			}
 
 			int pageToGoFrom = currentPage;
@@ -202,15 +187,39 @@
 
 			for (int i = pageToGoFrom; i < pageToGoFrom + 10 && i <= totalPage; i++)
 			{
-				<a class="@(i == currentPage ? "selected" : String.Empty)" href="@pageUrl(i)">@i.ToString()</a>
+			<a class="@(i == currentPage ? "selected" : String.Empty)" href="@pageUrl(i)">@i.ToString()</a>
 			}
 
 			if (currentPage != totalPage)
 			{
-				<a href="@pageUrl(currentPage + 1)">&gt;</a>
-				<a href="@pageUrl(totalPage)">&gt;&gt;</a>
+			<a href="@pageUrl(currentPage + 1)">&gt;</a>
+			<a href="@pageUrl(totalPage)">&gt;&gt;</a>
 			}
-		}
-		</div>
+	}
+	</div>
 		}
 }
+
+
+@helper DisplayScoreSearchResult(SearchResult<ScoreSearchItem> aSearchResult, Func<int, string> pageUrl){
+	<ul>
+		@{
+			bool even = true;
+			foreach (var score in aSearchResult.Rows){
+				<li class="@(even ? "even_row" : "odd_row")">
+					<div class="score-item">
+						<div class="score-title">
+							<a href="Details?scoreId=@score.Id">@score.Title</a>
+						</div>
+						@DisplayMusicalSource(score.MusicalSource)
+						@DisplayTextualSource(score.TextualSource)
+					</div>
+				</li>
+				even = !even;
+			}
+		}
+	</ul>
+
+	@Pager(aSearchResult, pageUrl);
+}
+

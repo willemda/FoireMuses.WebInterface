@@ -8,9 +8,7 @@
             var recordToDelete = $(this.options[this.selectedIndex]).attr("value");
             if (recordToDelete != '' && recordToDelete != null) {
                 // Perform the ajax post
-                $.post("/Scores/GetPlaysForSource", { "id":
-recordToDelete
-                },
+                $.post("/Scores/GetPlaysForSource", { "id":recordToDelete},
                     function (data) {
                         // Successful requests get here
                         // Update the page elements
@@ -85,7 +83,7 @@ wordsToSearch
 </script>
 <div id="encadreInfo">
     <p>
-        <img class="helpIcon" src="../../Content/images/helpIcon.png" />Insertion d'un air
+        <img class="helpIcon" src="../../Content/images/helpIcon.png" alt="help" />Insertion d'un air
         à partir des informations dont vous avez connaissance</p>
     <hr />
     <p>

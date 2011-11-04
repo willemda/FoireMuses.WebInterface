@@ -36,6 +36,7 @@ namespace FoireMuses.Client
 	public class CompleteMusicalSource : MusicalSource
 	{
 		public CompleteMusicalSource(JObject anObject) : base(anObject) { }
+		public CompleteMusicalSource(MusicalSource aMusicalSource) : base(aMusicalSource.theJson) { }
 		public Source Source { get; set; }
 	}
 }

@@ -15,17 +15,15 @@ namespace FoireMuses.Client
 	public class FoireMusesConnection
 	{
 		private Plug theServiceUri;
-		private ICredentials theCredentials;
 		private Dictionary<string, Source> theSourcesCache = new Dictionary<string, Source>();
 
-		public FoireMusesConnection(XUri aServiceUri, string username, string password)
-			: this(aServiceUri, new NetworkCredential(username, password))
+		public FoireMusesConnection(XUri aServiceUri, string aUsername, string aPassword)
+			: this(aServiceUri, new NetworkCredential(aUsername, aPassword))
 		{
 		}
 
 		public FoireMusesConnection(XUri aServiceUri, ICredentials aCredentials)
 		{
-			theCredentials = aCredentials;
 			theServiceUri = Plug.New(aServiceUri).WithCredentials(aCredentials);//with timeout
 		}
 
@@ -34,14 +32,14 @@ namespace FoireMuses.Client
 			theServiceUri = Plug.New(aServiceUri);//with timeout
 		}
 
-		public void Impersonate(string username)
+		public void Impersonate(string aUsername)
 		{
-			theServiceUri = theServiceUri.WithHeader("FoireMusesImpersonate", username);
+			theServiceUri = theServiceUri.WithHeader("FoireMusesImpersonate", aUsername);
 		}
 
-		public Result<User> GetUser(string username, Result<User> aResult)
+		public Result<User> GetUser(string aUsername, Result<User> aResult)
 		{
-			theServiceUri.At("users", username)
+			theServiceUri.At("users", aUsername)
 				.Get(new Result<DreamMessage>())
 				.WhenDone(delegate(Result<DreamMessage> answer)
 				{
@@ -251,23 +249,23 @@ namespace FoireMuses.Client
 			return aResult;
 		}
 
-		public Result<Score> GetScore(string scoreId, Result<Score> aResult)
+		public Result<Score> GetScore(string aScoreId, Result<Score> aResult)
 		{
 			theServiceUri
-				.At("scores", scoreId)
+				.At("scores", aScoreId)
 				.Get(new Result<DreamMessage>())
-				.WhenDone(delegate(Result<DreamMessage> answer)
+				.WhenDone(delegate(Result<DreamMessage> anAnswer)
 				{
-					if (!answer.Value.IsSuccessful)
+					if (!anAnswer.Value.IsSuccessful)
 					{
-						if (answer.Value.Status == DreamStatus.NotFound)
+						if (anAnswer.Value.Status == DreamStatus.NotFound)
 							aResult.Return((Score)null);
 						else
-							aResult.Throw(answer.Exception);
+							aResult.Throw(anAnswer.Exception);
 					}
 					else
 					{
-						aResult.Return(new Score(JObject.Parse(answer.Value.ToText())));
+						aResult.Return(new Score(JObject.Parse(anAnswer.Value.ToText())));
 					}
 				}
 				);

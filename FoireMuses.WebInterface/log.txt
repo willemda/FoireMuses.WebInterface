@@ -378,3 +378,813 @@ System.InvalidOperationException: async operation already finished
    at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
    at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
    at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 09:03:41,886 [39] DEBUG MindTouch.Tasking.Async [(null)] - Using ElasticThreadPool with 4min / 200max
+2011-11-02 09:03:44,841 [39] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #43 created
+2011-11-02 09:03:44,887 [39] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #44 created
+2011-11-02 09:03:44,911 [39] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #45 created
+2011-11-02 09:03:44,911 [39] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #46 created
+2011-11-02 09:03:44,934 [39] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #47 created
+2011-11-02 09:03:44,934 [39] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #48 created
+2011-11-02 09:03:44,934 [39] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #49 created
+2011-11-02 09:03:44,958 [39] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #50 created
+2011-11-02 09:03:44,958 [39] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #51 created
+2011-11-02 09:03:44,981 [39] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #52 created
+2011-11-02 09:03:44,981 [39] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #53 created
+2011-11-02 09:03:45,005 [39] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #54 created
+2011-11-02 09:03:45,005 [39] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #55 created
+2011-11-02 09:03:45,028 [39] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #56 created
+2011-11-02 09:03:45,028 [39] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #57 created
+2011-11-02 09:03:45,051 [39] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #58 created
+2011-11-02 09:03:45,051 [39] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #59 created
+2011-11-02 09:03:45,075 [39] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #60 created
+2011-11-02 09:03:45,075 [39] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #61 created
+2011-11-02 09:03:45,098 [39] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #62 created
+2011-11-02 09:03:45,098 [39] DEBUG MindTouch.Threading.DispatchThreadScheduler [(null)] - request 4 threads to be created
+2011-11-02 09:03:45,098 [39] DEBUG MindTouch.Threading.ElasticThreadPool [(null)] - Create @ElasticThreadPool @1 (current: 0, reserve: 0, velocity: 0, min: 4, max: 200, items: 0)
+2011-11-02 09:03:45,145 [42] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #63 created
+2011-11-02 09:03:45,169 [42] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #64 created
+2011-11-02 09:03:45,169 [42] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #65 created
+2011-11-02 09:03:45,216 [42] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #66 created
+2011-11-02 09:03:53,764 [DispatchThread #58] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 09:03:53,952 [DispatchThread #60] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 09:03:54,069 [DispatchThread #59] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 09:03:54,749 [DispatchThread #60] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 09:03:55,855 [DispatchThread #59] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 09:03:56,089 [DispatchThread #57] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 09:04:40,341 [DispatchThread #59] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 09:04:40,341 [DispatchThread #60] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 09:04:40,817 [DispatchThread #60] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 09:04:41,527 [DispatchThread #59] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 09:04:41,527 [DispatchThread #58] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 09:04:41,527 [DispatchThread #60] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 09:05:25,825 [DispatchThread #58] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 09:05:25,896 [DispatchThread #57] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 09:05:26,013 [DispatchThread #57] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 09:05:59,688 [DispatchThread #57] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 09:05:59,972 [DispatchThread #58] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 09:05:59,972 [DispatchThread #60] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 09:07:08,903 [68] DEBUG MindTouch.Tasking.Async [(null)] - Using ElasticThreadPool with 4min / 200max
+2011-11-02 09:07:11,867 [68] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #36 created
+2011-11-02 09:07:11,914 [68] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #35 created
+2011-11-02 09:07:11,937 [68] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #34 created
+2011-11-02 09:07:11,937 [68] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #33 created
+2011-11-02 09:07:11,961 [68] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #32 created
+2011-11-02 09:07:11,961 [68] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #31 created
+2011-11-02 09:07:11,984 [68] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #30 created
+2011-11-02 09:07:11,984 [68] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #29 created
+2011-11-02 09:07:12,007 [68] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #28 created
+2011-11-02 09:07:12,007 [68] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #27 created
+2011-11-02 09:07:12,007 [68] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #26 created
+2011-11-02 09:07:12,031 [68] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #25 created
+2011-11-02 09:07:12,031 [68] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #24 created
+2011-11-02 09:07:12,054 [68] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #23 created
+2011-11-02 09:07:12,054 [68] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #22 created
+2011-11-02 09:07:12,078 [68] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #21 created
+2011-11-02 09:07:12,078 [68] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #20 created
+2011-11-02 09:07:12,101 [68] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #19 created
+2011-11-02 09:07:12,101 [68] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #18 created
+2011-11-02 09:07:12,125 [68] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #17 created
+2011-11-02 09:07:12,125 [68] DEBUG MindTouch.Threading.DispatchThreadScheduler [(null)] - request 4 threads to be created
+2011-11-02 09:07:12,125 [68] DEBUG MindTouch.Threading.ElasticThreadPool [(null)] - Create @ElasticThreadPool @1 (current: 0, reserve: 0, velocity: 0, min: 4, max: 200, items: 0)
+2011-11-02 09:07:12,289 [41] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #16 created
+2011-11-02 09:07:12,289 [41] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #14 created
+2011-11-02 09:07:12,312 [41] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #13 created
+2011-11-02 09:07:12,312 [41] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #12 created
+2011-11-02 09:07:17,808 [DispatchThread #21] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 09:07:17,832 [DispatchThread #20] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 09:07:18,089 [DispatchThread #19] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 09:07:20,233 [DispatchThread #22] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 09:07:20,233 [DispatchThread #19] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 09:07:20,233 [DispatchThread #20] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:00:34,615 [DispatchThread #22] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:00:34,647 [DispatchThread #19] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:00:34,865 [DispatchThread #19] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:00:45,381 [DispatchThread #21] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:00:45,522 [DispatchThread #19] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:00:45,615 [DispatchThread #21] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:02:19,343 [DispatchThread #19] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:02:19,343 [DispatchThread #19] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:02:19,421 [DispatchThread #19] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:02:19,655 [DispatchThread #19] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:02:19,655 [DispatchThread #19] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:02:19,702 [DispatchThread #21] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:02:27,374 [DispatchThread #22] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:02:27,390 [DispatchThread #19] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:02:27,562 [DispatchThread #20] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:02:30,687 [DispatchThread #21] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:02:30,687 [DispatchThread #20] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:02:30,687 [DispatchThread #19] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:16:56,014 [72] DEBUG MindTouch.Tasking.Async [(null)] - Using ElasticThreadPool with 4min / 200max
+2011-11-02 18:16:57,889 [72] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #42 created
+2011-11-02 18:16:57,920 [72] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #39 created
+2011-11-02 18:16:57,936 [72] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #5 created
+2011-11-02 18:16:57,951 [72] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #11 created
+2011-11-02 18:16:57,951 [72] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #12 created
+2011-11-02 18:16:57,967 [72] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #13 created
+2011-11-02 18:16:57,967 [72] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #14 created
+2011-11-02 18:16:57,983 [72] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #15 created
+2011-11-02 18:16:57,983 [72] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #16 created
+2011-11-02 18:16:57,998 [72] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #17 created
+2011-11-02 18:16:57,998 [72] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #18 created
+2011-11-02 18:16:58,014 [72] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #19 created
+2011-11-02 18:16:58,014 [72] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #20 created
+2011-11-02 18:16:58,030 [72] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #21 created
+2011-11-02 18:16:58,030 [72] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #22 created
+2011-11-02 18:16:58,030 [72] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #23 created
+2011-11-02 18:16:58,045 [72] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #24 created
+2011-11-02 18:16:58,045 [72] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #25 created
+2011-11-02 18:16:58,061 [72] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #26 created
+2011-11-02 18:16:58,076 [72] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #27 created
+2011-11-02 18:16:58,076 [72] DEBUG MindTouch.Threading.DispatchThreadScheduler [(null)] - request 4 threads to be created
+2011-11-02 18:16:58,076 [72] DEBUG MindTouch.Threading.ElasticThreadPool [(null)] - Create @ElasticThreadPool @1 (current: 0, reserve: 0, velocity: 0, min: 4, max: 200, items: 0)
+2011-11-02 18:16:58,186 [6] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #28 created
+2011-11-02 18:16:58,186 [6] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #30 created
+2011-11-02 18:16:58,201 [6] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #31 created
+2011-11-02 18:16:58,217 [6] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #32 created
+2011-11-02 18:17:03,780 [DispatchThread #23] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:17:03,795 [DispatchThread #25] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:17:03,795 [DispatchThread #24] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:17:04,342 [DispatchThread #21] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:17:05,186 [DispatchThread #24] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:17:05,233 [DispatchThread #22] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:20:29,889 [72] DEBUG MindTouch.Tasking.Async [(null)] - Using ElasticThreadPool with 4min / 200max
+2011-11-02 18:20:31,701 [72] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #75 created
+2011-11-02 18:20:31,733 [72] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #76 created
+2011-11-02 18:20:31,748 [72] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #77 created
+2011-11-02 18:20:31,748 [72] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #78 created
+2011-11-02 18:20:31,748 [72] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #79 created
+2011-11-02 18:20:31,764 [72] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #80 created
+2011-11-02 18:20:31,779 [72] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #81 created
+2011-11-02 18:20:31,779 [72] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #82 created
+2011-11-02 18:20:31,795 [72] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #83 created
+2011-11-02 18:20:31,795 [72] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #84 created
+2011-11-02 18:20:31,795 [72] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #85 created
+2011-11-02 18:20:31,811 [72] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #86 created
+2011-11-02 18:20:31,811 [72] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #87 created
+2011-11-02 18:20:31,826 [72] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #88 created
+2011-11-02 18:20:31,842 [72] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #89 created
+2011-11-02 18:20:31,842 [72] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #90 created
+2011-11-02 18:20:31,858 [72] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #91 created
+2011-11-02 18:20:31,858 [72] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #92 created
+2011-11-02 18:20:31,873 [72] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #93 created
+2011-11-02 18:20:31,873 [72] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #94 created
+2011-11-02 18:20:31,889 [72] DEBUG MindTouch.Threading.DispatchThreadScheduler [(null)] - request 4 threads to be created
+2011-11-02 18:20:31,889 [72] DEBUG MindTouch.Threading.ElasticThreadPool [(null)] - Create @ElasticThreadPool @1 (current: 0, reserve: 0, velocity: 0, min: 4, max: 200, items: 0)
+2011-11-02 18:20:31,967 [35] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #95 created
+2011-11-02 18:20:31,983 [35] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #97 created
+2011-11-02 18:20:31,983 [35] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #98 created
+2011-11-02 18:20:31,998 [35] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #73 created
+2011-11-02 18:20:36,045 [DispatchThread #90] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:20:36,170 [DispatchThread #92] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:20:36,201 [DispatchThread #91] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:20:36,842 [DispatchThread #91] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:20:37,514 [DispatchThread #92] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:20:37,514 [DispatchThread #89] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:21:09,660 [DispatchThread #92] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:21:09,910 [DispatchThread #92] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:21:09,926 [DispatchThread #91] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:21:18,067 [DispatchThread #90] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:21:21,253 [DispatchThread #92] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:21:21,253 [DispatchThread #91] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:21:39,831 [DispatchThread #90] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:21:39,831 [DispatchThread #92] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:21:40,066 [DispatchThread #92] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:21:53,135 [DispatchThread #90] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:21:53,135 [DispatchThread #91] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:21:53,135 [DispatchThread #92] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:22:04,197 [DispatchThread #91] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:22:04,432 [DispatchThread #90] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:22:04,432 [DispatchThread #89] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:22:04,432 [DispatchThread #91] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:22:05,213 [DispatchThread #89] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:22:05,213 [DispatchThread #92] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 144
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:24:12,256 [65] DEBUG MindTouch.Tasking.Async [(null)] - Using ElasticThreadPool with 4min / 200max
+2011-11-02 18:24:14,162 [65] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #63 created
+2011-11-02 18:24:14,194 [65] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #67 created
+2011-11-02 18:24:14,209 [65] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #73 created
+2011-11-02 18:24:14,209 [65] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #98 created
+2011-11-02 18:24:14,225 [65] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #97 created
+2011-11-02 18:24:14,225 [65] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #96 created
+2011-11-02 18:24:14,225 [65] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #95 created
+2011-11-02 18:24:14,240 [65] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #94 created
+2011-11-02 18:24:14,240 [65] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #93 created
+2011-11-02 18:24:14,256 [65] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #92 created
+2011-11-02 18:24:14,256 [65] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #91 created
+2011-11-02 18:24:14,272 [65] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #90 created
+2011-11-02 18:24:14,272 [65] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #89 created
+2011-11-02 18:24:14,287 [65] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #88 created
+2011-11-02 18:24:14,287 [65] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #87 created
+2011-11-02 18:24:14,287 [65] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #86 created
+2011-11-02 18:24:14,303 [65] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #85 created
+2011-11-02 18:24:14,319 [65] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #84 created
+2011-11-02 18:24:14,319 [65] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #83 created
+2011-11-02 18:24:14,334 [65] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #82 created
+2011-11-02 18:24:14,334 [65] DEBUG MindTouch.Threading.DispatchThreadScheduler [(null)] - request 4 threads to be created
+2011-11-02 18:24:14,334 [65] DEBUG MindTouch.Threading.ElasticThreadPool [(null)] - Create @ElasticThreadPool @1 (current: 0, reserve: 0, velocity: 0, min: 4, max: 200, items: 0)
+2011-11-02 18:24:14,428 [64] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #81 created
+2011-11-02 18:24:14,444 [64] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #79 created
+2011-11-02 18:24:14,444 [64] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #78 created
+2011-11-02 18:24:14,459 [64] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #77 created
+2011-11-02 18:24:18,959 [DispatchThread #86] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 142
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:24:18,990 [DispatchThread #85] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 142
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:24:19,147 [DispatchThread #85] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 142
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:24:20,069 [DispatchThread #87] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 142
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:24:20,490 [DispatchThread #84] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 142
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:24:20,490 [DispatchThread #85] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 142
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:24:31,756 [DispatchThread #84] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 142
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:24:32,037 [DispatchThread #87] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 142
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:24:32,053 [DispatchThread #86] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 142
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:24:32,100 [DispatchThread #84] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 142
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:24:32,350 [DispatchThread #87] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 142
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:24:32,850 [DispatchThread #84] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 142
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:24:39,647 [DispatchThread #84] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 142
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-02 18:25:11,177 [DispatchThread #84] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 142
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-04 22:12:34,979 [38] DEBUG MindTouch.Tasking.Async [(null)] - Using ElasticThreadPool with 4min / 200max
+2011-11-04 22:12:37,323 [38] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #94 created
+2011-11-04 22:12:37,370 [38] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #93 created
+2011-11-04 22:12:37,370 [38] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #92 created
+2011-11-04 22:12:37,386 [38] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #91 created
+2011-11-04 22:12:37,386 [38] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #90 created
+2011-11-04 22:12:37,401 [38] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #89 created
+2011-11-04 22:12:37,401 [38] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #88 created
+2011-11-04 22:12:37,417 [38] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #87 created
+2011-11-04 22:12:37,417 [38] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #86 created
+2011-11-04 22:12:37,417 [38] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #85 created
+2011-11-04 22:12:37,432 [38] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #84 created
+2011-11-04 22:12:37,432 [38] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #83 created
+2011-11-04 22:12:37,448 [38] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #82 created
+2011-11-04 22:12:37,448 [38] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #81 created
+2011-11-04 22:12:37,464 [38] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #80 created
+2011-11-04 22:12:37,479 [38] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #79 created
+2011-11-04 22:12:37,479 [38] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #78 created
+2011-11-04 22:12:37,495 [38] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #77 created
+2011-11-04 22:12:37,495 [38] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #76 created
+2011-11-04 22:12:37,511 [38] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #75 created
+2011-11-04 22:12:37,511 [38] DEBUG MindTouch.Threading.DispatchThreadScheduler [(null)] - request 4 threads to be created
+2011-11-04 22:12:37,511 [38] DEBUG MindTouch.Threading.ElasticThreadPool [(null)] - Create @ElasticThreadPool @1 (current: 0, reserve: 0, velocity: 0, min: 4, max: 200, items: 0)
+2011-11-04 22:12:37,636 [42] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #72 created
+2011-11-04 22:12:37,667 [42] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #71 created
+2011-11-04 22:12:37,667 [42] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #70 created
+2011-11-04 22:12:37,667 [42] DEBUG MindTouch.Threading.DispatchThread [(null)] - DispatchThread #9 created
+2011-11-04 22:12:55,870 [DispatchThread #79] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 142
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-04 22:12:55,886 [DispatchThread #78] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 142
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-04 22:12:56,042 [DispatchThread #77] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 142
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-04 22:12:56,464 [DispatchThread #77] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 142
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-04 22:12:56,573 [DispatchThread #78] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 142
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-04 22:12:57,229 [DispatchThread #80] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 142
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-04 22:13:01,027 [DispatchThread #80] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 142
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-04 22:13:34,324 [DispatchThread #77] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 142
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-04 22:13:34,340 [DispatchThread #78] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 142
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-04 22:13:34,496 [DispatchThread #79] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 142
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-04 22:13:35,762 [DispatchThread #78] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 142
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-04 22:13:36,246 [DispatchThread #80] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 142
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-04 22:13:36,340 [DispatchThread #79] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 142
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-04 22:14:26,911 [DispatchThread #79] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 142
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-04 22:14:40,411 [DispatchThread #79] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 142
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-04 22:15:50,335 [DispatchThread #80] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 142
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-04 22:15:50,335 [DispatchThread #77] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 142
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-04 22:15:50,522 [DispatchThread #77] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 142
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-04 22:15:57,589 [DispatchThread #77] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 142
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-04 22:15:57,589 [DispatchThread #78] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 142
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-04 22:15:57,636 [DispatchThread #79] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 142
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492
+2011-11-04 22:16:07,310 [DispatchThread #79] WARN  MindTouch.Tasking.TaskEnv [(null)] - Invoke: unhandled exception in handler
+System.InvalidOperationException: async operation already finished
+   at MindTouch.Tasking.Result`1.SetStateValue(T value, Boolean throwOnInvalidState) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1266
+   at MindTouch.Tasking.Result`1.Return(T value) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\Result.cs:line 1375
+   at FoireMuses.Client.FoireMusesConnection.<>c__DisplayClassc.<GetSource>b__b(Result`1 answer) in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\FoireMuses.Client\FoireMusesConnection.cs:line 142
+   at MindTouch.Tasking.TaskEnv.<>c__DisplayClass6`1.<Invoke>b__4() in C:\Users\vdaron\Documents\Projects\FoireMuses.WebInterface\MindTouch.Dream\Tasking\TaskEnv.cs:line 492

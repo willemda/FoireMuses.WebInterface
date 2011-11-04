@@ -18,7 +18,7 @@ namespace FoireMuses.WebInterface.Controllers
 	{
 		private static readonly log4net.ILog theLogger = log4net.LogManager.GetLogger(typeof(ScoresController));
 
-		public int PageSize = 20;
+		public int PageSize = 4;
 
 		public ActionResult List(int page = 1)
 		{
@@ -50,9 +50,8 @@ namespace FoireMuses.WebInterface.Controllers
 
 			Score score = null;
 			Score genericScore = null;
-			Source sTextuelle = null;
-			Source sMusicale = null;
-			Play assPlay = null;
+			CompleteTextualSource textualSource = null;
+			CompleteMusicalSource musicalSource = null;
 			IEnumerable<ScoreSearchItem> otherTitlesScore = null;
 			IEnumerable<string> attachedFiles = null;
 			IEnumerable<string> documents = null;
@@ -65,27 +64,17 @@ namespace FoireMuses.WebInterface.Controllers
 				}
 				if (score.TextualSource != null && !String.IsNullOrWhiteSpace(score.TextualSource.SourceId))
 				{
-					sTextuelle = FoireMusesConnection.GetSource(score.TextualSource.SourceId, new Result<Source>()).Wait();
-					if (sTextuelle == null)
-					{
-						return RedirectToAction("Problem", "Error", null);
-					}
+					textualSource = new CompleteTextualSource(score.TextualSource);
+					textualSource.Source = FoireMusesConnection.GetSource(score.TextualSource.SourceId, new Result<Source>()).Wait();
 					if (!String.IsNullOrWhiteSpace(score.TextualSource.PieceId))
 					{
-						assPlay = FoireMusesConnection.GetPlay(score.TextualSource.PieceId, new Result<Play>()).Wait();
-						if (assPlay == null)
-						{
-							return RedirectToAction("Problem", "Error", null);
-						}
+						textualSource.Play = FoireMusesConnection.GetPlay(score.TextualSource.PieceId, new Result<Play>()).Wait();
 					}
 				}
 				if (score.MusicalSource != null && !String.IsNullOrWhiteSpace(score.MusicalSource.SourceId))
 				{
-					sMusicale = FoireMusesConnection.GetSource(score.MusicalSource.SourceId, new Result<Source>()).Wait();
-					if (sMusicale == null)
-					{
-						return RedirectToAction("Problem", "Error", null);
-					}
+					musicalSource = new CompleteMusicalSource(score.MusicalSource);
+					musicalSource.Source = FoireMusesConnection.GetSource(score.MusicalSource.SourceId, new Result<Source>()).Wait();
 				}
 				if (score.HasAttachement)
 				{
@@ -120,9 +109,8 @@ namespace FoireMuses.WebInterface.Controllers
 			{
 				return RedirectToAction("Problem", "Error", null);
 			}
-			ViewBag.TextualSource = sTextuelle;
-			ViewBag.AssociatedPlay = assPlay;
-			ViewBag.MusicalSource = sMusicale;
+			ViewBag.TextualSource = textualSource;
+			ViewBag.MusicalSource = musicalSource;
 			ViewBag.AttachedFiles = attachedFiles;
 			ViewBag.Documents = documents;
 			ViewBag.OtherTitlesScore = otherTitlesScore;
@@ -377,3 +365,4 @@ namespace FoireMuses.WebInterface.Controllers
 		}
 	}
 }
+

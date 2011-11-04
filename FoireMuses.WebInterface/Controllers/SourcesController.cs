@@ -60,6 +60,7 @@ namespace FoireMuses.WebInterface.Controllers
 			ViewBag.AttachedFiles = attachedFiles;
 			ViewBag.Documents = documents;
 			ViewBag.Pages = pages;
+			
 			return View(source);
 		}
 

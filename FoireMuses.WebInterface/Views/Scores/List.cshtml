@@ -9,38 +9,4 @@
 	</ul>
 }
 <h1>Airs</h1>
-<div id="list-item">
-	<ul>
-		@{
-			bool even = true;
-			foreach (var score in Model.SearchResult.Rows)
-			{
-					<li class="@(even ? "even_row" : "odd_row")">
-						<div class="score-item">
-							<div class="score-title">
-								<a href="Details?scoreId=@score.Id">@score.Title</a>
-							</div>
-							@if (!String.IsNullOrEmpty(score.Editor)){
-							<div class="score-editor">
-								edited by @score.Editor
-							</div>
-							}
-							@if (!String.IsNullOrEmpty(score.Composer)){
-								<div class="score-composer">
-									composed by @score.Composer
-								</div>
-							}
-							<div>
-							@Helpers.TextualSource(score.TextualSource,score.TextualSource.Source,score.TextualSource.Play)
-							</div>
-							<div>
-							@Helpers.MusicalSource(score.MusicalSource, score.MusicalSource.Source)
-							</div>
-						</div>
-					</li>
-				even = !even;
-			}
-		}
-	</ul>
-</div>
-@Helpers.Pager(Model.TotalPages, Model.CurrentPage, x => Url.Action("List", new { page = x }))
+@Helpers.DisplayScoreSearchResult(Model.SearchResult, x => Url.Action("List", new { page = x }))

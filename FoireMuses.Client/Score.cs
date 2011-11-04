@@ -265,19 +265,18 @@ namespace FoireMuses.Client
 		{
 			get
 			{
-				if (json["textualSource"] == null)
-					return null;
-				return new TextualSource(json["textualSource"].Value<JObject>());
+				return json["textualSource"] == null ? null : new TextualSource(json["textualSource"].Value<JObject>());
 			}
 			set
 			{
-
 				if (value != null)
 				{
 					json["textualSource"] = value.theJson;
 				}
 				else
+				{
 					json.Remove("textualSource");
+				}
 			}
 		}
 

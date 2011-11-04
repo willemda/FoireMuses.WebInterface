@@ -53,8 +53,8 @@
 				Helpers.AddField("Is Master", "True");
 			}
 			@Helpers.AddField("Compositeur", Model.Composer, aDisplayNullValue:false)
-			@Helpers.TextualSource(Model.TextualSource, ViewBag.TextualSource, ViewBag.AssociatedPlay)
-			@Helpers.MusicalSource(Model.MusicalSource, ViewBag.MusicalSource)
+			@Helpers.DisplayTextualSource(ViewBag.TextualSource)
+			@Helpers.DisplayMusicalSource(ViewBag.MusicalSource)
 			@Helpers.AddField("Editeur", Model.Editor, aDisplayNullValue: false)
 			@Helpers.AddField("Versets", Model.Verses, aDisplayNullValue: false)
 			@Helpers.AddField("Type", Model.ScoreType, aDisplayNullValue: false)
@@ -65,8 +65,8 @@
 			@Helpers.AddField("Codage par intervalles", Model.CodageParIntervalles, aDisplayNullValue: false)
 			@Helpers.AddField("Codage rythmique", Model.CodageRythmique, aDisplayNullValue: false)
 			@Helpers.AddField("Commentaires", Model.Comments, aDisplayNullValue: false)
-			@Helpers.AddField("Coirault", Model.Coirault, aDisplayNullValue: false)
-			@Helpers.AddField("Delarue", Model.Delarue, aDisplayNullValue: false)
+			<!--@Helpers.AddField("Coirault", Model.Coirault, aDisplayNullValue: false)-->
+			<!--@Helpers.AddField("Delarue", Model.Delarue, aDisplayNullValue: false)-->
 
 			@if (otherTitleScores != null && (otherTitleScores.Where(x => x.Id != Model.Id).Count() > 0)){
 				<div id="otherTitles">Autres titres

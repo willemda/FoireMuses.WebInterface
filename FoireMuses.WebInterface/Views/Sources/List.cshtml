@@ -36,4 +36,4 @@
 	</ul>
 </div>
 
-@Helpers.Pager(Model.TotalPages, Model.CurrentPage, x => Url.Action("List", new { page = x }))
+@Helpers.Pager(Model.SearchResult, x => Url.Action("List", new { page = x }))

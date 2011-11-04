@@ -8,12 +8,12 @@ namespace FoireMuses.Client
 {
 	public class TextualSource : SourceReference
 	{
-		public TextualSource():base()
+		public TextualSource()
 		{
 		}
 
-		public TextualSource(JObject jobject)
-			:base(jobject)
+		public TextualSource(JObject aJobject)
+			:base(aJobject)
 		{
 		}
 
@@ -77,6 +77,7 @@ namespace FoireMuses.Client
 	public class CompleteTextualSource : TextualSource
 	{
 		public CompleteTextualSource(JObject anObject):base(anObject){}
+		public CompleteTextualSource(TextualSource aTextualSource):base(aTextualSource.theJson){}
 
 		public Source Source { get; set; }
 		public Play Play { get; set; }
